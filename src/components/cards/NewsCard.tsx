@@ -82,17 +82,14 @@ export default function NewsCard({
 		return (
 			<TouchableOpacity
 				activeOpacity={0.85}
-				className="w-full flex flex-row rounded-2xl overflow-hidden"
+				className="w-full flex flex-row rounded-2xl overflow-hidden relative"
 			>
-				<View className="flex w-5/12 relative h-full">
-					<Image source={{ uri: image }} className="object-cover w-full h-36" />
-					{isNew ? (
-						<View className="absolute left-2 top-2">
-							<NewIndicator />
-						</View>
-					) : null}
-				</View>
-
+				{isNew ? (
+					<View className="absolute left-2 top-2">
+						<NewIndicator />
+					</View>
+				) : null}
+				<Image source={{ uri: image }} className="object-cover w-5/12" />
 				<View className="p-4 flex flex-col justify-center items-start gap-8 w-7/12 bg-background-secondary">
 					<View>
 						<Text className="text-2xl font-pmedium text-foreground">
@@ -122,7 +119,7 @@ export default function NewsCard({
 function NewIndicator({ small }: { small?: boolean }) {
 	return (
 		<View
-			className={`flex bg-primary justify-center items-center flex-row ${
+			className={`flex z-10 bg-primary justify-center items-center flex-row ${
 				small ? "py-0" : "py-1"
 			} ${small ? "px-2" : "px-4"} rounded-full`}
 		>
