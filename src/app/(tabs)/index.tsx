@@ -5,7 +5,20 @@ import Event from "@/components/Event/Event"
 export default function TabOneScreen() {
 	return (
 		<ScreenWrapper>
-			<Text>Homepage</Text>
+			<Event
+				type="event"
+				title="Event Title"
+				content="Event Content"
+				date="Event Date"
+				timeLeft="Event Time Left"
+			/>
+			<Event
+				type="future event"
+				title="Event Title"
+				content="Event Content"
+				date="Event Date"
+				timeLeft="Event Time Left"
+			/>
 		</ScreenWrapper>
 	)
 }
