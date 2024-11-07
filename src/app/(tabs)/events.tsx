@@ -1,10 +1,12 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import { Text } from "react-native"
 
-export default function TabOneScreen() {
+const Events = () => {
 	return (
 		<ScreenWrapper>
-			<Text>Homepage</Text>
+			<Text>Events</Text>
 		</ScreenWrapper>
 	)
 }
+
+export default Events
