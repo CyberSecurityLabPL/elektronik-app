@@ -6,6 +6,7 @@ import {
 	TouchableOpacity,
 	View,
 } from "react-native"
+import useColors from "@/hooks/useColors"
 
 interface BaseLargeButtonProps {
 	text: string
@@ -54,6 +55,8 @@ const LargeButton = ({
 	selected,
 	onPress,
 }: LargeButtonProps) => {
+	const colors = useColors()
+
 	return (
 		<TouchableOpacity
 			activeOpacity={0.7}
@@ -94,7 +97,7 @@ const LargeButton = ({
 			) : selected ? (
 				<View className="flex flex-row justify-center items-center">
 					<View>
-						<Check size={24} color={"blue"} />
+						<Check size={24} color={colors.primary} />
 					</View>
 				</View>
 			) : null}
