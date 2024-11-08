@@ -1,3 +1,5 @@
+import { Colors } from "@/types/colors"
+
 const primary = "#7293FF"
 
 const colors = {
@@ -19,21 +21,5 @@ const colors = {
 		backgroundSecondary: "#202127",
 	},
 } satisfies Colors
-
-// Todo: move to '@/types' later
-interface Colors {
-	primary: string
-	light: ColorScheme
-	dark: ColorScheme
-}
-
-interface ColorScheme {
-	primary: string
-	navIcon: string
-	foreground: string
-	foregroundSecondary: string
-	background: string
-	backgroundSecondary: string
-}
 
 export default colors
