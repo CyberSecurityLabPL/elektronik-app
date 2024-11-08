@@ -18,7 +18,7 @@ const Input = ({
 	}
 	if (type == "text") {
 		return (
-			<View className="bg-background-secondary p-5 rounded-3xl text-foreground   ">
+			<View className="bg-background-secondary p-5 rounded-3xl text-foreground w-full ">
 				<TextInput
 					className={cn(
 						" placeholder:text-zinc-500 text-foreground ",
@@ -32,7 +32,7 @@ const Input = ({
 		)
 	} else {
 		return (
-			<View className="bg-background-secondary p-5 rounded-3xl text-foreground  w-fit self-start ">
+			<View className="bg-background-secondary p-5 rounded-3xl text-foreground w-fit ">
 				<TextInput
 					className={cn(
 						" placeholder:text-zinc-500 text-foreground text-xl text-center pr-1 ",

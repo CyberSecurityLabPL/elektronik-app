@@ -14,6 +14,9 @@ importers:
       '@react-native-async-storage/async-storage':
         specifier: ^2.0.0
         version: 2.0.0(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))
+      '@react-native-picker/picker':
+        specifier: 2.7.5
+        version: 2.7.5(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@react-navigation/native':
         specifier: ^6.0.2
         version: 6.1.18(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
@@ -1224,6 +1227,12 @@ packages:
     resolution: {integrity: sha512-hFJL4cgLPxncJJd/epQ4dHnMg5Jy/7Q56jFvA3MHViuKpzzfTCJCB+pGY54maZbtym53UJON9WTGpM3S81UfjQ==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@react-native-picker/picker@2.7.5':
+    resolution: {integrity: sha512-vhMaOLkXSUb+YKVbukMJToU4g+89VMhBG2U9+cLYF8X8HtFRidrHjohGqT8/OyesDuKIXeLIP+UFYI9Q9CRA9Q==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
 
   '@react-native/assets-registry@0.74.87':
     resolution: {integrity: sha512-1XmRhqQchN+pXPKEKYdpJlwESxVomJOxtEnIkbo7GAlaN2sym84fHEGDXAjLilih5GVPpcpSmFzTy8jx3LtaFg==}
@@ -7098,6 +7107,11 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  '@react-native-picker/picker@2.7.5(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+      react-native: 0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0)
+
   '@react-native/assets-registry@0.74.87': {}
 
   '@react-native/babel-plugin-codegen@0.74.87(@babel/preset-env@7.26.0(@babel/core@7.26.0))':
@@ -8378,6 +8392,7 @@ snapshots:
   elektronik-app@file:(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(expo-constants@16.0.2(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))))(expo-modules-autolinking@1.11.3)(typescript@5.3.3):
     dependencies:
       '@expo/vector-icons': 14.0.4
+      '@react-native-async-storage/async-storage': 2.0.0(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))
       '@react-navigation/native': 6.1.18(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@tanstack/react-query': 5.59.19(react@18.2.0)
       axios: 1.7.7
