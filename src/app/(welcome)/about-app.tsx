@@ -1,11 +1,18 @@
-import { View, Text } from "react-native"
+import { Text, Pressable } from "react-native"
 import React from "react"
+import { Link } from "expo-router"
+import ScreenWrapper from "@/components/ScreenWrapper"
 
 const AboutApp = () => {
 	return (
-		<View>
-			<Text>AboutApp</Text>
-		</View>
+		<ScreenWrapper>
+			<Text>About App</Text>
+			<Link href={"/set-up"} asChild>
+				<Pressable>
+					<Text>Next</Text>
+				</Pressable>
+			</Link>
+		</ScreenWrapper>
 	)
 }
 

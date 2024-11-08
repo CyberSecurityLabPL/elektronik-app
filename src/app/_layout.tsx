@@ -69,6 +69,12 @@ function RootLayoutNav() {
 					headerShown: false,
 				}}
 			/>
+			<Stack.Screen
+				name="(welcome)/set-up"
+				options={{
+					headerShown: false,
+				}}
+			/>
 		</Stack>
 	)
 }
