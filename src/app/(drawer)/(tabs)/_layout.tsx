@@ -33,7 +33,7 @@ export default function TabLayout() {
 				})}
 			/>
 			<Tabs.Screen
-				name="news"
+				name="(news)"
 				options={({ navigation, route }) => ({
 					tabBarIcon: Newspaper,
 				})}
