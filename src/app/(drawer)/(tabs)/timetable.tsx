@@ -3,7 +3,7 @@ import { Text } from "react-native"
 
 const Timetable = () => {
 	return (
-		<ScreenWrapper className="p-0">
+		<ScreenWrapper>
 			<Text>Timetable page</Text>
 		</ScreenWrapper>
 	)

@@ -69,6 +69,7 @@ function RootLayoutNav() {
 					headerShown: false,
 				}}
 			/>
+
 			<Stack.Screen
 				name="(drawer)"
 				options={{

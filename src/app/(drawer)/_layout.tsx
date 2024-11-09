@@ -4,7 +4,7 @@ import Sidebar from "@/components/navigation/Sidebar"
 
 export default function Layout() {
 	return (
-		<GestureHandlerRootView className="flex-1 ">
+		<GestureHandlerRootView className="flex-1 min-h-screen">
 			<Drawer
 				screenOptions={{
 					headerShown: false,
@@ -21,7 +21,7 @@ export default function Layout() {
 					}}
 				/>
 				<Drawer.Screen
-					name="(radio)/index"
+					name="radio"
 					options={{
 						drawerLabel: "Radio Elektron",
 						title: "Radio Elektron",

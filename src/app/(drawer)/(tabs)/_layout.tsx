@@ -10,6 +10,7 @@ export default function TabLayout() {
 				headerShown: false,
 				tabBarShowLabel: false,
 				tabBarHideOnKeyboard: true,
+				headerTransparent: true,
 			}}
 			initialRouteName="home"
 			tabBar={(props) => <TabBar {...props} />}
