@@ -1,17 +1,8 @@
-import ScreenWrapper from "@/components/ScreenWrapper"
-import { Link } from "expo-router"
-import { Text } from "react-native"
+import { Redirect } from "expo-router"
+import React from "react"
 
-const Settings = () => {
-	return (
-		<ScreenWrapper>
-			<Text>Settings page</Text>
-			{/* @ts-expect-error */}
-			<Link href="(drawer)/(tabs)/home" asChild>
-				<Text className="text-white">Go back</Text>
-			</Link>
-		</ScreenWrapper>
-	)
+const page = () => {
+	return <Redirect href="/settings" />
 }
 
-export default Settings
+export default page

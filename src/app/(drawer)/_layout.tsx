@@ -10,16 +10,12 @@ export default function Layout() {
 					headerShown: false,
 					swipeEnabled: false,
 					drawerType: "slide",
+					drawerInactiveBackgroundColor: "#1f2026",
+					drawerInactiveTintColor: "#b6b6d9",
+					drawerPosition: "right",
 				}}
-				// drawerContent={Sidebar}
+				drawerContent={Sidebar}
 			>
-				<Drawer.Screen
-					name="(tabs)"
-					options={{
-						drawerLabel: "Home",
-						title: "Home",
-					}}
-				/>
 				<Drawer.Screen
 					name="radio"
 					options={{
@@ -27,11 +23,17 @@ export default function Layout() {
 						title: "Radio Elektron",
 					}}
 				/>
+
 				<Drawer.Screen
 					name="(settings)"
 					options={{
-						drawerLabel: "Settings",
-						title: "Settings",
+						drawerItemStyle: { display: "none" },
+					}}
+				/>
+				<Drawer.Screen
+					name="(tabs)"
+					options={{
+						drawerItemStyle: { display: "none" },
 					}}
 				/>
 			</Drawer>
