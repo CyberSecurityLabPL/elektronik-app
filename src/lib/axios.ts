@@ -1,5 +1,7 @@
 import {
+	EventsResponse,
 	NewsResponse,
+	SingleEventResponse,
 	SingleNewsResponse,
 	SubstitutionsResponse,
 } from "@/types/axios"
@@ -46,6 +48,29 @@ export async function getArticle(
 ): Promise<SingleNewsResponse | undefined> {
 	try {
 		const data = await api.get(`/articles/${id}`)
+
+		return data.data
+	} catch (error) {}
+}
+
+export async function getEvents(
+	page: number,
+	pageSize: number,
+): Promise<EventsResponse | undefined> {
+	try {
+		const data = await api.get(
+			`/events?pagination[pageSize]=${pageSize}&pagination[page]=${page}`,
+		)
+
+		return data.data
+	} catch (error) {}
+}
+
+export async function getEvent(
+	id: number,
+): Promise<SingleEventResponse | undefined> {
+	try {
+		const data = await api.get(`/events/${id}`)
 
 		return data.data
 	} catch (error) {}

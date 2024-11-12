@@ -35,6 +35,19 @@ export interface StrapiArticle {
 	}
 }
 
+export interface StrapiEvent {
+	id: number
+	attributes: {
+		title: string
+		date: string
+		type: "Zawody Szkolne" | "Święto" | "Uroczystości"
+		description: string
+		createdAt: string | Date
+		updatedAt: string | Date
+		publishedAt: string | Date
+	}
+}
+
 export interface SubstitutionsResponse {
 	data: {
 		id: number
@@ -70,5 +83,22 @@ export interface NewsResponse {
 
 export interface SingleNewsResponse {
 	data: StrapiArticle
+	meta: {}
+}
+
+export interface EventsResponse {
+	data: StrapiEvent[]
+	meta: {
+		pagination: {
+			page: number
+			pageSize: number
+			pageCount: number
+			total: number
+		}
+	}
+}
+
+export interface SingleEventResponse {
+	data: StrapiEvent
 	meta: {}
 }
