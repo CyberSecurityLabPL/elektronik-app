@@ -57,6 +57,18 @@ function RootLayoutNav() {
 					headerShown: false,
 				}}
 			/>
+			<Stack.Screen
+				name="(welcome)/index"
+				options={{
+					headerShown: false,
+				}}
+			/>
+			<Stack.Screen
+				name="(welcome)/about-app"
+				options={{
+					headerShown: false,
+				}}
+			/>
 		</Stack>
 	)
 }
