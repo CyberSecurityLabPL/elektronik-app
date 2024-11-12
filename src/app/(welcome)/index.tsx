@@ -1,4 +1,7 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
+import Circles from "@/components/svgs/Circles"
+import Flower from "@/components/svgs/Flower"
+import Lines from "@/components/svgs/Lines"
 import { WelcomeSvg } from "@/components/svgs/WelcomeSvg"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
@@ -38,6 +41,9 @@ const page = () => {
 					<View className="flex justify-start items-center">
 						<ProgressIndicator progress={1} />
 					</View>
+					<View className="absolute top-2 -right-44 -z-10">
+						<Flower color={colors.svg.topFlower} />
+					</View>
 					<View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-8">
 						<View>
 							<WelcomeSvg />
@@ -59,6 +65,16 @@ const page = () => {
 						onPress={() => router.navigate("/about-app")}
 					/>
 				</View>
+				<View className="absolute top-32 -left-14 -z-10">
+					<Circles color={colors.svg.circles} />
+				</View>
+				<View className="absolute bottom-64 -right-32 -z-10">
+					<Lines color={colors.svg.lines} />
+				</View>
+				<View className="absolute bottom-0 -left-36 -z-10">
+					<Flower color={colors.svg.bottomFlower} />
+				</View>
+				<View className="absolute top-0 right-0 -z-10"></View>
 			</ScreenWrapper>
 		)
 }

@@ -1,4 +1,5 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
+import useColors from "@/hooks/useColors"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import { saveFirstTime, saveUserData } from "@/lib/utils"
@@ -8,8 +9,13 @@ import { LogoSvg } from "@/components/svgs/LogoSvg"
 import Input from "@/components/ui/Input"
 import { Select, SelectItem } from "@/components/ui/Select"
 import { useState } from "react"
+import Lines from "@/components/svgs/Lines"
+import Multiplication from "@/components/svgs/Multiplication"
+import Circles from "@/components/svgs/Circles"
+import SmallCircles from "@/components/svgs/SmallCircles"
 
 const SetUp = () => {
+	const colors = useColors()
 	const [selectedGrade, setSelectedGrade] = useState<string>()
 	const [diaryNumber, setDiaryNumber] = useState(0)
 	const [name, setName] = useState("")
@@ -45,6 +51,9 @@ const SetUp = () => {
 			<View className="flex flex-col justify-center items-center w-full gap-12">
 				<View className="flex justify-start items-center">
 					<ProgressIndicator progress={3} />
+				</View>
+				<View className="absolute top-4 -right-40 -z-10">
+					<Multiplication color={colors.svg.multiplication} />
 				</View>
 				<View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-8">
 					<View className="flex flex-row justify-center items-center w-full gap-3 relative">
@@ -109,6 +118,17 @@ const SetUp = () => {
 				/>
 				<Button text="Kontynuuj" onPress={goToHome} />
 			</View>
+
+			<View className="absolute bottom-96 -left-8 -z-10">
+				<Lines color={colors.svg.lines} />
+			</View>
+			<View className="absolute bottom-72 -right-24 -z-10">
+				<Circles color={colors.svg.circles} />
+			</View>
+			<View className="absolute bottom-2 -left-16 -z-10">
+				<SmallCircles color={colors.svg.smallCircles} />
+			</View>
+			<View className="absolute top-0 right-0 -z-10"></View>
 		</ScreenWrapper>
 	)
 }
