@@ -24,7 +24,12 @@ interface NewsCardProps extends BaseCardProps {
 
 type CardProps = EventCardProps | NewsCardProps
 
-export default function Card({ title, description, date, type }: CardProps) {
+export default function HomeCard({
+	title,
+	description,
+	date,
+	type,
+}: CardProps) {
 	if (type == "event") {
 		return (
 			<TouchableOpacity
