@@ -52,7 +52,7 @@ function RootLayoutNav() {
 	return (
 		<Stack>
 			<Stack.Screen
-				name="(welcome)/index"
+				name="index"
 				options={{
 					headerShown: false,
 				}}
@@ -69,7 +69,6 @@ function RootLayoutNav() {
 					headerShown: false,
 				}}
 			/>
-
 			<Stack.Screen
 				name="(drawer)"
 				options={{
