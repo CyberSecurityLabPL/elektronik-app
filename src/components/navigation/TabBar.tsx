@@ -34,7 +34,9 @@ export default function TabBar({ state, descriptors, navigation }: any) {
 						target: route.key,
 					})
 				}
-
+				if (route.name === "radio") {
+					return null
+				}
 				return (
 					<TabBarIcon
 						key={route.key}

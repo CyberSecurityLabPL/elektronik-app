@@ -8,7 +8,7 @@ export default function Layout() {
 			<Drawer
 				screenOptions={{
 					headerShown: false,
-					swipeEnabled: false,
+					// swipeEnabled: false,
 					drawerType: "slide",
 					drawerInactiveBackgroundColor: "#1f2026",
 					drawerInactiveTintColor: "#b6b6d9",
@@ -16,14 +16,6 @@ export default function Layout() {
 				}}
 				drawerContent={Sidebar}
 			>
-				<Drawer.Screen
-					name="radio"
-					options={{
-						drawerLabel: "Radio Elektron",
-						title: "Radio Elektron",
-					}}
-				/>
-
 				<Drawer.Screen
 					name="(settings)"
 					options={{

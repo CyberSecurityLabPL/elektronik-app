@@ -1,9 +1,10 @@
 import {
 	DrawerContentScrollView,
+	DrawerItem,
 	DrawerItemList,
 } from "@react-navigation/drawer"
 import { DrawerActions } from "@react-navigation/native"
-import { Link, useNavigation } from "expo-router"
+import { Link, useNavigation, useRouter } from "expo-router"
 import { Facebook, Globe, Instagram, X } from "lucide-react-native"
 import React from "react"
 import { Text, View } from "react-native"
@@ -11,6 +12,7 @@ import IconButton from "../ui/IconButton"
 import { Linking } from "react-native"
 
 const Sidebar = (props: any) => {
+	const router = useRouter()
 	const navigation = useNavigation()
 	const closeDrawer = () => {
 		navigation.dispatch(DrawerActions.closeDrawer())
@@ -37,6 +39,10 @@ const Sidebar = (props: any) => {
 			<DrawerContentScrollView {...props}>
 				{/* change  to button component */}
 				<DrawerItemList {...props} />
+				<DrawerItem
+					label={"Radio Elektron"}
+					onPress={() => router.push("/(drawer)/(tabs)/radio")}
+				/>
 			</DrawerContentScrollView>
 			<View className=" p-4 flex flex-col ">
 				<View className="border-b border-zinc-600 flex w-full justify-around flex-row pb-4 ">
