@@ -1,6 +1,8 @@
 import {
+	AnnouncementResponse,
 	EventsResponse,
 	NewsResponse,
+	SingleAnnouncementResponse,
 	SingleEventResponse,
 	SingleNewsResponse,
 	SubstitutionsResponse,
@@ -71,6 +73,29 @@ export async function getEvent(
 ): Promise<SingleEventResponse | undefined> {
 	try {
 		const data = await api.get(`/events/${id}`)
+
+		return data.data
+	} catch (error) {}
+}
+
+export async function getAnnouncements(
+	page: number,
+	pageSize: number,
+): Promise<AnnouncementResponse | undefined> {
+	try {
+		const data = await api.get(
+			`/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}`,
+		)
+
+		return data.data
+	} catch (error) {}
+}
+
+export async function getAnnouncement(
+	id: number,
+): Promise<SingleAnnouncementResponse | undefined> {
+	try {
+		const data = await api.get(`/announcements/${id}`)
 
 		return data.data
 	} catch (error) {}

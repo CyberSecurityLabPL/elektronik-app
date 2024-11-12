@@ -48,6 +48,19 @@ export interface StrapiEvent {
 	}
 }
 
+export interface StrapiAnnouncement {
+	id: number
+	attributes: {
+		title: string
+		description: string
+		content: string
+		image: StrapiImage
+		createdAt: string | Date
+		updatedAt: string | Date
+		publishedAt: string | Date
+	}
+}
+
 export interface SubstitutionsResponse {
 	data: {
 		id: number
@@ -100,5 +113,22 @@ export interface EventsResponse {
 
 export interface SingleEventResponse {
 	data: StrapiEvent
+	meta: {}
+}
+
+export interface AnnouncementResponse {
+	data: StrapiAnnouncement[]
+	meta: {
+		pagination: {
+			page: number
+			pageSize: number
+			pageCount: number
+			total: number
+		}
+	}
+}
+
+export interface SingleAnnouncementResponse {
+	data: StrapiAnnouncement
 	meta: {}
 }
