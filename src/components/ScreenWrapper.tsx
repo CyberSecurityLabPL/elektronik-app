@@ -8,7 +8,7 @@ const ScreenWrapper = ({
 }: PropsWithChildren<SafeAreaViewProps>) => {
 	return (
 		<SafeAreaView
-			className={cn("px-8 py-6 bg-background min-h-screen", className)}
+			className={cn("px-8 py-6 bg-background min-h-screen flex-1", className)}
 		>
 			{children}
 		</SafeAreaView>

@@ -1,12 +1,13 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
+import React from "react"
 import { Text } from "react-native"
 
-const Timetable = () => {
+const Language = () => {
 	return (
-		<ScreenWrapper className="p-0">
-			<Text>Timetable page</Text>
+		<ScreenWrapper>
+			<Text>language</Text>
 		</ScreenWrapper>
 	)
 }
 
-export default Timetable
+export default Language

@@ -1,12 +1,12 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import { Text } from "react-native"
 
-const Home = () => {
+const Timetable = () => {
 	return (
 		<ScreenWrapper>
-			<Text>Home</Text>
+			<Text>Timetable page</Text>
 		</ScreenWrapper>
 	)
 }
 
-export default Home
+export default Timetable
