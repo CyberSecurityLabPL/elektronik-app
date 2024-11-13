@@ -7,7 +7,7 @@ import {
 	SingleNewsResponse,
 	SubstitutionsResponse,
 } from "@/types/axios"
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import { format } from "date-fns"
 
 export const api = axios.create({
@@ -16,6 +16,11 @@ export const api = axios.create({
 		"Content-Type": "application/json",
 	},
 })
+
+function handleError(error: AxiosError) {
+	console.error(error.message)
+	throw error
+}
 
 export async function getSubstitutions(
 	date: Date,
@@ -29,7 +34,9 @@ export async function getSubstitutions(
 		)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getNews(
@@ -42,7 +49,9 @@ export async function getNews(
 		)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getArticle(
@@ -52,7 +61,9 @@ export async function getArticle(
 		const data = await api.get(`/articles/${id}`)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getEvents(
@@ -65,7 +76,9 @@ export async function getEvents(
 		)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getEvent(
@@ -75,7 +88,9 @@ export async function getEvent(
 		const data = await api.get(`/events/${id}`)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getAnnouncements(
@@ -88,7 +103,9 @@ export async function getAnnouncements(
 		)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
 
 export async function getAnnouncement(
@@ -98,5 +115,7 @@ export async function getAnnouncement(
 		const data = await api.get(`/announcements/${id}`)
 
 		return data.data
-	} catch (error) {}
+	} catch (error) {
+		handleError(error as AxiosError)
+	}
 }
