@@ -1,4 +1,5 @@
 import {
+	DrawerContentComponentProps,
 	DrawerContentScrollView,
 	DrawerItem,
 	DrawerItemList,
@@ -11,7 +12,7 @@ import { Text, View } from "react-native"
 import IconButton from "../ui/IconButton"
 import { Linking } from "react-native"
 
-const Sidebar = (props: any) => {
+const Sidebar = (props: DrawerContentComponentProps) => {
 	const router = useRouter()
 	const navigation = useNavigation()
 	const closeDrawer = () => {

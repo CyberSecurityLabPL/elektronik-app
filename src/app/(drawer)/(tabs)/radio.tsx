@@ -2,7 +2,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import React from "react"
 import { Text } from "react-native"
 
-const radioElektron = () => {
+const RadioElektron = () => {
 	return (
 		<ScreenWrapper className="mt-0 h-screen">
 			<Text>radioElektron</Text>
@@ -10,4 +10,4 @@ const radioElektron = () => {
 	)
 }
 
-export default radioElektron
+export default RadioElektron

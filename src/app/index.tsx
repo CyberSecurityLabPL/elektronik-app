@@ -7,12 +7,12 @@ import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
 import { isFirstTime } from "@/lib/utils"
-import { Link, Redirect, router } from "expo-router"
+import { Redirect, router } from "expo-router"
 import { LoaderCircle } from "lucide-react-native"
 import React, { useEffect, useState } from "react"
-import { Pressable, Text, View } from "react-native"
+import { Text, View } from "react-native"
 
-const page = () => {
+const Page = () => {
 	const colors = useColors()
 	const [loading, setLoading] = useState(true)
 	const [redirect, setRedirect] = useState(false)
@@ -79,4 +79,4 @@ const page = () => {
 		)
 }
 
-export default page
+export default Page

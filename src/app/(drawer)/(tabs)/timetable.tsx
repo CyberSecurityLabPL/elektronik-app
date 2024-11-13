@@ -1,6 +1,5 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
-import { clearStorage } from "@/lib/storage"
-import { Pressable, Text } from "react-native"
+import { Text } from "react-native"
 
 const Timetable = () => {
 	return (

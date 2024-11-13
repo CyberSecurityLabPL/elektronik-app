@@ -2,7 +2,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import React from "react"
 import { Text } from "react-native"
 
-const profile = () => {
+const Profile = () => {
 	return (
 		<ScreenWrapper>
 			<Text>Profile</Text>
@@ -10,4 +10,4 @@ const profile = () => {
 	)
 }
 
-export default profile
+export default Profile

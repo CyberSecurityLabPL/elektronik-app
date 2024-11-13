@@ -2,7 +2,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import React from "react"
 import { Text } from "react-native"
 
-const language = () => {
+const Language = () => {
 	return (
 		<ScreenWrapper>
 			<Text>language</Text>
@@ -10,4 +10,4 @@ const language = () => {
 	)
 }
 
-export default language
+export default Language
