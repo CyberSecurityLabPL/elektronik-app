@@ -1,5 +1,11 @@
 import { ArrowUpRight, Clock } from "lucide-react-native"
-import { Image, Text, TouchableOpacity, View } from "react-native"
+import {
+	Image,
+	Text,
+	TouchableOpacity,
+	TouchableOpacityProps,
+	View,
+} from "react-native"
 
 interface BaseCardProps {
 	image: string
@@ -18,7 +24,8 @@ interface NotFeaturedCardProps extends BaseCardProps {
 	description?: null
 }
 
-type CardProps = FeaturedCardProps | NotFeaturedCardProps
+type CardProps = (FeaturedCardProps | NotFeaturedCardProps) &
+	TouchableOpacityProps
 
 export default function NewsCard({
 	image,
@@ -27,12 +34,14 @@ export default function NewsCard({
 	date,
 	isFeatured,
 	isNew,
+	...props
 }: CardProps) {
 	if (isFeatured)
 		return (
 			<TouchableOpacity
-				className="rounded-2xl overflow-hidden"
+				className="rounded-2xl overflow-hidden "
 				activeOpacity={0.85}
+				{...props}
 			>
 				<View className="relative">
 					<Image
@@ -47,7 +56,7 @@ export default function NewsCard({
 						</View>
 					) : null}
 				</View>
-				<View className="bg-background-secondary p-4 flex flex-col gap-6 justify-center items-center w-full">
+				<View className="bg-background p-4 flex flex-col gap-6 justify-center items-center w-full">
 					<View className="flex flex-col justify-center items-start gap-2 w-full">
 						<View>
 							<Text className="text-2xl font-pmedium text-foreground">
