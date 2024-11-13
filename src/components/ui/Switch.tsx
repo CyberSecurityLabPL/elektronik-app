@@ -1,18 +1,21 @@
 import { cn } from "@/lib/utils"
 import React, { useEffect } from "react"
-import { TouchableWithoutFeedback } from "react-native"
+import {
+	TouchableWithoutFeedback,
+	TouchableWithoutFeedbackProps,
+} from "react-native"
 import Animated, {
 	useAnimatedStyle,
 	useSharedValue,
 	withSpring,
 } from "react-native-reanimated"
 
-interface SwitchProps {
+interface SwitchProps extends TouchableWithoutFeedbackProps {
 	isEnabled: boolean
 	onToggle: () => void
 }
 
-const Switch = ({ isEnabled, onToggle }: SwitchProps) => {
+const Switch = ({ isEnabled, onToggle, ...props }: SwitchProps) => {
 	const switchTranslate = useSharedValue(0)
 
 	useEffect(() => {
@@ -45,6 +48,7 @@ const Switch = ({ isEnabled, onToggle }: SwitchProps) => {
 			onPress={() => {
 				onToggle()
 			}}
+			{...props}
 		>
 			<Animated.View
 				className={cn(

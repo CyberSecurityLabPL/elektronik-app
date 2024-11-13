@@ -1,8 +1,14 @@
-import { View, Text, TouchableOpacity, ImageBackground } from "react-native"
+import {
+	View,
+	Text,
+	TouchableOpacity,
+	ImageBackground,
+	TouchableOpacityProps,
+} from "react-native"
 import React from "react"
 import { Clock } from "lucide-react-native"
 
-interface EventProps {
+interface EventProps extends TouchableOpacityProps {
 	type: "future event" | "event"
 	title: string
 	content: string
@@ -16,12 +22,14 @@ const Event: React.FC<EventProps> = ({
 	content,
 	date,
 	timeLeft,
+	...props
 }) => {
 	if (type === "event") {
 		return (
 			<TouchableOpacity
 				className="rounded-3xl overflow-hidden w-full color-[#222222]"
 				activeOpacity={0.85}
+				{...props}
 			>
 				<ImageBackground
 					source={require("../../assets/images/event-card-background.png")}

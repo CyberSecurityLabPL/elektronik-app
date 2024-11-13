@@ -4,7 +4,13 @@ import {
 	Clock,
 	Newspaper,
 } from "lucide-react-native"
-import { ImageBackground, Text, TouchableOpacity, View } from "react-native"
+import {
+	ImageBackground,
+	Text,
+	TouchableOpacity,
+	TouchableOpacityProps,
+	View,
+} from "react-native"
 
 interface BaseCardProps {
 	title: string
@@ -22,20 +28,21 @@ interface NewsCardProps extends BaseCardProps {
 	description: string // Required for school and council types
 }
 
-type CardProps = EventCardProps | NewsCardProps
+type CardProps = (EventCardProps | NewsCardProps) & TouchableOpacityProps
 
 export default function HomeCard({
 	title,
 	description,
 	date,
 	type,
+	...props
 }: CardProps) {
 	if (type == "event") {
 		return (
 			<TouchableOpacity
 				className="bg-transparent rounded-3xl"
-				onPress={() => console.log("Event")}
 				activeOpacity={0.85}
+				{...props}
 			>
 				<ImageBackground
 					source={require("../../assets/images/backgrounds/EventCardBg.png")}
