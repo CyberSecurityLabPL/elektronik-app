@@ -2,7 +2,9 @@ import { View, Text } from "react-native"
 import React from "react"
 import IconButton from "./IconButton"
 import { AlignRight, ChevronLeft } from "lucide-react-native"
-import { router } from "expo-router"
+import { router, useNavigation } from "expo-router"
+import { cn } from "@/lib/utils"
+import { DrawerActions } from "@react-navigation/native"
 
 interface headingProps {
 	title: string
@@ -10,56 +12,40 @@ interface headingProps {
 	settingsScreen?: boolean
 }
 const Heading = ({ title, homeScreen, settingsScreen }: headingProps) => {
-	// TODO: when layout will be done change console logs to router.push etc.
-
-	if (homeScreen) {
-		return (
-			<View className="w-full flex flex-col pt-6">
-				<View className="flex flex-row justify-end">
-					<IconButton
-						LucideIcon={AlignRight}
-						iconColor="white"
-						onPress={() => console.log("menu")}
-					/>
-				</View>
-
-				<View className="flex flex-col gap-1 ">
-					<Text className="text-foreground-secondary text-base ">
-						Dzień dobry,
-					</Text>
-
-					<Text className="text-foreground font-psemibold text-2xl">
-						{title}
-					</Text>
-				</View>
-			</View>
-		)
+	const navigation = useNavigation()
+	const openDrawer = () => {
+		navigation.dispatch(DrawerActions.openDrawer())
 	}
-	if (settingsScreen) {
-		return (
-			<View className="w-full flex flex-col pt-6 gap-4">
-				<View className="flex flex-row justify-start">
-					<IconButton
-						LucideIcon={ChevronLeft}
-						iconColor="white"
-						onPress={() => router.back()}
-					/>
-				</View>
-				<Text className="text-foreground font-psemibold text-2xl">{title}</Text>
-			</View>
-		)
-	}
+
 	return (
-		<View className="w-full flex flex-col pt-6">
-			<View className="flex flex-row justify-end">
+		<View
+			className={cn(settingsScreen ? "gap-7" : "", "w-full flex flex-col pt-6")}
+		>
+			<View
+				className={cn(
+					settingsScreen ? "justify-start" : "justify-end",
+					"flex flex-row ",
+				)}
+			>
 				<IconButton
-					LucideIcon={AlignRight}
+					LucideIcon={settingsScreen ? ChevronLeft : AlignRight}
 					iconColor="white"
-					onPress={() => console.log("menu")}
+					onPress={settingsScreen ? () => router.back() : openDrawer}
 				/>
 			</View>
 
-			<Text className="text-foreground font-psemibold text-2xl">{title}</Text>
+			<View className="flex flex-col gap-1 ">
+				<Text
+					className={cn(
+						homeScreen ? "flex" : "hidden",
+						"text-foreground-secondary text-base ",
+					)}
+				>
+					Dzień dobry,
+				</Text>
+
+				<Text className="text-foreground font-psemibold text-2xl">{title}</Text>
+			</View>
 		</View>
 	)
 }
