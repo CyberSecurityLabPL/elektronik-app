@@ -1,3 +1,4 @@
+import QueryProvider from "@/components/Providers/QueryProvider"
 import ThemeProvider from "@/components/Providers/ThemeProvider"
 import { useFonts } from "expo-font"
 import { Stack } from "expo-router"
@@ -5,7 +6,6 @@ import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
 import "react-native-reanimated"
 import "../global.css"
-import QueryProvider from "@/components/Providers/QueryProvider"
 
 export {
 	// Catch any errors thrown by the Layout component.
@@ -52,19 +52,25 @@ function RootLayoutNav() {
 	return (
 		<Stack>
 			<Stack.Screen
-				name="(tabs)"
-				options={{
-					headerShown: false,
-				}}
-			/>
-			<Stack.Screen
-				name="(welcome)/index"
+				name="index"
 				options={{
 					headerShown: false,
 				}}
 			/>
 			<Stack.Screen
 				name="(welcome)/about-app"
+				options={{
+					headerShown: false,
+				}}
+			/>
+			<Stack.Screen
+				name="(welcome)/set-up"
+				options={{
+					headerShown: false,
+				}}
+			/>
+			<Stack.Screen
+				name="(drawer)"
 				options={{
 					headerShown: false,
 				}}
