@@ -4,25 +4,25 @@ import { EventsResponse, SingleEventResponse } from "./types"
 import { useQuery } from "@tanstack/react-query"
 
 export const useEvents = ({
-	page,
-	pageSize,
+  page,
+  pageSize,
 }: {
-	page: number
-	pageSize: number
+  page: number
+  pageSize: number
 }) =>
-	useQuery<EventsResponse>({
-		queryKey: ["events"],
-		queryFn: async () => {
-			const { data } = await api.get(EVENTS_URL(page, pageSize))
-			return data
-		},
-	})
+  useQuery<EventsResponse>({
+    queryKey: ["events"],
+    queryFn: async () => {
+      const { data } = await api.get(EVENTS_URL(page, pageSize))
+      return data
+    },
+  })
 
 export const useEvent = ({ id }: { id: number }) =>
-	useQuery<SingleEventResponse>({
-		queryKey: ["event"],
-		queryFn: async () => {
-			const { data } = await api.get(EVENT_URL(id))
-			return data
-		},
-	})
+  useQuery<SingleEventResponse>({
+    queryKey: ["event"],
+    queryFn: async () => {
+      const { data } = await api.get(EVENT_URL(id))
+      return data
+    },
+  })

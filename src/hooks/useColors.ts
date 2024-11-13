@@ -4,13 +4,13 @@ import { useColorScheme } from "nativewind"
 // This hook returns the colors object based on the color scheme.
 // The color scheme is imported from 'colors' constant.
 const useColors = () => {
-	const { colorScheme } = useColorScheme()
+  const { colorScheme } = useColorScheme()
 
-	if (colorScheme === "dark") {
-		return colors.dark
-	}
+  if (colorScheme === "dark") {
+    return colors.dark
+  }
 
-	return colors.light
+  return colors.light
 }
 
 export default useColors

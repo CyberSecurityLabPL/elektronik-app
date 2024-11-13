@@ -3,29 +3,29 @@
 @tailwind utilities;
 
 :root {
-	/* Primary color */
-	--primary: 226 100% 72%;
+  /* Primary color */
+  --primary: 226 100% 72%;
 
-	/* Typography */
-	--foreground: 240 13% 30%;
-	--foreground-secondary: 246 30% 70%;
+  /* Typography */
+  --foreground: 240 13% 30%;
+  --foreground-secondary: 246 30% 70%;
 
-	/* Backgrounds */
-	--background: 0 0% 100%;
-	--background-secondary: 234 100% 98%;
+  /* Backgrounds */
+  --background: 0 0% 100%;
+  --background-secondary: 234 100% 98%;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		/* Primary color */
-		--primary: 226 100% 72%;
+  :root {
+    /* Primary color */
+    --primary: 226 100% 72%;
 
-		/* Typography */
-		--foreground: 240 32% 78%;
-		--foreground-secondary: 245 13% 40%;
+    /* Typography */
+    --foreground: 240 32% 78%;
+    --foreground-secondary: 245 13% 40%;
 
-		/* Backgrounds */
-		--background: 240 9% 11%;
-		--background-secondary: 231 10% 14%;
-	}
+    /* Backgrounds */
+    --background: 240 9% 11%;
+    --background-secondary: 231 10% 14%;
+  }
 }

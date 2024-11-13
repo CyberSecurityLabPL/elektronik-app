@@ -3,11 +3,11 @@ import React from "react"
 import { Text } from "react-native"
 
 const Profile = () => {
-	return (
-		<ScreenWrapper>
-			<Text>Profile</Text>
-		</ScreenWrapper>
-	)
+  return (
+    <ScreenWrapper>
+      <Text>Profile</Text>
+    </ScreenWrapper>
+  )
 }
 
 export default Profile
