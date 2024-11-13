@@ -1,5 +1,4 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
-import { LogoSvg } from "@/components/svgs/LogoSvg"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
@@ -8,12 +7,15 @@ import useColors from "@/hooks/useColors"
 import { saveFirstTime, saveUserData } from "@/lib/utils"
 import { router } from "expo-router"
 import { Text, View } from "react-native"
-import Circles from "@/components/svgs/Circles"
-import Lines from "@/components/svgs/Lines"
-import Multiplication from "@/components/svgs/Multiplication"
-import SmallCircles from "@/components/svgs/SmallCircles"
+import { useForm, Controller } from "react-hook-form"
 import { UserData } from "@/types/utils"
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import {
+  Circles,
+  Lines,
+  LogoSvg,
+  Multiplication,
+  SmallCircles,
+} from "@/components/icons"
 
 const SetUp = () => {
   const colors = useColors()
@@ -22,19 +24,24 @@ const SetUp = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserData>()
+  } = useForm({
+    defaultValues: {
+      name: "",
+      grade: "",
+      diaryNumber: 0,
+    },
+  })
 
   const goToHomeAsGuest = async () => {
     router.push("/home")
     await saveFirstTime()
   }
-  const onSubmit: SubmitHandler<UserData> = async (data) => {
+  const onSubmit = async (data: UserData) => {
     await saveUserData({
       name: data.name,
-      diaryNumber: data.diaryNumber,
       grade: data.grade,
+      diaryNumber: data.diaryNumber,
     })
-    await saveFirstTime()
     router.push("/home")
   }
 
@@ -77,7 +84,7 @@ const SetUp = () => {
                 name="name"
               />
               {errors.name && (
-                <Text className="text-red-400 ml-2">Podaj imię</Text>
+                <Text className="text-red-400 ml-2">Imię jest wymagane</Text>
               )}
             </View>
             <View className="w-full h-fit">
@@ -115,7 +122,7 @@ const SetUp = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /^\d+$/,
+                  pattern: /[0-9]+/,
                   max: 30,
                   min: 1,
                 }}
@@ -124,7 +131,7 @@ const SetUp = () => {
                     onChangeText={(value) => {
                       onChange(value)
                     }}
-                    value={value?.toString()}
+                    value={value.toString()}
                     onBlur={onBlur}
                     type="number"
                     placeholder="0"
@@ -134,7 +141,7 @@ const SetUp = () => {
               />
               {errors.diaryNumber && (
                 <Text className="text-red-400 ml-2">
-                  Podaj prawidłowy numerek z dziennika
+                  Numerek z dziennika jest wymagany
                 </Text>
               )}
             </View>
