@@ -24,7 +24,7 @@ export default function Modal({
   const content = withInput ? (
     <TouchableWithoutFeedback onPress={onClose}>
       <KeyboardAvoidingView
-        className="items-center justify-center flex-1 px-3 bg-zinc-900/40"
+        className="items-center justify-center flex-1 px-3 bg-black/60"
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
         <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
@@ -32,7 +32,7 @@ export default function Modal({
     </TouchableWithoutFeedback>
   ) : (
     <TouchableWithoutFeedback onPress={onClose}>
-      <View className="items-center justify-center flex-1 px-3 bg-zinc-900/40">
+      <View className="items-center justify-center flex-1 px-3 bg-black/60">
         <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
       </View>
     </TouchableWithoutFeedback>
