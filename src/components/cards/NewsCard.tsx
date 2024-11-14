@@ -1,3 +1,4 @@
+import useColors from "@/hooks/useColors"
 import { ArrowUpRight, Clock } from "lucide-react-native"
 import {
   Image,
@@ -36,6 +37,8 @@ export default function NewsCard({
   isNew,
   ...props
 }: NewsCardProps) {
+  const colors = useColors()
+
   if (isFeatured)
     return (
       <TouchableOpacity
@@ -72,7 +75,7 @@ export default function NewsCard({
           <View className="flex flex-row justify-between items-center w-full">
             <View className="flex flex-row justify-center items-center gap-2">
               <View className="flex justify-center items-center">
-                <Clock size={20} color={"black"} />
+                <Clock size={20} color={colors.foreground} />
               </View>
               <View className="flex justify-center items-center">
                 <Text className="font-pmedium flex justify-center items-center text-foreground">
@@ -81,7 +84,7 @@ export default function NewsCard({
               </View>
             </View>
             <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={"white"} />
+              <ArrowUpRight size={24} color={colors.background} />
             </View>
           </View>
         </View>
@@ -109,7 +112,7 @@ export default function NewsCard({
           <View className="flex flex-row justify-between items-center w-full">
             <View className="flex flex-row justify-center items-center gap-2">
               <View className="flex justify-center items-center">
-                <Clock size={20} color={"black"} />
+                <Clock size={20} color={colors.foreground} />
               </View>
               <View className="flex justify-center items-center">
                 <Text className="font-pmedium flex justify-center items-center text-foreground">
@@ -118,7 +121,7 @@ export default function NewsCard({
               </View>
             </View>
             <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={"white"} />
+              <ArrowUpRight size={24} color={colors.background} />
             </View>
           </View>
         </View>
