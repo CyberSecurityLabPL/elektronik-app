@@ -60,3 +60,29 @@ export interface StrapiAnnouncement {
     publishedAt: string | Date
   }
 }
+
+export interface Lesson {
+  id: number
+  startDate: string | Date
+  endDate: string | Date
+}
+
+export interface StrapiBell {
+  id: number
+  attributes: {
+    title: string
+    createdAt: string | Date
+    updatedAt: string | Date
+    publishedAt: string | Date
+    lesson0: Lesson
+    lesson1: Lesson
+    lesson2: Lesson
+    lesson3: Lesson
+    lesson4: Lesson
+    lesson5: Lesson
+    lesson6: Lesson
+    lesson7: Lesson
+    lesson8: Lesson
+    lesson9: Lesson
+  }
+}

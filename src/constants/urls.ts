@@ -23,3 +23,6 @@ export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
   `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}`
 
 export const ANNOUNCEMENT_URL = (id: number) => `/announcements/${id}`
+
+export const BELLS_URL = (page: number, pageSize: number) =>
+  `/bells?pagination[pageSize]=${pageSize}&pagination[page]=${page}`
