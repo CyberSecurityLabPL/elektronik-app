@@ -24,7 +24,7 @@ interface NotFeaturedCardProps extends BaseCardProps {
   description?: null
 }
 
-type CardProps = (FeaturedCardProps | NotFeaturedCardProps) &
+export type NewsCardProps = (FeaturedCardProps | NotFeaturedCardProps) &
   TouchableOpacityProps
 
 export default function NewsCard({
@@ -35,7 +35,7 @@ export default function NewsCard({
   isFeatured,
   isNew,
   ...props
-}: CardProps) {
+}: NewsCardProps) {
   if (isFeatured)
     return (
       <TouchableOpacity
