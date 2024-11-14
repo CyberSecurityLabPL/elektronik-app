@@ -97,7 +97,7 @@ const Timetable = () => {
   return (
     <ScreenWrapper className="flex justify-top items-center w-full h-full">
       <View className="flex flex-row justify-between items-center w-full pb-4">
-        <Text className="text-foreground font-pregular text-2xl">
+        <Text className="text-foreground font-psemibold text-2xl">
           Plan Lekcji
         </Text>
         <View className="flex justify-center items-center bg-background-secondary p-2 rounded-xl">
@@ -111,7 +111,10 @@ const Timetable = () => {
         <DayTab day="Cz." date="02.23" />
         <DayTab day="Pt." date="03.23" />
       </View>
-      <View className="flex justify-center items-center h-[70vh]">
+      <View
+        className="flex justify-center items-center"
+        style={{ marginBottom: 160 }}
+      >
         <FlatList
           data={lessons}
           renderItem={({ item }) => (
