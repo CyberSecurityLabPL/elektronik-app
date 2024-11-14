@@ -1,6 +1,7 @@
 import { format } from "date-fns"
 
 export const API_URL = "http://api.elektronik.zgora.pl/api"
+export const BACKEND_URL = "http://api.elektronik.zgora.pl"
 
 export const SUBSTITUTIONS_URL = (date: Date) =>
   `/substitutions?pagination[page]=1&pagination[pageSize]=1&sort[1]=createdAt:desc&filters[date][$eq]=${format(

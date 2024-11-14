@@ -7,10 +7,15 @@ import {
   storeDataValue,
 } from "./storage"
 import { UserData } from "@/types/utils"
+import { BACKEND_URL } from "@/constants/urls"
 
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function getStrapiImageUrl(url: string): string {
+  return BACKEND_URL + url
 }
 
 export async function isFirstTime() {

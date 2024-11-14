@@ -56,7 +56,7 @@ export default function NewsCard({
             </View>
           ) : null}
         </View>
-        <View className="bg-background p-4 flex flex-col gap-6 justify-center items-center w-full">
+        <View className="bg-background-secondary p-4 flex flex-col gap-6 justify-center items-center w-full">
           <View className="flex flex-col justify-center items-start gap-2 w-full">
             <View>
               <Text className="text-2xl font-pmedium text-foreground">
@@ -92,6 +92,7 @@ export default function NewsCard({
       <TouchableOpacity
         activeOpacity={0.85}
         className="w-full flex flex-row rounded-2xl overflow-hidden relative"
+        {...props}
       >
         {isNew ? (
           <View className="absolute left-2 top-2">
