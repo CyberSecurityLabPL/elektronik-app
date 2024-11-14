@@ -3,7 +3,6 @@ import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import { useSubstitutions } from "@/hooks/substitutions/useSubstitutions"
 import useColors from "@/hooks/useColors"
-import { useQueryClient } from "@tanstack/react-query"
 import { addDays, format, subDays } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import { ChevronLeft, ChevronRight } from "lucide-react-native"
@@ -12,22 +11,17 @@ import { RefreshControl, ScrollView, Text, View } from "react-native"
 
 const Substitutions = () => {
   const [date, setDate] = useState(new Date())
-  const [refreshing, setRefreshing] = useState(false)
-
-  const queryClient = useQueryClient()
   const colors = useColors()
 
-  const { data, isLoading, isError, isRefetching, fetchNextPage, isFetching } =
-    useSubstitutions({ date })
-
-  const onRefresh = useCallback(() => {
-    setRefreshing(true)
-    queryClient
-      .invalidateQueries({ queryKey: ["substitutions"] })
-      .finally(() => {
-        setRefreshing(false)
-      })
-  }, [queryClient])
+  const {
+    data,
+    isLoading,
+    isError,
+    isRefetching,
+    fetchNextPage,
+    isFetching,
+    resetInfiniteQueryPagination,
+  } = useSubstitutions({ date })
 
   const goBack = useCallback(() => {
     setDate((prevDate) => subDays(prevDate, 1))
@@ -49,8 +43,8 @@ const Substitutions = () => {
         nestedScrollEnabled={true}
         refreshControl={
           <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
+            refreshing={isRefetching}
+            onRefresh={resetInfiniteQueryPagination}
             tintColor={colors.primary}
             colors={[colors.primary]}
             progressBackgroundColor={colors.backgroundSecondary}
