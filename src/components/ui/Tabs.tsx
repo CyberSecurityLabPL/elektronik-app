@@ -55,7 +55,7 @@ const Tabs = ({
       >
         <Text
           className={cn(
-            activeTab == 0 ? "text-white" : "text-zinc-600",
+            activeTab === 0 ? "text-white" : "text-foreground-secondary",
             "text-xl font-psemibold",
           )}
         >
@@ -68,7 +68,7 @@ const Tabs = ({
       >
         <Text
           className={cn(
-            activeTab == 1 ? "text-white" : "text-zinc-600",
+            activeTab === 1 ? "text-white" : "text-foreground-secondary",
             "text-xl font-psemibold",
           )}
         >

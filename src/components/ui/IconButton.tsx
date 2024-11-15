@@ -16,13 +16,15 @@ export default function IconButton({
   small,
   onPress,
   disabled,
+  className,
   ...props
 }: IconButtonProps) {
   return (
     <TouchableOpacity
       activeOpacity={0.5}
       className={cn(
-        "flex bg-background-secondary justify-center items-center",
+        className,
+        "flex bg-background-secondary justify-center items-center transition-colors",
         small ? "size-12 rounded-xl" : "size-16 rounded-3xl",
         disabled && "opacity-50",
       )}
