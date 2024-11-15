@@ -62,8 +62,10 @@ const Substitutions = () => {
             <ScrollView nestedScrollEnabled>
               <View>
                 {isError && (
-                  <Text className="text-foreground text-base font-pregular ">
-                    Wystąpił błąd, Odśwież lub spróbuj ponownie później
+                  <Text className="text-red-600 text-base  font-pregular ">
+                    Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z
+                    internetem. Jeśli problem nadal występuje, spróbuj ponownie
+                    później.
                   </Text>
                 )}
                 {isLoading || isRefetching || isFetching ? (
@@ -75,7 +77,7 @@ const Substitutions = () => {
                 ) : (
                   <Text className="text-foreground text-base font-pregular">
                     {data?.pages[0].data.length === 0 ? (
-                      <Text className="text-2xl font-psemibold text-foreground text-center">
+                      <Text className="text-2xl font-psemibold text-foreground text-left">
                         Brak Zastępstw
                       </Text>
                     ) : (
