@@ -1,13 +1,21 @@
-import { Lesson } from "@/types/strapi"
-import { differenceInMinutes, isAfter, isBefore, set } from "date-fns"
+import { StrapiLesson } from "@/types/strapi"
+import {
+  addMinutes,
+  differenceInMilliseconds,
+  differenceInMinutes,
+  isAfter,
+  isBefore,
+  set,
+} from "date-fns"
 import { useCallback, useEffect, useState } from "react"
 
-const useTimeLessons = ({ lessons }: { lessons: Lesson[] }) => {
+const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
   const [minutes, setMinutes] = useState<number>(0)
   const [message, setMessage] = useState<string>("")
 
   const calculateTimeToNextLesson = useCallback(() => {
     const now = new Date()
+    now.setSeconds(0, 0)
 
     const createTimeDate = (timeStr: string) => {
       const [hours, minutes] = timeStr.split(":").map(Number)
@@ -33,19 +41,11 @@ const useTimeLessons = ({ lessons }: { lessons: Lesson[] }) => {
       const startTime = createTimeDate(lesson.startDate as string)
       const endTime = createTimeDate(lesson.endDate as string)
 
-      // Debug logowanie
-      // console.log("Checking lesson:", {
-      //   now: format(now, "HH:mm:ss"),
-      //   startTime: format(startTime, "HH:mm:ss"),
-      //   endTime: format(endTime, "HH:mm:ss"),
-      //   isAfterStart: isAfter(now, startTime),
-      //   isBeforeEnd: isBefore(now, endTime),
-      // })
       if (isAfter(now, startTime) && isBefore(now, endTime)) {
         isCurrentlyInLesson = true
         const minsToEnd = differenceInMinutes(endTime, now)
         setMinutes(minsToEnd)
-        setMessage(`Do przerwy pozostało: ${minsToEnd} minut`)
+        setMessage(`Do przerwy pozostało`)
         return
       }
 
@@ -68,15 +68,33 @@ const useTimeLessons = ({ lessons }: { lessons: Lesson[] }) => {
       const nextStartTime = createTimeDate(nextLesson.startDate as string)
       const minsToNext = differenceInMinutes(nextStartTime, now)
       setMinutes(minsToNext)
-      setMessage(`Do następnej lekcji pozostało: ${minsToNext} minut`)
+      setMessage(`Do lekcji pozostało`)
     }
   }, [lessons])
 
-  // Aktualizuj czas co minutę
   useEffect(() => {
     calculateTimeToNextLesson()
-    const interval = setInterval(calculateTimeToNextLesson, 60000)
-    return () => clearInterval(interval)
+
+    const setupNextMinuteTimer = () => {
+      const now = new Date()
+      const nextMinute = addMinutes(new Date(), 1)
+      nextMinute.setSeconds(0, 0)
+      const timeUntilNextMinute = differenceInMilliseconds(nextMinute, now)
+
+      return setTimeout(() => {
+        calculateTimeToNextLesson()
+
+        const interval = setInterval(calculateTimeToNextLesson, 60000)
+
+        return () => clearInterval(interval)
+      }, timeUntilNextMinute)
+    }
+
+    const initialTimeout = setupNextMinuteTimer()
+
+    return () => {
+      clearTimeout(initialTimeout)
+    }
   }, [calculateTimeToNextLesson])
 
   return { minutes, message }

@@ -61,7 +61,7 @@ export interface StrapiAnnouncement {
   }
 }
 
-export interface Lesson {
+export interface StrapiLesson {
   id: number
   startDate: string | Date
   endDate: string | Date
@@ -74,15 +74,6 @@ export interface StrapiBell {
     createdAt: string | Date
     updatedAt: string | Date
     publishedAt: string | Date
-    lesson0: Lesson
-    lesson1: Lesson
-    lesson2: Lesson
-    lesson3: Lesson
-    lesson4: Lesson
-    lesson5: Lesson
-    lesson6: Lesson
-    lesson7: Lesson
-    lesson8: Lesson
-    lesson9: Lesson
+    lessons: StrapiLesson[]
   }
 }

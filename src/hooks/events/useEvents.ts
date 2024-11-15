@@ -1,4 +1,4 @@
-import { EVENT_URL, EVENTS_URL } from "@/constants/urls"
+import { EVENT_URL, EVENTS_URL, INCOMING_EVENT_URL } from "@/constants/urls"
 import { api } from "@/lib/axios"
 import { EventsResponse, SingleEventResponse } from "./types"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
@@ -32,6 +32,15 @@ export const useEvent = ({ id }: { id: number }) =>
     queryKey: ["event"],
     queryFn: async () => {
       const { data } = await api.get(EVENT_URL(id))
+      return data
+    },
+  })
+
+export const useIncomingEvent = ({ date }: { date: Date }) =>
+  useQuery<EventsResponse>({
+    queryKey: ["incomingEvent"],
+    queryFn: async () => {
+      const { data } = await api.get(INCOMING_EVENT_URL(date))
       return data
     },
   })

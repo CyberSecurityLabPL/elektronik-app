@@ -1,4 +1,4 @@
-import { StrapiBell, StrapiEvent } from "@/types/strapi"
+import { StrapiBell } from "@/types/strapi"
 
 export interface BellsResponse {
   data: StrapiBell[]

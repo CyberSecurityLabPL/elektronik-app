@@ -7,17 +7,17 @@ import config from "@/config"
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements"
 import { useArticles } from "@/hooks/articles/useArticles"
 import { useBells } from "@/hooks/bells/useBells"
-import { useEvents } from "@/hooks/events/useEvents"
+import { useEvents, useIncomingEvent } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
 import useTimeLessons from "@/hooks/useTimeLessons"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
-import { Lesson } from "@/types/strapi"
+import { StrapiLesson } from "@/types/strapi"
 import { differenceInDays, format } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import { router } from "expo-router"
 import { X } from "lucide-react-native"
-import { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native"
 
 const Home = () => {
@@ -29,24 +29,37 @@ const Home = () => {
   const userData = useUserData()
   const curDate = new Date()
 
+  const { data: article, refetch: refetchArticles } = useArticles({
+    page: 1,
+    pageSize: 1,
+  })
+  const { data: announcement, refetch: refetchAnnouncements } =
+    useAnnouncements({ page: 1, pageSize: 1 })
+  const { data: event, refetch: refetchEvents } = useIncomingEvent({
+    date: curDate,
+  })
+
+  const { data: bells, refetch: refetchBells } = useBells()
+
   const onRefresh = useCallback(() => {
     setRefreshing(true)
-    setTimeout(() => {
+    Promise.all([
+      refetchArticles(),
+      refetchAnnouncements(),
+      refetchEvents(),
+      refetchBells(),
+    ]).finally(() => {
       setRefreshing(false)
-    }, 2000)
-  }, [])
+    })
+  }, [refetchArticles, refetchAnnouncements, refetchEvents, refetchBells])
 
-  const { data: article } = useArticles({ page: 1, pageSize: 1 })
-  const { data: announcement } = useAnnouncements({ page: 1, pageSize: 1 })
-  const { data: event } = useEvents({ page: 1, pageSize: 1 })
-  const { data: bells } = useBells({ page: 1, pageSize: 1 })
   const lessons = useMemo(() => {
-    return Object.values(bells?.data[0]?.attributes ?? {}).filter(
+    return Object.values(bells?.data[0]?.attributes.lessons ?? {}).filter(
       (item) => typeof item === "object" && item !== null && "id" in item,
-    ) as Lesson[]
+    ) as StrapiLesson[]
   }, [bells])
+
   const { minutes, message } = useTimeLessons({ lessons })
-  console.log(minutes, message)
 
   return (
     <ScreenWrapper>
@@ -66,7 +79,6 @@ const Home = () => {
           title={userData ? userData.name : "Miło Cię widzieć"}
           homeScreen
         />
-
         <Pressable
           onPress={() => setIsBellModalOpen(true)}
           className="flex flex-row mt-6 "
@@ -91,6 +103,7 @@ const Home = () => {
           </View>
         </Pressable>
         <Modal
+          id="bells"
           isOpen={isBellModalOpen}
           onClose={() => setIsBellModalOpen(false)}
         >
@@ -120,28 +133,53 @@ const Home = () => {
             />
           </View>
         </Modal>
+
         <View className="my-6">
-          {event?.pages[0].data[0].attributes.date &&
-            differenceInDays(
-              new Date(event.pages[0].data[0].attributes.date),
-              curDate,
-            ) < config.DAYS_BEFORE_EVENT && (
-              <HomeCard
-                type="event"
-                date={
-                  event?.pages[0].data[0].attributes.date
-                    ? format(
-                        new Date(event.pages[0].data[0].attributes.date),
-                        "dd MMMM ",
-                        { locale: pl },
-                      )
-                    : "Invalid date"
-                }
-                title={event?.pages[0].data[0].attributes.title!}
-              />
+          {event?.data[0] &&
+            differenceInDays(new Date(event.data[0].attributes.date), curDate) <
+              config.DAYS_BEFORE_EVENT && (
+              <>
+                <HomeCard
+                  type="event"
+                  date={
+                    event?.data[0].attributes.date
+                      ? format(
+                          new Date(event.data[0].attributes.date),
+                          "dd MMMM ",
+                          { locale: pl },
+                        )
+                      : "Invalid date"
+                  }
+                  title={event?.data[0].attributes.title!}
+                  onPress={() => setIsEventModalOpen(true)}
+                />
+              </>
             )}
         </View>
 
+        <Modal
+          id="event"
+          isOpen={isEventModalOpen}
+          onClose={() => setIsEventModalOpen(false)}
+        >
+          <View className="w-96 h-96  rounded-2xl flex flex-col justify-between items-center   bg-background py-6">
+            <View className="w-full px-6 py-1">
+              <Text className="text-xl text-foreground font-pmedium text-left mb-4">
+                {event?.data[0].attributes.title!}
+              </Text>
+              <Text className="text-base text-foreground-secondary text-wrap">
+                {event?.data[0].attributes.description!}
+              </Text>
+            </View>
+
+            <IconButton
+              LucideIcon={X}
+              iconColor={colors.foreground}
+              onPress={() => setIsEventModalOpen(false)}
+              className="mt-4"
+            />
+          </View>
+        </Modal>
         <Text className="text-foreground text-xl font-psemibold ">
           Ogłoszenia
         </Text>

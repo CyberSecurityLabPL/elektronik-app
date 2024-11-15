@@ -19,10 +19,15 @@ export const EVENTS_URL = (page: number, pageSize: number) =>
 
 export const EVENT_URL = (id: number) => `/events/${id}`
 
+export const INCOMING_EVENT_URL = (date: Date) =>
+  `/events?pagination[pageSize]=1&pagination[page]=1&sort[1]=date:asc&filters[date][$gte]=${format(
+    date,
+    "yyyy-MM-dd",
+  )}`
+
 export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
   `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}`
 
 export const ANNOUNCEMENT_URL = (id: number) => `/announcements/${id}`
 
-export const BELLS_URL = (page: number, pageSize: number) =>
-  `/bells?pagination[pageSize]=${pageSize}&pagination[page]=${page}`
+export const BELLS_URL = () => `/bells?populate=*`
