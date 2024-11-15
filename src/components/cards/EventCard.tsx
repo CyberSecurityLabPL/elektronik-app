@@ -40,9 +40,9 @@ const EventCard = ({
 
   const [modalOpen, setModalOpen] = useState(false)
 
-  if (isFutureEvent) {
+  if (!isFutureEvent) {
     return (
-      <View>
+      <View className="min-w-full">
         <TouchableOpacity
           className={cn(
             "rounded-3xl overflow-hidden w-full pt-11 pb-8 px-6 flex justify-center items-center bg-[#D4F6FF] dark:bg-[#74A8E5]",
@@ -113,7 +113,7 @@ const EventCard = ({
     )
   } else {
     return (
-      <View>
+      <View className="min-w-full">
         <TouchableOpacity
           className=" overflow-hidden w-full rounded-3xl pt-9 pb-5 px-6 dark:bg-[#FFB055] bg-[#FFCA8D] flex justify-center"
           activeOpacity={0.85}
