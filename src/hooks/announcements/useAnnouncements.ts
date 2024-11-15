@@ -12,8 +12,10 @@ export const useAnnouncements = ({
 }) =>
   useInfiniteQuery<AnnouncementResponse>({
     queryKey: ["announcements"],
-    queryFn: async () => {
-      const { data } = await api.get(ANNOUNCEMENTS_URL(page, pageSize))
+    queryFn: async ({ pageParam }) => {
+      const { data } = await api.get(
+        ANNOUNCEMENTS_URL(pageParam as number, pageSize),
+      )
       return data
     },
     initialPageParam: 1,
