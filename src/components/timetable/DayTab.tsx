@@ -15,12 +15,12 @@ const DayTab = ({ active, date, day, props }: DayTabProps) => {
       <Pressable
         android_ripple={{ color: "#00000030" }}
         aria-active={active}
-        className="flex justify-center items-center gap-2 py-2 px-5 rounded-2xl aria-[active]:bg-primary dark:bg-[#1D1D1D] bg-[#FBFBFB] overflow-hidden"
+        className="flex justify-center items-center gap-2 py-2 px-4 rounded-2xl aria-[active]:bg-primary dark:bg-[#1D1D1D] bg-[#FBFBFB] overflow-hidden"
         {...props}
       >
         <Text
           className={cn(
-            "text-base font-pmedium",
+            "text-lg font-pmedium",
             active ? "text-white" : "text-foreground",
           )}
         >
@@ -28,7 +28,7 @@ const DayTab = ({ active, date, day, props }: DayTabProps) => {
         </Text>
         <Text
           className={cn(
-            "text-sm font-pregular",
+            "text-base font-pregular",
             active ? "text-white" : "text-foreground",
           )}
         >

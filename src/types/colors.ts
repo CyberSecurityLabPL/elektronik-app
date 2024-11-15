@@ -11,14 +11,15 @@ export interface ColorScheme {
   foregroundSecondary: string
   background: string
   backgroundSecondary: string
+  closeButton: string
   svg: {
     topFlower: string
     bottomFlower: string
     lines: string
     circles: string
     smallCircles: string
+    upperLine: string
     bottomLine: string
-    lowerLine: string
     square: string
     smallSquares: string
     multiplication: string

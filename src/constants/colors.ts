@@ -11,6 +11,7 @@ const colors = {
     foregroundSecondary: "#a09cc9",
     background: "#ffffff",
     backgroundSecondary: "#f5f6ff",
+    closeButton:"#2D2D3A",
     svg: {
       topFlower: "#EBF0FF",
       bottomFlower: "#EBF0FF",
@@ -31,6 +32,7 @@ const colors = {
     foregroundSecondary: "#5b5973",
     background: "#1a1a1f",
     backgroundSecondary: "#202127",
+    closeButton: "#B6B6D9",
     svg: {
       topFlower: "#202C1C",
       bottomFlower: "#32244F",

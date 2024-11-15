@@ -1,24 +1,28 @@
 import { View, Text, PressableProps, Pressable } from "react-native"
 import React from "react"
-import { Clock } from "lucide-react-native"
+import { Clock, X } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
 import Modal from "../ui/Modal"
 import { useState } from "react"
+import IconButton from "../ui/IconButton"
+import useColors from "@/hooks/useColors"
 
 interface LessonProps {
+  teacherName: string
   period: number
   time: string
   subject: string
-  teacher: string
+  initials: string
   room: string
   props?: PressableProps
 }
 
 const Lesson = ({
+  teacherName,
   period,
   time,
   subject,
-  teacher,
+  initials,
   room,
   props,
 }: LessonProps) => {
@@ -26,6 +30,8 @@ const Lesson = ({
 
   const { colorScheme } = useColorScheme()
   const isDark = colorScheme === "dark"
+
+  const colors = useColors()
 
   return (
     <View className="rounded-3xl overflow-hidden">
@@ -57,7 +63,7 @@ const Lesson = ({
         </View>
         <View className="flex flex-row justify-center items-center dark:bg-zinc-600/20 bg-zinc-200/20 px-3 py-1 rounded-md">
           <Text className="text-[#6D6D6D] text-1xl">
-            {teacher} {room}
+            {initials} {room}
           </Text>
         </View>
       </Pressable>
@@ -67,7 +73,49 @@ const Lesson = ({
           setModalOpen(false)
         }}
       >
-        <View className="bg-background-secondary w-10/12 h-2/3"></View>
+        <View className="bg-background w-10/12 h-1/2 rounded-3xl px-9 py-7 flex items-center justify-between">
+          <View className="gap-3 w-full h-fit">
+            <View>
+              <Text className="text-foreground font-pregular text-lg">
+                Przedmiot
+              </Text>
+              <Text className="font-psemibold text-gray-700 dark:text-gray-400 text-2xl">
+                {subject}
+              </Text>
+            </View>
+            <View>
+              <Text className="text-foreground font-pregular text-lg">
+                Nauczyciel
+              </Text>
+              <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
+                {teacherName}
+              </Text>
+            </View>
+            <View>
+              <Text className="text-foreground text font-pregular text-lg">
+                Sala
+              </Text>
+              <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
+                {room}
+              </Text>
+            </View>
+            <View>
+              <Text className="text-foreground font-pregular text-lg">
+                Godziny
+              </Text>
+              <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
+                {time}
+              </Text>
+            </View>
+          </View>
+          <View className="flex items-center h-fit">
+            <IconButton
+              LucideIcon={X}
+              iconColor={colors.closeButton}
+              onPress={() => setModalOpen(false)}
+            />
+          </View>
+        </View>
       </Modal>
     </View>
   )
