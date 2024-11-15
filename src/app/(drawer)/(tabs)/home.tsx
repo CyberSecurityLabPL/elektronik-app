@@ -7,7 +7,7 @@ import config from "@/config"
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements"
 import { useArticles } from "@/hooks/articles/useArticles"
 import { useBells } from "@/hooks/bells/useBells"
-import { useEvents, useIncomingEvent } from "@/hooks/events/useEvents"
+import { useUpcomingEvent } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
 import useTimeLessons from "@/hooks/useTimeLessons"
 import { useUserData } from "@/hooks/useUserData"
@@ -35,7 +35,7 @@ const Home = () => {
   })
   const { data: announcement, refetch: refetchAnnouncements } =
     useAnnouncements({ page: 1, pageSize: 1 })
-  const { data: event, refetch: refetchEvents } = useIncomingEvent({
+  const { data: event, refetch: refetchEvents } = useUpcomingEvent({
     date: curDate,
   })
 

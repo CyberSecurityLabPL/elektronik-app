@@ -19,7 +19,7 @@ export const EVENTS_URL = (page: number, pageSize: number) =>
 
 export const EVENT_URL = (id: number) => `/events/${id}`
 
-export const INCOMING_EVENT_URL = (date: Date) =>
+export const UPCOMING_EVENT_URL = (date: Date) =>
   `/events?pagination[pageSize]=1&pagination[page]=1&sort[1]=date:asc&filters[date][$gte]=${format(
     date,
     "yyyy-MM-dd",
