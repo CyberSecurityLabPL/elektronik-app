@@ -45,7 +45,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
         isCurrentlyInLesson = true
         const minsToEnd = differenceInMinutes(endTime, now)
         setMinutes(minsToEnd)
-        setMessage(`Do przerwy pozostało`)
+        setMessage(`🎓 Do przerwy pozostało`)
         return
       }
 
@@ -60,7 +60,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     }
     if (!nextLesson && isBefore(now, nightTimeStart)) {
       setMinutes(0)
-      setMessage("Koniec Lekcji!")
+      setMessage("😊 Koniec Lekcji!")
       return
     }
 
@@ -68,7 +68,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
       const nextStartTime = createTimeDate(nextLesson.startDate as string)
       const minsToNext = differenceInMinutes(nextStartTime, now)
       setMinutes(minsToNext)
-      setMessage(`Do lekcji pozostało`)
+      setMessage(`🌸 Do lekcji pozostało`)
     }
   }, [lessons])
 

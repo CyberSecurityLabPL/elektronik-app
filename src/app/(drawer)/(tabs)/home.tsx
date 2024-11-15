@@ -13,7 +13,7 @@ import useTimeLessons from "@/hooks/useTimeLessons"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
-import { differenceInDays, format } from "date-fns"
+import { differenceInDays, format, isWithinInterval, set } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import { router } from "expo-router"
 import { X } from "lucide-react-native"
@@ -109,21 +109,37 @@ const Home = () => {
         >
           <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
             <View className="py-4">
-              <Text className="text-xl text-foreground font-pmedium text-center mb-4">
+              <Text className="text-3xl text-foreground font-pmedium text-center p-6">
                 Dzwonki
               </Text>
 
-              {lessons.map((lesson, index) => (
-                <Text
-                  className="text-foreground text-center text-xl "
-                  key={index}
-                >
-                  {`${index}. `}
-                  {lesson.startDate.toString().slice(0, -7)}
-                  {"  "}-{"  "}
-                  {lesson.endDate.toString().slice(0, -7)}
-                </Text>
-              ))}
+              {lessons.map((lesson, index) => {
+                const start = set(new Date(), {
+                  hours: Number(lesson.startDate.toString().slice(0, -10)),
+                  minutes: Number(lesson.startDate.toString().slice(3, -7)),
+                })
+                const end = set(new Date(), {
+                  hours: Number(lesson.endDate.toString().slice(0, -10)),
+                  minutes: Number(lesson.endDate.toString().slice(3, -7)),
+                })
+
+                const isSelected = isWithinInterval(new Date(), { start, end })
+
+                return (
+                  <Text
+                    className={cn(
+                      `text-center text-xl`,
+                      isSelected
+                        ? "text-primary bg-primary/20 px-4 py-1 rounded-lg"
+                        : "text-foreground",
+                    )}
+                    key={index}
+                  >
+                    {`${index}. `}
+                    {format(start, "HH:mm ")}-{format(end, " HH:mm")}
+                  </Text>
+                )
+              })}
             </View>
             <IconButton
               LucideIcon={X}
