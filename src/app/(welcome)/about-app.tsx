@@ -8,7 +8,7 @@ import { AboutSvg } from "@/components/svgs/AboutSvg"
 import BottomLine from "@/components/svgs/BottomLine"
 import UpperLine from "@/components/svgs/UpperLine"
 import Square from "@/components/svgs/Square"
-import SmallSquares from "@/components/svgs/SmallSquares"
+import RotatedSquares from "@/components/svgs/RotatedSquares"
 import Circles from "@/components/svgs/Circles"
 import Lines from "@/components/svgs/Lines"
 import useColors from "@/hooks/useColors"
@@ -45,7 +45,7 @@ const AboutApp = () => {
         <Lines color={colors.svg.lines} />
       </View>
       <View className="absolute top-24 right-28 -z-10">
-        <SmallSquares color={colors.svg.smallSquares} />
+        <RotatedSquares color={colors.svg.smallSquares} />
       </View>
       <View className="absolute top-6 -left-28 -z-10">
         <UpperLine color={colors.svg.upperLine} />
