@@ -10,11 +10,22 @@ export const useArticles = ({
   page: number
   pageSize: number
 }) =>
-  useQuery<NewsResponse>({
+  useInfiniteQuery<NewsResponse>({
     queryKey: ["articles"],
-    queryFn: async () => {
-      const { data } = await api.get(ARTICLES_URL(page, pageSize))
+    queryFn: async ({ pageParam }) => {
+      const { data } = await api.get(
+        ARTICLES_URL(pageParam as number, pageSize),
+      )
       return data
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { page, pageCount } = lastPage.meta.pagination
+      return page < pageCount ? page + 1 : undefined
+    },
+    getPreviousPageParam: (firstPage) => {
+      const { page } = firstPage.meta.pagination
+      return page > 1 ? page - 1 : undefined
     },
   })
 

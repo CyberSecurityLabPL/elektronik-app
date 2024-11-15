@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import {
   ArrowUpRight,
   CalendarDays,
@@ -73,23 +74,36 @@ export default function HomeCard({
         className="  bg-transparent rounded-3xl  "
         onPress={() => console.log("News")}
         activeOpacity={0.85}
+        {...props}
       >
         <ImageBackground
-          source={require("../../assets/images/backgrounds/NewsCardBg.png")}
+          source={
+            type == "school"
+              ? require("../../assets/images/backgrounds/RedCardBg.png")
+              : require("../../assets/images/backgrounds/PurpleCardBg.png")
+          }
           className="rounded-3xl w-full p-2 bg-cover"
           imageStyle={{
             borderRadius: 24,
             resizeMode: "cover",
           }}
         >
-          <View className="bg-red-400 w-fit self-start p-5 rounded-full rounded-br-none">
+          <View
+            className={cn(
+              type == "school" ? "bg-red-400" : "bg-purple-400",
+              " w-fit self-start p-5 rounded-full rounded-br-none",
+            )}
+          >
             <View className="bg-white w-fit self-start  p-2 rounded-lg">
-              <Newspaper color="red" size={24} />
+              <Newspaper
+                color={type == "school" ? "red" : "#D3ABFC"}
+                size={24}
+              />
             </View>
           </View>
           <View className="p-4 pt-0 flex flex-col gap-6">
             <View className="flex flex-col gap-2">
-              <Text className="text-2xl font-pmedium  ">{title}</Text>
+              <Text className="text-2xl font-pmedium mt-4 ">{title}</Text>
               <Text className="font-pregular truncate line-clamp-4 text-base">
                 {description}
               </Text>
