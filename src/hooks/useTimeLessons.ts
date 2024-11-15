@@ -5,6 +5,7 @@ import {
   differenceInMinutes,
   isAfter,
   isBefore,
+  isWeekend,
   set,
 } from "date-fns"
 import { useCallback, useEffect, useState } from "react"
@@ -26,11 +27,18 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
         milliseconds: 0,
       })
     }
+
+    if (isWeekend(now)) {
+      setMinutes(0)
+      setMessage("💥 Dzisiaj Jest Weekend!")
+      return
+    }
+
     const nightTimeStart = createTimeDate("19:00")
     const morningTimeStart = createTimeDate("06:00")
     if (isAfter(now, nightTimeStart) || isBefore(now, morningTimeStart)) {
       setMinutes(0)
-      setMessage("Dobranoc! 🌙")
+      setMessage("💤 Dobranoc!")
       return
     }
 
