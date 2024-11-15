@@ -12,8 +12,8 @@ export const useEvents = ({
 }) =>
   useInfiniteQuery<EventsResponse>({
     queryKey: ["events"],
-    queryFn: async () => {
-      const { data } = await api.get(EVENTS_URL(page, pageSize))
+    queryFn: async ({ pageParam }) => {
+      const { data } = await api.get(EVENTS_URL(pageParam as number, pageSize))
       return data
     },
     initialPageParam: 1,
