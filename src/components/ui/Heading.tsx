@@ -5,6 +5,7 @@ import { AlignRight, ChevronLeft } from "lucide-react-native"
 import { router, useNavigation } from "expo-router"
 import { cn } from "@/lib/utils"
 import { DrawerActions } from "@react-navigation/native"
+import useColors from "@/hooks/useColors"
 
 interface headingProps {
   title: string
@@ -12,6 +13,7 @@ interface headingProps {
   settingsScreen?: boolean
 }
 const Heading = ({ title, homeScreen, settingsScreen }: headingProps) => {
+  const colors = useColors()
   const navigation = useNavigation()
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.openDrawer())
@@ -29,7 +31,7 @@ const Heading = ({ title, homeScreen, settingsScreen }: headingProps) => {
       >
         <IconButton
           LucideIcon={settingsScreen ? ChevronLeft : AlignRight}
-          iconColor="white"
+          iconColor={colors.foreground}
           onPress={settingsScreen ? () => router.back() : openDrawer}
         />
       </View>
