@@ -13,7 +13,9 @@ export const useAnnouncements = ({
   useInfiniteQuery<AnnouncementResponse>({
     queryKey: ["announcements"],
     queryFn: async ({ pageParam }) => {
-      const { data } = await api.get(ANNOUNCEMENTS_URL(pageParam as number, pageSize))
+      const { data } = await api.get(
+        ANNOUNCEMENTS_URL(pageParam as number, pageSize),
+      )
       return data
     },
     initialPageParam: 1,
@@ -25,6 +27,7 @@ export const useAnnouncements = ({
       const { page } = firstPage.meta.pagination
       return page > 1 ? page - 1 : undefined
     },
+    maxPages: 1,
   })
 
 export const useAnnouncement = ({ id }: { id: number }) =>

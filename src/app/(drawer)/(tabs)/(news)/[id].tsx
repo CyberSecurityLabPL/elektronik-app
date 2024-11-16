@@ -1,40 +1,36 @@
-import ScreenWrapper from "@/components/ScreenWrapper"
+import DefaultBanner from "@/components/svgs/DefaultBanner"
 import IconButton from "@/components/ui/IconButton"
 import { useAnnouncement } from "@/hooks/announcements/useAnnouncements"
 import { SingleNewsResponse } from "@/hooks/articles/types"
 import { useArticle } from "@/hooks/articles/useArticles"
 import useColors from "@/hooks/useColors"
-import { cn, getStrapiImageUrl } from "@/lib/utils"
+import { getStrapiImageUrl } from "@/lib/utils"
 import { format } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import { router, Stack, useLocalSearchParams } from "expo-router"
+import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
-import {
-  ColorValue,
-  Image,
-  SafeAreaView,
-  ScrollView,
-  Text,
-  View,
-} from "react-native"
+import { ActivityIndicator, Text, View } from "react-native"
 import Animated, {
-  Extrapolate,
   interpolate,
-  interpolateColor,
   useAnimatedRef,
-  useAnimatedScrollHandler,
   useAnimatedStyle,
   useScrollViewOffset,
-  useSharedValue,
 } from "react-native-reanimated"
-import DefaultBanner from "@/components/svgs/DefaultBanner"
 
-export default function articleScreen() {
+export default function ArticleScreen() {
   const { id } = useLocalSearchParams()
   const colors = useColors()
   const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const scrollOfset = useScrollViewOffset(scrollRef)
+  const [key, setKey] = useState(0)
+
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ y: 0, animated: false })
+    scrollOfset.value = 0
+    setKey((prev) => prev + 1)
+  }, [id])
 
   const imageAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -55,7 +51,7 @@ export default function articleScreen() {
     }
   })
 
-  const { data, isLoading, isError, error } = id.includes("n")
+  const { data, isLoading, isError } = id.includes("n")
     ? useArticle({ id: Number(id.slice(1)) })
     : useAnnouncement({ id: Number(id.slice(1)) })
 
@@ -77,9 +73,9 @@ export default function articleScreen() {
       />
       <Animated.ScrollView
         showsVerticalScrollIndicator={false}
-        // contentContainerClassName="gap-8"
         ref={scrollRef}
         scrollEventThrottle={16}
+        key={`${id}-${key}`}
       >
         {data?.data.attributes.image.data ? (
           <Animated.Image
@@ -107,32 +103,51 @@ export default function articleScreen() {
             marginTop: -32,
             borderColor: colors.backgroundSecondary,
             borderWidth: 2,
+            borderBottomWidth: 0,
           }}
         >
-          <View className="flex gap-1  mt-4">
-            <Text className="text-foreground text-4xl font-psemibold ">
-              {isLoading ? "Ładowanie..." : data?.data.attributes.title}
-            </Text>
-            <Text className="text-primary text-sm font-psemibold">
-              {isLoading
-                ? "Ładowanie..."
-                : format(
-                    new Date(
-                      (data as SingleNewsResponse).data.attributes.customDate
-                        ? ((data as SingleNewsResponse).data.attributes
-                            .customDate as string)
-                        : (data?.data.attributes.createdAt as string),
-                    ),
-                    "d LLLL yyyy",
-                    { locale: pl },
-                  )}
-            </Text>
-          </View>
-          <View className="bg-background flex-1 ">
-            <Text className="font-pregular text-base text-foreground">
-              {isLoading ? "Ładowanie..." : data?.data.attributes.content}
-            </Text>
-          </View>
+          {isError && (
+            <View className="flex flex-row justify-center">
+              <Text className="text-red-600 text-base  font-pregular">
+                Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z
+                internetem. Jeśli problem nadal występuje, spróbuj ponownie
+                później.
+              </Text>
+            </View>
+          )}
+          {isLoading ? (
+            <View className="mt-4 gap-2">
+              <View className="w-11/12 h-8 bg-zinc-600 animate-pulse rounded-full" />
+              <View className="w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full" />
+              <View className="mt-4 w-3/5 h-4 bg-zinc-600 animate-pulse rounded-full" />
+              <View className=" w-3/4 h-4 bg-zinc-600 animate-pulse rounded-full" />
+              <View className=" w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full" />
+            </View>
+          ) : (
+            <View className="flex gap-1 flex-col mt-4">
+              <Text className="text-foreground text-4xl font-psemibold ">
+                {data?.data.attributes.title}
+              </Text>
+              <Text className="text-primary text-sm font-psemibold">
+                {format(
+                  new Date(
+                    (data as SingleNewsResponse).data.attributes.customDate
+                      ? ((data as SingleNewsResponse).data.attributes
+                          .customDate as string)
+                      : (data?.data.attributes.createdAt as string),
+                  ),
+                  "d LLLL yyyy",
+                  { locale: pl },
+                )}
+              </Text>
+
+              <View className="bg-background flex-1 mt-4 h-full w-full">
+                <Text className="font-pregular text-base text-foreground h-full w-full">
+                  {data?.data.attributes.content}
+                </Text>
+              </View>
+            </View>
+          )}
         </View>
       </Animated.ScrollView>
     </View>
