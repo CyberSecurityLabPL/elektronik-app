@@ -57,6 +57,13 @@ export default function ArticleScreen() {
 
   return (
     <View className="px-0 pt-0 relative bg-background">
+      <StatusBar
+        translucent
+        backgroundColor="#00000066"
+        style="light"
+        animated
+      />
+
       <Stack.Screen
         options={{
           headerTransparent: true,

@@ -78,6 +78,7 @@ const News = () => {
 
   const {
     data: articleData,
+    isLoading: articleIsLoading,
     hasNextPage: articleHasNextPage,
     isFetchingNextPage: articleIsFetchingNextPage,
     fetchNextPage: articleFetchNextPage,
@@ -88,6 +89,7 @@ const News = () => {
   })
   const {
     data: announcementData,
+    isLoading: announcementIsLoading,
     hasNextPage: announcementHasNextPage,
     isFetchingNextPage: announcementIsFetchingNextPage,
     fetchNextPage: announcementFetchNextPage,
@@ -176,46 +178,65 @@ const News = () => {
         </Pressable>
       </View>
       <View className="p-4 bg-background-secondary w-full h-fit flex-1 mt-8 rounded-2xl ">
-        <Animated.FlatList
-          ref={listRef}
-          onScroll={(event) => {
-            setContentVerticalOffset(event.nativeEvent.contentOffset.y)
-          }}
-          className="  w-full"
-          data={
-            activeTab === 0
-              ? allArticles
-              : (allAnnouncements as any as StrapiArticle[])
-          }
-          keyExtractor={(item) => item.id.toString()}
-          contentContainerStyle={{ paddingBottom: 20, gap: 16 }}
-          style={{ flex: 1 }}
-          showsVerticalScrollIndicator={false}
-          onEndReached={handleLoadMore}
-          onEndReachedThreshold={0.5}
-          initialNumToRender={3}
-          renderItem={renderItem}
-          ListFooterComponent={() =>
-            (
-              activeTab === 0
-                ? articleIsFetchingNextPage
-                : announcementIsFetchingNextPage
-            ) ? (
-              <View className="mt-4  w-full">
-                <LoadingSkeleton />
+        {(activeTab === 0 ? articleIsLoading : announcementIsLoading) ? (
+          <View className="flex-1 w-full p-4 gap-4">
+            <View className="w-full  bg-background rounded-2xl animate-pulse">
+              <View className="w-full h-48 dark:bg-zinc-500 bg-zinc-200 rounded-t-2xl " />
+              <View className="w-full h-36 p-4 flex justify-between">
+                <View>
+                  <View className="w-4/5 h-6 dark:bg-zinc-500 bg-zinc-200 rounded-3xl " />
+                  <View className=" w-3/5 h-3 dark:bg-zinc-500 bg-zinc-200 rounded-3xl mt-4" />
+                </View>
+                <View className="flex flex-row justify-between items-center w-full">
+                  <View className="w-1/4 h-4 dark:bg-zinc-500 bg-zinc-200 rounded-3xl" />
+                  <View className=" w-8 h-8 dark:bg-zinc-500 bg-zinc-200 rounded-full" />
+                </View>
               </View>
-            ) : null
-          }
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={onRefresh}
-              tintColor={colors.primary}
-              colors={[colors.primary]}
-              progressBackgroundColor={colors.backgroundSecondary}
-            />
-          }
-        />
+            </View>
+            <LoadingSkeleton />
+          </View>
+        ) : (
+          <Animated.FlatList
+            ref={listRef}
+            onScroll={(event) => {
+              setContentVerticalOffset(event.nativeEvent.contentOffset.y)
+            }}
+            className="  w-full"
+            data={
+              activeTab === 0
+                ? allArticles
+                : (allAnnouncements as any as StrapiArticle[])
+            }
+            keyExtractor={(item) => item.id.toString()}
+            contentContainerStyle={{ paddingBottom: 20, gap: 16 }}
+            style={{ flex: 1 }}
+            showsVerticalScrollIndicator={false}
+            onEndReached={handleLoadMore}
+            onEndReachedThreshold={0.5}
+            initialNumToRender={3}
+            renderItem={renderItem}
+            ListFooterComponent={() =>
+              (
+                activeTab === 0
+                  ? articleIsFetchingNextPage
+                  : announcementIsFetchingNextPage
+              ) ? (
+                <View className="mt-4  w-full">
+                  <LoadingSkeleton />
+                </View>
+              ) : null
+            }
+            refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+                tintColor={colors.primary}
+                colors={[colors.primary]}
+                progressBackgroundColor={colors.backgroundSecondary}
+              />
+            }
+          />
+        )}
         <View
           className={cn(
             "absolute bottom-16  left-1/2 -translate-x-1/2 ml-4 transition-all",
