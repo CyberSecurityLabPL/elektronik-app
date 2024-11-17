@@ -3,8 +3,9 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import { useEvents } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
+import { StrapiEvent } from "@/types/strapi"
 import { useMemo } from "react"
-import { FlatList, RefreshControl, View } from "react-native"
+import { FlatList, RefreshControl, Text, View } from "react-native"
 
 const Events = () => {
   const colors = useColors()
@@ -29,10 +30,9 @@ const Events = () => {
       fetchNextPage()
     }
   }
-
   return (
     <ScreenWrapper>
-      <View className="flex flex-col items-center">
+      <View className="flex flex-col items-center w-full">
         <FlatList
           refreshControl={
             <RefreshControl
@@ -43,7 +43,7 @@ const Events = () => {
               progressBackgroundColor={colors.backgroundSecondary}
             />
           }
-          contentContainerClassName="flex flex-col items-center gap-4 pb-16 w-full"
+          contentContainerClassName="gap-4 pb-16 w-full"
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
           data={allArticles}

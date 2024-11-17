@@ -15,7 +15,9 @@ export const ARTICLES_URL = (page: number = 1, pageSize: number) =>
 export const ARTICLE_URL = (id: number) => `/articles/${id}`
 
 export const EVENTS_URL = (page: number, pageSize: number) =>
-  `/events?pagination[pageSize]=${pageSize}&pagination[page]=${page}&sort[1]=date:desc`
+  `/events?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[date][$gte]=${
+    new Date().toISOString().split("T")[0]
+  }&sort[0]=date:asc`
 
 export const EVENT_URL = (id: number) => `/events/${id}`
 
