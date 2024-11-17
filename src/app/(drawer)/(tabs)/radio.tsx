@@ -1,11 +1,17 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import React from "react"
-import { Text } from "react-native"
+import { WebView } from "react-native-webview"
 
 const RadioElektron = () => {
+  "docuemnt.getElementsByClassName"
+
   return (
-    <ScreenWrapper className="mt-0 h-screen">
-      <Text>radioElektron</Text>
+    <ScreenWrapper className="p-0">
+      <WebView
+        pullToRefreshEnabled
+        injectedJavaScript="const clearAds = setInterval(()=>{const links = document.getElementsByTagName('a');for (a of links) {if(a.href.includes('bit.ly')){a.parentElement.parentElement.remove();break;}};const ads = document.getElementsByClassName('adsbygoogle');for(ad of ads){ad.remove();}},500);setTimeout(()=>clearInterval(clearAds),10000);"
+        source={{ uri: "https://partyvote.ciac.me/party/radio-elektron" }}
+      />
     </ScreenWrapper>
   )
 }

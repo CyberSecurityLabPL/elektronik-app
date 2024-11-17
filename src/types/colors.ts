@@ -17,10 +17,19 @@ export interface ColorScheme {
     lines: string
     circles: string
     smallCircles: string
+    upperLine: string
     bottomLine: string
-    lowerLine: string
     square: string
     smallSquares: string
     multiplication: string
+  }
+  eventSvg: {
+    halfCircle: string
+    squares: string
+    rotatedSquares: string
+    pinkLines: string
+    blueLines: string
+    pinkStar: string
+    blueStar: string
   }
 }

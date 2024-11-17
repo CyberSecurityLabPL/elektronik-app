@@ -37,7 +37,6 @@ export async function saveUserData(userData: UserData) {
 
 export async function getUserData(): Promise<UserData> {
   const userData: UserData = await getDataObject("user-data")
-  if (!userData) throw new Error("User Data not found in async storage!")
   return userData
 }
 
