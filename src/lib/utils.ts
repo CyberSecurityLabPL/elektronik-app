@@ -1,4 +1,7 @@
+import { UserData } from "@/types/utils"
 import { clsx, type ClassValue } from "clsx"
+import { add, isWeekend, startOfWeek } from "date-fns"
+import { pl } from "date-fns/locale/pl"
 import { twMerge } from "tailwind-merge"
 import {
   getDataObject,
@@ -6,11 +9,20 @@ import {
   storeDataObject,
   storeDataValue,
 } from "./storage"
-import { UserData } from "@/types/utils"
 
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+/**
+ * @param day - The day of week from 1 to 7
+ * @returns The date of chosen day of current week
+ */
+export function getDayOfWeek(day: number) {
+  const skip = isWeekend(new Date()) ? 2 : 0
+  const mon = startOfWeek(add(new Date(), { days: skip }), { locale: pl })
+  return add(mon, { days: day - 1 })
 }
 
 export async function isFirstTime() {
