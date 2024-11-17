@@ -6,9 +6,10 @@ import Modal from "../ui/Modal"
 import { useState } from "react"
 import IconButton from "../ui/IconButton"
 import useColors from "@/hooks/useColors"
+import { useTimetableInfo } from "@/hooks/timetable/useTimetable"
 
 interface LessonProps {
-  teacherName: string
+  teacherId: string
   period: number
   time: string
   subject: string
@@ -18,7 +19,7 @@ interface LessonProps {
 }
 
 const Lesson = ({
-  teacherName,
+  teacherId,
   period,
   time,
   subject,
@@ -32,6 +33,13 @@ const Lesson = ({
   const isDark = colorScheme === "dark"
 
   const colors = useColors()
+  const { data: teachers } = useTimetableInfo({ filter: "teacher" })
+  const getTeacherById = () => {
+    if (!teachers) return null
+    return teachers.find((teacher) => teacher.id === teacherId)
+  }
+
+  const teacher = getTeacherById()
 
   return (
     <View className="rounded-3xl overflow-hidden">
@@ -49,7 +57,7 @@ const Lesson = ({
           </View>
           <View className="flex justify-center items-start">
             <Text
-              className={`text-2xl font-psemibold text-[#111827] dark:text-[#DEDEDE]`}
+              className={`text-xl font-psemibold text-[#111827] dark:text-[#DEDEDE]`}
             >
               {subject}
             </Text>
@@ -88,7 +96,7 @@ const Lesson = ({
                 Nauczyciel
               </Text>
               <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
-                {teacherName}
+                {teacher?.name}
               </Text>
             </View>
             <View>

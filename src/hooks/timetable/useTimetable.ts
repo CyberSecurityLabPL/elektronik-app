@@ -3,11 +3,11 @@ import { timetableApi } from "@/lib/axios"
 import { useQuery } from "@tanstack/react-query"
 import { TimetableInfoResponse, TimetableResponse } from "./types"
 
-export const useTimetableInfo = () =>
+export const useTimetableInfo = ({ filter }: { filter: string }) =>
   useQuery<TimetableInfoResponse>({
     queryKey: ["timetable-info"],
     queryFn: async () => {
-      const { data } = await timetableApi.get(TIMETABLE_INFO_URL())
+      const { data } = await timetableApi.get(TIMETABLE_INFO_URL(filter))
 
       return data
     },
