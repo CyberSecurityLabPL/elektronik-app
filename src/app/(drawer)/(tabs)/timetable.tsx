@@ -37,7 +37,7 @@ import {
   useRef,
   useState,
 } from "react"
-import { FlatList, Pressable, Text, View } from "react-native"
+import { FlatList, Pressable, RefreshControl, Text, View } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
@@ -54,8 +54,14 @@ const Timetable = () => {
     isError,
     error,
     refetch: refetchTimetable,
+    isRefetching: isRefetchingTimetable,
   } = useTimetable({ id: selectedTimetable })
-  const { data: info, isError: isInfoError } = useTimetableAllInfo()
+  const {
+    data: info,
+    isError: isInfoError,
+    isRefetching: isRefetchingInfo,
+    refetch: refetchInfo,
+  } = useTimetableAllInfo()
 
   useEffect(() => {
     refetchTimetable()
@@ -139,6 +145,18 @@ const Timetable = () => {
       >
         <FlatList
           contentContainerClassName="pb-32"
+          refreshControl={
+            <RefreshControl
+              refreshing={isRefetchingInfo || isRefetchingTimetable}
+              onRefresh={() => {
+                refetchTimetable()
+                refetchInfo()
+              }}
+              tintColor={colors.primary}
+              colors={[colors.primary]}
+              progressBackgroundColor={colors.backgroundSecondary}
+            />
+          }
           showsVerticalScrollIndicator={false}
           data={data?.lessons[day as classDays]}
           renderItem={({ item, index }) => {
