@@ -1,10 +1,10 @@
 import { format } from "date-fns"
 
 export const API_URL = "http://api.elektronik.zgora.pl/api"
-export const TIMETABLE_API_URL = "http://192.168.1.33:5678/api" //todo change to a proper url in prod
+export const TIMETABLE_API_URL = "http://89.77.214.173:5678/api" //todo change to a proper url in prod
 
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
-
+export const TIMETABLE_ALL_INFO_URL = () => `/info`
 export const TIMETABLE_URL = (id: string) => `/timetables/${id}`
 
 export const SUBSTITUTIONS_URL = (date: Date) =>

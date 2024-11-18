@@ -1,19 +1,32 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import DayTab from "@/components/timetable/DayTab"
 import Lesson from "@/components/timetable/Lesson"
+import TimetableSelect from "@/components/TimetableSelect"
 import Input from "@/components/ui/Input"
-import { useTimetable } from "@/hooks/timetable/useTimetable"
+import { TimetableInfoResponse } from "@/hooks/timetable/types"
+import {
+  useTimetable,
+  useTimetableAllInfo,
+} from "@/hooks/timetable/useTimetable"
 import useColors from "@/hooks/useColors"
 import { getDayOfWeek } from "@/lib/utils"
 import BottomSheet, {
   BottomSheetBackdrop,
-  BottomSheetModal,
-  BottomSheetView,
+  BottomSheetScrollView,
 } from "@gorhom/bottom-sheet"
+import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types"
 import { add, format, isWeekend, startOfWeek } from "date-fns"
 import { pl } from "date-fns/locale/pl"
-import { Settings } from "lucide-react-native"
-import { useCallback, useMemo, useRef, useState } from "react"
+import { DoorOpen, GraduationCap, Settings, Users } from "lucide-react-native"
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react"
 import { FlatList, Pressable, Text, View } from "react-native"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
@@ -23,6 +36,19 @@ const Timetable = () => {
   //todo manage group and showReligion in settings
   const group: number = 2
   const showReligion: boolean = false
+
+  const [selectedTimetable, setSelectedTimetable] = useState("o25")
+  const {
+    data,
+    isError,
+    error,
+    refetch: refetchTimetable,
+  } = useTimetable({ id: selectedTimetable })
+  const { data: info, isError: isInfoError } = useTimetableAllInfo()
+
+  useEffect(() => {
+    refetchTimetable()
+  }, [data, selectedTimetable])
 
   const getDayName = (date: Date) =>
     format(date, "EEEE", { locale: pl })
@@ -37,7 +63,7 @@ const Timetable = () => {
         : new Date(),
     ),
   )
-  const { data, isError } = useTimetable({ id: "o25" })
+
   // console.log(data)
   const bottomSheetRef = useRef<BottomSheet>(null)
   const handleOpenPress = () => bottomSheetRef.current?.expand()
@@ -52,11 +78,16 @@ const Timetable = () => {
     ),
     [],
   )
-  if (isError)
+  if (isError) {
     console.warn(
       "Zapewne masz zły URL planu lekcji, zmień go z localhost na ten komputera bo to tel fetchuje dane co potrzebujesz",
     )
+    console.error(error)
+  }
   const colors = useColors()
+  useEffect(() => {
+    // console.log(info)
+  }, [info, selectedTimetable])
 
   return (
     <ScreenWrapper className="flex justify-top items-center w-full h-full px-0">
@@ -89,7 +120,7 @@ const Timetable = () => {
         style={{ marginBottom: 170 }}
       >
         <FlatList
-          contentContainerClassName="pb-4"
+          contentContainerClassName="pb-32"
           showsVerticalScrollIndicator={false}
           data={data?.lessons[day as classDays]}
           renderItem={({ item, index }) => {
@@ -125,10 +156,10 @@ const Timetable = () => {
           className="flex justify-center items-center bg-background-secondary p-2 px-16 rounded-3xl"
           onPress={handleOpenPress}
         >
-          <Text className="font-pmedium text-xl text-foreground ">2Tf</Text>
-          <Text className="font-pregular text-foreground">
-            Rozkład zajęć klasy
+          <Text className="font-pmedium text-xl text-foreground ">
+            {info?.find((el) => el.id === selectedTimetable)?.name}
           </Text>
+          <Text className="font-pregular text-foreground">Rozkład zajęć</Text>
         </Pressable>
       </View>
 
@@ -141,13 +172,68 @@ const Timetable = () => {
         backgroundStyle={{ backgroundColor: colors.background }}
         ref={bottomSheetRef}
       >
-        <BottomSheetView className="p-4">
-          <Input type="text" className="" placeholder="Wyszukaj plan..." />
-          {/* 3 Selecty  */}
-        </BottomSheetView>
+        <BottomSheetScrollView contentContainerClassName="p-4 pb-16">
+          <BottomSheetSelectors
+            bottomSheetRef={bottomSheetRef}
+            info={info ?? []}
+            selectedTimetable={selectedTimetable}
+            setSelectedTimetable={setSelectedTimetable}
+          />
+        </BottomSheetScrollView>
       </BottomSheet>
     </ScreenWrapper>
   )
 }
 
 export default Timetable
+
+function BottomSheetSelectors({
+  selectedTimetable,
+  setSelectedTimetable,
+  info,
+  bottomSheetRef,
+}: {
+  selectedTimetable: string
+  setSelectedTimetable: Dispatch<SetStateAction<string>>
+  info: TimetableInfoResponse
+  bottomSheetRef: React.RefObject<BottomSheetMethods>
+}) {
+  const [search, setSearch] = useState("")
+
+  return (
+    <>
+      <Input
+        type="text"
+        onChangeText={(text) => setSearch(text)}
+        placeholder="Wyszukaj plan..."
+      />
+      <TimetableSelect
+        selectedTimetable={selectedTimetable}
+        setSelectedTimetable={setSelectedTimetable}
+        text="Klasa"
+        search={search}
+        LucideIcon={GraduationCap}
+        items={info.filter((item) => item.id.toLocaleLowerCase().includes("o"))}
+        onItemSelect={() => bottomSheetRef.current?.close()}
+      />
+      <TimetableSelect
+        selectedTimetable={selectedTimetable}
+        setSelectedTimetable={setSelectedTimetable}
+        text="Nauczyciel"
+        search={search}
+        LucideIcon={Users}
+        items={info.filter((item) => item.id.toLocaleLowerCase().includes("n"))}
+        onItemSelect={() => bottomSheetRef.current?.close()}
+      />
+      <TimetableSelect
+        selectedTimetable={selectedTimetable}
+        setSelectedTimetable={setSelectedTimetable}
+        text="Sala"
+        search={search}
+        LucideIcon={DoorOpen}
+        items={info.filter((item) => item.id.toLocaleLowerCase().includes("s"))}
+        onItemSelect={() => bottomSheetRef.current?.close()}
+      />
+    </>
+  )
+}
