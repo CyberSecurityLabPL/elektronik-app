@@ -1,11 +1,14 @@
 {
   "Welcome": {
-    "firstPage": "",
-    "secondPage": "",
+    "firstPage": "Witaj w szkolnej apce Elektronika. Twoje szkolne centrum informacji zawsze pod ręką!",
+    "secondPage": "Elektron++ to aplikacja dla uczniów, która Pomaga uczniom dzięki funkcjom takim jak plan lekcji, informacje o zastępstwach.",
     "setUp": {
-      "name": "",
-      "class": "",
-      "diaryNumber": ""
+      "name": "Podaj Imię",
+      "nameError": "Podaj imię",
+      "class": "Podaj Klasę",
+      "classError": "Wybierz klase",
+      "diaryNumber": "Wybierz numer z dziennika",
+      "diaryNumberError": "Podaj prawidłowy numerek z dziennika"
     }
   },
   "Home": {
@@ -13,20 +16,40 @@
     "bells": "Dzwonki",
     "announcements": "Ogłoszenia",
     "timeMessage": {
-      "weekend": " Dzisiaj Jest Weekend!",
-      "goodnight": "Dobranoc!",
-      "toBreak": "Do przerwy pozostało",
-      "toLesson": "Do lekcji pozostało",
-      "endLesson": "Koniec Lekcji!"
+      "weekend": "💥 Dzisiaj Jest Weekend!",
+      "goodnight": "💤 Dobranoc!",
+      "toBreak": "🎓 Do przerwy pozostało",
+      "toLesson": "😊 Do lekcji pozostało",
+      "endLesson": "🌸 Koniec Lekcji!"
     }
   },
   "Settings": {
-    "heading": "Język",
+    "heading": "Ustawienia",
+    "ListItem": {
+      "Profile": "Profil",
+      "Notifications": "Powiadomienia",
+      "Theme": "Motyw",
+      "Languages": "Język"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "Notifications": {
+      "heading": "Powiadomienia",
+      "nSchoolTitle": "Ogłoszenia Szkolne",
+      "nSchoolSub": "Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej",
+      "nCouncilTitle": "Ogłoszenia Samorządu",
+      "nCouncilSub": "Notyfikacje o nowych ogłoszeniach samorządu uczniowskiego",
+      "nSubtitutionsTitle": "Zastępstwa",
+      "nSubtitutionsSub": "Notyfikacje o nowych zastępstwach nauczycieli"
+    },
     "languages": {
+      "heading": "Język",
       "polish": "Polski",
       "english": "Angielski",
       "ukrainian": "Ukrański",
-      "chinese": "Chiński"
+      "german": "Niemiecki",
+      "czech": "Czeski"
     },
     "Theme": {
       "heading": "Motywy",
@@ -36,6 +59,11 @@
       "infoDark": "Zmiana motywu na ciemny..."
     }
   },
+  "Substitutions": {
+    "heading": "Zastępstwa",
+    "error": "Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z internetem. Jeśli problem nadal występuje, spróbuj ponownie później.",
+    "none": "Brak Zastępstw"
+  },
   "Button": {
     "continue": "Kontynuuj",
     "guest": "Kontynuuj jako gość"
@@ -43,5 +71,14 @@
   "Heading": {
     "greet": "Dzień dobry,",
     "wish": "Miło Cię widzieć"
+  },
+  "Sidebar": {
+    "radio": "Radio Elektron",
+    "luckyNumber": "Szczęśliwy Numerek",
+    "settings": "Ustawienia"
+  },
+  "Toast": {
+    "success": "Dane zostały zapisane",
+    "error": "Wystąpił błąd"
   }
 }

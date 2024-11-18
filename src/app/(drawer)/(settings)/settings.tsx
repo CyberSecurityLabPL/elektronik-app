@@ -4,6 +4,7 @@ import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import LargeButton from "@/components/ui/LargeButton"
 import Modal from "@/components/ui/Modal"
+import { languages } from "@/config"
 import useColors from "@/hooks/useColors"
 import { clearStorage } from "@/lib/storage"
 import { Bell, Languages, Sun, User2, X } from "lucide-react-native"
@@ -12,9 +13,6 @@ import { useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 import { toast } from "sonner-native"
-
-// Todo: change this to a dynamic value from storage
-const currentlySelectedLanguage = "Polski"
 
 const Settings = () => {
   const colors = useColors()
@@ -25,37 +23,14 @@ const Settings = () => {
   const theme = useTheme()
   const { i18n, t } = useTranslation()
 
-  const languages = [
-    {
-      code: "pl",
-      nativeName: "Polski",
-      localName: t("Settings.languages.polish"),
-    },
-    {
-      code: "en",
-      nativeName: "English",
-      localName: t("Settings.languages.english"),
-    },
-    {
-      code: "uk",
-      nativeName: "Українська",
-      localName: t("Settings.languages.ukrainian"),
-    },
-    {
-      code: "zh",
-      nativeName: "中文",
-      localName: t("Settings.languages.chinese"),
-    },
-  ]
-
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
   return (
     <ScreenWrapper>
-      <Heading title="Ustawienia" screen="settings" />
+      <Heading title={t("Settings.heading")} screen="settings" />
       <View className="gap-2">
         <LargeButton
-          text="Profil"
+          text={t("Settings.ListItem.Profile")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={User2}
@@ -63,7 +38,7 @@ const Settings = () => {
           strokeWidth={1.5}
         />
         <LargeButton
-          text="Powiadomienia"
+          text={t("Settings.ListItem.Notifications")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Bell}
@@ -71,7 +46,7 @@ const Settings = () => {
           strokeWidth={1.5}
         />
         <LargeButton
-          text="Motyw"
+          text={t("Settings.ListItem.Theme")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Sun}
@@ -80,7 +55,7 @@ const Settings = () => {
           extraText={colorScheme === "dark" ? "Ciemny" : "Jasny"}
         />
         <LargeButton
-          text="Język"
+          text={t("Settings.ListItem.Languages")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Languages}

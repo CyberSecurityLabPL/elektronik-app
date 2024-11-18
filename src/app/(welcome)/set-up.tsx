@@ -15,10 +15,12 @@ import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
 import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 
 const SetUp = () => {
   const colors = useColors()
+  const { t } = useTranslation()
 
   const {
     control,
@@ -64,7 +66,7 @@ const SetUp = () => {
           <View className="flex justify-center items-center w-full flex-col gap-6">
             <View className="flex justify-center items-start flex-col w-full">
               <Text className={`text-foreground font-pmedium text-xl p-2`}>
-                Podaj Imię
+                {t("Welcome.setUp.name")}
               </Text>
 
               <Controller
@@ -78,18 +80,20 @@ const SetUp = () => {
                     value={value}
                     onBlur={onBlur}
                     type="text"
-                    placeholder="Firstname"
+                    placeholder={t("Welcome.setUp.name")}
                   />
                 )}
                 name="name"
               />
               {errors.name && (
-                <Text className="text-red-400 ml-2">Podaj imię</Text>
+                <Text className="text-red-400 ml-2">
+                  {t("Welcome.setUp.nameError")}
+                </Text>
               )}
             </View>
             <View className="w-full h-fit">
               <Text className={`text-foreground font-pmedium text-xl p-2`}>
-                Podaj Klasę
+                {t("Welcome.setUp.class")}
               </Text>
               <Controller
                 control={control}
@@ -100,7 +104,7 @@ const SetUp = () => {
                   <Select
                     selectedValue={value}
                     onValueChange={(itemValue: any) => onChange(itemValue)}
-                    placeholder="Wybierz klase"
+                    placeholder={t("Welcome.setUp.class")}
                   >
                     <SelectItem label="1ta Technik Programista" value="1ta" />
                     <SelectItem label="1tb Technik Programista" value="1tb" />
@@ -109,14 +113,16 @@ const SetUp = () => {
                 name="grade"
               />
               {errors.grade && (
-                <Text className="text-red-400 ml-2">Wybierz klase</Text>
+                <Text className="text-red-400 ml-2">
+                  {t("Welcome.setUp.classError")}
+                </Text>
               )}
             </View>
             <View className="flex justify-center items-center flex-col w-full">
               <Text
-                className={`text-foreground font-pmedium text-xl p-2 self-start`}
+                className={`text-foreground text-center w-full font-pmedium text-xl p-2 self-start`}
               >
-                Wybierz numer z dziennika
+                {t("Welcome.setUp.diaryNumber")}
               </Text>
               <Controller
                 control={control}
@@ -141,7 +147,7 @@ const SetUp = () => {
               />
               {errors.diaryNumber && (
                 <Text className="text-red-400 ml-2">
-                  Podaj prawidłowy numerek z dziennika
+                  {t("Welcome.setUp.diaryNumberError")}
                 </Text>
               )}
             </View>
@@ -151,10 +157,10 @@ const SetUp = () => {
       <View className="flex justify-center w-full items-center flex-col gap-1">
         <Button
           variant="ghost"
-          text="Kontynuuj jako gość"
+          text={t("Button.guest")}
           onPress={goToHomeAsGuest}
         />
-        <Button text="Kontynuuj" onPress={handleSubmit(onSubmit)} />
+        <Button text={t("Button.continue")} onPress={handleSubmit(onSubmit)} />
       </View>
 
       <View className="absolute bottom-96 -left-8 -z-10">

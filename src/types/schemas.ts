@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+export const LanguageSchema = z.string()
+
 export const NotificationsSchema = z.object({
   articles: z.boolean(),
   announcements: z.boolean(),

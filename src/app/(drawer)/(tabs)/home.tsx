@@ -3,7 +3,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import Modal from "@/components/ui/Modal"
-import config from "@/config"
+import config, { localeMap } from "@/config"
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements"
 import { useArticles } from "@/hooks/articles/useArticles"
 import { useBells } from "@/hooks/bells/useBells"
@@ -14,19 +14,12 @@ import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
 import { differenceInDays, format, isWithinInterval, set } from "date-fns"
-import { enUS, pl, uk, zhCN } from "date-fns/locale"
+import { pl } from "date-fns/locale"
 import { router } from "expo-router"
 import { X } from "lucide-react-native"
 import React, { useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native"
-
-const localeMap = {
-  pl: pl,
-  en: enUS,
-  uk: uk,
-  zh: zhCN,
-}
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false)
@@ -84,7 +77,10 @@ const Home = () => {
           />
         }
       >
-        <Heading title={userData ? userData.name : t("Heading.wish")} />
+        <Heading
+          title={userData ? userData.name : t("Heading.wish")}
+          screen="home"
+        />
         <Pressable
           onPress={() => setIsBellModalOpen(true)}
           className="flex flex-row mt-6 "
@@ -249,7 +245,11 @@ const Home = () => {
                       announcement?.pages[0].data[0].attributes.createdAt ?? "",
                     ),
                     "dd MMMM",
-                    { locale: pl },
+                    {
+                      locale:
+                        localeMap[i18n.language as keyof typeof localeMap] ||
+                        pl,
+                    },
                   )
                 : "Brak daty"
             }

@@ -9,12 +9,13 @@ import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
 import React, { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 import { toast } from "sonner-native"
 
 const Profile = () => {
   const userData = useUserData()
-
+  const { t } = useTranslation()
   const {
     control,
     handleSubmit,
@@ -36,17 +37,17 @@ const Profile = () => {
     })
     if (result.success) {
       console.log("Data saved successfully:", result.data)
-      toast.success("Dane zostały zapisane")
+      toast.success(t("Toast.success"))
     } else {
       console.error("Error saving data:", result.error)
-      toast.error("Wystąpił błąd")
+      toast.error(t("Toast.error"))
     }
     router.back()
   }
 
   return (
     <ScreenWrapper>
-      <Heading title="Profil" screen="settings" />
+      <Heading title={t("Settings.profile.heading")} screen="settings" />
       <View className="flex justify-between items-center w-full flex-col gap-7  flex-1">
         <View className="flex justify-center items-center flex-col w-full">
           <Controller
@@ -71,12 +72,14 @@ const Profile = () => {
             )}
             name="diaryNumber"
           />
-          <Text className={`text-foreground font-pmedium text-xl p-2 `}>
-            Numer w dzienniku
+          <Text
+            className={`text-foreground text-center font-pmedium text-xl p-2 `}
+          >
+            {t("Welcome.setUp.diaryNumber")}
           </Text>
           {errors.diaryNumber && (
             <Text className="text-red-400 ml-2">
-              Podaj prawidłowy numerek z dziennika
+              {t("Welcome.setUp.diaryNumberError")}
             </Text>
           )}
         </View>
@@ -84,7 +87,7 @@ const Profile = () => {
         <View className="w-full gap-8">
           <View className="flex justify-center items-start flex-col w-full">
             <Text className={`text-foreground font-pmedium text-xl p-2`}>
-              Podaj Imię
+              {t("Welcome.setUp.name")}
             </Text>
 
             <Controller
@@ -98,19 +101,21 @@ const Profile = () => {
                   value={value}
                   onBlur={onBlur}
                   type="text"
-                  placeholder="Firstname"
+                  placeholder={t("Welcome.setUp.name")}
                   defaultValue={userData?.name.toString() ?? ""}
                 />
               )}
               name="name"
             />
             {errors.name && (
-              <Text className="text-red-400 ml-2">{errors.name.type}</Text>
+              <Text className="text-red-400 ml-2">
+                {t("Welcome.setUp.nameError")}
+              </Text>
             )}
           </View>
           <View className="w-full h-fit">
             <Text className={`text-foreground font-pmedium text-xl p-2`}>
-              Podaj Klasę
+              {t("Welcome.setUp.class")}
             </Text>
             <Controller
               control={control}
@@ -121,7 +126,7 @@ const Profile = () => {
                 <Select
                   selectedValue={value}
                   onValueChange={(itemValue: any) => onChange(itemValue)}
-                  placeholder="Wybierz klase"
+                  placeholder={t("Welcome.setUp.class")}
                 >
                   <SelectItem label="1ta Technik Programista" value="1ta" />
                   <SelectItem label="1tb Technik Programista" value="1tb" />
@@ -130,11 +135,13 @@ const Profile = () => {
               name="grade"
             />
             {errors.grade && (
-              <Text className="text-red-400 ml-2">Wybierz klase</Text>
+              <Text className="text-red-400 ml-2">
+                {t("Welcome.setUp.classError")}
+              </Text>
             )}
           </View>
         </View>
-        <Button text="Kontynuuj" onPress={handleSubmit(onSubmit)} />
+        <Button text={t("Button.continue")} onPress={handleSubmit(onSubmit)} />
       </View>
     </ScreenWrapper>
   )

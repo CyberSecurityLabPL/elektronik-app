@@ -13,7 +13,7 @@ interface headingProps {
   title: string
   // homeScreen?: boolean
   // settingsScreen?: boolean
-  screen?: "default" | "settings"
+  screen?: "default" | "settings" | "home"
 }
 const Heading = ({ title, screen = "default" }: headingProps) => {
   const colors = useColors()
@@ -46,14 +46,16 @@ const Heading = ({ title, screen = "default" }: headingProps) => {
       </View>
 
       <View className="flex flex-col gap-1 ">
-        <Text
-          className={cn(
-            !settingsScreen ? "flex" : "hidden",
-            "text-foreground-secondary text-base ",
-          )}
-        >
-          {t("Heading.greet")}
-        </Text>
+        {screen == "home" ? (
+          <Text
+            className={cn(
+              !settingsScreen ? "flex" : "hidden",
+              "text-foreground-secondary text-base ",
+            )}
+          >
+            {t("Heading.greet")}
+          </Text>
+        ) : null}
 
         <Text className="text-foreground font-psemibold text-2xl">{title}</Text>
       </View>

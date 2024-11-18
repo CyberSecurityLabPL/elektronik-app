@@ -1,0 +1,84 @@
+{
+  "Welcome": {
+    "firstPage": "Willkommen in der Schul-App Elektronik. Ihr schulisches Informationszentrum immer griffbereit!",
+    "secondPage": "Electron++ ist eine Schüler-App, die Schülern mit Funktionen wie Stundenplan und Vertretungsinformationen hilft.",
+    "setUp": {
+      "name": "Namen eingeben",
+      "nameError": "Namen eingeben",
+      "class": "Klasse eingeben",
+      "classError": "Klasse auswählen",
+      "diaryNumber": "Tagebuchnummer auswählen",
+      "diaryNumberError": "Gültige Tagebuchnummer eingeben"
+    }
+  },
+  "Home": {
+    "minutes": "Minuten",
+    "bells": "Glocken",
+    "announcements": "Ankündigungen",
+    "timeMessage": {
+      "weekend": "💥 Heute ist Wochenende!",
+      "goodnight": "💤 Gute Nacht!",
+      "toBreak": "🎓 Bis zur Pause",
+      "toLesson": "😊 Bis zum Unterricht",
+      "endLesson": "🌸 Unterrichtsende!"
+    }
+  },
+  "Settings": {
+    "heading": "Einstellungen",
+    "ListItem": {
+      "Profile": "Profil",
+      "Notifications": "Benachrichtigungen",
+      "Theme": "Thema",
+      "Languages": "Sprache"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "Notifications": {
+      "heading": "Benachrichtigungen",
+      "nSchoolTitle": "Schulankündigungen",
+      "nSchoolSub": "Benachrichtigungen über neue Schulleitung-Ankündigungen",
+      "nCouncilTitle": "Schülerrat-Ankündigungen",
+      "nCouncilSub": "Benachrichtigungen über neue Schülerrat-Ankündigungen",
+      "nSubtitutionsTitle": "Vertretungen",
+      "nSubtitutionsSub": "Benachrichtigungen über neue Lehrervertretungen"
+    },
+    "languages": {
+      "heading": "Sprache",
+      "polish": "Polnisch",
+      "english": "Englisch",
+      "ukrainian": "Ukrainisch",
+      "german": "Deutsch",
+      "czech": "Tschechisch"
+    },
+    "Theme": {
+      "heading": "Themen",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "infoLight": "Wechsle zu hellem Thema...",
+      "infoDark": "Wechsle zu dunklem Thema..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Vertretungen",
+    "error": "Ein unerwarteter Fehler ist aufgetreten, überprüfen Sie Ihre Internetverbindung. Wenn das Problem weiterhin besteht, versuchen Sie es später erneut.",
+    "none": "Keine Vertretungen"
+  },
+  "Button": {
+    "continue": "Weiter",
+    "guest": "Als Gast fortfahren"
+  },
+  "Heading": {
+    "greet": "Guten Morgen,",
+    "wish": "Schön, dich zu sehen"
+  },
+  "Sidebar": {
+    "radio": "Electron Radio",
+    "luckyNumber": "Glückszahl",
+    "settings": "Einstellungen"
+  },
+  "Toast": {
+    "success": "Daten wurden gespeichert",
+    "error": "Ein Fehler ist aufgetreten"
+  }
+}

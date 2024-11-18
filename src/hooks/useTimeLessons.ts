@@ -9,10 +9,12 @@ import {
   set,
 } from "date-fns"
 import { useCallback, useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 
 const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
   const [minutes, setMinutes] = useState<number>(0)
   const [message, setMessage] = useState<string>("")
+  const { t } = useTranslation()
 
   const calculateTimeToNextLesson = useCallback(() => {
     const now = new Date()
@@ -30,7 +32,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
 
     if (isWeekend(now)) {
       setMinutes(0)
-      setMessage("💥 Dzisiaj Jest Weekend!")
+      setMessage(t("Home.timeMessage.weekend"))
       return
     }
 
@@ -38,7 +40,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     const morningTimeStart = createTimeDate("06:00")
     if (isAfter(now, nightTimeStart) || isBefore(now, morningTimeStart)) {
       setMinutes(0)
-      setMessage("💤 Dobranoc!")
+      setMessage(t("Home.timeMessage.goodnight"))
       return
     }
 
@@ -53,7 +55,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
         isCurrentlyInLesson = true
         const minsToEnd = differenceInMinutes(endTime, now)
         setMinutes(minsToEnd)
-        setMessage(`🎓 Do przerwy pozostało`)
+        setMessage(t("Home.timeMessage.toBreak"))
         return
       }
 
@@ -68,7 +70,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     }
     if (!nextLesson && isBefore(now, nightTimeStart)) {
       setMinutes(0)
-      setMessage("😊 Koniec Lekcji!")
+      setMessage(t("Home.timeMessage.endLesson"))
       return
     }
 
@@ -76,9 +78,9 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
       const nextStartTime = createTimeDate(nextLesson.startDate as string)
       const minsToNext = differenceInMinutes(nextStartTime, now)
       setMinutes(minsToNext)
-      setMessage(`🌸 Do lekcji pozostało`)
+      setMessage(t("Home.timeMessage.toLesson"))
     }
-  }, [lessons])
+  }, [lessons, t])
 
   useEffect(() => {
     calculateTimeToNextLesson()

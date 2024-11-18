@@ -1,5 +1,6 @@
 import {
   FirstTimeUserSchema,
+  LanguageSchema,
   NotificationsSchema,
   UserDataSchema,
 } from "@/types/schemas"
@@ -20,6 +21,7 @@ export type StorageError =
 
 // Storage keys string values mapped to their schemas
 type SchemaType = {
+  language: typeof LanguageSchema
   notifications: typeof NotificationsSchema
   "first-time-user": typeof FirstTimeUserSchema
   "user-data": typeof UserDataSchema
@@ -28,6 +30,7 @@ type SchemaType = {
 // Storage keys mapped to their string values
 export const StorageKeys = {
   notifications: "notifications",
+  language: "language",
   firstTimeUser: "first-time-user",
   userData: "user-data",
   // ... other keys
@@ -38,6 +41,7 @@ export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys]
 
 // Schema registry with explicit typing
 export const StorageSchemas: SchemaType = {
+  [StorageKeys.language]: LanguageSchema,
   [StorageKeys.notifications]: NotificationsSchema,
   [StorageKeys.firstTimeUser]: FirstTimeUserSchema,
   [StorageKeys.userData]: UserDataSchema,

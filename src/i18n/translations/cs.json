@@ -1,0 +1,84 @@
+{
+  "Welcome": {
+    "firstPage": "Vítejte v školní aplikaci Elektronik. Váš školní informační systém vždy po ruce!",
+    "secondPage": "Electron++ je studentská aplikace, která pomáhá studentům s funkcemi jako rozvrh hodin a informace o suplování.",
+    "setUp": {
+      "name": "Zadejte jméno",
+      "nameError": "Zadejte jméno",
+      "class": "Zadejte třídu",
+      "classError": "Vyberte třídu",
+      "diaryNumber": "Vyberte číslo v třídním deníku",
+      "diaryNumberError": "Zadejte platné číslo v třídním deníku"
+    }
+  },
+  "Home": {
+    "minutes": "Minut",
+    "bells": "Zvonění",
+    "announcements": "Oznámení",
+    "timeMessage": {
+      "weekend": "💥 Dnes je víkend!",
+      "goodnight": "💤 Dobrou noc!",
+      "toBreak": "🎓 Do přestávky",
+      "toLesson": "😊 Do hodiny",
+      "endLesson": "🌸 Konec vyučování!"
+    }
+  },
+  "Settings": {
+    "heading": "Nastavení",
+    "ListItem": {
+      "Profile": "Profil",
+      "Notifications": "Oznámení",
+      "Theme": "Motiv",
+      "Languages": "Jazyk"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "Notifications": {
+      "heading": "Oznámení",
+      "nSchoolTitle": "Školní oznámení",
+      "nSchoolSub": "Oznámení o nových zprávách od vedení školy",
+      "nCouncilTitle": "Oznámení studentské rady",
+      "nCouncilSub": "Oznámení o nových zprávách studentské rady",
+      "nSubtitutionsTitle": "Suplování",
+      "nSubtitutionsSub": "Oznámení o novém suplování učitelů"
+    },
+    "languages": {
+      "heading": "Jazyk",
+      "polish": "Polština",
+      "english": "Angličtina",
+      "ukrainian": "Ukrajinština",
+      "german": "Němčina",
+      "czech": "Čeština"
+    },
+    "Theme": {
+      "heading": "Motivy",
+      "light": "Světlý",
+      "dark": "Tmavý",
+      "infoLight": "Přepínám na světlý motiv...",
+      "infoDark": "Přepínám na tmavý motiv..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Suplování",
+    "error": "Došlo k neočekávané chybě, zkontrolujte připojení k internetu. Pokud problém přetrvává, zkuste to prosím později.",
+    "none": "Žádné suplování"
+  },
+  "Button": {
+    "continue": "Pokračovat",
+    "guest": "Pokračovat jako host"
+  },
+  "Heading": {
+    "greet": "Dobré ráno,",
+    "wish": "Rádi tě vidíme"
+  },
+  "Sidebar": {
+    "radio": "Electron Rádio",
+    "luckyNumber": "Šťastné číslo",
+    "settings": "Nastavení"
+  },
+  "Toast": {
+    "success": "Data byla uložena",
+    "error": "Došlo k chybě"
+  }
+}

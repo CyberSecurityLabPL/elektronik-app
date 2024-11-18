@@ -16,12 +16,13 @@ import { checkFirstTimeUser } from "@/lib/utils"
 import { Redirect, router } from "expo-router"
 import { LoaderCircle } from "lucide-react-native"
 import React, { useEffect, useLayoutEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 
 const Page = () => {
   const colors = useColors()
   const [loading, setLoading] = useState(true)
-
+  const { t } = useTranslation()
   console.log("page fires")
 
   useEffect(() => {
@@ -68,14 +69,13 @@ const Page = () => {
                 Elektronik
               </Text>
               <Text className="font-pregular text-base text-foreground text-center px-5">
-                Witaj w szkolnej apce Elektronika. Twoje szkolne centrum
-                informacji zawsze pod ręką!
+                {t("Welcome.firstPage")}
               </Text>
             </View>
           </View>
         </View>
         <Button
-          text="Kontynuuj"
+          text={t("Button.continue")}
           onPress={() => router.navigate("/about-app")}
         />
 

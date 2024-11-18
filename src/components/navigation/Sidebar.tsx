@@ -21,9 +21,11 @@ import DiscordLogo from "../svgs/DiscordLogo"
 import { LogoSvg } from "../svgs/LogoSvg"
 import IconButton from "../ui/IconButton"
 import LargeButton from "../ui/LargeButton"
+import { useTranslation } from "react-i18next"
 const Sidebar = (props: DrawerContentComponentProps) => {
   const colors = useColors()
   const router = useRouter()
+  const { t } = useTranslation()
   const closeDrawer = () => {
     props.navigation.dispatch(DrawerActions.closeDrawer())
   }
@@ -58,13 +60,13 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         <LargeButton
           LucideIcon={Disc3}
           iconColor={colors.foreground}
-          text="Radio Elektron"
+          text={t("Sidebar.radio")}
           onPress={() => router.push("/(drawer)/(tabs)/radio")}
         />
         <LargeButton
           LucideIcon={Clover}
           iconColor={colors.foreground}
-          text="Szczęsliwy Numerek"
+          text={t("Sidebar.luckyNumber")}
           onPress={() => toast("Dostępne wkrótce!")}
         />
       </DrawerContentScrollView>
@@ -92,7 +94,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         <LargeButton
           LucideIcon={SettingsIcon}
           iconColor={colors.foreground}
-          text="Ustawienia"
+          text={t("Sidebar.settings")}
           onPress={() => router.push("/(drawer)/(settings)/settings")}
         />
       </View>

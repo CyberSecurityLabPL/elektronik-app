@@ -5,10 +5,12 @@ import { getStorageData, StorageKeys, setStorageData } from "@/lib/storage"
 import { NotificationsState } from "@/types/app-data"
 import { NotificationsSchema } from "@/types/schemas"
 import React, { useLayoutEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 
 const Notifications = () => {
   const [switches, setSwitches] = useState<NotificationsState | null>(null)
+  const { t } = useTranslation()
 
   useLayoutEffect(() => {
     const fetchNotifications = async () => {
@@ -77,25 +79,25 @@ const Notifications = () => {
 
   return (
     <ScreenWrapper>
-      <Heading title="Powiadomienia" screen="settings" />
+      <Heading title={t("Settings.Notifications.heading")} screen="settings" />
       <View className="gap-4">
         <SwitchButton
-          title="Ogłoszenia Szkolne"
+          title={t("Settings.Notifications.nSchoolTitle")}
           onPress={() => handlePress("articles")}
           isEnabled={switches.articles}
-          subtitle="Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej"
+          subtitle={t("Settings.Notifications.nSchoolSub")}
         />
         <SwitchButton
-          title="Ogłoszenia Samorządu"
+          title={t("Settings.Notifications.nCouncilTitle")}
           onPress={() => handlePress("announcements")}
           isEnabled={switches.announcements}
-          subtitle="Notyfikacje o nowych ogłoszeniach samorządu uczniowskiego"
+          subtitle={t("Settings.Notifications.nCouncilSub")}
         />
         <SwitchButton
-          title="Zastępstwa"
+          title={t("Settings.Notifications.nSubtitutionsTitle")}
           onPress={() => handlePress("substitutions")}
           isEnabled={switches.substitutions}
-          subtitle="Notyfikacje o nowych zastępstwach nauczycieli"
+          subtitle={t("Settings.Notifications.nSubtitutionsSub")}
         />
       </View>
     </ScreenWrapper>

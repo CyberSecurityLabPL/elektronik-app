@@ -1,20 +1,23 @@
-import { Text, Pressable, View } from "react-native"
-import React from "react"
-import { Link, router } from "expo-router"
 import ScreenWrapper from "@/components/ScreenWrapper"
-import ProgressIndicator from "@/components/ui/ProgressIndicator"
-import Button from "@/components/ui/Button"
 import { AboutSvg } from "@/components/svgs/AboutSvg"
 import BottomLine from "@/components/svgs/BottomLine"
-import UpperLine from "@/components/svgs/UpperLine"
-import Square from "@/components/svgs/Square"
-import RotatedSquares from "@/components/svgs/RotatedSquares"
 import Circles from "@/components/svgs/Circles"
 import Lines from "@/components/svgs/Lines"
+import RotatedSquares from "@/components/svgs/RotatedSquares"
+import Square from "@/components/svgs/Square"
+import UpperLine from "@/components/svgs/UpperLine"
+import Button from "@/components/ui/Button"
+import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
+import { router } from "expo-router"
+import React from "react"
+import { useTranslation } from "react-i18next"
+import { Text, View } from "react-native"
 
 const AboutApp = () => {
   const colors = useColors()
+  const { t } = useTranslation()
+
   return (
     <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
       <View className="flex flex-col justify-center items-center w-full gap-20">
@@ -30,14 +33,16 @@ const AboutApp = () => {
               Elektronik
             </Text>
             <Text className="font-pregular text-base text-foreground text-center px-5">
-              Elektron++ to aplikacja dla uczniów, która Pomaga uczniom dzięki
-              funkcjom takim jak plan lekcji, informacje o zastępstwach.
+              {t("Welcome.secondPage")}
             </Text>
           </View>
         </View>
       </View>
       <View className="flex justify-center w-full items-center flex-col">
-        <Button text="Kontynuuj" onPress={() => router.navigate("/set-up")} />
+        <Button
+          text={t("Button.continue")}
+          onPress={() => router.navigate("/set-up")}
+        />
       </View>
 
       <View className="absolute bottom-64 -right-32 -z-10"></View>

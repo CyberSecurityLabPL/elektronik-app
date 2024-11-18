@@ -1,17 +1,20 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
+import { localeMap } from "@/config"
 import { useSubstitutions } from "@/hooks/substitutions/useSubstitutions"
 import useColors from "@/hooks/useColors"
 import { addDays, format, subDays } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import { ChevronLeft, ChevronRight } from "lucide-react-native"
 import { useCallback, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { RefreshControl, ScrollView, Text, View } from "react-native"
 
 const Substitutions = () => {
   const [date, setDate] = useState(new Date())
   const colors = useColors()
+  const { t, i18n } = useTranslation()
 
   const {
     data,
@@ -51,10 +54,12 @@ const Substitutions = () => {
           />
         }
       >
-        <Heading title="Zastępstwa" />
+        <Heading title={t("Substitutions.heading")} />
         <View className="bg-background-secondary w-full p-4 rounded-2xl mt-8 flex justify-center items-center">
           <Text className="text-3xl font-pmedium text-foreground">
-            {format(date, "d MMMM yyyy", { locale: pl })}
+            {format(date, "d MMMM yyyy", {
+              locale: localeMap[i18n.language as keyof typeof localeMap] || pl,
+            })}
           </Text>
         </View>
         <View className="bg-background-secondary light w-full p-4 rounded-2xl mt-6   ">
@@ -63,9 +68,7 @@ const Substitutions = () => {
               <View>
                 {isError && (
                   <Text className="text-red-600 text-base  font-pregular ">
-                    Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z
-                    internetem. Jeśli problem nadal występuje, spróbuj ponownie
-                    później.
+                    {t("Substitutions.error")}
                   </Text>
                 )}
                 {isLoading || isRefetching || isFetching ? (
@@ -78,7 +81,7 @@ const Substitutions = () => {
                   <Text className="text-foreground text-base font-pregular">
                     {data?.pages[0].data.length === 0 ? (
                       <Text className="text-2xl font-psemibold text-foreground text-left">
-                        Brak Zastępstw
+                        {t("Substitutions.none")}
                       </Text>
                     ) : (
                       data?.pages[0].data[0].attributes.substitutions
