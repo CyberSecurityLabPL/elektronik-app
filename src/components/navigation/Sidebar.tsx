@@ -2,9 +2,10 @@ import useColors from "@/hooks/useColors"
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
+  useDrawerStatus,
 } from "@react-navigation/drawer"
 import { DrawerActions } from "@react-navigation/native"
-import { useNavigation, useRouter } from "expo-router"
+import { useRouter } from "expo-router"
 import {
   Clover,
   Disc3,
@@ -20,14 +21,16 @@ import DiscordLogo from "../svgs/DiscordLogo"
 import { LogoSvg } from "../svgs/LogoSvg"
 import IconButton from "../ui/IconButton"
 import LargeButton from "../ui/LargeButton"
-
 const Sidebar = (props: DrawerContentComponentProps) => {
   const colors = useColors()
   const router = useRouter()
-  const navigation = useNavigation()
   const closeDrawer = () => {
-    navigation.dispatch(DrawerActions.closeDrawer())
+    props.navigation.dispatch(DrawerActions.closeDrawer())
   }
+
+  const status = useDrawerStatus()
+
+  console.log("status: ", status)
 
   return (
     <View className=" pt-16 px-4 pb-6 flex-1 flex-col flex justify-between border-0 bg-background">

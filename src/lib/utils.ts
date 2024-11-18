@@ -1,14 +1,8 @@
+import { BACKEND_URL } from "@/constants/urls"
+import { NotificationsSchema } from "@/types/schemas"
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
-import {
-  getDataObject,
-  getDataValue,
-  storeDataObject,
-  storeDataValue,
-} from "./storage"
-import { UserData } from "@/types/utils"
-import { BACKEND_URL } from "@/constants/urls"
-
+import { getStorageData, StorageKeys } from "./storage"
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -18,23 +12,7 @@ export function getStrapiImageUrl(url: string): string {
   return BACKEND_URL + url
 }
 
-export async function isFirstTime() {
-  const hasBeenOpened = await getDataValue("has-been-opened")
-  if (hasBeenOpened !== null) {
-    return false
-  }
-  return true
-}
-
-export async function saveFirstTime() {
-  await storeDataValue("has-been-opened", true)
-}
-
-export async function saveUserData(userData: UserData) {
-  await storeDataObject("user-data", userData)
-}
-
-export async function getUserData(): Promise<UserData> {
-  const userData: UserData = await getDataObject("user-data")
-  return userData
+export const checkFirstTimeUser = async (): Promise<boolean> => {
+  const result = await getStorageData(StorageKeys.firstTimeUser)
+  return result.success && !result.data
 }

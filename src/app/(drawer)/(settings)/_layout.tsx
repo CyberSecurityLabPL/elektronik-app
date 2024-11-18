@@ -1,6 +1,6 @@
 import { router, Stack } from "expo-router"
 import { useEffect } from "react"
-import { BackHandler } from "react-native"
+import { BackHandler, View } from "react-native"
 
 export default function Layout() {
   useEffect(() => {
@@ -18,31 +18,39 @@ export default function Layout() {
   }, [])
 
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="language"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="notifications"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="profile"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <View className="flex-1 bg-background">
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="language"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="notifications"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="profile"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="theme"
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack>
+    </View>
   )
 }

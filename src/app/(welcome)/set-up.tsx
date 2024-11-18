@@ -1,19 +1,21 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
+import Circles from "@/components/svgs/Circles"
+import Lines from "@/components/svgs/Lines"
 import { LogoSvg } from "@/components/svgs/LogoSvg"
+import Multiplication from "@/components/svgs/Multiplication"
+import SmallCircles from "@/components/svgs/SmallCircles"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import { Select, SelectItem } from "@/components/ui/Select"
 import useColors from "@/hooks/useColors"
-import { saveFirstTime, saveUserData } from "@/lib/utils"
+import { setStorageData, StorageKeys } from "@/lib/storage"
+import { checkFirstTimeUser } from "@/lib/utils"
+import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
-import { Text, View } from "react-native"
-import Circles from "@/components/svgs/Circles"
-import Lines from "@/components/svgs/Lines"
-import Multiplication from "@/components/svgs/Multiplication"
-import SmallCircles from "@/components/svgs/SmallCircles"
-import { UserData } from "@/types/utils"
+import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { Text, View } from "react-native"
 
 const SetUp = () => {
   const colors = useColors()
@@ -26,15 +28,15 @@ const SetUp = () => {
 
   const goToHomeAsGuest = async () => {
     router.push("/home")
-    await saveFirstTime()
+    await setStorageData(StorageKeys.firstTimeUser, false)
   }
   const onSubmit: SubmitHandler<UserData> = async (data) => {
-    await saveUserData({
+    await setStorageData(StorageKeys.userData, {
       name: data.name,
       diaryNumber: data.diaryNumber,
       grade: data.grade,
     })
-    await saveFirstTime()
+    await setStorageData(StorageKeys.firstTimeUser, false)
     router.push("/home")
   }
 

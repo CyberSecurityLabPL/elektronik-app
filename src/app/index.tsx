@@ -6,23 +6,40 @@ import { WelcomeSvg } from "@/components/svgs/WelcomeSvg"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
-import { isFirstTime } from "@/lib/utils"
+import {
+  clearStorage,
+  getAllStorageData,
+  getStorageData,
+  StorageKeys,
+} from "@/lib/storage"
+import { checkFirstTimeUser } from "@/lib/utils"
 import { Redirect, router } from "expo-router"
 import { LoaderCircle } from "lucide-react-native"
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useLayoutEffect, useState } from "react"
 import { Text, View } from "react-native"
 
 const Page = () => {
   const colors = useColors()
   const [loading, setLoading] = useState(true)
-  const [redirect, setRedirect] = useState(false)
+
+  console.log("page fires")
 
   useEffect(() => {
-    isFirstTime().then((isFirstTime) => {
-      setLoading(false)
-      setRedirect(!isFirstTime)
+    console.log("effect fires")
+
+    getAllStorageData().then((res) => {
+      if (res.success) {
+        console.log(res.data)
+      }
     })
-  }, [redirect, loading])
+
+    checkFirstTimeUser().then((shouldRedirect) => {
+      if (shouldRedirect) {
+        router.push("/home")
+      }
+      setLoading(false)
+    })
+  }, [])
 
   if (loading)
     return (
@@ -32,8 +49,6 @@ const Page = () => {
         </View>
       </ScreenWrapper>
     )
-
-  if (redirect) return <Redirect href={"/home"} />
   else
     return (
       <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
@@ -59,12 +74,11 @@ const Page = () => {
             </View>
           </View>
         </View>
-        <View className="flex justify-center w-full items-center flex-col">
-          <Button
-            text="Kontynuuj"
-            onPress={() => router.navigate("/about-app")}
-          />
-        </View>
+        <Button
+          text="Kontynuuj"
+          onPress={() => router.navigate("/about-app")}
+        />
+
         <View className="absolute top-32 -left-14 -z-10">
           <Circles color={colors.svg.circles} />
         </View>

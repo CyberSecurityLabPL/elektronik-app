@@ -6,22 +6,29 @@ import { router, useNavigation } from "expo-router"
 import { cn } from "@/lib/utils"
 import { DrawerActions } from "@react-navigation/native"
 import useColors from "@/hooks/useColors"
+import { useDrawerStatus } from "@react-navigation/drawer"
 
 interface headingProps {
   title: string
-  homeScreen?: boolean
-  settingsScreen?: boolean
+  // homeScreen?: boolean
+  // settingsScreen?: boolean
+  screen?: "default" | "settings"
 }
-const Heading = ({ title, homeScreen, settingsScreen }: headingProps) => {
+const Heading = ({ title, screen = "default" }: headingProps) => {
   const colors = useColors()
   const navigation = useNavigation()
   const openDrawer = () => {
-    navigation.dispatch(DrawerActions.openDrawer())
+    navigation.dispatch(DrawerActions.toggleDrawer())
   }
+
+  const settingsScreen = screen === "settings"
 
   return (
     <View
-      className={cn(settingsScreen ? "gap-7" : "", "w-full flex flex-col pt-6")}
+      className={cn(
+        settingsScreen ? "gap-7" : "",
+        "w-full flex flex-col pt-6 mb-6",
+      )}
     >
       <View
         className={cn(
@@ -39,7 +46,7 @@ const Heading = ({ title, homeScreen, settingsScreen }: headingProps) => {
       <View className="flex flex-col gap-1 ">
         <Text
           className={cn(
-            homeScreen ? "flex" : "hidden",
+            !settingsScreen ? "flex" : "hidden",
             "text-foreground-secondary text-base ",
           )}
         >

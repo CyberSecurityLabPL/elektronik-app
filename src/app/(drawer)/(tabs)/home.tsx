@@ -75,10 +75,7 @@ const Home = () => {
           />
         }
       >
-        <Heading
-          title={userData ? userData.name : "Miło Cię widzieć"}
-          homeScreen
-        />
+        <Heading title={userData ? userData.name : "Miło Cię widzieć"} />
         <Pressable
           onPress={() => setIsBellModalOpen(true)}
           className="flex flex-row mt-6 "
