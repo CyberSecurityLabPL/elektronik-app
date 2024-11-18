@@ -9,10 +9,15 @@ import {
   storeDataObject,
   storeDataValue,
 } from "./storage"
+import { BACKEND_URL } from "@/constants/urls"
 
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
+}
+
+export function getStrapiImageUrl(url: string): string {
+  return BACKEND_URL + url
 }
 
 /**
@@ -43,6 +48,5 @@ export async function saveUserData(userData: UserData) {
 
 export async function getUserData(): Promise<UserData> {
   const userData: UserData = await getDataObject("user-data")
-  if (!userData) throw new Error("User Data not found in async storage!")
   return userData
 }

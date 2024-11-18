@@ -1,6 +1,7 @@
 import { format } from "date-fns"
 
 export const API_URL = "http://api.elektronik.zgora.pl/api"
+export const BACKEND_URL = "http://api.elektronik.zgora.pl"
 export const TIMETABLE_API_URL = "http://89.77.214.173:5678/api" //todo change to a proper url in prod
 
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
@@ -23,7 +24,15 @@ export const EVENTS_URL = (page: number, pageSize: number) =>
 
 export const EVENT_URL = (id: number) => `/events/${id}`
 
+export const UPCOMING_EVENT_URL = (date: Date) =>
+  `/events?pagination[pageSize]=1&pagination[page]=1&sort[1]=date:asc&filters[date][$gte]=${format(
+    date,
+    "yyyy-MM-dd",
+  )}`
+
 export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
   `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}`
 
 export const ANNOUNCEMENT_URL = (id: number) => `/announcements/${id}`
+
+export const BELLS_URL = () => `/bells?populate=*`

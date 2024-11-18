@@ -24,6 +24,15 @@ const colors = {
       smallSquares: "#FFF3FA",
       multiplication: "#E7ECFF",
     },
+    eventSvg: {
+      halfCircle: "#FED6A7",
+      squares: "#FFC27B",
+      rotatedSquares: "#FFBD71",
+      pinkLines: "#FC7DE0",
+      blueLines: "#BFF2FF",
+      pinkStar: "#FF82E3",
+      blueStar: "#B9F0FF",
+    },
   },
   dark: {
     primary,
@@ -44,6 +53,15 @@ const colors = {
       square: "#1C3552",
       smallSquares: "#32244F",
       multiplication: "#32244F",
+    },
+    eventSvg: {
+      halfCircle: "#FED6A7",
+      squares: "#FFC27B",
+      rotatedSquares: "#FFBD71",
+      pinkLines: "#C027C2",
+      blueLines: "#4449BD",
+      pinkStar: "#A71EA9",
+      blueStar: "#3053AD",
     },
   },
 } satisfies Colors

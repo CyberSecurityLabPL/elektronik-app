@@ -24,4 +24,13 @@ export interface ColorScheme {
     smallSquares: string
     multiplication: string
   }
+  eventSvg: {
+    halfCircle: string
+    squares: string
+    rotatedSquares: string
+    pinkLines: string
+    blueLines: string
+    pinkStar: string
+    blueStar: string
+  }
 }

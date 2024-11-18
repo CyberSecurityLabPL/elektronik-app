@@ -1,6 +1,6 @@
 import { ANNOUNCEMENT_URL, ANNOUNCEMENTS_URL } from "@/constants/urls"
 import { api } from "@/lib/axios"
-import { useQuery } from "@tanstack/react-query"
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { AnnouncementResponse, SingleAnnouncementResponse } from "./types"
 
 export const useAnnouncements = ({
@@ -10,11 +10,22 @@ export const useAnnouncements = ({
   page: number
   pageSize: number
 }) =>
-  useQuery<AnnouncementResponse>({
+  useInfiniteQuery<AnnouncementResponse>({
     queryKey: ["announcements"],
-    queryFn: async () => {
-      const { data } = await api.get(ANNOUNCEMENTS_URL(page, pageSize))
+    queryFn: async ({ pageParam }) => {
+      const { data } = await api.get(
+        ANNOUNCEMENTS_URL(pageParam as number, pageSize),
+      )
       return data
+    },
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => {
+      const { page, pageCount } = lastPage.meta.pagination
+      return page < pageCount ? page + 1 : undefined
+    },
+    getPreviousPageParam: (firstPage) => {
+      const { page } = firstPage.meta.pagination
+      return page > 1 ? page - 1 : undefined
     },
   })
 

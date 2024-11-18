@@ -1,19 +1,19 @@
-import { Text, View } from "react-native"
-import React from "react"
-import { router } from "expo-router"
-import ScreenWrapper from "@/components/ScreenWrapper"
-import ProgressIndicator from "@/components/ui/ProgressIndicator"
-import Button from "@/components/ui/Button"
-import useColors from "@/hooks/useColors"
 import {
-	AboutSvg,
-	BottomLine,
-	Circles,
-	Lines,
-	SmallSquares,
-	UpperLine,
+  AboutSvg,
+  BottomLine,
+  Circles,
+  Lines,
+  UpperLine,
 } from "@/components/icons"
+import ScreenWrapper from "@/components/ScreenWrapper"
+import RotatedSquares from "@/components/svgs/RotatedSquares"
+import Button from "@/components/ui/Button"
+import ProgressIndicator from "@/components/ui/ProgressIndicator"
+import useColors from "@/hooks/useColors"
+import { router } from "expo-router"
 import { Square } from "lucide-react-native"
+import React from "react"
+import { Text, View } from "react-native"
 
 const AboutApp = () => {
   const colors = useColors()
@@ -47,7 +47,7 @@ const AboutApp = () => {
         <Lines color={colors.svg.lines} />
       </View>
       <View className="absolute top-24 right-28 -z-10">
-        <SmallSquares color={colors.svg.smallSquares} />
+        <RotatedSquares color={colors.svg.smallSquares} />
       </View>
       <View className="absolute top-6 -left-28 -z-10">
         <UpperLine color={colors.svg.upperLine} />
