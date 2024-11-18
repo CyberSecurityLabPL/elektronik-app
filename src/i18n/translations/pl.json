@@ -1,0 +1,47 @@
+{
+  "Welcome": {
+    "firstPage": "",
+    "secondPage": "",
+    "setUp": {
+      "name": "",
+      "class": "",
+      "diaryNumber": ""
+    }
+  },
+  "Home": {
+    "minutes": "minut",
+    "bells": "Dzwonki",
+    "announcements": "Ogłoszenia",
+    "timeMessage": {
+      "weekend": " Dzisiaj Jest Weekend!",
+      "goodnight": "Dobranoc!",
+      "toBreak": "Do przerwy pozostało",
+      "toLesson": "Do lekcji pozostało",
+      "endLesson": "Koniec Lekcji!"
+    }
+  },
+  "Settings": {
+    "heading": "Język",
+    "languages": {
+      "polish": "Polski",
+      "english": "Angielski",
+      "ukrainian": "Ukrański",
+      "chinese": "Chiński"
+    },
+    "Theme": {
+      "heading": "Motywy",
+      "light": "Jasny",
+      "dark": "Ciemny",
+      "infoLight": "Zmiana motywu na jasny...",
+      "infoDark": "Zmiana motywu na ciemny..."
+    }
+  },
+  "Button": {
+    "continue": "Kontynuuj",
+    "guest": "Kontynuuj jako gość"
+  },
+  "Heading": {
+    "greet": "Dzień dobry,",
+    "wish": "Miło Cię widzieć"
+  }
+}

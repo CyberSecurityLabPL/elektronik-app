@@ -1,0 +1,31 @@
+{
+  "Welcome": {
+    "firstPage": "",
+    "secondPage": "",
+    "setUp": {
+      "name": "",
+      "class": "",
+      "diaryNumber": ""
+    }
+  },
+  "Home": {
+    "minutes": "minut",
+    "bells": "Dzwonki",
+    "announcements": "Announcements",
+    "timeMessage": {
+      "weekend": " Dzisiaj Jest Weekend!",
+      "goodnight": "Dobranoc!",
+      "toBreak": "Do przerwy pozostało",
+      "toLesson": "Do lekcji pozostało",
+      "endLesson": "Koniec Lekcji!"
+    }
+  },
+  "Button": {
+    "continue": "Kontynuuj",
+    "guest": "Kontynuuj jako gość"
+  },
+  "Heading": {
+    "greet": "Good Morning,",
+    "wish": "Nice to see you"
+  }
+}

@@ -64,9 +64,10 @@ const LargeButton = ({
   extraText,
   selected,
   onPress,
+  className,
   href,
   strokeWidth = 2,
-}: LargeButtonProps) => {
+}: LargeButtonProps & { className?: string }) => {
   const colors = useColors()
 
   const Button = (
@@ -74,11 +75,10 @@ const LargeButton = ({
       activeOpacity={0.7}
       onPress={onPress}
       className={cn(
-        "flex flex-row items-center w-full bg-background-secondary p-4 rounded-2xl min-h-16 justify-start",
-        {
-          "justify-between": extendable || selected,
-          "flex-1 flex-grow self-end": href,
-        },
+        `flex flex-row ${
+          extendable || selected ? "justify-between" : "justify-start"
+        } items-center w-full bg-background-secondary p-4 rounded-2xl min-h-16`,
+        className,
       )}
     >
       <View className="flex flex-row justify-center items-center gap-4">

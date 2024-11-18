@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 import { DrawerActions } from "@react-navigation/native"
 import useColors from "@/hooks/useColors"
 import { useDrawerStatus } from "@react-navigation/drawer"
+import { useTranslation } from "react-i18next"
 
 interface headingProps {
   title: string
@@ -17,6 +18,7 @@ interface headingProps {
 const Heading = ({ title, screen = "default" }: headingProps) => {
   const colors = useColors()
   const navigation = useNavigation()
+  const { t } = useTranslation()
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.toggleDrawer())
   }
@@ -50,7 +52,7 @@ const Heading = ({ title, screen = "default" }: headingProps) => {
             "text-foreground-secondary text-base ",
           )}
         >
-          Dzień dobry,
+          {t("Heading.greet")}
         </Text>
 
         <Text className="text-foreground font-psemibold text-2xl">{title}</Text>

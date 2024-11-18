@@ -9,6 +9,7 @@ import { clearStorage } from "@/lib/storage"
 import { Bell, Languages, Sun, User2, X } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
 import { useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 import { toast } from "sonner-native"
 
@@ -22,6 +23,32 @@ const Settings = () => {
   // Todo: change this to a dynamic value from storage
   const { colorScheme, setColorScheme } = useColorScheme()
   const theme = useTheme()
+  const { i18n, t } = useTranslation()
+
+  const languages = [
+    {
+      code: "pl",
+      nativeName: "Polski",
+      localName: t("Settings.languages.polish"),
+    },
+    {
+      code: "en",
+      nativeName: "English",
+      localName: t("Settings.languages.english"),
+    },
+    {
+      code: "uk",
+      nativeName: "Українська",
+      localName: t("Settings.languages.ukrainian"),
+    },
+    {
+      code: "zh",
+      nativeName: "中文",
+      localName: t("Settings.languages.chinese"),
+    },
+  ]
+
+  const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
   return (
     <ScreenWrapper>
@@ -59,7 +86,7 @@ const Settings = () => {
           LucideIcon={Languages}
           href={"/(drawer)/(settings)/language"}
           strokeWidth={1.5}
-          extraText={currentlySelectedLanguage}
+          extraText={currentLanguage?.localName}
         />
         <LargeButton
           text="Clear storage"
@@ -76,23 +103,23 @@ const Settings = () => {
           <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
             <View className="p-4 w-full flex gap-2">
               <Text className="text-3xl text-foreground font-pmedium text-center p-6">
-                Motywy
+                {t("Settings.Theme.heading")}
               </Text>
               <LargeButton
-                text="Jasny"
+                text={t("Settings.Theme.light")}
                 onPress={() => {
                   theme.setTheme("light")
                   setColorScheme("light")
-                  toast("Switching theme to light...")
+                  toast(t("Settings.Theme.infoLight"))
                 }}
                 selected={colorScheme === "light"}
               />
               <LargeButton
-                text="Ciemny"
+                text={t("Settings.Theme.dark")}
                 onPress={() => {
                   theme.setTheme("dark")
                   setColorScheme("dark")
-                  toast("Switching theme to dark...")
+                  toast(t("Settings.Theme.infoDark"))
                 }}
                 selected={colorScheme === "dark"}
               />

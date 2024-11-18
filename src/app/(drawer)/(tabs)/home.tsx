@@ -14,11 +14,19 @@ import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
 import { differenceInDays, format, isWithinInterval, set } from "date-fns"
-import { pl } from "date-fns/locale/pl"
+import { enUS, pl, uk, zhCN } from "date-fns/locale"
 import { router } from "expo-router"
 import { X } from "lucide-react-native"
 import React, { useCallback, useMemo, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native"
+
+const localeMap = {
+  pl: pl,
+  en: enUS,
+  uk: uk,
+  zh: zhCN,
+}
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false)
@@ -28,6 +36,7 @@ const Home = () => {
   const colors = useColors()
   const userData = useUserData()
   const curDate = new Date()
+  const { t, i18n } = useTranslation()
 
   const { data: article, refetch: refetchArticles } = useArticles({
     page: 1,
@@ -75,7 +84,7 @@ const Home = () => {
           />
         }
       >
-        <Heading title={userData ? userData.name : "Miło Cię widzieć"} />
+        <Heading title={userData ? userData.name : t("Heading.wish")} />
         <Pressable
           onPress={() => setIsBellModalOpen(true)}
           className="flex flex-row mt-6 "
@@ -95,7 +104,7 @@ const Home = () => {
                 "text-primary font-pregular text-xl  text-center",
               )}
             >
-              minut
+              {t("Home.minutes")}
             </Text>
           </View>
         </Pressable>
@@ -107,7 +116,7 @@ const Home = () => {
           <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
             <View className="py-4">
               <Text className="text-3xl text-foreground font-pmedium text-center p-6">
-                Dzwonki
+                {t("Home.bells")}
               </Text>
 
               {lessons.map((lesson, index) => {
@@ -159,7 +168,12 @@ const Home = () => {
                       ? format(
                           new Date(event.data[0].attributes.date),
                           "dd MMMM ",
-                          { locale: pl },
+                          {
+                            locale:
+                              localeMap[
+                                i18n.language as keyof typeof localeMap
+                              ] || pl,
+                          },
                         )
                       : "Invalid date"
                   }
@@ -194,7 +208,7 @@ const Home = () => {
           </View>
         </Modal>
         <Text className="text-foreground text-xl font-psemibold ">
-          Ogłoszenia
+          {t("Home.announcements")}
         </Text>
         <View className="mt-4 flex flex-col gap-6 mb-8">
           <HomeCard
@@ -210,7 +224,11 @@ const Home = () => {
                       article?.pages[0].data[0].attributes.createdAt ?? "",
                     ),
                     "dd MMMM ",
-                    { locale: pl },
+                    {
+                      locale:
+                        localeMap[i18n.language as keyof typeof localeMap] ||
+                        pl,
+                    },
                   )
                 : "Brak daty"
             }
