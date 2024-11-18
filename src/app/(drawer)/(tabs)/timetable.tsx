@@ -2,7 +2,11 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import DayTab from "@/components/timetable/DayTab"
 import Lesson from "@/components/timetable/Lesson"
 import TimetableSelect from "@/components/TimetableSelect"
+import IconButton from "@/components/ui/IconButton"
 import Input from "@/components/ui/Input"
+import LargeButton from "@/components/ui/LargeButton"
+import Modal from "@/components/ui/Modal"
+import Switch from "@/components/ui/Switch"
 import { TimetableInfoResponse } from "@/hooks/timetable/types"
 import {
   useTimetable,
@@ -17,7 +21,13 @@ import BottomSheet, {
 import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types"
 import { add, format, isWeekend, startOfWeek } from "date-fns"
 import { pl } from "date-fns/locale/pl"
-import { DoorOpen, GraduationCap, Settings, Users } from "lucide-react-native"
+import {
+  DoorOpen,
+  GraduationCap,
+  Settings,
+  Users,
+  X,
+} from "lucide-react-native"
 import {
   Dispatch,
   SetStateAction,
@@ -28,14 +38,15 @@ import {
   useState,
 } from "react"
 import { FlatList, Pressable, Text, View } from "react-native"
+import { TouchableOpacity } from "react-native-gesture-handler"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
 type allDays = classDays | "sobota" | "niedziela"
 
 const Timetable = () => {
   //todo manage group and showReligion in settings
-  const group: number = 2
-  const showReligion: boolean = false
+  const [group, setGroup] = useState(1)
+  const [showReligion, setShowReligion] = useState(false)
 
   const [selectedTimetable, setSelectedTimetable] = useState("o25")
   const {
@@ -49,6 +60,8 @@ const Timetable = () => {
   useEffect(() => {
     refetchTimetable()
   }, [data, selectedTimetable])
+
+  const [settingsModalOpen, setSettingsModalOpen] = useState(false)
 
   const getDayName = (date: Date) =>
     format(date, "EEEE", { locale: pl })
@@ -95,9 +108,14 @@ const Timetable = () => {
         <Text className="text-foreground font-psemibold text-3xl">
           Plan Lekcji
         </Text>
-        <View className="flex justify-center items-center bg-background-secondary p-2 rounded-xl">
-          <Settings size={24} color={"#B6B6D9"} />
-        </View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          onPress={() => setSettingsModalOpen(true)}
+        >
+          <View className="flex justify-center items-center bg-background-secondary p-2 rounded-xl">
+            <Settings size={24} color={"#B6B6D9"} />
+          </View>
+        </TouchableOpacity>
       </View>
       <View className="flex-row justify-between items-center pb-6 px-5 w-full">
         {Array(5)
@@ -181,6 +199,55 @@ const Timetable = () => {
           />
         </BottomSheetScrollView>
       </BottomSheet>
+      <Modal
+        id="timetable-settings"
+        isOpen={settingsModalOpen}
+        onClose={() => setSettingsModalOpen(false)}
+      >
+        <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
+          <View className="p-6 w-full flex gap-4">
+            <Text className="text-3xl text-foreground font-pmedium text-center p-6">
+              Ustawienia Planu
+            </Text>
+            <View className="flex flex-row justify-between items-center gap-4">
+              <Text className="text-foreground font-pmedium text-lg">
+                Grupa
+              </Text>
+              <View className="flex flex-row justify-center items-center w-full gap-4">
+                <LargeButton
+                  className="w-20"
+                  text="1"
+                  selected={group === 1}
+                  onPress={() => setGroup(1)}
+                />
+                <LargeButton
+                  className="w-20"
+                  text="2"
+                  selected={group === 2}
+                  onPress={() => setGroup(2)}
+                />
+              </View>
+            </View>
+            <View className="flex flex-row justify-between items-center gap-4">
+              <Text className="text-foreground font-pmedium text-lg">
+                Pokazywać religię
+              </Text>
+              <Switch
+                isEnabled={showReligion}
+                onToggle={() => {
+                  setShowReligion(!showReligion)
+                }}
+              />
+            </View>
+          </View>
+          <IconButton
+            LucideIcon={X}
+            iconColor={colors.foreground}
+            onPress={() => setSettingsModalOpen(false)}
+            className="my-4"
+          />
+        </View>
+      </Modal>
     </ScreenWrapper>
   )
 }
