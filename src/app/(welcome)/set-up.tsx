@@ -31,11 +31,16 @@ const SetUp = () => {
     await setStorageData(StorageKeys.firstTimeUser, false)
   }
   const onSubmit: SubmitHandler<UserData> = async (data) => {
-    await setStorageData(StorageKeys.userData, {
+    const result = await setStorageData(StorageKeys.userData, {
       name: data.name,
-      diaryNumber: data.diaryNumber,
+      diaryNumber: Number(data.diaryNumber),
       grade: data.grade,
     })
+    if (result.success) {
+      console.log("Data saved successfully:", result.data)
+    } else {
+      console.error("Error saving data:", result.error)
+    }
     await setStorageData(StorageKeys.firstTimeUser, false)
     router.push("/home")
   }

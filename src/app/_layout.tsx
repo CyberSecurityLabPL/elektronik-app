@@ -58,6 +58,12 @@ function RootLayoutNav() {
         }}
       />
       <Stack.Screen
+        name="(welcome)"
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <Stack.Screen
         name="(welcome)/about-app"
         options={{
           headerShown: false,
@@ -68,7 +74,7 @@ function RootLayoutNav() {
         options={{
           headerShown: false,
         }}
-      />
+      /> */}
       <Stack.Screen
         name="(drawer)"
         options={{
