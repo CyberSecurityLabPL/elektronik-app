@@ -8529,6 +8529,7 @@ snapshots:
   elektronik-app@file:(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(expo-constants@16.0.2(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))))(expo-modules-autolinking@1.11.3)(typescript@5.3.3):
     dependencies:
       '@expo/vector-icons': 14.0.4
+      '@gorhom/bottom-sheet': 5.0.6(@types/react@18.2.79)(react-native-gesture-handler@2.16.2(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native-reanimated@3.10.1(@babel/core@7.26.0)(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0))(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@react-native-async-storage/async-storage': 2.0.0(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))
       '@react-native-picker/picker': 2.7.5(react-native@0.74.5(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))(@types/react@18.2.79)(react@18.2.0))(react@18.2.0)
       '@react-navigation/drawer': 6.7.2(ivcsnqcejeonaobvufldcbw2wi)
@@ -8566,6 +8567,7 @@ snapshots:
       - '@babel/preset-env'
       - '@testing-library/jest-native'
       - '@types/react'
+      - '@types/react-native'
       - bufferutil
       - debug
       - encoding

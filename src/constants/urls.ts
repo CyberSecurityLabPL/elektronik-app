@@ -2,7 +2,7 @@ import { format } from "date-fns"
 
 export const API_URL = "http://api.elektronik.zgora.pl/api"
 export const BACKEND_URL = "http://api.elektronik.zgora.pl"
-export const TIMETABLE_API_URL = "http://89.77.214.173:5678/api" //todo change to a proper url in prod
+export const TIMETABLE_API_URL = "http://timetable.ddns.net:5678/api" //todo change to a proper url in prod
 
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
 export const TIMETABLE_ALL_INFO_URL = () => `/info`

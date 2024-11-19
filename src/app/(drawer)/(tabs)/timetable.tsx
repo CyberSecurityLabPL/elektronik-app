@@ -22,6 +22,8 @@ import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types"
 import { add, format, isWeekend, startOfWeek } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import {
+  CircleAlert,
+  Cloud,
   DoorOpen,
   GraduationCap,
   Settings,
@@ -33,7 +35,6 @@ import {
   SetStateAction,
   useCallback,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from "react"
@@ -44,13 +45,13 @@ type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
 type allDays = classDays | "sobota" | "niedziela"
 
 const Timetable = () => {
-  //todo manage group and showReligion in settings
   const [group, setGroup] = useState(1)
   const [showReligion, setShowReligion] = useState(false)
 
   const [selectedTimetable, setSelectedTimetable] = useState("o25")
   const {
     data,
+    isLoading,
     isError,
     error,
     refetch: refetchTimetable,
@@ -59,6 +60,7 @@ const Timetable = () => {
   const {
     data: info,
     isError: isInfoError,
+    error: infoError,
     isRefetching: isRefetchingInfo,
     refetch: refetchInfo,
   } = useTimetableAllInfo()
@@ -83,10 +85,8 @@ const Timetable = () => {
     ),
   )
 
-  // console.log(data)
   const bottomSheetRef = useRef<BottomSheet>(null)
   const handleOpenPress = () => bottomSheetRef.current?.expand()
-  const snapPoints = useMemo(() => ["0%", "50%"], [])
   const renderBackdrop = useCallback(
     (props: any) => (
       <BottomSheetBackdrop
@@ -97,16 +97,14 @@ const Timetable = () => {
     ),
     [],
   )
-  if (isError) {
+  if (isError || isInfoError) {
     console.warn(
       "Zapewne masz zły URL planu lekcji, zmień go z localhost na ten komputera bo to tel fetchuje dane co potrzebujesz",
     )
-    console.error(error)
+    const err = isError ? error : infoError
+    console.error(err)
   }
   const colors = useColors()
-  useEffect(() => {
-    // console.log(info)
-  }, [info, selectedTimetable])
 
   return (
     <ScreenWrapper className="flex justify-top items-center w-full h-full px-0">
@@ -157,6 +155,7 @@ const Timetable = () => {
               progressBackgroundColor={colors.backgroundSecondary}
             />
           }
+          ListEmptyComponent={isLoading ? <LoadingSkeleton /> : <NoData />}
           showsVerticalScrollIndicator={false}
           data={data?.lessons[day as classDays]}
           renderItem={({ item, index }) => {
@@ -187,13 +186,22 @@ const Timetable = () => {
           ItemSeparatorComponent={() => <View className="h-2" />}
         />
       </View>
-      <View className="w-full absolute bottom-6  bg-background flex justify-center items-center p-4 pb-8">
+      <View className="w-full absolute bottom-6 bg-background flex justify-center items-center p-4 pb-8 border-y border-y-background-secondary">
         <Pressable
-          className="flex justify-center items-center bg-background-secondary p-2 px-16 rounded-3xl"
+          className="flex w-full justify-center items-center bg-background-secondary mb-2 p-2 px-16 rounded-2xl"
           onPress={handleOpenPress}
         >
           <Text className="font-pmedium text-xl text-foreground ">
-            {info?.find((el) => el.id === selectedTimetable)?.name}
+            {info
+              ? info
+                  ?.find((el) => el.id === selectedTimetable)
+                  ?.id.toLowerCase()
+                  .includes("o")
+                ? info
+                    ?.find((el) => el.id === selectedTimetable)
+                    ?.name.split(" ")[0]
+                : info?.find((el) => el.id === selectedTimetable)?.name
+              : "Brak Danych"}
           </Text>
           <Text className="font-pregular text-foreground">Rozkład zajęć</Text>
         </Pressable>
@@ -320,5 +328,31 @@ function BottomSheetSelectors({
         onItemSelect={() => bottomSheetRef.current?.close()}
       />
     </>
+  )
+}
+
+const LoadingSkeleton = () => {
+  return (
+    <View className="min-w-full h-full flex flex-col justify-center items-center p-4 gap-2">
+      {Array(5)
+        .fill("")
+        .map((_, i) => (
+          <View
+            key={`Loading-Skeleton-${i}`}
+            className="w-full h-24 bg-background-secondary animate-pulse rounded-2xl"
+          ></View>
+        ))}
+    </View>
+  )
+}
+
+const NoData = () => {
+  return (
+    <View className="min-w-full min-h-96 flex flex-col justify-center items-center p-4 gap-2">
+      <CircleAlert color={"#ef4444"} size={64} />
+      <Text className="font-psemibold text-foreground text-3xl">
+        Brak Danych
+      </Text>
+    </View>
   )
 }

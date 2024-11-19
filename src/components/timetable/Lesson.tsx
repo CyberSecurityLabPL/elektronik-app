@@ -71,7 +71,8 @@ const Lesson = ({
         </View>
         <View className="flex flex-row justify-center items-center dark:bg-zinc-600/20 bg-zinc-200/20 px-3 py-1 rounded-md">
           <Text className="text-[#6D6D6D] text-1xl">
-            {initials} {room}
+            {initials.length > 8 ? initials.slice(0, 8) + "..." : initials}{" "}
+            {room}
           </Text>
         </View>
       </Pressable>
