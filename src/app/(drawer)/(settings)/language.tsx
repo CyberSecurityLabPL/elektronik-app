@@ -1,7 +1,7 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import LargeButton from "@/components/ui/LargeButton"
-import { languages } from "@/config"
+
 import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 import { router } from "expo-router"
 import React, { useLayoutEffect } from "react"
@@ -12,8 +12,6 @@ type LanguageCode = "pl" | "en" | "uk" | "de" | "cz" | "zhCH"
 
 const Language = () => {
   const { i18n, t } = useTranslation()
-
-  console.log("Language options:", languages)
 
   useLayoutEffect(() => {
     const fetchLanguage = async () => {
@@ -33,6 +31,7 @@ const Language = () => {
     const result = await setStorageData("language", language)
 
     if (result.success) {
+      console.log("Language in async storage saved: ", result.data)
     } else {
       // Handle error
       console.error("Failed to save settings:", result.error)
@@ -40,6 +39,38 @@ const Language = () => {
     i18n.changeLanguage(language)
     router.back()
   }
+  const languages = [
+    {
+      code: "pl",
+      nativeName: "Polski",
+      localName: t("Settings.languages.polish"),
+    },
+    {
+      code: "en",
+      nativeName: "English",
+      localName: t("Settings.languages.english"),
+    },
+    {
+      code: "uk",
+      nativeName: "Українська",
+      localName: t("Settings.languages.ukrainian"),
+    },
+    {
+      code: "de",
+      nativeName: "Deutch",
+      localName: t("Settings.languages.german"),
+    },
+    {
+      code: "cz",
+      nativeName: "české republice",
+      localName: t("Settings.languages.czech"),
+    },
+    {
+      code: "zh",
+      nativeName: "中文",
+      localName: t("Settings.languages.chinese"),
+    },
+  ]
 
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 

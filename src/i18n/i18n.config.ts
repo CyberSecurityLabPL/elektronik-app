@@ -7,29 +7,30 @@ import { LanguageDetectorModule } from "i18next"
 
 const languageDetector: LanguageDetectorModule = {
   type: "languageDetector",
+  async: true,
+  // @ts-expect-error config does not expect promise but should
+  detect: async (callback: (lng: string) => void) => {
+    try {
+      const result = await getStorageData(StorageKeys.language)
 
-  detect: () => {
-    let detectedLanguage = "pl" // default language
-
-    getStorageData(StorageKeys.language)
-      .then((result) => {
-        if (result.success) {
-          detectedLanguage = result.data
-        } else {
-          setStorageData(StorageKeys.language, "pl")
-          detectedLanguage = "pl"
-        }
-      })
-      .catch((error) => {
-        console.log("Language detection error:", error)
-      })
-
-    return detectedLanguage
+      if (result.success && result.data) {
+        console.log("Language detection result:", result.data)
+        callback(result.data)
+      } else {
+        await setStorageData(StorageKeys.language, "pl")
+        console.log("Setting default language: pl")
+        callback("pl")
+      }
+    } catch (error) {
+      console.log("Language detection error:", error)
+      callback("pl")
+    }
   },
   init: () => {},
   cacheUserLanguage: async (language: string) => {
     try {
       await setStorageData("language", language)
+      console.log("language was set to: ", language)
     } catch (error) {
       console.log("Error caching user language:", error)
     }

@@ -4,7 +4,6 @@ import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import LargeButton from "@/components/ui/LargeButton"
 import Modal from "@/components/ui/Modal"
-import { languages } from "@/config"
 import useColors from "@/hooks/useColors"
 import { clearStorage } from "@/lib/storage"
 import { Bell, Languages, Sun, User2, X } from "lucide-react-native"
@@ -22,6 +21,38 @@ const Settings = () => {
   const { colorScheme, setColorScheme } = useColorScheme()
   const theme = useTheme()
   const { i18n, t } = useTranslation()
+  const languages = [
+    {
+      code: "pl",
+      nativeName: "Polski",
+      localName: t("Settings.languages.polish"),
+    },
+    {
+      code: "en",
+      nativeName: "English",
+      localName: t("Settings.languages.english"),
+    },
+    {
+      code: "uk",
+      nativeName: "Українська",
+      localName: t("Settings.languages.ukrainian"),
+    },
+    {
+      code: "de",
+      nativeName: "Deutch",
+      localName: t("Settings.languages.german"),
+    },
+    {
+      code: "cz",
+      nativeName: "české republice",
+      localName: t("Settings.languages.czech"),
+    },
+    {
+      code: "zh",
+      nativeName: "中文",
+      localName: t("Settings.languages.chinese"),
+    },
+  ]
 
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
