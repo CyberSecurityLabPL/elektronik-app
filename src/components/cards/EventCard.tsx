@@ -157,7 +157,7 @@ const EventCard = ({
         <Modal
           isOpen={modalOpen}
           onClose={() => {
-            setModalOpen(false)
+            // setModalOpen(false)
           }}
         >
           <ModalContent
@@ -177,17 +177,35 @@ export default EventCard
 
 function ModalContent({ title, date, description, iconColor, onPress }: any) {
   return (
-    <View className="w-96   rounded-2xl flex flex-col justify-between items-center   bg-background py-6 ">
+    // <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-2/3">
+    //   <ScrollView className="w-full px-6 py-1">
+    //     <Text className="text-2xl text-foreground font-pmedium text-left ">
+    //       {title}
+    //     </Text>
+    //     <Text className="text-primary font-psemibold">{date}</Text>
+    //     <Text className="text-base text-foreground-secondary text-wrap mt-2 ">
+    //       {description}
+    //     </Text>
+    //   </ScrollView>
+    //   <IconButton
+    //     LucideIcon={X}
+    //     iconColor={iconColor}
+    //     onPress={onPress}
+    //     className="mt-4"
+    //   />
+    // </View>
+    <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
       <View className="w-full px-6 py-1">
         <Text className="text-2xl text-foreground font-pmedium text-left ">
           {title}
         </Text>
         <Text className="text-primary font-psemibold">{date}</Text>
-
+      </View>
+      <ScrollView className="w-full px-6 py-1">
         <Text className="text-base text-foreground-secondary text-wrap mt-2 ">
           {description}
         </Text>
-      </View>
+      </ScrollView>
       <IconButton
         LucideIcon={X}
         iconColor={iconColor}

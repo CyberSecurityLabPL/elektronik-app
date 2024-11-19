@@ -40,7 +40,7 @@ export default function Modal({
   return (
     <RNModal
       visible={isOpen}
-      transparent
+      transparent={true}
       animationType="fade"
       statusBarTranslucent
       onRequestClose={onClose}
