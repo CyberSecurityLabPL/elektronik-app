@@ -1,0 +1,111 @@
+{
+  "Welcome": {
+    "firstPage": "Welcome to the school app Elektronik. Your school information center always at hand!",
+    "secondPage": "Electron++ is a student app that helps students with features like lesson schedule, substitute information.",
+    "setUp": {
+      "name": "Enter Name",
+      "nameError": "Enter name",
+      "class": "Enter Class",
+      "classError": "Select a class",
+      "diaryNumber": "Select diary number",
+      "diaryNumberError": "Enter a valid diary number"
+    }
+  },
+  "Home": {
+    "heading": "Nice to see you",
+    "subheading": "Good morning,",
+    "minutes": "minutes",
+    "bells": "Bells",
+    "announcements": "Announcements",
+    "timeMessage": {
+      "weekend": "💥 It's Weekend!",
+      "goodnight": "💤 Good Night!",
+      "toBreak": "🎓 Time until Break",
+      "toLesson": "😊 Time until Lesson",
+      "endLesson": "🌸 Lessons Ended!"
+    }
+  },
+  "Settings": {
+    "heading": "Settings",
+    "listItem": {
+      "profile": "Profile",
+      "notifications": "Notifications",
+      "theme": "Theme",
+      "languages": "Language"
+    },
+    "profile": {
+      "heading": "Profile"
+    },
+    "notifications": {
+      "heading": "Notifications",
+      "nSchoolTitle": "School Announcements",
+      "nSchoolSub": "Notifications about new school management announcements",
+      "nCouncilTitle": "Student Council Announcements",
+      "nCouncilSub": "Notifications about new student council announcements",
+      "nSubtitutionsTitle": "Substitutions",
+      "nSubtitutionsSub": "Notifications about new teacher substitutions"
+    },
+    "languages": {
+      "heading": "Language",
+      "polish": "Polish",
+      "english": "English",
+      "ukrainian": "Ukrainian",
+      "german": "German",
+      "czech": "Czech",
+      "chinese": "Chinese",
+      "spanish": "Spanish",
+      "french": "French"
+    },
+    "theme": {
+      "heading": "Themes",
+      "light": "Light",
+      "dark": "Dark",
+      "infoLight": "Changing theme to light...",
+      "infoDark": "Changing theme to dark..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Substitutions",
+    "error": "An unexpected error occurred, check your internet connection. If the problem persists, try again later.",
+    "none": "No Substitutions"
+  },
+  "Timetable": {
+    "heading": "Timetable",
+    "modal": {
+      "heading": "Timetable Settings",
+      "group": "Group",
+      "showRel": "Religion"
+    },
+    "button": "Class Schedule",
+    "none": "No data"
+  },
+  "Events": {
+    "heading": "Events",
+    "section": "Upcoming Events",
+    "type": {
+      "competition": "School Competition",
+      "holiday": "Holiday",
+      "event": "Ceremony"
+    }
+  },
+  "News": {
+    "heading": "Announcements",
+    "tabs": {
+      "school": "School",
+      "council": "Student Council"
+    }
+  },
+  "Button": {
+    "continue": "Continue",
+    "guest": "Continue as Guest"
+  },
+  "Sidebar": {
+    "radio": "Electron Radio",
+    "luckyNumber": "Lucky Number",
+    "settings": "Settings"
+  },
+  "Toast": {
+    "success": "Data has been saved",
+    "error": "An error occurred"
+  }
+}

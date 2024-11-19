@@ -1,4 +1,9 @@
-import { Check, ChevronRight, LucideProps } from "lucide-react-native"
+import {
+  Check,
+  ChevronRight,
+  LucideIcon,
+  LucideProps,
+} from "lucide-react-native"
 import React from "react"
 import {
   GestureResponderEvent,
@@ -7,17 +12,20 @@ import {
   View,
 } from "react-native"
 import useColors from "@/hooks/useColors"
+import { Href, Link } from "expo-router"
 import { cn } from "@/lib/utils"
 
 interface BaseLargeButtonProps {
   text: string
   extendable?: boolean
   onPress?: ((event: GestureResponderEvent) => void) | undefined
+  href?: Href
 }
 
 interface IconLargeButtonProps extends BaseLargeButtonProps {
-  LucideIcon: React.FC<LucideProps>
+  LucideIcon: LucideIcon
   iconColor: string
+  strokeWidth?: number
   selected?: false
 }
 
@@ -26,6 +34,7 @@ interface NoIconLargeButtonProps extends BaseLargeButtonProps {
   iconColor?: undefined
   extraText?: undefined
   selected?: boolean
+  strokeWidth?: never
 }
 
 interface SelectedNoIconLargeButtonProps extends NoIconLargeButtonProps {
@@ -56,10 +65,13 @@ const LargeButton = ({
   extraText,
   selected,
   onPress,
+  className,
+  href,
+  strokeWidth = 2,
 }: LargeButtonProps & { className?: string }) => {
   const colors = useColors()
 
-  return (
+  const Button = (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
@@ -73,7 +85,7 @@ const LargeButton = ({
       <View className="flex flex-row justify-center items-center gap-4">
         {LucideIcon ? (
           <View>
-            <LucideIcon size={32} color={iconColor} />
+            <LucideIcon strokeWidth={strokeWidth} size={32} color={iconColor} />
           </View>
         ) : null}
         <View>
@@ -89,11 +101,7 @@ const LargeButton = ({
       {extendable ? (
         <View className="flex flex-row justify-center items-center">
           {extraText ? (
-            <View>
-              <Text className="font-pmedium text-sm text-primary">
-                {extraText}
-              </Text>
-            </View>
+            <Text className="font-pmedium text-primary mr-1">{extraText}</Text>
           ) : null}
           <View>
             <ChevronRight size={24} color={iconColor} />
@@ -101,12 +109,18 @@ const LargeButton = ({
         </View>
       ) : selected ? (
         <View className="flex flex-row justify-center items-center">
-          <View>
-            <Check size={24} color={colors.primary} />
-          </View>
+          <Check size={24} color={colors.primary} />
         </View>
       ) : null}
     </TouchableOpacity>
+  )
+
+  return href ? (
+    <Link href={href} asChild className="w-full flex-grow-0">
+      {Button}
+    </Link>
+  ) : (
+    Button
   )
 }
 

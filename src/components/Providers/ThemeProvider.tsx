@@ -1,13 +1,15 @@
+import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 import { useColorScheme } from "nativewind"
 import {
   createContext,
   ReactNode,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react"
 
-type Theme = "light" | "dark"
+type Theme = "light" | "dark" | "system"
 
 interface IThemeContext {
   theme: Theme
@@ -22,24 +24,42 @@ const ThemeContext = createContext<IThemeContext>({
 })
 
 const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const { colorScheme, toggleColorScheme } = useColorScheme()
-  const [theme, setTheme] = useState<Theme>(colorScheme ?? "light")
+  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme()
 
-  const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"))
+  useLayoutEffect(() => {
+    const fetchTheme = async () => {
+      const result = await getStorageData(StorageKeys.theme)
+
+      if (result.success) {
+        setColorScheme(result.data)
+      } else {
+        setColorScheme("system")
+      }
+    }
+
+    fetchTheme()
+  }, [])
+
+  const toggleTheme = async () => {
     toggleColorScheme()
+    console.log(colorScheme)
   }
-
   useEffect(() => {
-    console.log("Theme changed to: ", theme)
-  }, [theme])
+    const setThemeFromStorage = async () => {
+      const result = await setStorageData(
+        StorageKeys.theme,
+        colorScheme ?? "system",
+      )
+    }
+    setThemeFromStorage()
+  }, [colorScheme])
 
   return (
     <ThemeContext.Provider
       value={{
-        theme,
+        theme: colorScheme ?? "system",
         toggleTheme,
-        setTheme,
+        setTheme: setColorScheme,
       }}
     >
       {children}

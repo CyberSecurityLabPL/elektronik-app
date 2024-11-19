@@ -1,0 +1,111 @@
+{
+  "Welcome": {
+    "firstPage": "Witaj w szkolnej apce Elektronika. Twoje szkolne centrum informacji zawsze pod ręką!",
+    "secondPage": "Elektronik to aplikacja stworzona z myślą o uczniach, oferująca takie funkcje jak plan lekcji, informacje o zastępstwach, artykuły, ogłoszenia oraz nadchodzące wydarzenia.",
+    "setUp": {
+      "name": "Podaj Imię",
+      "nameError": "Podaj imię",
+      "class": "Podaj Klasę",
+      "classError": "Wybierz klase",
+      "diaryNumber": "Wybierz numer z dziennika",
+      "diaryNumberError": "Podaj prawidłowy numerek z dziennika"
+    }
+  },
+  "Home": {
+    "heading": "Miło Cię widzieć",
+    "subheading": "Dzień dobry,",
+    "minutes": "minut",
+    "bells": "Dzwonki",
+    "announcements": "Ogłoszenia",
+    "timeMessage": {
+      "weekend": "💥 Dzisiaj Jest Weekend!",
+      "goodnight": "💤 Dobranoc!",
+      "toBreak": "🎓 Do przerwy pozostało",
+      "toLesson": "😊 Do lekcji pozostało",
+      "endLesson": "🌸 Koniec Lekcji!"
+    }
+  },
+  "Settings": {
+    "heading": "Ustawienia",
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Powiadomienia",
+      "theme": "Motyw",
+      "languages": "Język"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "notifications": {
+      "heading": "Powiadomienia",
+      "nSchoolTitle": "Ogłoszenia Szkolne",
+      "nSchoolSub": "Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej",
+      "nCouncilTitle": "Ogłoszenia Samorządu",
+      "nCouncilSub": "Notyfikacje o nowych ogłoszeniach samorządu uczniowskiego",
+      "nSubtitutionsTitle": "Zastępstwa",
+      "nSubtitutionsSub": "Notyfikacje o nowych zastępstwach nauczycieli"
+    },
+    "languages": {
+      "heading": "Język",
+      "polish": "Polski",
+      "english": "Angielski",
+      "ukrainian": "Ukrański",
+      "german": "Niemiecki",
+      "czech": "Czeski",
+      "chinese": "Chiński",
+      "spanish": "Hiszpański",
+      "french": "Francuski"
+    },
+    "theme": {
+      "heading": "Motywy",
+      "light": "Jasny",
+      "dark": "Ciemny",
+      "infoLight": "Zmiana motywu na jasny...",
+      "infoDark": "Zmiana motywu na ciemny..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Zastępstwa",
+    "error": "Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z internetem. Jeśli problem nadal występuje, spróbuj ponownie później.",
+    "none": "Brak Zastępstw"
+  },
+  "Timetable": {
+    "heading": "Plan Lekcji",
+    "modal": {
+      "heading": "Ustawienia planu",
+      "group": "Grupa",
+      "showRel": "Religia"
+    },
+    "button": "Rozkład zajęć",
+    "none": "Brak danych"
+  },
+  "Events": {
+    "heading": "Wydarzenia",
+    "section": "Następne wydarzenia",
+    "type": {
+      "competition": "Zawody Szkolne",
+      "holiday": "Święto",
+      "event": "Uroczystość"
+    }
+  },
+  "News": {
+    "heading": "Ogłoszenia",
+    "tabs": {
+      "school": "Szkolne",
+      "council": "Samorządu"
+    }
+  },
+  "Button": {
+    "continue": "Kontynuuj",
+    "guest": "Kontynuuj jako gość"
+  },
+  "Sidebar": {
+    "radio": "Radio Elektron",
+    "luckyNumber": "Szczęśliwy Numerek",
+    "settings": "Ustawienia"
+  },
+  "Toast": {
+    "success": "Dane zostały zapisane",
+    "error": "Wystąpił błąd"
+  }
+}

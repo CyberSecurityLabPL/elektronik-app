@@ -1,11 +1,15 @@
-import { getUserData } from "@/lib/utils"
-import { UserData } from "@/types/utils"
+import { getStorageData, StorageKeys } from "@/lib/storage"
+import { UserData } from "@/types/app-data"
 import { useEffect, useState } from "react"
 
 export const useUserData = () => {
   const [data, setData] = useState<UserData | undefined>()
   useEffect(() => {
-    getUserData().then((data) => setData(data))
+    getStorageData(StorageKeys.userData).then((result) => {
+      if (result.success) {
+        setData(result.data)
+      }
+    })
   }, [])
 
   return data

@@ -1,0 +1,111 @@
+{
+  "Welcome": {
+    "firstPage": "Bienvenue dans l'application scolaire Elektronik. Votre centre d'information scolaire toujours à portée de main!",
+    "secondPage": "Elektronik est une application conçue pour les élèves, offrant des fonctionnalités telles que l'emploi du temps, les informations sur les remplacements, les articles, les annonces et les événements à venir.",
+    "setUp": {
+      "name": "Entrez votre prénom",
+      "nameError": "Veuillez entrer votre prénom",
+      "class": "Entrez votre classe",
+      "classError": "Veuillez choisir une classe",
+      "diaryNumber": "Choisissez un numéro du journal",
+      "diaryNumberError": "Veuillez entrer un numéro de journal valide"
+    }
+  },
+  "Home": {
+    "heading": "Ravi de vous voir",
+    "subheading": "Bonjour,",
+    "minutes": "minutes",
+    "bells": "Sonneries",
+    "announcements": "Annonces",
+    "timeMessage": {
+      "weekend": "💥 C'est le week-end aujourd'hui!",
+      "goodnight": "💤 Bonne nuit!",
+      "toBreak": "🎓 Temps restant jusqu'à la pause",
+      "toLesson": "😊 Temps restant avant le cours",
+      "endLesson": "🌸 Fin des cours!"
+    }
+  },
+  "Settings": {
+    "heading": "Paramètres",
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Notifications",
+      "theme": "Thème",
+      "languages": "Langue"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "notifications": {
+      "heading": "Notifications",
+      "nSchoolTitle": "Annonces de l'école",
+      "nSchoolSub": "Notifications des nouvelles annonces de la direction de l'école",
+      "nCouncilTitle": "Annonces du Conseil",
+      "nCouncilSub": "Notifications des nouvelles annonces du conseil des élèves",
+      "nSubtitutionsTitle": "Remplacements",
+      "nSubtitutionsSub": "Notifications des nouveaux remplacements d'enseignants"
+    },
+    "languages": {
+      "heading": "Langue",
+      "polish": "Polonais",
+      "english": "Anglais",
+      "ukrainian": "Ukrainien",
+      "german": "Allemand",
+      "czech": "Tchèque",
+      "chinese": "Chinois",
+      "spanish": "Espagnol",
+      "french": "Français"
+    },
+    "theme": {
+      "heading": "Thèmes",
+      "light": "Clair",
+      "dark": "Sombre",
+      "infoLight": "Passage au thème clair...",
+      "infoDark": "Passage au thème sombre..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Remplacements",
+    "error": "Une erreur inattendue s'est produite, vérifiez votre connexion Internet. Si le problème persiste, réessayez plus tard.",
+    "none": "Pas de remplacements"
+  },
+  "Timetable": {
+    "heading": "Emploi du Temps",
+    "modal": {
+      "heading": "Paramètres de l'emploi du temps",
+      "group": "Groupe",
+      "showRel": "Religion"
+    },
+    "button": "Calendrier des cours",
+    "none": "Aucune donnée disponible"
+  },
+  "Events": {
+    "heading": "Événements",
+    "section": "Prochains événements",
+    "type": {
+      "competition": "Concours scolaire",
+      "holiday": "Jour férié",
+      "event": "Cérémonie"
+    }
+  },
+  "News": {
+    "heading": "Annonces",
+    "tabs": {
+      "school": "Scolaire",
+      "council": "Conseil"
+    }
+  },
+  "Button": {
+    "continue": "Continuer",
+    "guest": "Continuer en tant qu'invité"
+  },
+  "Sidebar": {
+    "radio": "Radio Elektron",
+    "luckyNumber": "Numéro Chanceux",
+    "settings": "Paramètres"
+  },
+  "Toast": {
+    "success": "Les données ont été enregistrées",
+    "error": "Une erreur est survenue"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "Welcome": {
+    "firstPage": "Willkommen in der Schul-App Elektronik. Ihr schulisches Informationszentrum immer griffbereit!",
+    "secondPage": "Elektronik ist eine für Schüler entwickelte Anwendung, die Funktionen wie Stundenplan, Vertretungsinformationen, Artikel, Ankündigungen und kommende Veranstaltungen bietet.",
+    "setUp": {
+      "name": "Namen eingeben",
+      "nameError": "Namen eingeben",
+      "class": "Klasse eingeben",
+      "classError": "Klasse auswählen",
+      "diaryNumber": "Tagebuchnummer auswählen",
+      "diaryNumberError": "Gültige Tagebuchnummer eingeben"
+    }
+  },
+  "Home": {
+    "heading": "Schön, dich zu sehen",
+    "subheading": "Guten Morgen,",
+    "minutes": "Minuten",
+    "bells": "Glocken",
+    "announcements": "Ankündigungen",
+    "timeMessage": {
+      "weekend": "💥 Heute ist Wochenende!",
+      "goodnight": "💤 Gute Nacht!",
+      "toBreak": "🎓 Bis zur Pause",
+      "toLesson": "😊 Bis zum Unterricht",
+      "endLesson": "🌸 Unterrichtsende!"
+    }
+  },
+  "Settings": {
+    "heading": "Einstellungen",
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Benachrichtigungen",
+      "theme": "Thema",
+      "languages": "Sprache"
+    },
+    "profile": {
+      "heading": "Profil"
+    },
+    "notifications": {
+      "heading": "Benachrichtigungen",
+      "nSchoolTitle": "Schulankündigungen",
+      "nSchoolSub": "Benachrichtigungen über neue Schulleitung-Ankündigungen",
+      "nCouncilTitle": "Schülerrat-Ankündigungen",
+      "nCouncilSub": "Benachrichtigungen über neue Schülerrat-Ankündigungen",
+      "nSubtitutionsTitle": "Vertretungen",
+      "nSubtitutionsSub": "Benachrichtigungen über neue Lehrervertretungen"
+    },
+    "languages": {
+      "heading": "Sprache",
+      "polish": "Polnisch",
+      "english": "Englisch",
+      "ukrainian": "Ukrainisch",
+      "german": "Deutsch",
+      "czech": "Tschechisch",
+      "chinese": "Chinesisch",
+      "spanish": "Spanisch",
+      "french": "Französisch"
+    },
+    "theme": {
+      "heading": "Themen",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "infoLight": "Wechsle zu hellem Thema...",
+      "infoDark": "Wechsle zu dunklem Thema..."
+    }
+  },
+  "Substitutions": {
+    "heading": "Vertretungen",
+    "error": "Ein unerwarteter Fehler ist aufgetreten, überprüfen Sie Ihre Internetverbindung. Wenn das Problem weiterhin besteht, versuchen Sie es später erneut.",
+    "none": "Keine Vertretungen"
+  },
+  "Timetable": {
+    "heading": "Stundenplan",
+    "modal": {
+      "heading": "Stundenplan-Einstellungen",
+      "group": "Gruppe",
+      "showRel": "Religion"
+    },
+    "button": "Zeitplan",
+    "none": "Keine Daten"
+  },
+  "Events": {
+    "heading": "Veranstaltungen",
+    "section": "Kommende Veranstaltungen",
+    "type": {
+      "competition": "Schulwettbewerb",
+      "holiday": "Feiertag",
+      "event": "Zeremonie"
+    }
+  },
+  "News": {
+    "heading": "Ankündigungen",
+    "tabs": {
+      "school": "Schule",
+      "council": "Schülerrat"
+    }
+  },
+  "Button": {
+    "continue": "Weiter",
+    "guest": "Als Gast fortfahren"
+  },
+  "Sidebar": {
+    "radio": "Electron Radio",
+    "luckyNumber": "Glückszahl",
+    "settings": "Einstellungen"
+  },
+  "Toast": {
+    "success": "Daten wurden gespeichert",
+    "error": "Ein Fehler ist aufgetreten"
+  }
+}

@@ -4,10 +4,15 @@ import Input from "@/components/ui/Input"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import { Select, SelectItem } from "@/components/ui/Select"
 import useColors from "@/hooks/useColors"
-import { saveFirstTime, saveUserData } from "@/lib/utils"
+import { setStorageData, StorageKeys } from "@/lib/storage"
+import { checkFirstTimeUser } from "@/lib/utils"
+import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
+
+import { useEffect } from "react"
+import { Controller, SubmitHandler, useForm } from "react-hook-form"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
-import { useForm, Controller } from "react-hook-form"
 import { UserData } from "@/types/utils"
 import {
   Circles,
@@ -19,6 +24,7 @@ import {
 
 const SetUp = () => {
   const colors = useColors()
+  const { t } = useTranslation()
 
   const {
     control,
@@ -34,14 +40,23 @@ const SetUp = () => {
 
   const goToHomeAsGuest = async () => {
     router.push("/home")
-    await saveFirstTime()
+    await setStorageData(StorageKeys.firstTimeUser, false)
   }
-  const onSubmit = async (data: UserData) => {
-    await saveUserData({
+
+  const onSubmit: SubmitHandler<UserData> = async (data) => {
+    const result = await setStorageData(StorageKeys.userData, {
       name: data.name,
+      diaryNumber: Number(data.diaryNumber),
       grade: data.grade,
       diaryNumber: data.diaryNumber,
     })
+
+    if (result.success) {
+      console.log("Data saved successfully:", result.data)
+    } else {
+      console.error("Error saving data:", result.error)
+    }
+    await setStorageData(StorageKeys.firstTimeUser, false)
     router.push("/home")
   }
 
@@ -64,7 +79,7 @@ const SetUp = () => {
           <View className="flex justify-center items-center w-full flex-col gap-6">
             <View className="flex justify-center items-start flex-col w-full">
               <Text className={`text-foreground font-pmedium text-xl p-2`}>
-                Podaj Imię
+                {t("Welcome.setUp.name")}
               </Text>
 
               <Controller
@@ -78,18 +93,20 @@ const SetUp = () => {
                     value={value}
                     onBlur={onBlur}
                     type="text"
-                    placeholder="Firstname"
+                    placeholder={t("Welcome.setUp.name")}
                   />
                 )}
                 name="name"
               />
               {errors.name && (
-                <Text className="text-red-400 ml-2">Imię jest wymagane</Text>
+                <Text className="text-red-400 ml-2">
+                  {t("Welcome.setUp.nameError")}
+                </Text>
               )}
             </View>
             <View className="w-full h-fit">
               <Text className={`text-foreground font-pmedium text-xl p-2`}>
-                Podaj Klasę
+                {t("Welcome.setUp.class")}
               </Text>
               <Controller
                 control={control}
@@ -100,7 +117,7 @@ const SetUp = () => {
                   <Select
                     selectedValue={value}
                     onValueChange={(itemValue: any) => onChange(itemValue)}
-                    placeholder="Wybierz klase"
+                    placeholder={t("Welcome.setUp.class")}
                   >
                     <SelectItem label="1ta Technik Programista" value="1ta" />
                     <SelectItem label="1tb Technik Programista" value="1tb" />
@@ -109,14 +126,16 @@ const SetUp = () => {
                 name="grade"
               />
               {errors.grade && (
-                <Text className="text-red-400 ml-2">Wybierz klase</Text>
+                <Text className="text-red-400 ml-2">
+                  {t("Welcome.setUp.classError")}
+                </Text>
               )}
             </View>
             <View className="flex justify-center items-center flex-col w-full">
               <Text
-                className={`text-foreground font-pmedium text-xl p-2 self-start`}
+                className={`text-foreground text-center w-full font-pmedium text-xl p-2 self-start`}
               >
-                Wybierz numer z dziennika
+                {t("Welcome.setUp.diaryNumber")}
               </Text>
               <Controller
                 control={control}
@@ -141,7 +160,7 @@ const SetUp = () => {
               />
               {errors.diaryNumber && (
                 <Text className="text-red-400 ml-2">
-                  Numerek z dziennika jest wymagany
+                  {t("Welcome.setUp.diaryNumberError")}
                 </Text>
               )}
             </View>
@@ -151,10 +170,10 @@ const SetUp = () => {
       <View className="flex justify-center w-full items-center flex-col gap-1">
         <Button
           variant="ghost"
-          text="Kontynuuj jako gość"
+          text={t("Button.guest")}
           onPress={goToHomeAsGuest}
         />
-        <Button text="Kontynuuj" onPress={handleSubmit(onSubmit)} />
+        <Button text={t("Button.continue")} onPress={handleSubmit(onSubmit)} />
       </View>
 
       <View className="absolute bottom-96 -left-8 -z-10">

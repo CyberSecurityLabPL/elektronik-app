@@ -3,24 +3,34 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
-import { isFirstTime } from "@/lib/utils"
-import { Redirect, router } from "expo-router"
+import { getAllStorageData } from "@/lib/storage"
+import { checkFirstTimeUser } from "@/lib/utils"
+import { router } from "expo-router"
 import { LoaderCircle } from "lucide-react-native"
 import React, { useEffect, useState } from "react"
+import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 import { Circles, Flower, Lines } from "@/components/icons"
 
 const Page = () => {
   const colors = useColors()
   const [loading, setLoading] = useState(true)
-  const [redirect, setRedirect] = useState(false)
+  const { t } = useTranslation()
 
   useEffect(() => {
-    isFirstTime().then((isFirstTime) => {
-      setLoading(false)
-      setRedirect(!isFirstTime)
+    getAllStorageData().then((res) => {
+      if (res.success) {
+        console.log(res.data)
+      }
     })
-  }, [redirect, loading])
+
+    checkFirstTimeUser().then((shouldRedirect) => {
+      if (shouldRedirect) {
+        router.push("/home")
+      }
+      setLoading(false)
+    })
+  }, [])
 
   if (loading)
     return (
@@ -30,8 +40,6 @@ const Page = () => {
         </View>
       </ScreenWrapper>
     )
-
-  if (redirect) return <Redirect href={"/home"} />
   else
     return (
       <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
@@ -51,18 +59,16 @@ const Page = () => {
                 Elektronik
               </Text>
               <Text className="font-pregular text-base text-foreground text-center px-5">
-                Witaj w szkolnej apce Elektronika. Twoje szkolne centrum
-                informacji zawsze pod ręką!
+                {t("Welcome.firstPage")}
               </Text>
             </View>
           </View>
         </View>
-        <View className="flex justify-center w-full items-center flex-col">
-          <Button
-            text="Kontynuuj"
-            onPress={() => router.navigate("/about-app")}
-          />
-        </View>
+        <Button
+          text={t("Button.continue")}
+          onPress={() => router.navigate("/about-app")}
+        />
+
         <View className="absolute top-32 -left-14 -z-10">
           <Circles color={colors.svg.circles} />
         </View>
