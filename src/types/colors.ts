@@ -11,6 +11,7 @@ export interface ColorScheme {
   foregroundSecondary: string
   background: string
   backgroundSecondary: string
+  closeButton: string
   svg: {
     topFlower: string
     bottomFlower: string

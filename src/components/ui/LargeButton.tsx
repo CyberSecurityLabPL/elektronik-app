@@ -7,6 +7,7 @@ import {
   View,
 } from "react-native"
 import useColors from "@/hooks/useColors"
+import { cn } from "@/lib/utils"
 
 interface BaseLargeButtonProps {
   text: string
@@ -47,6 +48,7 @@ type LargeButtonProps =
   | (NoIconLargeButtonProps | SelectedNoIconLargeButtonProps)
 
 const LargeButton = ({
+  className,
   LucideIcon,
   iconColor,
   text,
@@ -54,16 +56,19 @@ const LargeButton = ({
   extraText,
   selected,
   onPress,
-}: LargeButtonProps) => {
+}: LargeButtonProps & { className?: string }) => {
   const colors = useColors()
 
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
-      className={`flex flex-row ${
-        extendable || selected ? "justify-between" : "justify-start"
-      } items-center w-full bg-background-secondary p-4 rounded-2xl min-h-16`}
+      className={cn(
+        `flex flex-row ${
+          extendable || selected ? "justify-between" : "justify-start"
+        } items-center w-full bg-background-secondary p-4 rounded-2xl min-h-16`,
+        className,
+      )}
     >
       <View className="flex flex-row justify-center items-center gap-4">
         {LucideIcon ? (

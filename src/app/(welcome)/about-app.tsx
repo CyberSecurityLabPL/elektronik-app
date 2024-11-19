@@ -1,17 +1,19 @@
-import { Text, Pressable, View } from "react-native"
-import React from "react"
-import { Link, router } from "expo-router"
+import {
+  AboutSvg,
+  BottomLine,
+  Circles,
+  Lines,
+  UpperLine,
+} from "@/components/icons"
 import ScreenWrapper from "@/components/ScreenWrapper"
-import ProgressIndicator from "@/components/ui/ProgressIndicator"
-import Button from "@/components/ui/Button"
-import { AboutSvg } from "@/components/svgs/AboutSvg"
-import BottomLine from "@/components/svgs/BottomLine"
-import UpperLine from "@/components/svgs/UpperLine"
-import Square from "@/components/svgs/Square"
 import RotatedSquares from "@/components/svgs/RotatedSquares"
-import Circles from "@/components/svgs/Circles"
-import Lines from "@/components/svgs/Lines"
+import Button from "@/components/ui/Button"
+import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
+import { router } from "expo-router"
+import { Square } from "lucide-react-native"
+import React from "react"
+import { Text, View } from "react-native"
 
 const AboutApp = () => {
   const colors = useColors()
