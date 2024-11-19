@@ -45,13 +45,13 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
     console.log(colorScheme)
   }
   useEffect(() => {
-    const xd = async () => {
+    const setThemeFromStorage = async () => {
       const result = await setStorageData(
         StorageKeys.theme,
         colorScheme ?? "system",
       )
     }
-    xd()
+    setThemeFromStorage()
   }, [colorScheme])
 
   return (
