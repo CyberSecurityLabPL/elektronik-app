@@ -6,6 +6,7 @@ import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
 import "react-native-reanimated"
 import "../global.css"
+import { View } from "react-native"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -50,31 +51,33 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="(welcome)/about-app"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="(welcome)/set-up"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="(drawer)"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <View className="bg-background flex-1">
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(welcome)/about-app"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(welcome)/set-up"
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="(drawer)"
+          options={{
+            headerShown: false,
+          }}
+        />
+      </Stack>
+    </View>
   )
 }
