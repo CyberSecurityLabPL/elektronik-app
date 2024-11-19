@@ -10,7 +10,6 @@ import i18n from "../i18n/i18n.config"
 import { I18nextProvider } from "react-i18next"
 import { View } from "react-native"
 
-
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -65,13 +64,7 @@ function RootLayoutNav() {
           }}
         />
         <Stack.Screen
-          name="(welcome)/about-app"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="(welcome)/set-up"
+          name="(welcome)"
           options={{
             headerShown: false,
           }}
