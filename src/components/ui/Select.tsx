@@ -10,7 +10,10 @@ export function Select({ children, ...props }: PickerProps) {
   const colors = useColors()
 
   return (
-    <TouchableOpacity className="bg-background-secondary rounded-3xl p-1">
+    <TouchableOpacity
+      activeOpacity={1}
+      className="bg-background-secondary rounded-3xl p-1"
+    >
       <Picker
         dropdownIconColor={colors.foreground}
         style={{ color: colors.foreground }}
@@ -26,5 +29,11 @@ export function Select({ children, ...props }: PickerProps) {
 export function SelectItem({ ...props }: PickerItemProps) {
   const colors = useColors()
 
-  return <Picker.Item color={colors.background} {...props} />
+  return (
+    <Picker.Item
+      style={{ color: colors.foreground }}
+      color={colors.background}
+      {...props}
+    />
+  )
 }
