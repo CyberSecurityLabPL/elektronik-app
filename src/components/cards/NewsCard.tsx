@@ -1,30 +1,32 @@
+import useColors from "@/hooks/useColors"
 import { ArrowUpRight, Clock } from "lucide-react-native"
 import {
   Image,
+  ImageBackground,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
   View,
 } from "react-native"
+import DefaultBanner from "@/components/svgs/DefaultBanner"
 
 interface BaseCardProps {
-  image: string
+  image?: string
   title: string
   date: string
   isNew?: boolean
+  isFeatured?: boolean
 }
 
 interface FeaturedCardProps extends BaseCardProps {
   description: string
-  isFeatured: true
 }
 
 interface NotFeaturedCardProps extends BaseCardProps {
-  isFeatured?: false
   description?: null
 }
 
-type CardProps = (FeaturedCardProps | NotFeaturedCardProps) &
+export type NewsCardProps = (FeaturedCardProps | NotFeaturedCardProps) &
   TouchableOpacityProps
 
 export default function NewsCard({
@@ -35,7 +37,9 @@ export default function NewsCard({
   isFeatured,
   isNew,
   ...props
-}: CardProps) {
+}: NewsCardProps) {
+  const colors = useColors()
+
   if (isFeatured)
     return (
       <TouchableOpacity
@@ -56,7 +60,7 @@ export default function NewsCard({
             </View>
           ) : null}
         </View>
-        <View className="bg-background-secondary p-4 flex flex-col gap-6 justify-center items-center w-full">
+        <View className="bg-background p-4 flex flex-col gap-6 justify-center items-center w-full">
           <View className="flex flex-col justify-center items-start gap-2 w-full">
             <View>
               <Text className="text-2xl font-pmedium text-foreground">
@@ -72,7 +76,7 @@ export default function NewsCard({
           <View className="flex flex-row justify-between items-center w-full">
             <View className="flex flex-row justify-center items-center gap-2">
               <View className="flex justify-center items-center">
-                <Clock size={20} color={"black"} />
+                <Clock size={20} color={colors.foreground} />
               </View>
               <View className="flex justify-center items-center">
                 <Text className="font-pmedium flex justify-center items-center text-foreground">
@@ -81,7 +85,7 @@ export default function NewsCard({
               </View>
             </View>
             <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={"white"} />
+              <ArrowUpRight size={24} color={colors.background} />
             </View>
           </View>
         </View>
@@ -99,27 +103,38 @@ export default function NewsCard({
             <NewIndicator />
           </View>
         ) : null}
-        <Image source={{ uri: image }} className="object-cover w-5/12" />
-        <View className="p-4 flex flex-col justify-center items-start gap-8 w-7/12 bg-background-secondary">
+        {image ? (
+          <ImageBackground
+            source={{ uri: image }}
+            className="object-cover w-5/12 "
+          />
+        ) : (
+          <ImageBackground
+            source={require("../../assets/images/default-banner.png")}
+            className=" w-5/12 object-cover "
+          />
+        )}
+
+        <View className="p-4 flex flex-col justify-center items-start gap-8 w-7/12 bg-background">
           <View>
-            <Text className="text-2xl font-pmedium text-foreground">
+            <Text className="text-xl font-pmedium text-foreground text-wrap flex-wrap">
               {title}
             </Text>
           </View>
           <View className="flex flex-row justify-between items-center w-full">
             <View className="flex flex-row justify-center items-center gap-2">
               <View className="flex justify-center items-center">
-                <Clock size={20} color={"black"} />
+                <Clock size={20} color={colors.foreground} />
               </View>
               <View className="flex justify-center items-center">
-                <Text className="font-pmedium flex justify-center items-center text-foreground">
+                <Text className="font-pmedium text-sm flex justify-center items-center text-foreground">
                   {date}
                 </Text>
               </View>
             </View>
-            <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={"white"} />
-            </View>
+            {/* <View className="p-2 rounded-full bg-foreground">
+              <ArrowUpRight size={24} color={colors.background} />
+            </View> */}
           </View>
         </View>
       </TouchableOpacity>
