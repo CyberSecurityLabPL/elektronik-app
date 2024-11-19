@@ -1,4 +1,5 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
+import NoDataSvg from "@/components/svgs/NoDataSvg"
 import DayTab from "@/components/timetable/DayTab"
 import Lesson from "@/components/timetable/Lesson"
 import TimetableSelect from "@/components/TimetableSelect"
@@ -22,8 +23,6 @@ import { BottomSheetMethods } from "@gorhom/bottom-sheet/lib/typescript/types"
 import { add, format, isWeekend, startOfWeek } from "date-fns"
 import { pl } from "date-fns/locale/pl"
 import {
-  CircleAlert,
-  Cloud,
   DoorOpen,
   GraduationCap,
   Settings,
@@ -349,10 +348,9 @@ const LoadingSkeleton = () => {
 const NoData = () => {
   return (
     <View className="min-w-full min-h-96 flex flex-col justify-center items-center p-4 gap-2">
-      <CircleAlert color={"#ef4444"} size={64} />
-      <Text className="font-psemibold text-foreground text-3xl">
-        Brak Danych
-      </Text>
+      <View className="size-2/3religia">
+        <NoDataSvg />
+      </View>
     </View>
   )
 }
