@@ -30,10 +30,6 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     props.navigation.dispatch(DrawerActions.closeDrawer())
   }
 
-  const status = useDrawerStatus()
-
-  console.log("status: ", status)
-
   return (
     <View className=" pt-16 px-4 pb-6 flex-1 flex-col flex justify-between border-0 bg-background">
       <View className="flex flex-row justify-between items-center w-full py-8">

@@ -130,7 +130,6 @@ export async function setStorageData<K extends StorageKey>(
 ): Promise<Result<InferSchemaType<K>>> {
   try {
     const validatedData = StorageSchemas[key].parse(value)
-    console.log("validatedData", validatedData)
 
     await AsyncStorage.setItem(key, JSON.stringify(validatedData))
     return { success: true, data: validatedData }

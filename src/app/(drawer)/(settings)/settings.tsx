@@ -34,7 +34,6 @@ const Settings = () => {
     const result = await setStorageData(StorageKeys.theme, theme)
 
     if (result.success) {
-      console.log("Theme changed: ", result.data)
       if (theme == "light") {
         setColorScheme("light")
         toast(t("Settings.theme.infoLight"))
@@ -87,13 +86,6 @@ const Settings = () => {
           href={"/(drawer)/(settings)/language"}
           strokeWidth={1.5}
           extraText={currentLanguage?.localName}
-        />
-        <LargeButton
-          text="Clear storage"
-          onPress={async () => {
-            await clearStorage()
-            toast("Storage Cleared!")
-          }}
         />
         <Modal
           id="bells"

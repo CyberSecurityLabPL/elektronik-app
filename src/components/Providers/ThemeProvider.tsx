@@ -50,13 +50,6 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
         StorageKeys.theme,
         colorScheme ?? "system",
       )
-
-      if (result.success) {
-        console.log("Theme set: ", result.data)
-      } else {
-        // Handle error
-        console.error("Failed to set theme:", result.error)
-      }
     }
     xd()
   }, [colorScheme])

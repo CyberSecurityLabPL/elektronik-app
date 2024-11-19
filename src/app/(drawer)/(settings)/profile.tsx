@@ -28,8 +28,6 @@ const Profile = () => {
   }, [userData])
 
   const onSubmit: SubmitHandler<UserData> = async (data) => {
-    console.log(data)
-
     const result = await setStorageData(StorageKeys.userData, {
       name: data.name,
       diaryNumber: Number(data.diaryNumber),

@@ -11,7 +11,7 @@ import { useUpcomingEvent } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
 import useTimeLessons from "@/hooks/useTimeLessons"
 import { useUserData } from "@/hooks/useUserData"
-import { cn } from "@/lib/utils"
+import { cn, localeFormat } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
 import { differenceInDays, format, isWithinInterval, set } from "date-fns"
 import { pl } from "date-fns/locale"
@@ -161,15 +161,9 @@ const Home = () => {
                   type="event"
                   date={
                     event?.data[0].attributes.date
-                      ? format(
+                      ? localeFormat(
                           new Date(event.data[0].attributes.date),
                           "dd MMMM ",
-                          {
-                            locale:
-                              localeMap[
-                                i18n.language as keyof typeof localeMap
-                              ] || pl,
-                          },
                         )
                       : "Invalid date"
                   }
@@ -215,16 +209,11 @@ const Home = () => {
             description={article?.pages[0].data[0].attributes.description!}
             date={
               article?.pages[0].data[0].attributes.createdAt
-                ? format(
+                ? localeFormat(
                     new Date(
                       article?.pages[0].data[0].attributes.createdAt ?? "",
                     ),
                     "dd MMMM ",
-                    {
-                      locale:
-                        localeMap[i18n.language as keyof typeof localeMap] ||
-                        pl,
-                    },
                   )
                 : "Brak daty"
             }

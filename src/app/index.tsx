@@ -6,16 +6,11 @@ import { WelcomeSvg } from "@/components/svgs/WelcomeSvg"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
-import {
-  clearStorage,
-  getAllStorageData,
-  getStorageData,
-  StorageKeys,
-} from "@/lib/storage"
+import { getAllStorageData } from "@/lib/storage"
 import { checkFirstTimeUser } from "@/lib/utils"
-import { Redirect, router } from "expo-router"
+import { router } from "expo-router"
 import { LoaderCircle } from "lucide-react-native"
-import React, { useEffect, useLayoutEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 
@@ -23,11 +18,8 @@ const Page = () => {
   const colors = useColors()
   const [loading, setLoading] = useState(true)
   const { t } = useTranslation()
-  console.log("page fires")
 
   useEffect(() => {
-    console.log("effect fires")
-
     getAllStorageData().then((res) => {
       if (res.success) {
         console.log(res.data)

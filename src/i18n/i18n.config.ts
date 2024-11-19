@@ -14,15 +14,12 @@ const languageDetector: LanguageDetectorModule = {
       const result = await getStorageData(StorageKeys.language)
 
       if (result.success && result.data) {
-        console.log("Language detection result:", result.data)
         callback(result.data)
       } else {
         await setStorageData(StorageKeys.language, "pl")
-        console.log("Setting default language: pl")
         callback("pl")
       }
     } catch (error) {
-      console.log("Language detection error:", error)
       callback("pl")
     }
   },
@@ -30,7 +27,6 @@ const languageDetector: LanguageDetectorModule = {
   cacheUserLanguage: async (language: string) => {
     try {
       await setStorageData("language", language)
-      console.log("language was set to: ", language)
     } catch (error) {
       console.log("Error caching user language:", error)
     }

@@ -1,11 +1,10 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
-import { localeMap } from "@/config"
 import { useSubstitutions } from "@/hooks/substitutions/useSubstitutions"
 import useColors from "@/hooks/useColors"
-import { addDays, format, subDays } from "date-fns"
-import { pl } from "date-fns/locale/pl"
+import { localeFormat } from "@/lib/utils"
+import { addDays, subDays } from "date-fns"
 import { ChevronLeft, ChevronRight } from "lucide-react-native"
 import { useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -14,7 +13,7 @@ import { RefreshControl, ScrollView, Text, View } from "react-native"
 const Substitutions = () => {
   const [date, setDate] = useState(new Date())
   const colors = useColors()
-  const { t, i18n } = useTranslation()
+  const { t } = useTranslation()
 
   const {
     data,
@@ -57,9 +56,8 @@ const Substitutions = () => {
         <Heading title={t("Substitutions.heading")} />
         <View className="bg-background-secondary w-full p-4 rounded-2xl mt-8 flex justify-center items-center">
           <Text className="text-3xl font-pmedium text-foreground">
-            {format(date, "d MMMM yyyy", {
-              locale: localeMap[i18n.language as keyof typeof localeMap] || pl,
-            })}
+            {/* "d MMMM yyyy" */}
+            {localeFormat(date, "d MMMM yyyy")}
           </Text>
         </View>
         <View className="bg-background-secondary light w-full p-4 rounded-2xl mt-6   ">
