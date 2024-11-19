@@ -82,11 +82,7 @@
   "Events": {
     "heading": "Events",
     "section": "Upcoming Events",
-    "type": {
-      "competition": "School Competition",
-      "holiday": "Holiday",
-      "event": "Ceremony"
-    }
+    "today": "Today"
   },
   "News": {
     "heading": "Announcements",

@@ -82,11 +82,7 @@
   "Events": {
     "heading": "活动",
     "section": "即将举行的活动",
-    "type": {
-      "competition": "校园比赛",
-      "holiday": "节假日",
-      "event": "典礼"
-    }
+    "today": "今天"
   },
   "News": {
     "heading": "公告",

@@ -9,6 +9,7 @@ import useColors from "@/hooks/useColors"
 import {
   cn,
   getStrapiImageUrl,
+  localeFormat,
   resetInfiniteQueryPagination,
 } from "@/lib/utils"
 import { StrapiArticle } from "@/types/strapi"
@@ -19,6 +20,7 @@ import { pl } from "date-fns/locale/pl"
 import { router } from "expo-router"
 import { ChevronUp } from "lucide-react-native"
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react"
+import { useTranslation } from "react-i18next"
 import {
   Animated,
   Dimensions,
@@ -35,6 +37,8 @@ const News = () => {
   const [contentVerticalOffset, setContentVerticalOffset] = useState(0)
   const listRef = useAnimatedRef<Animated.FlatList>()
   const colors = useColors()
+  const { t, i18n } = useTranslation()
+
   useScrollToTop(listRef)
 
   const queryClient = useQueryClient()
@@ -131,7 +135,7 @@ const News = () => {
   )
   return (
     <ScreenWrapper className="">
-      <Heading title="Ogłoszenia" />
+      <Heading title={t("News.heading")} />
       <View className="mt-6 bg-background-secondary h-16 rounded-2xl flex flex-row justify-around items-center px-2 relative overflow-hidden">
         {/* Animated Background */}
         <Animated.View
@@ -158,7 +162,7 @@ const News = () => {
               "text-xl font-psemibold",
             )}
           >
-            Szkolne
+            {t("News.tabs.school")}
           </Text>
         </Pressable>
 
@@ -173,7 +177,7 @@ const News = () => {
               "text-xl font-psemibold",
             )}
           >
-            Samorządu
+            {t("News.tabs.council")}
           </Text>
         </Pressable>
       </View>
@@ -281,9 +285,7 @@ const NewsItem = memo(
     activeTab: number
   }) => (
     <NewsCard
-      date={format(item.attributes.createdAt, "dd MMMM", {
-        locale: pl,
-      })}
+      date={localeFormat(item.attributes.createdAt, "dd MMMM")}
       image={
         item.attributes.image?.data?.attributes?.url
           ? getStrapiImageUrl(item.attributes.image.data.attributes.url)

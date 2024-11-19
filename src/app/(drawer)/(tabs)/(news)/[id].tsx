@@ -4,14 +4,12 @@ import { useAnnouncement } from "@/hooks/announcements/useAnnouncements"
 import { SingleNewsResponse } from "@/hooks/articles/types"
 import { useArticle } from "@/hooks/articles/useArticles"
 import useColors from "@/hooks/useColors"
-import { getStrapiImageUrl } from "@/lib/utils"
-import { format } from "date-fns"
-import { pl } from "date-fns/locale/pl"
+import { getStrapiImageUrl, localeFormat } from "@/lib/utils"
 import { router, Stack, useLocalSearchParams } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
-import { ActivityIndicator, Text, View } from "react-native"
+import { Text, View } from "react-native"
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -136,7 +134,7 @@ export default function ArticleScreen() {
                 {data?.data.attributes.title}
               </Text>
               <Text className="text-primary text-sm font-psemibold">
-                {format(
+                {localeFormat(
                   new Date(
                     (data as SingleNewsResponse).data.attributes.customDate
                       ? ((data as SingleNewsResponse).data.attributes
@@ -144,7 +142,6 @@ export default function ArticleScreen() {
                       : (data?.data.attributes.createdAt as string),
                   ),
                   "d LLLL yyyy",
-                  { locale: pl },
                 )}
               </Text>
 

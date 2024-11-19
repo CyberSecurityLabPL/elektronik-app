@@ -5,6 +5,7 @@ import { useEvents } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
 import { StrapiEvent } from "@/types/strapi"
 import { useMemo } from "react"
+import { useTranslation } from "react-i18next"
 import { FlatList, RefreshControl, Text, View } from "react-native"
 
 const Events = () => {
@@ -24,7 +25,7 @@ const Events = () => {
   const allArticles = useMemo(() => {
     return data?.pages.flatMap((page) => page.data) ?? []
   }, [data?.pages])
-
+  const { t } = useTranslation()
   const loadMore = () => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage()
@@ -49,10 +50,10 @@ const Events = () => {
           data={allArticles}
           ListHeaderComponent={
             <View className="min-w-full">
-              <Heading title="Wydarzenia" />
+              <Heading title={t("Events.heading")} />
             </View>
           }
-          renderItem={EventItem}
+          renderItem={(props) => <EventItem {...props} t={t} />}
           onEndReached={loadMore}
           onEndReachedThreshold={0.5}
         />

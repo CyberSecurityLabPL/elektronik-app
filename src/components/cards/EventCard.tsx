@@ -16,6 +16,7 @@ import Star from "../svgs/Star"
 import useColors from "@/hooks/useColors"
 import Modal from "../ui/Modal"
 import IconButton from "../ui/IconButton"
+import { useTranslation } from "react-i18next"
 
 interface EventProps extends TouchableOpacityProps {
   isFeatured?: boolean
@@ -39,7 +40,6 @@ const EventCard = ({
   ...props
 }: EventProps) => {
   const colors = useColors()
-
   const [modalOpen, setModalOpen] = useState(false)
 
   if (isFeatured) {

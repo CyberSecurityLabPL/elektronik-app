@@ -18,7 +18,6 @@ export function getStrapiImageUrl(url: string): string {
   return BACKEND_URL + url
 }
 
-
 export const checkFirstTimeUser = async (): Promise<boolean> => {
   const result = await getStorageData(StorageKeys.firstTimeUser)
   return result.success && !result.data

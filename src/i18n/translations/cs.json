@@ -82,11 +82,7 @@
   "Events": {
     "heading": "Události",
     "section": "Nadcházející události",
-    "type": {
-      "competition": "Školní soutěž",
-      "holiday": "Svátek",
-      "event": "Ceremonie"
-    }
+    "today": "Dnes"
   },
   "News": {
     "heading": "Oznámení",

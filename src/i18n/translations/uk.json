@@ -82,11 +82,7 @@
   "Events": {
     "heading": "Veranstaltungen",
     "section": "Kommende Veranstaltungen",
-    "type": {
-      "competition": "Schulwettbewerb",
-      "holiday": "Feiertag",
-      "event": "Zeremonie"
-    }
+    "today": "Сьогодні"
   },
   "News": {
     "heading": "Ankündigungen",

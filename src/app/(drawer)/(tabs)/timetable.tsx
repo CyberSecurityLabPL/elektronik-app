@@ -1,3 +1,4 @@
+import React from "react"
 import ScreenWrapper from "@/components/ScreenWrapper"
 import NoDataSvg from "@/components/svgs/NoDataSvg"
 import DayTab from "@/components/timetable/DayTab"
@@ -39,6 +40,7 @@ import {
 } from "react"
 import { FlatList, Pressable, RefreshControl, Text, View } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
+import { useTranslation } from "react-i18next"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
 type allDays = classDays | "sobota" | "niedziela"
@@ -46,8 +48,11 @@ type allDays = classDays | "sobota" | "niedziela"
 const Timetable = () => {
   const [group, setGroup] = useState(1)
   const [showReligion, setShowReligion] = useState(false)
-
   const [selectedTimetable, setSelectedTimetable] = useState("o25")
+  const [settingsModalOpen, setSettingsModalOpen] = useState(false)
+
+  const bottomSheetRef = useRef<BottomSheet>(null)
+  const { t } = useTranslation()
   const {
     data,
     isLoading,
@@ -68,8 +73,6 @@ const Timetable = () => {
     refetchTimetable()
   }, [data, selectedTimetable])
 
-  const [settingsModalOpen, setSettingsModalOpen] = useState(false)
-
   const getDayName = (date: Date) =>
     format(date, "EEEE", { locale: pl })
       .replaceAll("ł", "l")
@@ -84,7 +87,6 @@ const Timetable = () => {
     ),
   )
 
-  const bottomSheetRef = useRef<BottomSheet>(null)
   const handleOpenPress = () => bottomSheetRef.current?.expand()
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -109,7 +111,7 @@ const Timetable = () => {
     <ScreenWrapper className="flex justify-top items-center w-full h-full px-0">
       <View className="flex flex-row justify-between items-center w-full py-4 px-8">
         <Text className="text-foreground font-psemibold text-3xl">
-          Plan Lekcji
+          {t("Timetable.heading")}
         </Text>
         <TouchableOpacity
           activeOpacity={0.7}
@@ -200,9 +202,11 @@ const Timetable = () => {
                     ?.find((el) => el.id === selectedTimetable)
                     ?.name.split(" ")[0]
                 : info?.find((el) => el.id === selectedTimetable)?.name
-              : "Brak Danych"}
+              : t("Timetable.none")}
           </Text>
-          <Text className="font-pregular text-foreground">Rozkład zajęć</Text>
+          <Text className="font-pregular text-foreground">
+            {t("Timetable.button")}
+          </Text>
         </Pressable>
       </View>
 
@@ -232,11 +236,11 @@ const Timetable = () => {
         <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
           <View className="p-6 w-full flex gap-4">
             <Text className="text-3xl text-foreground font-pmedium text-center p-6">
-              Ustawienia Planu
+              {t("Timetable.modal.heading")}
             </Text>
             <View className="flex flex-row justify-between items-center gap-4">
               <Text className="text-foreground font-pmedium text-lg">
-                Grupa
+                {t("Timetable.modal.group")}
               </Text>
               <View className="flex flex-row justify-center items-center w-full gap-4">
                 <LargeButton
@@ -255,7 +259,7 @@ const Timetable = () => {
             </View>
             <View className="flex flex-row justify-between items-center gap-4">
               <Text className="text-foreground font-pmedium text-lg">
-                Pokazywać religię
+                {t("Timetable.modal.showRel")}
               </Text>
               <Switch
                 isEnabled={showReligion}

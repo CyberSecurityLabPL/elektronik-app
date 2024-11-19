@@ -82,11 +82,7 @@
   "Events": {
     "heading": "Wydarzenia",
     "section": "Następne wydarzenia",
-    "type": {
-      "competition": "Zawody Szkolne",
-      "holiday": "Święto",
-      "event": "Uroczystość"
-    }
+    "today": "Dzisiaj"
   },
   "News": {
     "heading": "Ogłoszenia",
