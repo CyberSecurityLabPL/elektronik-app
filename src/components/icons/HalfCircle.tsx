@@ -1,11 +1,11 @@
 import * as React from "react"
 import Svg, { Path, SvgProps } from "react-native-svg"
 
-interface HalfCircleEventProps extends SvgProps {
+interface HalfCircleProps extends SvgProps {
   color?: string
 }
 
-const HalfCircleEvent: React.FC<HalfCircleEventProps> = ({
+const HalfCircle: React.FC<HalfCircleProps> = ({
   color = "#FED6A7",
   ...props
 }) => {
@@ -21,4 +21,4 @@ const HalfCircleEvent: React.FC<HalfCircleEventProps> = ({
   )
 }
 
-export default HalfCircleEvent
+export default HalfCircle

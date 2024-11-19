@@ -2,7 +2,6 @@ import useColors from "@/hooks/useColors"
 import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
-  useDrawerStatus,
 } from "@react-navigation/drawer"
 import { DrawerActions } from "@react-navigation/native"
 import { useRouter } from "expo-router"
@@ -17,11 +16,11 @@ import {
 import React from "react"
 import { Linking, Text, View } from "react-native"
 import { toast } from "sonner-native"
-import DiscordLogo from "../svgs/DiscordLogo"
-import { LogoSvg } from "../svgs/LogoSvg"
+import { DiscordLogo, LogoSvg } from "../icons"
 import IconButton from "../ui/IconButton"
 import LargeButton from "../ui/LargeButton"
 import { useTranslation } from "react-i18next"
+
 const Sidebar = (props: DrawerContentComponentProps) => {
   const colors = useColors()
   const router = useRouter()

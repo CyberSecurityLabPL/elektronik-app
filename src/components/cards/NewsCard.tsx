@@ -8,7 +8,6 @@ import {
   TouchableOpacityProps,
   View,
 } from "react-native"
-import DefaultBanner from "@/components/svgs/DefaultBanner"
 
 interface BaseCardProps {
   image?: string

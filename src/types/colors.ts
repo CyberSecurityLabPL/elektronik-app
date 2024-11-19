@@ -21,7 +21,7 @@ export interface ColorScheme {
     upperLine: string
     bottomLine: string
     square: string
-    smallSquares: string
+    smallRotatedSquares: string
     multiplication: string
   }
   eventSvg: {

@@ -1,6 +1,6 @@
 import React from "react"
 import ScreenWrapper from "@/components/ScreenWrapper"
-import NoDataSvg from "@/components/svgs/NoDataSvg"
+import { NoDataSvg } from "@/components/icons/"
 import DayTab from "@/components/timetable/DayTab"
 import Lesson from "@/components/timetable/Lesson"
 import TimetableSelect from "@/components/TimetableSelect"

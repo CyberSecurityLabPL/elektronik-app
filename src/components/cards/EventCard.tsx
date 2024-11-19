@@ -7,17 +7,11 @@ import {
 } from "react-native"
 import React, { useState } from "react"
 import { Clock, X } from "lucide-react-native"
-import HalfCircleEvent from "../svgs/HalfCircleEvent"
-import Squares from "../svgs/Squares"
-import RotatedSquares from "../svgs/RotatedSquares"
 import { cn } from "@/lib/utils"
-import Lines from "../svgs/Lines"
-import Star from "../svgs/Star"
 import useColors from "@/hooks/useColors"
 import Modal from "../ui/Modal"
 import IconButton from "../ui/IconButton"
-import { useTranslation } from "react-i18next"
-
+import { HalfCircle, RotatedSquares, Squares, Star, Lines } from "../icons"
 interface EventProps extends TouchableOpacityProps {
   isFeatured?: boolean
   type: string
@@ -74,7 +68,7 @@ const EventCard = ({
 
         {/* SVGs */}
         <View className="absolute -bottom-11 -left-20 -z-10">
-          <HalfCircleEvent color={colors.eventSvg.halfCircle} />
+          <HalfCircle color={colors.eventSvg.halfCircle} />
         </View>
         <View className="absolute top-0 left-5 -z-10">
           <Squares color={colors.eventSvg.squares} />
@@ -177,23 +171,6 @@ export default EventCard
 
 function ModalContent({ title, date, description, iconColor, onPress }: any) {
   return (
-    // <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-2/3">
-    //   <ScrollView className="w-full px-6 py-1">
-    //     <Text className="text-2xl text-foreground font-pmedium text-left ">
-    //       {title}
-    //     </Text>
-    //     <Text className="text-primary font-psemibold">{date}</Text>
-    //     <Text className="text-base text-foreground-secondary text-wrap mt-2 ">
-    //       {description}
-    //     </Text>
-    //   </ScrollView>
-    //   <IconButton
-    //     LucideIcon={X}
-    //     iconColor={iconColor}
-    //     onPress={onPress}
-    //     className="mt-4"
-    //   />
-    // </View>
     <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
       <View className="w-full px-6 py-1">
         <Text className="text-2xl text-foreground font-pmedium text-left ">

@@ -1,29 +1,39 @@
-import AboutSvg from "./AboutSvg";
-import LogoSvg from "./LogoSvg";
-import WelcomeSvg  from "./WelcomeSvg";
-import Flower from "./Flower";
-import BottomLine from "./BottomLine";
-import Circles from "./Circles";
-import Lines from "./Lines";
-import Multiplication from "./Multiplication";
-import SmallCircles from "./SmallCircles";
-import SmallSquares from "./SmallSquares";
-import Square from "./Square";
-import UpperLine from "./UpperLine";
+import AboutSvg from "./AboutSvg"
+import BottomLine from "./BottomLine"
+import Circles from "./Circles"
+import DefaultBanner from "./DefaultBanner"
+import DiscordLogo from "./DiscordLogo"
+import Flower from "./Flower"
+import HalfCircle from "./HalfCircle"
+import Lines from "./Lines"
+import LogoSvg from "./LogoSvg"
+import Multiplication from "./Multiplication"
+import NoDataSvg from "./NoDataSvg"
+import RotatedSquares from "./RotatedSquares"
+import SmallCircles from "./SmallCircles"
+import Square from "./Square"
+import Squares from "./Squares"
+import Star from "./Star"
+import UpperLine from "./UpperLine"
+import WelcomeSvg from "./WelcomeSvg"
 
 export {
   AboutSvg,
-  LogoSvg,
-  WelcomeSvg,
-  Flower,
   BottomLine,
   Circles,
+  DefaultBanner,
+  DiscordLogo,
+  Flower,
+  HalfCircle,
   Lines,
+  LogoSvg,
   Multiplication,
+  NoDataSvg,
+  RotatedSquares,
   SmallCircles,
-  SmallSquares,
   Square,
-  UpperLine
-};
-
-
+  Squares,
+  Star,
+  UpperLine,
+  WelcomeSvg,
+}

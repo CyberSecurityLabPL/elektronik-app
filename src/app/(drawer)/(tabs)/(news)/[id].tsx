@@ -1,4 +1,4 @@
-import DefaultBanner from "@/components/svgs/DefaultBanner"
+import { DefaultBanner } from "@/components/icons/"
 import IconButton from "@/components/ui/IconButton"
 import { useAnnouncement } from "@/hooks/announcements/useAnnouncements"
 import { SingleNewsResponse } from "@/hooks/articles/types"

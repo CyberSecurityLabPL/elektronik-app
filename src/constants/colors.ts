@@ -21,7 +21,7 @@ const colors = {
       upperLine: "#EFEBFF",
       bottomLine: "#F2E1FD",
       square: "#D9ECF9",
-      smallSquares: "#FFF3FA",
+      smallRotatedSquares: "#FFF3FA",
       multiplication: "#E7ECFF",
     },
     eventSvg: {
@@ -51,7 +51,7 @@ const colors = {
       upperLine: "#202C1C",
       bottomLine: "#3B2D57",
       square: "#1C3552",
-      smallSquares: "#32244F",
+      smallRotatedSquares: "#32244F",
       multiplication: "#32244F",
     },
     eventSvg: {
