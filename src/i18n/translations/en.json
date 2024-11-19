@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "Nice to see you",
+    "subheading": "Good morning,",
     "minutes": "minutes",
     "bells": "Bells",
     "announcements": "Announcements",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "Settings",
-    "ListItem": {
-      "Profile": "Profile",
-      "Notifications": "Notifications",
-      "Theme": "Theme",
-      "Languages": "Language"
+    "listItem": {
+      "profile": "Profile",
+      "notifications": "Notifications",
+      "theme": "Theme",
+      "languages": "Language"
     },
     "profile": {
       "heading": "Profile"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "Notifications",
       "nSchoolTitle": "School Announcements",
       "nSchoolSub": "Notifications about new school management announcements",
@@ -50,9 +52,11 @@
       "ukrainian": "Ukrainian",
       "german": "German",
       "czech": "Czech",
-      "chinese": "Chinese"
+      "chinese": "Chinese",
+      "spanish": "Spanish",
+      "french": "French"
     },
-    "Theme": {
+    "theme": {
       "heading": "Themes",
       "light": "Light",
       "dark": "Dark",
@@ -65,13 +69,35 @@
     "error": "An unexpected error occurred, check your internet connection. If the problem persists, try again later.",
     "none": "No Substitutions"
   },
+  "Timetable": {
+    "heading": "Timetable",
+    "modal": {
+      "heading": "Timetable Settings",
+      "group": "Group",
+      "showRel": "Religion"
+    },
+    "button": "Class Schedule",
+    "none": "No data"
+  },
+  "Events": {
+    "heading": "Events",
+    "section": "Upcoming Events",
+    "type": {
+      "competition": "School Competition",
+      "holiday": "Holiday",
+      "event": "Ceremony"
+    }
+  },
+  "News": {
+    "heading": "Announcements",
+    "tabs": {
+      "school": "School",
+      "council": "Student Council"
+    }
+  },
   "Button": {
     "continue": "Continue",
     "guest": "Continue as Guest"
-  },
-  "Heading": {
-    "greet": "Good morning,",
-    "wish": "Nice to see you"
   },
   "Sidebar": {
     "radio": "Electron Radio",

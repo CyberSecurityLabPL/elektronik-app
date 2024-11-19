@@ -1,7 +1,7 @@
 {
   "Welcome": {
     "firstPage": "欢迎使用学校电子应用程序。您的学校信息中心随时可用！",
-    "secondPage": "Electron++是一个学生应用程序，通过课程表和代课信息等功能帮助学生。",
+    "secondPage": "Elektronik是为学生设计的应用程序，提供课程表、代课信息、文章、公告和即将举行的活动等功能。",
     "setUp": {
       "name": "输入姓名",
       "nameError": "输入姓名",
@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "很高兴见到你",
+    "subheading": "早安，",
     "minutes": "分钟",
     "bells": "铃声",
     "announcements": "公告",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "设置",
-    "ListItem": {
-      "Profile": "个人资料",
-      "Notifications": "通知",
-      "Theme": "主题",
-      "Languages": "语言"
+    "listItem": {
+      "profile": "个人资料",
+      "notifications": "通知",
+      "theme": "主题",
+      "languages": "语言"
     },
     "profile": {
       "heading": "个人资料"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "通知",
       "nSchoolTitle": "学校公告",
       "nSchoolSub": "关于新的学校管理公告的通知",
@@ -50,9 +52,11 @@
       "ukrainian": "乌克兰语",
       "german": "德语",
       "czech": "捷克语",
-      "chinese": "中文"
+      "chinese": "中文",
+      "spanish": "西班牙语",
+      "french": "法语"
     },
-    "Theme": {
+    "theme": {
       "heading": "主题",
       "light": "浅色",
       "dark": "深色",
@@ -65,13 +69,35 @@
     "error": "发生意外错误，请检查您的网络连接。如果问题仍然存在，请稍后重试。",
     "none": "没有代课"
   },
+  "Timetable": {
+    "heading": "课程表",
+    "modal": {
+      "heading": "课程表设置",
+      "group": "班级",
+      "showRel": "宗教课"
+    },
+    "button": "课程安排",
+    "none": "暂无数据"
+  },
+  "Events": {
+    "heading": "活动",
+    "section": "即将举行的活动",
+    "type": {
+      "competition": "校园比赛",
+      "holiday": "节假日",
+      "event": "典礼"
+    }
+  },
+  "News": {
+    "heading": "公告",
+    "tabs": {
+      "school": "学校",
+      "council": "学生会"
+    }
+  },
   "Button": {
     "continue": "继续",
     "guest": "以访客身份继续"
-  },
-  "Heading": {
-    "greet": "早安，",
-    "wish": "很高兴见到你"
   },
   "Sidebar": {
     "radio": "Electron 广播",

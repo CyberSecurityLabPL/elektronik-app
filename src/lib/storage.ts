@@ -2,6 +2,7 @@ import {
   FirstTimeUserSchema,
   LanguageSchema,
   NotificationsSchema,
+  themeSchema,
   UserDataSchema,
 } from "@/types/schemas"
 import AsyncStorage from "@react-native-async-storage/async-storage"
@@ -21,6 +22,7 @@ export type StorageError =
 
 // Storage keys string values mapped to their schemas
 type SchemaType = {
+  theme: typeof themeSchema
   language: typeof LanguageSchema
   notifications: typeof NotificationsSchema
   "first-time-user": typeof FirstTimeUserSchema
@@ -29,6 +31,7 @@ type SchemaType = {
 
 // Storage keys mapped to their string values
 export const StorageKeys = {
+  theme: "theme",
   notifications: "notifications",
   language: "language",
   firstTimeUser: "first-time-user",
@@ -41,6 +44,7 @@ export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys]
 
 // Schema registry with explicit typing
 export const StorageSchemas: SchemaType = {
+  [StorageKeys.theme]: themeSchema,
   [StorageKeys.language]: LanguageSchema,
   [StorageKeys.notifications]: NotificationsSchema,
   [StorageKeys.firstTimeUser]: FirstTimeUserSchema,

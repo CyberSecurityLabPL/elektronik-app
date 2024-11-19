@@ -53,7 +53,7 @@ const Heading = ({ title, screen = "default" }: headingProps) => {
               "text-foreground-secondary text-base ",
             )}
           >
-            {t("Heading.greet")}
+            {t("Home.subheading")}
           </Text>
         ) : null}
 

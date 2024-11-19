@@ -4,11 +4,18 @@ import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import LargeButton from "@/components/ui/LargeButton"
 import Modal from "@/components/ui/Modal"
+
 import useColors from "@/hooks/useColors"
-import { clearStorage } from "@/lib/storage"
+import useLanguage from "@/hooks/useLanguage"
+import {
+  clearStorage,
+  getStorageData,
+  setStorageData,
+  StorageKeys,
+} from "@/lib/storage"
 import { Bell, Languages, Sun, User2, X } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
-import { useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 import { toast } from "sonner-native"
@@ -17,51 +24,34 @@ const Settings = () => {
   const colors = useColors()
   const [themeModalOpen, setThemeModalOpen] = useState(false)
 
-  // Todo: change this to a dynamic value from storage
   const { colorScheme, setColorScheme } = useColorScheme()
-  const theme = useTheme()
   const { i18n, t } = useTranslation()
-  const languages = [
-    {
-      code: "pl",
-      nativeName: "Polski",
-      localName: t("Settings.languages.polish"),
-    },
-    {
-      code: "en",
-      nativeName: "English",
-      localName: t("Settings.languages.english"),
-    },
-    {
-      code: "uk",
-      nativeName: "Українська",
-      localName: t("Settings.languages.ukrainian"),
-    },
-    {
-      code: "de",
-      nativeName: "Deutch",
-      localName: t("Settings.languages.german"),
-    },
-    {
-      code: "cz",
-      nativeName: "české republice",
-      localName: t("Settings.languages.czech"),
-    },
-    {
-      code: "zh",
-      nativeName: "中文",
-      localName: t("Settings.languages.chinese"),
-    },
-  ]
+  const languages = useLanguage()
 
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
+  const handleThemeChange = async (theme: string) => {
+    const result = await setStorageData(StorageKeys.theme, theme)
+
+    if (result.success) {
+      console.log("Theme changed: ", result.data)
+      if (theme == "light") {
+        setColorScheme("light")
+        toast(t("Settings.theme.infoLight"))
+      } else {
+        setColorScheme("dark")
+        toast(t("Settings.theme.infoDark"))
+      }
+    } else {
+      console.error("Failed to change theme:", result.error)
+    }
+  }
   return (
     <ScreenWrapper>
       <Heading title={t("Settings.heading")} screen="settings" />
       <View className="gap-2">
         <LargeButton
-          text={t("Settings.ListItem.Profile")}
+          text={t("Settings.listItem.profile")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={User2}
@@ -69,7 +59,7 @@ const Settings = () => {
           strokeWidth={1.5}
         />
         <LargeButton
-          text={t("Settings.ListItem.Notifications")}
+          text={t("Settings.listItem.notifications")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Bell}
@@ -77,16 +67,20 @@ const Settings = () => {
           strokeWidth={1.5}
         />
         <LargeButton
-          text={t("Settings.ListItem.Theme")}
+          text={t("Settings.listItem.theme")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Sun}
           onPress={() => setThemeModalOpen(true)}
           strokeWidth={1.5}
-          extraText={colorScheme === "dark" ? "Ciemny" : "Jasny"}
+          extraText={
+            colorScheme === "dark"
+              ? t("Settings.theme.dark")
+              : t("Settings.theme.light")
+          }
         />
         <LargeButton
-          text={t("Settings.ListItem.Languages")}
+          text={t("Settings.listItem.languages")}
           extendable
           iconColor={colors.foreground}
           LucideIcon={Languages}
@@ -109,24 +103,16 @@ const Settings = () => {
           <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
             <View className="p-4 w-full flex gap-2">
               <Text className="text-3xl text-foreground font-pmedium text-center p-6">
-                {t("Settings.Theme.heading")}
+                {t("Settings.theme.heading")}
               </Text>
               <LargeButton
-                text={t("Settings.Theme.light")}
-                onPress={() => {
-                  theme.setTheme("light")
-                  setColorScheme("light")
-                  toast(t("Settings.Theme.infoLight"))
-                }}
+                text={t("Settings.theme.light")}
+                onPress={() => handleThemeChange("light")}
                 selected={colorScheme === "light"}
               />
               <LargeButton
-                text={t("Settings.Theme.dark")}
-                onPress={() => {
-                  theme.setTheme("dark")
-                  setColorScheme("dark")
-                  toast(t("Settings.Theme.infoDark"))
-                }}
+                text={t("Settings.theme.dark")}
+                onPress={() => handleThemeChange("dark")}
                 selected={colorScheme === "dark"}
               />
             </View>

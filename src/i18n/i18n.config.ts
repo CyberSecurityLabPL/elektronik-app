@@ -1,6 +1,6 @@
 import i18n from "i18next"
 import { initReactI18next } from "react-i18next"
-import { cz, de, en, pl, uk, zh } from "./translations"
+import { cz, de, en, es, fr, pl, uk, zh } from "./translations"
 import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 
 import { LanguageDetectorModule } from "i18next"
@@ -49,6 +49,8 @@ i18n
       de: { translation: de },
       cz: { translation: cz },
       zh: { translation: zh },
+      es: { translation: es },
+      fr: { translation: fr },
     },
     interpolation: {
       escapeValue: false,

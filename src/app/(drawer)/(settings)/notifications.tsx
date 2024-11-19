@@ -79,25 +79,25 @@ const Notifications = () => {
 
   return (
     <ScreenWrapper>
-      <Heading title={t("Settings.Notifications.heading")} screen="settings" />
+      <Heading title={t("Settings.notifications.heading")} screen="settings" />
       <View className="gap-4">
         <SwitchButton
-          title={t("Settings.Notifications.nSchoolTitle")}
+          title={t("Settings.notifications.nSchoolTitle")}
           onPress={() => handlePress("articles")}
           isEnabled={switches.articles}
-          subtitle={t("Settings.Notifications.nSchoolSub")}
+          subtitle={t("Settings.notifications.nSchoolSub")}
         />
         <SwitchButton
-          title={t("Settings.Notifications.nCouncilTitle")}
+          title={t("Settings.notifications.nCouncilTitle")}
           onPress={() => handlePress("announcements")}
           isEnabled={switches.announcements}
-          subtitle={t("Settings.Notifications.nCouncilSub")}
+          subtitle={t("Settings.notifications.nCouncilSub")}
         />
         <SwitchButton
-          title={t("Settings.Notifications.nSubtitutionsTitle")}
+          title={t("Settings.notifications.nSubtitutionsTitle")}
           onPress={() => handlePress("substitutions")}
           isEnabled={switches.substitutions}
-          subtitle={t("Settings.Notifications.nSubtitutionsSub")}
+          subtitle={t("Settings.notifications.nSubtitutionsSub")}
         />
       </View>
     </ScreenWrapper>

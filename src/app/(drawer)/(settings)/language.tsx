@@ -1,6 +1,7 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import LargeButton from "@/components/ui/LargeButton"
+import useLanguage from "@/hooks/useLanguage"
 
 import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 import { router } from "expo-router"
@@ -8,7 +9,7 @@ import React, { useLayoutEffect } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
 
-type LanguageCode = "pl" | "en" | "uk" | "de" | "cz" | "zhCH"
+type LanguageCode = "pl" | "en" | "uk" | "de" | "cz" | "zhCH" | "es" | "fr"
 
 const Language = () => {
   const { i18n, t } = useTranslation()
@@ -28,7 +29,7 @@ const Language = () => {
   }, [])
 
   const handleChange = async (language: LanguageCode) => {
-    const result = await setStorageData("language", language)
+    const result = await setStorageData(StorageKeys.language, language)
 
     if (result.success) {
       console.log("Language in async storage saved: ", result.data)
@@ -39,39 +40,7 @@ const Language = () => {
     i18n.changeLanguage(language)
     router.back()
   }
-  const languages = [
-    {
-      code: "pl",
-      nativeName: "Polski",
-      localName: t("Settings.languages.polish"),
-    },
-    {
-      code: "en",
-      nativeName: "English",
-      localName: t("Settings.languages.english"),
-    },
-    {
-      code: "uk",
-      nativeName: "Українська",
-      localName: t("Settings.languages.ukrainian"),
-    },
-    {
-      code: "de",
-      nativeName: "Deutch",
-      localName: t("Settings.languages.german"),
-    },
-    {
-      code: "cz",
-      nativeName: "české republice",
-      localName: t("Settings.languages.czech"),
-    },
-    {
-      code: "zh",
-      nativeName: "中文",
-      localName: t("Settings.languages.chinese"),
-    },
-  ]
-
+  const languages = useLanguage()
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
   return (

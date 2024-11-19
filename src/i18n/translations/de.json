@@ -1,7 +1,7 @@
 {
   "Welcome": {
     "firstPage": "Willkommen in der Schul-App Elektronik. Ihr schulisches Informationszentrum immer griffbereit!",
-    "secondPage": "Electron++ ist eine Schüler-App, die Schülern mit Funktionen wie Stundenplan und Vertretungsinformationen hilft.",
+    "secondPage": "Elektronik ist eine für Schüler entwickelte Anwendung, die Funktionen wie Stundenplan, Vertretungsinformationen, Artikel, Ankündigungen und kommende Veranstaltungen bietet.",
     "setUp": {
       "name": "Namen eingeben",
       "nameError": "Namen eingeben",
@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "Schön, dich zu sehen",
+    "subheading": "Guten Morgen,",
     "minutes": "Minuten",
     "bells": "Glocken",
     "announcements": "Ankündigungen",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "Einstellungen",
-    "ListItem": {
-      "Profile": "Profil",
-      "Notifications": "Benachrichtigungen",
-      "Theme": "Thema",
-      "Languages": "Sprache"
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Benachrichtigungen",
+      "theme": "Thema",
+      "languages": "Sprache"
     },
     "profile": {
       "heading": "Profil"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "Benachrichtigungen",
       "nSchoolTitle": "Schulankündigungen",
       "nSchoolSub": "Benachrichtigungen über neue Schulleitung-Ankündigungen",
@@ -50,9 +52,11 @@
       "ukrainian": "Ukrainisch",
       "german": "Deutsch",
       "czech": "Tschechisch",
-      "chinese": "Chinesisch"
+      "chinese": "Chinesisch",
+      "spanish": "Spanisch",
+      "french": "Französisch"
     },
-    "Theme": {
+    "theme": {
       "heading": "Themen",
       "light": "Hell",
       "dark": "Dunkel",
@@ -65,13 +69,35 @@
     "error": "Ein unerwarteter Fehler ist aufgetreten, überprüfen Sie Ihre Internetverbindung. Wenn das Problem weiterhin besteht, versuchen Sie es später erneut.",
     "none": "Keine Vertretungen"
   },
+  "Timetable": {
+    "heading": "Stundenplan",
+    "modal": {
+      "heading": "Stundenplan-Einstellungen",
+      "group": "Gruppe",
+      "showRel": "Religion"
+    },
+    "button": "Zeitplan",
+    "none": "Keine Daten"
+  },
+  "Events": {
+    "heading": "Veranstaltungen",
+    "section": "Kommende Veranstaltungen",
+    "type": {
+      "competition": "Schulwettbewerb",
+      "holiday": "Feiertag",
+      "event": "Zeremonie"
+    }
+  },
+  "News": {
+    "heading": "Ankündigungen",
+    "tabs": {
+      "school": "Schule",
+      "council": "Schülerrat"
+    }
+  },
   "Button": {
     "continue": "Weiter",
     "guest": "Als Gast fortfahren"
-  },
-  "Heading": {
-    "greet": "Guten Morgen,",
-    "wish": "Schön, dich zu sehen"
   },
   "Sidebar": {
     "radio": "Electron Radio",

@@ -78,7 +78,7 @@ const Home = () => {
         }
       >
         <Heading
-          title={userData ? userData.name : t("Heading.wish")}
+          title={userData ? userData.name : t("Home.heading")}
           screen="home"
         />
         <Pressable

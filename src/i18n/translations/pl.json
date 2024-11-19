@@ -1,7 +1,7 @@
 {
   "Welcome": {
     "firstPage": "Witaj w szkolnej apce Elektronika. Twoje szkolne centrum informacji zawsze pod ręką!",
-    "secondPage": "Elektron++ to aplikacja dla uczniów, która Pomaga uczniom dzięki funkcjom takim jak plan lekcji, informacje o zastępstwach.",
+    "secondPage": "Elektronik to aplikacja stworzona z myślą o uczniach, oferująca takie funkcje jak plan lekcji, informacje o zastępstwach, artykuły, ogłoszenia oraz nadchodzące wydarzenia.",
     "setUp": {
       "name": "Podaj Imię",
       "nameError": "Podaj imię",
@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "Miło Cię widzieć",
+    "subheading": "Dzień dobry,",
     "minutes": "minut",
     "bells": "Dzwonki",
     "announcements": "Ogłoszenia",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "Ustawienia",
-    "ListItem": {
-      "Profile": "Profil",
-      "Notifications": "Powiadomienia",
-      "Theme": "Motyw",
-      "Languages": "Język"
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Powiadomienia",
+      "theme": "Motyw",
+      "languages": "Język"
     },
     "profile": {
       "heading": "Profil"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "Powiadomienia",
       "nSchoolTitle": "Ogłoszenia Szkolne",
       "nSchoolSub": "Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej",
@@ -50,9 +52,11 @@
       "ukrainian": "Ukrański",
       "german": "Niemiecki",
       "czech": "Czeski",
-      "chinese": "Chiński"
+      "chinese": "Chiński",
+      "spanish": "Hiszpański",
+      "french": "Francuski"
     },
-    "Theme": {
+    "theme": {
       "heading": "Motywy",
       "light": "Jasny",
       "dark": "Ciemny",
@@ -65,13 +69,35 @@
     "error": "Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z internetem. Jeśli problem nadal występuje, spróbuj ponownie później.",
     "none": "Brak Zastępstw"
   },
+  "Timetable": {
+    "heading": "Plan Lekcji",
+    "modal": {
+      "heading": "Ustawienia planu",
+      "group": "Grupa",
+      "showRel": "Religia"
+    },
+    "button": "Rozkład zajęć",
+    "none": "Brak danych"
+  },
+  "Events": {
+    "heading": "Wydarzenia",
+    "section": "Następne wydarzenia",
+    "type": {
+      "competition": "Zawody Szkolne",
+      "holiday": "Święto",
+      "event": "Uroczystość"
+    }
+  },
+  "News": {
+    "heading": "Ogłoszenia",
+    "tabs": {
+      "school": "Szkolne",
+      "council": "Samorządu"
+    }
+  },
   "Button": {
     "continue": "Kontynuuj",
     "guest": "Kontynuuj jako gość"
-  },
-  "Heading": {
-    "greet": "Dzień dobry,",
-    "wish": "Miło Cię widzieć"
   },
   "Sidebar": {
     "radio": "Radio Elektron",

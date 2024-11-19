@@ -1,5 +1,7 @@
 import { z } from "zod"
 
+export const themeSchema = z.string()
+
 export const LanguageSchema = z.string()
 
 export const NotificationsSchema = z.object({

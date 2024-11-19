@@ -1,7 +1,7 @@
 {
   "Welcome": {
     "firstPage": "Vítejte v školní aplikaci Elektronik. Váš školní informační systém vždy po ruce!",
-    "secondPage": "Electron++ je studentská aplikace, která pomáhá studentům s funkcemi jako rozvrh hodin a informace o suplování.",
+    "secondPage": "Elektronik je aplikace vytvořená pro studenty, nabízející funkce jako rozvrh hodin, informace o suplování, články, oznámení a nadcházející události.",
     "setUp": {
       "name": "Zadejte jméno",
       "nameError": "Zadejte jméno",
@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "Rádi tě vidíme",
+    "subheading": "Dobré ráno,",
     "minutes": "Minut",
     "bells": "Zvonění",
     "announcements": "Oznámení",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "Nastavení",
-    "ListItem": {
-      "Profile": "Profil",
-      "Notifications": "Oznámení",
-      "Theme": "Motiv",
-      "Languages": "Jazyk"
+    "listItem": {
+      "profile": "Profil",
+      "notifications": "Oznámení",
+      "theme": "Motiv",
+      "languages": "Jazyk"
     },
     "profile": {
       "heading": "Profil"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "Oznámení",
       "nSchoolTitle": "Školní oznámení",
       "nSchoolSub": "Oznámení o nových zprávách od vedení školy",
@@ -50,9 +52,11 @@
       "ukrainian": "Ukrajinština",
       "german": "Němčina",
       "czech": "Čeština",
-      "chinese": "Čínština"
+      "chinese": "Čínština",
+      "spanish": "Španělština",
+      "french": "Francouzština"
     },
-    "Theme": {
+    "theme": {
       "heading": "Motivy",
       "light": "Světlý",
       "dark": "Tmavý",
@@ -65,13 +69,35 @@
     "error": "Došlo k neočekávané chybě, zkontrolujte připojení k internetu. Pokud problém přetrvává, zkuste to prosím později.",
     "none": "Žádné suplování"
   },
+  "Timetable": {
+    "heading": "Rozvrh hodin",
+    "modal": {
+      "heading": "Nastavení rozvrhu",
+      "group": "Skupina",
+      "showRel": "Náboženství"
+    },
+    "button": "Rozvrh",
+    "none": "Žádná data"
+  },
+  "Events": {
+    "heading": "Události",
+    "section": "Nadcházející události",
+    "type": {
+      "competition": "Školní soutěž",
+      "holiday": "Svátek",
+      "event": "Ceremonie"
+    }
+  },
+  "News": {
+    "heading": "Oznámení",
+    "tabs": {
+      "school": "Školní",
+      "council": "Studentská rada"
+    }
+  },
   "Button": {
     "continue": "Pokračovat",
     "guest": "Pokračovat jako host"
-  },
-  "Heading": {
-    "greet": "Dobré ráno,",
-    "wish": "Rádi tě vidíme"
   },
   "Sidebar": {
     "radio": "Electron Rádio",

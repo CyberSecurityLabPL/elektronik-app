@@ -1,7 +1,7 @@
 {
   "Welcome": {
     "firstPage": "Ласкаво просимо до шкільного додатку Електронік. Ваш шкільний інформаційний центр завжди під рукою!",
-    "secondPage": "Electron++ - це додаток для учнів, який допомагає завдяки функціям як розклад занять, інформація про заміни.",
+    "secondPage": "Elektronik - це додаток, створений для учнів, що пропонує такі функції як розклад занять, інформацію про заміни, статті, оголошення та майбутні події.",
     "setUp": {
       "name": "Введіть ім'я",
       "nameError": "Введіть ім'я",
@@ -12,6 +12,8 @@
     }
   },
   "Home": {
+    "heading": "Радо вітаємо",
+    "subheading": "Доброго дня,",
     "minutes": "хвилин",
     "bells": "Дзвінки",
     "announcements": "Оголошення",
@@ -25,16 +27,16 @@
   },
   "Settings": {
     "heading": "Налаштування",
-    "ListItem": {
-      "Profile": "Профіль",
-      "Notifications": "Сповіщення",
-      "Theme": "Тема",
-      "Languages": "Мова"
+    "listItem": {
+      "profile": "Профіль",
+      "notifications": "Сповіщення",
+      "theme": "Тема",
+      "languages": "Мова"
     },
     "profile": {
       "heading": "Профіль"
     },
-    "Notifications": {
+    "notifications": {
       "heading": "Сповіщення",
       "nSchoolTitle": "Шкільні оголошення",
       "nSchoolSub": "Сповіщення про нові оголошення адміністрації",
@@ -50,9 +52,11 @@
       "ukrainian": "Українська",
       "german": "Німецька",
       "czech": "Чеська",
-      "chinese": "Китайська"
+      "chinese": "Китайська",
+      "spanish": "Іспанська",
+      "french": "Французька"
     },
-    "Theme": {
+    "theme": {
       "heading": "Теми",
       "light": "Світла",
       "dark": "Темна",
@@ -65,13 +69,35 @@
     "error": "Виникла несподівана помилка, перевірте підключення до інтернету. Якщо проблема не зникне, спробуйте пізніше.",
     "none": "Немає замін"
   },
+  "Timetable": {
+    "heading": "Stundenplan",
+    "modal": {
+      "heading": "Stundenplan-Einstellungen",
+      "group": "Gruppe",
+      "showRel": "Religion"
+    },
+    "button": "Zeitplan",
+    "none": "Keine Daten"
+  },
+  "Events": {
+    "heading": "Veranstaltungen",
+    "section": "Kommende Veranstaltungen",
+    "type": {
+      "competition": "Schulwettbewerb",
+      "holiday": "Feiertag",
+      "event": "Zeremonie"
+    }
+  },
+  "News": {
+    "heading": "Ankündigungen",
+    "tabs": {
+      "school": "Schule",
+      "council": "Schülerrat"
+    }
+  },
   "Button": {
     "continue": "Продовжити",
     "guest": "Продовжити як гість"
-  },
-  "Heading": {
-    "greet": "Доброго дня,",
-    "wish": "Радо вітаємо"
   },
   "Sidebar": {
     "radio": "Радіо Електрон",

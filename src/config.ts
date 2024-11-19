@@ -1,4 +1,5 @@
-import { de, enUS, pl, uk, cs, zhCN } from "date-fns/locale"
+import { de, enUS, pl, uk, cs, zhCN, es, fr } from "date-fns/locale"
+import { t } from "i18next"
 
 export default {
   DAYS_BEFORE_EVENT: 14,
@@ -10,4 +11,6 @@ export const localeMap = {
   de: de,
   cs: cs,
   zh: zhCN,
+  es: es,
+  fr: fr,
 }
