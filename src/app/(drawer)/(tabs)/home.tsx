@@ -3,7 +3,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import Modal from "@/components/ui/Modal"
-import config, { localeMap } from "@/config"
+import { DAYS_BEFORE_EVENT, localeMap } from "@/config"
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements"
 import { useArticles } from "@/hooks/articles/useArticles"
 import { useBells } from "@/hooks/bells/useBells"
@@ -155,7 +155,7 @@ const Home = () => {
         <View className="my-6">
           {event?.data[0] &&
             differenceInDays(new Date(event.data[0].attributes.date), curDate) <
-              config.DAYS_BEFORE_EVENT && (
+              DAYS_BEFORE_EVENT && (
               <>
                 <HomeCard
                   type="event"

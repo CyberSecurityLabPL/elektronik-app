@@ -65,7 +65,6 @@ const LargeButton = ({
   extraText,
   selected,
   onPress,
-  className,
   href,
   strokeWidth = 2,
 }: LargeButtonProps & { className?: string }) => {

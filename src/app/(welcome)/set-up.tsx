@@ -13,7 +13,7 @@ import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
-import { UserData } from "@/types/utils"
+
 import {
   Circles,
   Lines,
@@ -48,7 +48,6 @@ const SetUp = () => {
       name: data.name,
       diaryNumber: Number(data.diaryNumber),
       grade: data.grade,
-      diaryNumber: data.diaryNumber,
     })
 
     if (result.success) {
