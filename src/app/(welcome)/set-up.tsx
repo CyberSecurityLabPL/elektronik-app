@@ -1,9 +1,4 @@
 import ScreenWrapper from "@/components/ScreenWrapper"
-import Circles from "@/components/svgs/Circles"
-import Lines from "@/components/svgs/Lines"
-import { LogoSvg } from "@/components/svgs/LogoSvg"
-import Multiplication from "@/components/svgs/Multiplication"
-import SmallCircles from "@/components/svgs/SmallCircles"
 import Button from "@/components/ui/Button"
 import Input from "@/components/ui/Input"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
@@ -13,10 +8,19 @@ import { setStorageData, StorageKeys } from "@/lib/storage"
 import { checkFirstTimeUser } from "@/lib/utils"
 import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
+
 import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
+import { UserData } from "@/types/utils"
+import {
+  Circles,
+  Lines,
+  LogoSvg,
+  Multiplication,
+  SmallCircles,
+} from "@/components/icons"
 
 const SetUp = () => {
   const colors = useColors()
@@ -26,18 +30,27 @@ const SetUp = () => {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserData>()
+  } = useForm({
+    defaultValues: {
+      name: "",
+      grade: "",
+      diaryNumber: 0,
+    },
+  })
 
   const goToHomeAsGuest = async () => {
     router.push("/home")
     await setStorageData(StorageKeys.firstTimeUser, false)
   }
+
   const onSubmit: SubmitHandler<UserData> = async (data) => {
     const result = await setStorageData(StorageKeys.userData, {
       name: data.name,
       diaryNumber: Number(data.diaryNumber),
       grade: data.grade,
+      diaryNumber: data.diaryNumber,
     })
+
     if (result.success) {
       console.log("Data saved successfully:", result.data)
     } else {
@@ -128,7 +141,7 @@ const SetUp = () => {
                 control={control}
                 rules={{
                   required: true,
-                  pattern: /^\d+$/,
+                  pattern: /[0-9]+/,
                   max: 30,
                   min: 1,
                 }}
@@ -137,7 +150,7 @@ const SetUp = () => {
                     onChangeText={(value) => {
                       onChange(value)
                     }}
-                    value={value?.toString()}
+                    value={value.toString()}
                     onBlur={onBlur}
                     type="number"
                     placeholder="0"

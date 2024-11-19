@@ -57,6 +57,7 @@ type LargeButtonProps =
   | (NoIconLargeButtonProps | SelectedNoIconLargeButtonProps)
 
 const LargeButton = ({
+  className,
   LucideIcon,
   iconColor,
   text,

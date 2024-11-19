@@ -1,8 +1,5 @@
+import WelcomeSvg from "@/components/icons/WelcomeSvg"
 import ScreenWrapper from "@/components/ScreenWrapper"
-import Circles from "@/components/svgs/Circles"
-import Flower from "@/components/svgs/Flower"
-import Lines from "@/components/svgs/Lines"
-import { WelcomeSvg } from "@/components/svgs/WelcomeSvg"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
@@ -13,6 +10,7 @@ import { LoaderCircle } from "lucide-react-native"
 import React, { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
+import { Circles, Flower, Lines } from "@/components/icons"
 
 const Page = () => {
   const colors = useColors()
