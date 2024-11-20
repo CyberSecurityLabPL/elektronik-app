@@ -77,7 +77,13 @@
       "showRel": "宗教课"
     },
     "button": "课程安排",
-    "none": "暂无数据"
+    "none": "暂无数据",
+    "bottomSheet": {
+      "search": "搜索课程表...",
+      "class": "班级",
+      "teacher": "教师",
+      "classRoom": "教室"
+    }
   },
   "Events": {
     "heading": "活动",

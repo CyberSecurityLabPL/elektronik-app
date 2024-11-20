@@ -77,7 +77,13 @@
       "showRel": "Religión"
     },
     "button": "Horario",
-    "none": "Sin datos"
+    "none": "Sin datos",
+    "bottomSheet": {
+      "search": "Buscar un plan...",
+      "class": "Clase",
+      "teacher": "Profesor",
+      "classRoom": "Sala de clase"
+    }
   },
   "Events": {
     "heading": "Eventos",
