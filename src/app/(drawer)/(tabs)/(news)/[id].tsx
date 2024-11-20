@@ -8,8 +8,9 @@ import { getStrapiImageUrl, localeFormat } from "@/lib/utils"
 import { router, Stack, useLocalSearchParams } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
-import { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Text, View } from "react-native"
+import Markdown from "react-native-markdown-display"
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -146,9 +147,7 @@ export default function ArticleScreen() {
               </Text>
 
               <View className="bg-background flex-1 mt-4 h-full w-full">
-                <Text className="font-pregular text-base text-foreground h-full w-full">
-                  {data?.data.attributes.content}
-                </Text>
+                <Markdown>{data?.data.attributes.content}</Markdown>
               </View>
             </View>
           )}
