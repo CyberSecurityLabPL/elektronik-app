@@ -352,7 +352,7 @@ const LoadingSkeleton = () => {
 const NoData = () => {
   return (
     <View className="min-w-full min-h-96 flex flex-col justify-center items-center p-4 gap-2">
-      <View className="size-2/3religia">
+      <View className="size-2/3">
         <NoDataSvg />
       </View>
     </View>
