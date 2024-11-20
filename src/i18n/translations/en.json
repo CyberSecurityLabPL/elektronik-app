@@ -54,7 +54,9 @@
       "czech": "Czech",
       "chinese": "Chinese",
       "spanish": "Spanish",
-      "french": "French"
+      "french": "French",
+      "korean": "Korean",
+      "japanese": "Japanese"
     },
     "theme": {
       "heading": "Themes",

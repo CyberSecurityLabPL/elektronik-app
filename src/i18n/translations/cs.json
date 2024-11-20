@@ -54,7 +54,9 @@
       "czech": "Čeština",
       "chinese": "Čínština",
       "spanish": "Španělština",
-      "french": "Francouzština"
+      "french": "Francouzština",
+      "korean": "Korejština",
+      "japanese": "Japonština"
     },
     "theme": {
       "heading": "Motivy",
