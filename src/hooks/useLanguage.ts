@@ -53,6 +53,11 @@ const useLanguage = () => {
       nativeName: "한국어",
       localName: t("Settings.languages.korean"),
     },
+    {
+      code: "edgy",
+      nativeName: "Edgy",
+      localName: t("Settings.languages.edgy"),
+    },
   ]
   return languages
 }

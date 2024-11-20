@@ -14,4 +14,5 @@ export const localeMap = {
   fr: fr,
   ko: ko,
   ja: ja,
+  edgy: pl,
 }
