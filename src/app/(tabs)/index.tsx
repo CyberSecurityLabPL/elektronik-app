@@ -15,7 +15,7 @@ import { cn, localeFormat } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
 import { differenceInDays, format, isWithinInterval, set } from "date-fns"
 import { pl } from "date-fns/locale"
-import { router } from "expo-router"
+import { useRouter } from "expo-router"
 import { X } from "lucide-react-native"
 import React, { useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -42,6 +42,8 @@ const Home = () => {
   })
 
   const { data: bells, refetch: refetchBells } = useBells()
+
+  const router = useRouter()
 
   const onRefresh = useCallback(() => {
     setRefreshing(true)
@@ -202,7 +204,11 @@ const Home = () => {
           <HomeCard
             type="school"
             onPress={() =>
-              router.push(`/(tabs)/(news)/n${article?.pages[0].data[0].id}`)
+              router.push({
+                // @ts-ignore
+                pathname: `/news/n${article?.pages[0].data[0].id}`,
+                params: { origin: "home", other: "other" },
+              })
             }
             description={article?.pages[0].data[0].attributes.description!}
             date={
@@ -220,9 +226,11 @@ const Home = () => {
           <HomeCard
             type="council"
             onPress={() =>
-              router.push(
-                `/(tabs)/(news)/a${announcement?.pages[0].data[0].id}`,
-              )
+              router.push({
+                // @ts-ignore
+                pathname: `/news/a${announcement!.pages[0].data[0].id}`,
+                params: { origin: "home", other: "other" },
+              })
             }
             description={announcement?.pages[0].data[0].attributes.description!}
             date={

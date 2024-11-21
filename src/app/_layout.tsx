@@ -9,6 +9,11 @@ import "../global.css"
 import i18n from "../i18n/i18n.config"
 import { I18nextProvider } from "react-i18next"
 import { View } from "react-native"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
+import Drawer from "expo-router/drawer"
+import Sidebar from "@/components/navigation/Sidebar"
+import { StatusBar } from "expo-status-bar"
+import { Toaster } from "sonner-native"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -46,36 +51,33 @@ export default function RootLayout() {
     <QueryProvider>
       <I18nextProvider i18n={i18n} defaultNS={"translation"}>
         <ThemeProvider>
-          <RootLayoutNav />
+          <GestureHandlerRootView className="flex-1">
+            <Drawer
+              screenOptions={{
+                drawerStyle: {
+                  width: "82%",
+                },
+                headerShown: false,
+                drawerType: "slide",
+                drawerInactiveBackgroundColor: "#1f2026",
+                drawerInactiveTintColor: "#b6b6d9",
+                drawerPosition: "right",
+              }}
+              drawerContent={Sidebar}
+              initialRouteName="index"
+            >
+              <Drawer.Screen name="(tabs)" />
+              <Drawer.Screen
+                name="settings"
+                options={{ swipeEnabled: false }}
+              />
+              <Drawer.Screen name="welcome" options={{ swipeEnabled: false }} />
+            </Drawer>
+          </GestureHandlerRootView>
+          <StatusBar style="auto" />
+          <Toaster />
         </ThemeProvider>
       </I18nextProvider>
     </QueryProvider>
-  )
-}
-
-function RootLayoutNav() {
-  return (
-    <View className="bg-background flex-1">
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="(welcome)"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="(drawer)"
-          options={{
-            headerShown: false,
-          }}
-        />
-      </Stack>
-    </View>
   )
 }

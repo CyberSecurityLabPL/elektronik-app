@@ -54,7 +54,7 @@ const Settings = () => {
           extendable
           iconColor={colors.foreground}
           LucideIcon={User2}
-          href={"/(drawer)/(settings)/profile"}
+          href={"/settings/profile"}
           strokeWidth={1.5}
         />
         <LargeButton
@@ -62,7 +62,7 @@ const Settings = () => {
           extendable
           iconColor={colors.foreground}
           LucideIcon={Bell}
-          href={"/(drawer)/(settings)/notifications"}
+          href={"/settings/notifications"}
           strokeWidth={1.5}
         />
         <LargeButton
@@ -83,7 +83,7 @@ const Settings = () => {
           extendable
           iconColor={colors.foreground}
           LucideIcon={Languages}
-          href={"/(drawer)/(settings)/language"}
+          href={"/settings/language"}
           strokeWidth={1.5}
           extraText={currentLanguage?.localName}
         />

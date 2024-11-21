@@ -44,7 +44,7 @@ export const Article = ({
     image: article.attributes.image.data
       ? getStrapiImageUrl(article.attributes.image.data.attributes.url)
       : "https://images.unsplash.com/photo-1598557360303-bc7efa2ffa81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    onPress: () => router.navigate(`/(drawer)/(news)/n${article.id}`),
+    onPress: () => router.navigate(`/news/n${article.id}`),
   }
 
   return index === 0 ? (
@@ -81,7 +81,7 @@ export const Announcement = ({
     image: article.attributes.image.data
       ? getStrapiImageUrl(article.attributes.image.data.attributes.url)
       : "https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    onPress: () => router.navigate(`/(drawer)/(news)/a${article.id}`),
+    onPress: () => router.navigate(`/news/a${article.id}`),
   }
 
   return index === 0 ? (

@@ -1,8 +1,12 @@
 import { View, Text, TouchableOpacity } from "react-native"
 import TabBarIcon from "./TabBarIcon"
-
-export default function TabBar({ state, descriptors, navigation }: any) {
-  // any: react-native-navigation does not export types for TabBar props.
+import { useLocalSearchParams } from "expo-router"
+import { BottomTabBarProps } from "@react-navigation/bottom-tabs"
+export default function TabBar({
+  state,
+  descriptors,
+  navigation,
+}: BottomTabBarProps) {
   return (
     <View className="flex-row justify-around pb-4 bg-background">
       {(state.routes as any[]).map((route, index) => {
@@ -11,8 +15,8 @@ export default function TabBar({ state, descriptors, navigation }: any) {
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-              ? options.title
-              : route.name
+            ? options.title
+            : route.name
 
         const isFocused = state.index === index
 
@@ -34,19 +38,23 @@ export default function TabBar({ state, descriptors, navigation }: any) {
             target: route.key,
           })
         }
-        if (route.name === "radio") {
+
+        if (route.name === "radio" || route.name.includes("/news/")) {
           return null
         }
+
         return (
           <TabBarIcon
             key={route.key}
             focused={isFocused}
             accessibilityState={isFocused ? { selected: true } : {}}
-            accessibilityLabel={options.tabBarAccessibilityLabel}
-            testID={options.tabBarTestID}
+            accessibilityLabel={
+              options.tabBarAccessibilityLabel ?? "Tab bar icon"
+            }
+            testID={options.tabBarTestID ?? "tab-bar-icon-test-id-" + index}
             onPress={onPress}
             onLongPress={onLongPress}
-            Icon={options.tabBarIcon}
+            Icon={options.tabBarIcon as React.ForwardRefExoticComponent<any>}
           />
         )
       })}

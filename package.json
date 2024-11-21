@@ -20,7 +20,6 @@
     "axios": "^1.7.7",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
-    "elektronik-app": "file:",
     "expo": "~51.0.28",
     "expo-font": "~12.0.9",
     "expo-linking": "~6.3.1",

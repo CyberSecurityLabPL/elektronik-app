@@ -295,7 +295,7 @@ const NewsItem = memo(
       isFeatured={index === 0}
       description={item.attributes.description}
       onPress={() =>
-        router.push(`/(drawer)/(news)/${activeTab === 1 ? "a" : "n"}${item.id}`)
+        router.push(`/news/${activeTab === 1 ? "a" : "n"}${item.id}`)
       }
     />
   ),

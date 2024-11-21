@@ -11,11 +11,8 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
         headerTransparent: true,
-        tabBarStyle: {
-          display: usePathname() === "radio" ? "none" : "flex",
-        },
       }}
-      initialRouteName="home"
+      initialRouteName="index"
       tabBar={(props) => <TabBar {...props} />}
     >
       <Tabs.Screen
@@ -31,13 +28,13 @@ export default function TabLayout() {
         })}
       />
       <Tabs.Screen
-        name="home"
+        name="index"
         options={({ navigation, route }) => ({
           tabBarIcon: Home,
         })}
       />
       <Tabs.Screen
-        name="(news)"
+        name="news"
         options={({ navigation, route }) => ({
           tabBarIcon: Newspaper,
         })}

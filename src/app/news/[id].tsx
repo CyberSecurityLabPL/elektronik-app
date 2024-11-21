@@ -5,11 +5,19 @@ import { SingleNewsResponse } from "@/hooks/articles/types"
 import { useArticle } from "@/hooks/articles/useArticles"
 import useColors from "@/hooks/useColors"
 import { getStrapiImageUrl, localeFormat } from "@/lib/utils"
-import { router, Stack, useLocalSearchParams } from "expo-router"
+import { useRoute } from "@react-navigation/native"
+import {
+  Stack,
+  useGlobalSearchParams,
+  useLocalSearchParams,
+  useNavigation,
+  usePathname,
+  useRouter,
+} from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
-import { Text, View } from "react-native"
+import { BackHandler, Text, View } from "react-native"
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -23,6 +31,33 @@ export default function ArticleScreen() {
   const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const scrollOfset = useScrollViewOffset(scrollRef)
   const [key, setKey] = useState(0)
+
+  const router = useRouter()
+
+  const pathname = usePathname()
+  const params = useLocalSearchParams()
+  const cameFromHome = params?.origin
+  // console.log("fsdfsd", cameFromHome)
+  // console.log(pathname)
+
+  useEffect(() => {
+    const backAction = () => {
+      router.dismissAll()
+      if (cameFromHome) {
+        router.navigate("/(tabs)") // Go to tabs if came from home
+      } else {
+        router.navigate("/news") // Go back to news list otherwise
+      }
+      return true
+    }
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction,
+    )
+
+    return () => backHandler.remove()
+  }, [cameFromHome])
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ y: 0, animated: false })
@@ -65,12 +100,18 @@ export default function ArticleScreen() {
       <Stack.Screen
         options={{
           headerTransparent: true,
+          presentation: "formSheet",
           headerLeft: () => (
             <Animated.View style={headerAnimatedStyle} className="mt-4">
               <IconButton
                 LucideIcon={ChevronLeft}
                 iconColor={colors.foreground}
-                onPress={() => router.back()}
+                onPress={() => {
+                  router.dismissAll()
+                  cameFromHome
+                    ? router.navigate("/(tabs)")
+                    : router.navigate("/news")
+                }}
               />
             </Animated.View>
           ),

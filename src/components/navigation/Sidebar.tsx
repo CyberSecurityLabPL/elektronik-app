@@ -4,7 +4,7 @@ import {
   DrawerContentScrollView,
 } from "@react-navigation/drawer"
 import { DrawerActions } from "@react-navigation/native"
-import { useRouter } from "expo-router"
+import { Link, useRouter } from "expo-router"
 import {
   Clover,
   Disc3,
@@ -14,7 +14,7 @@ import {
   X,
 } from "lucide-react-native"
 import React from "react"
-import { Linking, Text, View } from "react-native"
+import { Linking, Pressable, Text, View } from "react-native"
 import { toast } from "sonner-native"
 import { DiscordLogo, LogoSvg } from "../icons"
 import IconButton from "../ui/IconButton"
@@ -56,7 +56,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           LucideIcon={Disc3}
           iconColor={colors.foreground}
           text={t("Sidebar.radio")}
-          onPress={() => router.push("/(drawer)/(tabs)/radio")}
+          onPress={() => router.push("/(tabs)/radio")}
         />
         <LargeButton
           LucideIcon={Clover}
@@ -86,11 +86,20 @@ const Sidebar = (props: DrawerContentComponentProps) => {
           />
         </View>
         <View className="w-full h-[1px] bg-foreground-secondary"></View>
+        {/* <Link href={"/settings/redirect"} asChild>
+          <Pressable className="p-3 bg-background-secondary rounded-2xl">
+            <Text className="text-foreground text-lg">Settings</Text>
+          </Pressable>
+        </Link> */}
         <LargeButton
           LucideIcon={SettingsIcon}
           iconColor={colors.foreground}
           text={t("Sidebar.settings")}
-          onPress={() => router.push("/(drawer)/(settings)/settings")}
+          onPress={() =>
+            router.push({
+              pathname: "/settings",
+            })
+          }
         />
       </View>
     </View>
