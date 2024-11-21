@@ -54,7 +54,10 @@
       "czech": "Чеська",
       "chinese": "Китайська",
       "spanish": "Іспанська",
-      "french": "Французька"
+      "french": "Французька",
+      "korean": "Корейська",
+      "japanese": "Японська",
+      "edgy": "Стрімкий"
     },
     "theme": {
       "heading": "Теми",
@@ -70,14 +73,20 @@
     "none": "Немає замін"
   },
   "Timetable": {
-    "heading": "Stundenplan",
+    "heading": "Розклад занять",
     "modal": {
-      "heading": "Stundenplan-Einstellungen",
-      "group": "Gruppe",
-      "showRel": "Religion"
+      "heading": "Налаштування розкладу",
+      "group": "Група",
+      "showRel": "Релігія"
     },
-    "button": "Zeitplan",
-    "none": "Keine Daten"
+    "button": "Розклад",
+    "none": "Немає даних",
+    "bottomSheet": {
+      "search": "Пошук розкладу...",
+      "class": "Клас",
+      "teacher": "Вчитель",
+      "classRoom": "Кімната класу"
+    }
   },
   "Events": {
     "heading": "Veranstaltungen",

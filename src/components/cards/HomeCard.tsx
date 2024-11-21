@@ -12,6 +12,17 @@ import {
   TouchableOpacityProps,
   View,
 } from "react-native"
+import {
+  Arc,
+  Circles,
+  GeometricFigures,
+  HomeCardBottomLine,
+  HomeCardMiddleLine,
+  HomeCardTopLeftLine,
+  HomeCardTopRightLine,
+  Lines,
+  Ring,
+} from "../icons"
 
 interface BaseCardProps {
   title: string
@@ -41,7 +52,7 @@ export default function HomeCard({
   if (type == "event") {
     return (
       <TouchableOpacity
-        className="rounded-3xl w-full p-6 flex flex-col gap-4 bg-[#FFB55F]"
+        className="rounded-3xl w-full p-6 flex flex-col gap-4 bg-[#FFB55F] overflow-hidden"
         activeOpacity={0.85}
         {...props}
       >
@@ -57,13 +68,19 @@ export default function HomeCard({
           </View>
         </View>
         <Text className="text-xl font-pmedium text-white mb-2">{title}</Text>
+        <View className="absolute -bottom-16 -left-28 -z-10 ">
+          <Arc />
+        </View>
+        <View className="absolute -bottom-16 right-2 -z-10">
+          <Circles color="#FF8C09" />
+        </View>
       </TouchableOpacity>
     )
   } else {
     return (
       <TouchableOpacity
         className={cn(
-          "rounded-3xl w-full p-2",
+          "rounded-3xl w-full p-2 overflow-hidden",
           type == "school" ? "bg-[#ff8686]" : "bg-purple-300",
         )}
         onPress={() => console.log("News")}
@@ -98,6 +115,34 @@ export default function HomeCard({
             </View>
           </View>
         </View>
+        {type == "school" ? (
+          <>
+            <View className="absolute -top-52 -right-36 -z-10 ">
+              <Ring width={290} height={290} />
+            </View>
+            <View className="absolute -bottom-16 -right-4 -z-10 ">
+              <GeometricFigures width={182} height={178} />
+            </View>
+            <View className="absolute bottom-4 -left-4 -z-10 ">
+              <Lines color="#F85858" width={182} height={178} />
+            </View>
+          </>
+        ) : (
+          <>
+            <View className="absolute -top-7 -left- -z-10 ">
+              <HomeCardTopLeftLine />
+            </View>
+            <View className="absolute -top-8 -right-14 -z-10 ">
+              <HomeCardTopRightLine />
+            </View>
+            <View className="absolute -bottom-12 -left-0 -z-10 ">
+              <HomeCardMiddleLine />
+            </View>
+            <View className="absolute -bottom-48 -left-4 -z-10 ">
+              <HomeCardBottomLine />
+            </View>
+          </>
+        )}
       </TouchableOpacity>
     )
   }

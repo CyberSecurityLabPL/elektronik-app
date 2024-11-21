@@ -7,7 +7,7 @@ import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 import { router } from "expo-router"
 import React, { useLayoutEffect } from "react"
 import { useTranslation } from "react-i18next"
-import { Text, View } from "react-native"
+import { FlatList, ScrollView, Text, View } from "react-native"
 
 type LanguageCode = "pl" | "en" | "uk" | "de" | "cz" | "zhCH" | "es" | "fr"
 
@@ -50,17 +50,18 @@ const Language = () => {
 
       <View className="w-full h-[1px] bg-foreground-secondary my-6 px-12" />
 
-      <View className="flex gap-2">
-        {languages
-          .filter((lang) => lang.code !== i18n.language)
-          .map((lang) => (
-            <LargeButton
-              key={lang.code}
-              text={lang.localName}
-              onPress={() => handleChange(lang.code as LanguageCode)}
-            />
-          ))}
-      </View>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={languages.filter((lang) => lang.code !== i18n.language)}
+        renderItem={({ item: lang }) => (
+          <LargeButton
+            key={lang.code}
+            text={lang.localName}
+            onPress={() => handleChange(lang.code as LanguageCode)}
+          />
+        )}
+        ItemSeparatorComponent={() => <View className="h-2" />}
+      />
     </ScreenWrapper>
   )
 }

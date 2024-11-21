@@ -54,7 +54,10 @@
       "czech": "Czech",
       "chinese": "Chinese",
       "spanish": "Spanish",
-      "french": "French"
+      "french": "French",
+      "korean": "Korean",
+      "japanese": "Japanese",
+      "edgy": "Edgy"
     },
     "theme": {
       "heading": "Themes",
@@ -77,7 +80,13 @@
       "showRel": "Religion"
     },
     "button": "Class Schedule",
-    "none": "No data"
+    "none": "No data",
+    "bottomSheet": {
+      "search": "Search timetable...",
+      "class": "Class",
+      "teacher": "Teacher",
+      "classRoom": "Classroom"
+    }
   },
   "Events": {
     "heading": "Events",

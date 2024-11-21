@@ -1,0 +1,116 @@
+{
+  "Welcome": {
+    "firstPage": "Hejka tu Lenka 💅! Wbijaj do Elektronika – apka giga sigma rizzera dla każdego, kto chce być nie edgy, a PRO 🔥.",
+    "secondPage": "Elektronik to skibidi rizz mode ON! Masz tu wszystko: plan, zastępstwa, ogłoszenia. Zero krawędziowania, 100% kontroli 💀.",
+    "setUp": {
+      "name": "Podaj swoje giga imię! 🕶️",
+      "nameError": "Gyat, wpisz swoje imię, bo tak to rizz się nie zgadza! 😤",
+      "class": "Wpisz klasę, ziomeczku, chyba że chcesz być edgy outsiderem. 🖤",
+      "classError": "Gyat, klasa pusta, krawędziujesz? 😭",
+      "diaryNumber": "Wpisz numer w dzienniku, sigma rizz, nie ma opcji na błąd! 🎯",
+      "diaryNumberError": "Numerek pusty? Mroczny vibe, ale jednak nie działa. 🤔"
+    }
+  },
+  "Home": {
+    "heading": "Yo! Dobrze widzieć giga rizzera na pokładzie. 🕶️✨",
+    "subheading": "Witaj, mroczny sigmo! 🔥",
+    "minutes": "minut",
+    "bells": "🎵 Sigma dzwonki",
+    "announcements": "🔥 Rizz ogłoszenia",
+    "timeMessage": {
+      "weekend": "💥 BOOM! Weekend wjeżdża na pełnej – chill edgy vibes. 🎉",
+      "goodnight": "💤 Dobranoc, mroczny sigma królu. Zgaś światło, niebo czeka. 🌌",
+      "toBreak": "🎓 Do przerwy pozostało kilka sigma sekund – wytrzymaj! 😤",
+      "toLesson": "😊 Lekcja tuż-tuż! Zbieraj rizzowy sprzęt! 🖊️",
+      "endLesson": "🌸 Lekcje DONE. Możesz teraz chillować jak edgy Chad. 💀"
+    }
+  },
+  "Settings": {
+    "heading": "Panel Chada - ustawienia skibidi rizzu 🛠️",
+    "listItem": {
+      "profile": "Profil giga sigma",
+      "notifications": "Ding-dong powiadomienia",
+      "theme": "Emo Gyat? ",
+      "languages": "Język rizzu 🌎"
+    },
+    "profile": {
+      "heading": "Edgy profil: twoja sigma strefa"
+    },
+    "notifications": {
+      "heading": "Powiadomienia dla sigma rizzera 🔔",
+      "nSchoolTitle": "Szkolne edgy newsy",
+      "nSchoolSub": "Nie przegap żadnej sigma informacji od szkoły.",
+      "nCouncilTitle": "Samorząd: rizz level wyżej",
+      "nCouncilSub": "Samorząd rzuca memy? My damy cynk. 😎",
+      "nSubtitutionsTitle": "Skibidi zmiany w planie",
+      "nSubtitutionsSub": "Dowiemy się za ciebie, czy ktoś skibidi wypadł."
+    },
+    "languages": {
+      "heading": "Mów jak sigma! 🌐",
+      "polish": "Polski (lokalny rizz)",
+      "english": "Angielski (globalny skibidi rizz)",
+      "ukrainian": "Ukraiński (rizz vibes na wschód)",
+      "german": "Niemiecki (ordnung sigma!)",
+      "czech": "Czeski (sąsiedzki edgy)",
+      "chinese": "Chiński (global rizz approved 🀄)",
+      "spanish": "Hiszpański (🔥 caliente rizz!)",
+      "french": "Francuski (bonjour, giga Chad 💋)",
+      "korean": "Koreański (sigma oppa style 🇰🇷)",
+      "japanese": "Japoński (edgy rizz-san vibes 🇯🇵)",
+      "edgy": "Edgy 🔥🔥"
+    },
+    "theme": {
+      "heading": "Motywy: wybierz swoje skibidi vibes",
+      "light": "Jasny Beta",
+      "dark": "Mroczny Alfa",
+      "infoLight": "Zmiana na jasny... skibidi chilluje! ☀️",
+      "infoDark": "Zmiana na mroczny... edgy sigma w nocy! 🌑"
+    }
+  },
+  "Substitutions": {
+    "heading": "Brakujące Gyaty 🕹️",
+    "error": "Gyat, net się spocił, spróbuj później. Edgy problem, ale naprawimy. 🔧",
+    "none": "Spoko! Brak zastępstw – rizzuj bez stresu! 😎"
+  },
+  "Timetable": {
+    "heading": "Sigma czas ⏳",
+    "modal": {
+      "heading": "Czas Na Rizz",
+      "group": "Grupa",
+      "showRel": "Religia Rizz?"
+    },
+    "button": "Rizzuj plan zajęć! 🚀",
+    "none": "Gyat! Pustka w planie. Zmarnuj czas na chill. 🖤",
+    "bottomSheet": {
+      "search": "Szukaj jak sigma pro...",
+      "class": "Klasa Giga",
+      "teacher": "Edgy nauczyciel",
+      "classRoom": "Sigma pokój"
+    }
+  },
+  "Events": {
+    "heading": "Rizz Party Harmonogram",
+    "section": "Nadciąga giga event 🎉",
+    "today": "Dzisiaj? Rizz ON 🔥"
+  },
+  "News": {
+    "heading": "Ploty z sigma HQ",
+    "tabs": {
+      "school": "Edgy news",
+      "council": "Sigmorząd"
+    }
+  },
+  "Button": {
+    "continue": "Jedziesz dalej, sigma rizz mode ON! 🚀",
+    "guest": "Wbijaj jako gość – edgy style. 🖤"
+  },
+  "Sidebar": {
+    "radio": "Rizz vibes na full 🔊",
+    "luckyNumber": "Szczęście GYATA! 🍀",
+    "settings": "Mroczne ustawienia 🛠️"
+  },
+  "Toast": {
+    "success": "Sigma done! Wszystko gra. 🏆",
+    "error": "Gyat, error... edgy problem detected. 🚨"
+  }
+}

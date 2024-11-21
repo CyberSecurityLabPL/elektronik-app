@@ -54,7 +54,10 @@
       "czech": "Checa",
       "chinese": "Chino",
       "spanish": "Español",
-      "french": "Francés"
+      "french": "Francés",
+      "korean": "Coreano",
+      "japanese": "Japonés",
+      "edgy": "Nervioso"
     },
     "theme": {
       "heading": "Motivos",
@@ -77,7 +80,13 @@
       "showRel": "Religión"
     },
     "button": "Horario",
-    "none": "Sin datos"
+    "none": "Sin datos",
+    "bottomSheet": {
+      "search": "Buscar un plan...",
+      "class": "Clase",
+      "teacher": "Profesor",
+      "classRoom": "Sala de clase"
+    }
   },
   "Events": {
     "heading": "Eventos",

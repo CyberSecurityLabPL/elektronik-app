@@ -54,7 +54,10 @@
       "czech": "Tchèque",
       "chinese": "Chinois",
       "spanish": "Espagnol",
-      "french": "Français"
+      "french": "Français",
+      "korean": "Coréen",
+      "japanese": "Japonais",
+      "edgy": "Énervé"
     },
     "theme": {
       "heading": "Thèmes",
@@ -77,7 +80,13 @@
       "showRel": "Religion"
     },
     "button": "Calendrier des cours",
-    "none": "Aucune donnée disponible"
+    "none": "Aucune donnée disponible",
+    "bottomSheet": {
+      "search": "Rechercher un plan de cours...",
+      "class": "Classe",
+      "teacher": "Enseignant",
+      "classRoom": "Salle de classe"
+    }
   },
   "Events": {
     "heading": "Événements",

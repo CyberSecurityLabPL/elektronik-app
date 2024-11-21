@@ -1,0 +1,116 @@
+{
+  "Welcome": {
+    "firstPage": "学校アプリElektronikaへようこそ。あなたの手元に常にある学校情報センター！",
+    "secondPage": "Elektronikは学生向けに設計されたアプリで、時間割、代講情報、記事、通知、そしてイベントなどの機能を提供します。",
+    "setUp": {
+      "name": "名前を入力",
+      "nameError": "名前を入力してください",
+      "class": "クラスを入力",
+      "classError": "クラスを選択してください",
+      "diaryNumber": "日誌番号を選択してください",
+      "diaryNumberError": "正しい日誌番号を入力してください"
+    }
+  },
+  "Home": {
+    "heading": "お会いできて嬉しいです",
+    "subheading": "おはようございます、",
+    "minutes": "分",
+    "bells": "ベル",
+    "announcements": "お知らせ",
+    "timeMessage": {
+      "weekend": "💥 今日は週末です！",
+      "goodnight": "💤 おやすみなさい！",
+      "toBreak": "🎓 休憩まで残り",
+      "toLesson": "😊 授業開始まで残り",
+      "endLesson": "🌸 授業終了！"
+    }
+  },
+  "Settings": {
+    "heading": "設定",
+    "listItem": {
+      "profile": "プロフィール",
+      "notifications": "通知",
+      "theme": "テーマ",
+      "languages": "言語"
+    },
+    "profile": {
+      "heading": "プロフィール"
+    },
+    "notifications": {
+      "heading": "通知",
+      "nSchoolTitle": "学校のお知らせ",
+      "nSchoolSub": "学校の管理者からの新しい通知",
+      "nCouncilTitle": "生徒会のお知らせ",
+      "nCouncilSub": "生徒会からの新しい通知",
+      "nSubtitutionsTitle": "代講",
+      "nSubtitutionsSub": "新しい代講情報の通知"
+    },
+    "languages": {
+      "heading": "言語",
+      "polish": "ポーランド語",
+      "english": "英語",
+      "ukrainian": "ウクライナ語",
+      "german": "ドイツ語",
+      "czech": "チェコ語",
+      "chinese": "中国語",
+      "spanish": "スペイン語",
+      "french": "フランス語",
+      "korean": "韓国語",
+      "japanese": "日本語",
+      "edgy": "エッジー"
+    },
+    "theme": {
+      "heading": "テーマ",
+      "light": "ライト",
+      "dark": "ダーク",
+      "infoLight": "ライトテーマに変更中...",
+      "infoDark": "ダークテーマに変更中..."
+    }
+  },
+  "Substitutions": {
+    "heading": "代講",
+    "error": "予期しないエラーが発生しました。インターネット接続を確認してください。問題が続く場合は、後でもう一度お試しください。",
+    "none": "代講情報なし"
+  },
+  "Timetable": {
+    "heading": "時間割",
+    "modal": {
+      "heading": "時間割設定",
+      "group": "グループ",
+      "showRel": "宗教"
+    },
+    "button": "スケジュール",
+    "none": "データなし",
+    "bottomSheet": {
+      "search": "時間割を検索...",
+      "class": "クラス",
+      "teacher": "教師",
+      "classRoom": "教室"
+    }
+  },
+  "Events": {
+    "heading": "イベント",
+    "section": "次のイベント",
+    "today": "今日"
+  },
+  "News": {
+    "heading": "お知らせ",
+    "tabs": {
+      "school": "学校",
+      "council": "生徒会"
+    }
+  },
+  "Button": {
+    "continue": "続ける",
+    "guest": "ゲストとして続ける"
+  },
+  "Sidebar": {
+    "radio": "ラジオElektron",
+    "luckyNumber": "ラッキーナンバー",
+    "settings": "設定"
+  },
+  "Toast": {
+    "success": "データが保存されました",
+    "error": "エラーが発生しました"
+  }
+}

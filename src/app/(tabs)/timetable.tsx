@@ -15,7 +15,7 @@ import {
   useTimetableAllInfo,
 } from "@/hooks/timetable/useTimetable"
 import useColors from "@/hooks/useColors"
-import { getDayOfWeek } from "@/lib/utils"
+import { getDayOfWeek, localeFormat } from "@/lib/utils"
 import BottomSheet, {
   BottomSheetBackdrop,
   BottomSheetScrollView,
@@ -41,6 +41,7 @@ import {
 import { FlatList, Pressable, RefreshControl, Text, View } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
 import { useTranslation } from "react-i18next"
+import { TFunction } from "i18next"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
 type allDays = classDays | "sobota" | "niedziela"
@@ -128,8 +129,8 @@ const Timetable = () => {
           .map((_, i) => (
             <DayTab
               key={`DayTab${i}`}
-              day={format(getDayOfWeek(i + 1), "EEEEEE.", { locale: pl })}
-              date={format(getDayOfWeek(i + 1), "dd.MM")}
+              day={localeFormat(getDayOfWeek(i + 1), "EEEEEE.")}
+              date={localeFormat(getDayOfWeek(i + 1), "dd.MM")}
               onPress={() => {
                 setDay(getDayName(getDayOfWeek(i + 1)))
               }}
@@ -223,6 +224,7 @@ const Timetable = () => {
           <BottomSheetSelectors
             bottomSheetRef={bottomSheetRef}
             info={info ?? []}
+            t={t}
             selectedTimetable={selectedTimetable}
             setSelectedTimetable={setSelectedTimetable}
           />
@@ -286,11 +288,13 @@ export default Timetable
 function BottomSheetSelectors({
   selectedTimetable,
   setSelectedTimetable,
+  t,
   info,
   bottomSheetRef,
 }: {
   selectedTimetable: string
   setSelectedTimetable: Dispatch<SetStateAction<string>>
+  t: TFunction<"translation", undefined>
   info: TimetableInfoResponse
   bottomSheetRef: React.RefObject<BottomSheetMethods>
 }) {
@@ -301,12 +305,12 @@ function BottomSheetSelectors({
       <Input
         type="text"
         onChangeText={(text) => setSearch(text)}
-        placeholder="Wyszukaj plan..."
+        placeholder={t("Timetable.bottomSheet.search")}
       />
       <TimetableSelect
         selectedTimetable={selectedTimetable}
         setSelectedTimetable={setSelectedTimetable}
-        text="Klasa"
+        text={t("Timetable.bottomSheet.class")}
         search={search}
         LucideIcon={GraduationCap}
         items={info.filter((item) => item.id.toLocaleLowerCase().includes("o"))}
@@ -315,7 +319,7 @@ function BottomSheetSelectors({
       <TimetableSelect
         selectedTimetable={selectedTimetable}
         setSelectedTimetable={setSelectedTimetable}
-        text="Nauczyciel"
+        text={t("Timetable.bottomSheet.teacher")}
         search={search}
         LucideIcon={Users}
         items={info.filter((item) => item.id.toLocaleLowerCase().includes("n"))}
@@ -324,7 +328,7 @@ function BottomSheetSelectors({
       <TimetableSelect
         selectedTimetable={selectedTimetable}
         setSelectedTimetable={setSelectedTimetable}
-        text="Sala"
+        text={t("Timetable.bottomSheet.classRoom")}
         search={search}
         LucideIcon={DoorOpen}
         items={info.filter((item) => item.id.toLocaleLowerCase().includes("s"))}

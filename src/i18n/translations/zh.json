@@ -54,7 +54,10 @@
       "czech": "捷克语",
       "chinese": "中文",
       "spanish": "西班牙语",
-      "french": "法语"
+      "french": "法语",
+      "korean": "韩语",
+      "japanese": "日语",
+      "edgy": "急躁的"
     },
     "theme": {
       "heading": "主题",
@@ -77,7 +80,13 @@
       "showRel": "宗教课"
     },
     "button": "课程安排",
-    "none": "暂无数据"
+    "none": "暂无数据",
+    "bottomSheet": {
+      "search": "搜索课程表...",
+      "class": "班级",
+      "teacher": "教师",
+      "classRoom": "教室"
+    }
   },
   "Events": {
     "heading": "活动",

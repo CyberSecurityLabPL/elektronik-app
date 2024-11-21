@@ -54,7 +54,10 @@
       "czech": "Tschechisch",
       "chinese": "Chinesisch",
       "spanish": "Spanisch",
-      "french": "Französisch"
+      "french": "Französisch",
+      "korean": "Koreanisch",
+      "japanese": "Japanisch",
+      "edgy": "Nervöser"
     },
     "theme": {
       "heading": "Themen",
@@ -77,7 +80,13 @@
       "showRel": "Religion"
     },
     "button": "Zeitplan",
-    "none": "Keine Daten"
+    "none": "Keine Daten",
+    "bottomSheet": {
+      "search": "Stundenplan durchsuchen...",
+      "class": "Klasse",
+      "teacher": "Lehrer",
+      "classRoom": "Klassenraum"
+    }
   },
   "Events": {
     "heading": "Veranstaltungen",

@@ -54,7 +54,10 @@
       "czech": "Čeština",
       "chinese": "Čínština",
       "spanish": "Španělština",
-      "french": "Francouzština"
+      "french": "Francouzština",
+      "korean": "Korejština",
+      "japanese": "Japonština",
+      "edgy": "Podrážděný"
     },
     "theme": {
       "heading": "Motivy",
@@ -77,7 +80,13 @@
       "showRel": "Náboženství"
     },
     "button": "Rozvrh",
-    "none": "Žádná data"
+    "none": "Žádná data",
+    "bottomSheet": {
+      "search": "Vyhledat rozvrh...",
+      "class": "Třída",
+      "teacher": "Učitel",
+      "classRoom": "Místnost"
+    }
   },
   "Events": {
     "heading": "Události",

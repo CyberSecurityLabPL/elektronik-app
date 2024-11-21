@@ -18,6 +18,7 @@ import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
 import { BackHandler, Text, View } from "react-native"
+import Markdown, { MarkdownIt } from "react-native-markdown-display"
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -87,6 +88,10 @@ export default function ArticleScreen() {
   const { data, isLoading, isError } = id.includes("n")
     ? useArticle({ id: Number(id.slice(1)) })
     : useAnnouncement({ id: Number(id.slice(1)) })
+
+  const md = data?.data.attributes.content
+
+  console.log(md)
 
   return (
     <View className="px-0 pt-0 relative bg-background">
@@ -187,9 +192,28 @@ export default function ArticleScreen() {
               </Text>
 
               <View className="bg-background flex-1 mt-4 h-full w-full">
-                <Text className="font-pregular text-base text-foreground h-full w-full">
-                  {data?.data.attributes.content}
-                </Text>
+                <Markdown
+                  style={{
+                    body: {
+                      color: colors.foreground,
+                      fontFamily: "Poppins-Regular",
+                    },
+                    heading1: {
+                      color: colors.foreground,
+                      fontFamily: "Poppins-SemiBold",
+                    },
+                    heading2: {
+                      color: colors.foreground,
+                      fontFamily: "Poppins-SemiBold",
+                    },
+                    heading3: {
+                      color: colors.foreground,
+                      fontFamily: "Poppins-SemiBold",
+                    },
+                  }}
+                >
+                  {md}
+                </Markdown>
               </View>
             </View>
           )}
