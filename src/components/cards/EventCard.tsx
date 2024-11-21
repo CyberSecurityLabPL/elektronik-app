@@ -1,17 +1,10 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableOpacityProps,
-  ScrollView,
-} from "react-native"
-import React, { useState } from "react"
-import { Clock, X } from "lucide-react-native"
-import { cn } from "@/lib/utils"
 import useColors from "@/hooks/useColors"
-import Modal from "../ui/Modal"
-import IconButton from "../ui/IconButton"
+import { cn } from "@/lib/utils"
+import { Clock } from "lucide-react-native"
+import React from "react"
+import { Pressable, Text, TouchableOpacityProps, View } from "react-native"
 import { HalfCircle, RotatedSquares, Squares, Star, Lines } from "../icons"
+
 interface EventProps extends TouchableOpacityProps {
   isFeatured?: boolean
   type: string
@@ -34,16 +27,12 @@ const EventCard = ({
   ...props
 }: EventProps) => {
   const colors = useColors()
-  const [modalOpen, setModalOpen] = useState(false)
 
   if (isFeatured) {
     return (
-      <TouchableOpacity
+      <Pressable
         className=" overflow-hidden w-full rounded-3xl py-6 px-6 dark:bg-[#FFB055] bg-[#FFCA8D] flex justify-center"
         activeOpacity={0.85}
-        onPress={() => {
-          setModalOpen(true)
-        }}
         {...props}
       >
         <View className="flex flex-row justify-between items-center ">
@@ -80,34 +69,16 @@ const EventCard = ({
             height={162}
           />
         </View>
-
-        <Modal
-          isOpen={modalOpen}
-          onClose={() => {
-            setModalOpen(false)
-          }}
-        >
-          <ModalContent
-            iconColor={colors.foreground}
-            title={title}
-            date={date}
-            description={description}
-            onPress={() => setModalOpen(false)}
-          />
-        </Modal>
-      </TouchableOpacity>
+      </Pressable>
     )
   } else {
     return (
-      <TouchableOpacity
+      <Pressable
         className={cn(
           "rounded-3xl min-h-32 overflow-hidden w-full pt-11 pb-8 px-6 flex justify-center items-center bg-[#D4F6FF] dark:bg-[#74A8E5]",
           color === "blue" ? "bg-[#FFADED] dark:bg-[#DE5FE0]" : "",
         )}
         activeOpacity={0.85}
-        onPress={() => {
-          setModalOpen(true)
-        }}
         {...props}
       >
         <View className="absolute top-3 left-7">
@@ -147,48 +118,9 @@ const EventCard = ({
             }
           />
         </View>
-
-        <Modal
-          isOpen={modalOpen}
-          onClose={() => {
-            // setModalOpen(false)
-          }}
-        >
-          <ModalContent
-            iconColor={colors.foreground}
-            title={title}
-            date={date}
-            description={description}
-            onPress={() => setModalOpen(false)}
-          />
-        </Modal>
-      </TouchableOpacity>
+      </Pressable>
     )
   }
 }
 
 export default EventCard
-
-function ModalContent({ title, date, description, iconColor, onPress }: any) {
-  return (
-    <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
-      <View className="w-full px-6 py-1">
-        <Text className="text-2xl text-foreground font-pmedium text-left ">
-          {title}
-        </Text>
-        <Text className="text-primary font-psemibold">{date}</Text>
-      </View>
-      <ScrollView className="w-full px-6 py-1">
-        <Text className="text-base text-foreground-secondary text-wrap mt-2 ">
-          {description}
-        </Text>
-      </ScrollView>
-      <IconButton
-        LucideIcon={X}
-        iconColor={iconColor}
-        onPress={onPress}
-        className="mt-4"
-      />
-    </View>
-  )
-}

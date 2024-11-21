@@ -19,7 +19,15 @@ import { useRouter } from "expo-router"
 import { X } from "lucide-react-native"
 import React, { useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Pressable, RefreshControl, ScrollView, Text, View } from "react-native"
+import {
+  Pressable,
+  RefreshControl,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native"
 
 const Home = () => {
   const [refreshing, setRefreshing] = useState(false)
@@ -178,23 +186,35 @@ const Home = () => {
 
         <Modal id="event" isOpen={isEventModalOpen} onClose={() => {}}>
           <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
-            <View className="w-full px-6 py-1">
-              <Text className="text-xl text-foreground font-pmedium text-left mb-4">
-                {event?.data[0].attributes.title!}
-              </Text>
-            </View>
-            <ScrollView className="w-full px-6 py-1">
-              <Text className="text-base text-foreground-secondary text-wrap">
-                {event?.data[0].attributes.description!}
-              </Text>
-            </ScrollView>
-
-            <IconButton
-              LucideIcon={X}
-              iconColor={colors.foreground}
-              onPress={() => setIsEventModalOpen(false)}
-              className="mt-4"
-            />
+            <Pressable
+              onPress={(e) => e.stopPropagation()}
+              className=" justify-between items-center h-full px-8 w-full"
+            >
+              <View className="w-full  py-1">
+                <Text className="text-2xl text-foreground font-pmedium text-left ">
+                  {event?.data[0].attributes.title}
+                </Text>
+              </View>
+              <ScrollView
+                className="w-full "
+                nestedScrollEnabled={true}
+                showsVerticalScrollIndicator={true}
+              >
+                <TouchableOpacity>
+                  <TouchableWithoutFeedback>
+                    <Text className="text-base text-foreground-secondary text-wrap mt-2">
+                      {event?.data[0].attributes.description}
+                    </Text>
+                  </TouchableWithoutFeedback>
+                </TouchableOpacity>
+              </ScrollView>
+              <IconButton
+                LucideIcon={X}
+                iconColor={colors.foreground}
+                onPress={() => setIsEventModalOpen(false)}
+                className="mt-4"
+              />
+            </Pressable>
           </View>
         </Modal>
         <Text className="text-foreground text-xl font-psemibold ">

@@ -27,13 +27,13 @@ export default function Modal({
         className="items-center justify-center flex-1 px-3 bg-black/60"
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
+        {children}
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   ) : (
     <TouchableWithoutFeedback onPress={onClose}>
       <View className="items-center justify-center flex-1 px-3 bg-black/60">
-        <TouchableWithoutFeedback>{children}</TouchableWithoutFeedback>
+        {children}
       </View>
     </TouchableWithoutFeedback>
   )

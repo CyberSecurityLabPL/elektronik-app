@@ -1,12 +1,21 @@
+import useColors from "@/hooks/useColors"
 import { useTimeTo } from "@/hooks/useTimeTo"
-import { StrapiEvent } from "@/types/strapi"
-import EventCard from "./cards/EventCard"
-import { format } from "date-fns"
-import { pl } from "date-fns/locale/pl"
-import { Text, View } from "react-native"
-import { useTranslation } from "react-i18next"
-import { TFunction } from "i18next"
 import { localeFormat } from "@/lib/utils"
+import { StrapiEvent } from "@/types/strapi"
+import { TFunction } from "i18next"
+import { X } from "lucide-react-native"
+import { useState } from "react"
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native"
+import EventCard from "./cards/EventCard"
+import IconButton from "./ui/IconButton"
+import Modal from "./ui/Modal"
 
 export default function EventItem({
   item,
@@ -17,6 +26,8 @@ export default function EventItem({
   index: number
   t: TFunction<"translation", undefined>
 }) {
+  const [modalOpen, setModalOpen] = useState(false)
+  const colors = useColors()
   const { days, hours, minutes, seconds, timeNumber, nameString } = useTimeTo({
     date: item.attributes.date,
   })
@@ -28,6 +39,7 @@ export default function EventItem({
         date={localeFormat(new Date(item.attributes.date), "d MMMM")}
         description={item.attributes.description}
         type={item.attributes.type}
+        onPress={() => setModalOpen(true)}
         timeLeft={
           timeNumber === 0
             ? t("Events.today")
@@ -45,6 +57,51 @@ export default function EventItem({
           </Text>
         </View>
       )}
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
+        <ModalContent
+          iconColor={colors.foreground}
+          title={item.attributes.title}
+          date={localeFormat(new Date(item.attributes.date), "d MMMM")}
+          description={item.attributes.description}
+          onPress={() => setModalOpen(false)}
+        />
+      </Modal>
+    </View>
+  )
+}
+function ModalContent({ title, date, description, iconColor, onPress }: any) {
+  return (
+    <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
+      <Pressable
+        onPress={(e) => e.stopPropagation()}
+        className=" justify-between items-center h-full px-8 w-full"
+      >
+        <View className="w-full  py-1">
+          <Text className="text-2xl text-foreground font-pmedium text-left ">
+            {title}
+          </Text>
+          <Text className="text-primary font-psemibold">{date}</Text>
+        </View>
+        <ScrollView
+          className="w-full "
+          nestedScrollEnabled={true}
+          showsVerticalScrollIndicator={true}
+        >
+          <TouchableOpacity>
+            <TouchableWithoutFeedback>
+              <Text className="text-base text-foreground-secondary text-wrap mt-2">
+                {description}
+              </Text>
+            </TouchableWithoutFeedback>
+          </TouchableOpacity>
+        </ScrollView>
+        <IconButton
+          LucideIcon={X}
+          iconColor={iconColor}
+          onPress={onPress}
+          className="mt-4"
+        />
+      </Pressable>
     </View>
   )
 }

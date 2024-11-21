@@ -3,10 +3,9 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import { useEvents } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
-import { StrapiEvent } from "@/types/strapi"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
-import { FlatList, RefreshControl, Text, View } from "react-native"
+import { FlatList, RefreshControl, View } from "react-native"
 
 const Events = () => {
   const colors = useColors()
@@ -46,6 +45,7 @@ const Events = () => {
           }
           contentContainerClassName="gap-4 pb-16 w-full"
           showsVerticalScrollIndicator={false}
+          nestedScrollEnabled
           keyExtractor={(item) => item.id.toString()}
           data={allArticles}
           ListHeaderComponent={
