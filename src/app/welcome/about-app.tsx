@@ -3,17 +3,17 @@ import {
   BottomLine,
   Circles,
   Lines,
-  UpperLine,
-  Square,
   RotatedSquares,
+  Square,
+  UpperLine,
 } from "@/components/icons"
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Button from "@/components/ui/Button"
 import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import useColors from "@/hooks/useColors"
 import { router } from "expo-router"
-import { useTranslation } from "react-i18next"
 import React from "react"
+import { useTranslation } from "react-i18next"
 
 import { Text, View } from "react-native"
 
@@ -44,7 +44,7 @@ const AboutApp = () => {
       <View className="flex justify-center w-full items-center flex-col">
         <Button
           text={t("Button.continue")}
-          onPress={() => router.navigate("/set-up")}
+          onPress={() => router.navigate("/welcome/set-up")}
         />
       </View>
 

@@ -141,7 +141,7 @@ export default function ArticleScreen() {
             borderBottomWidth: 0,
           }}
         >
-          {isError && (
+          {isError ? (
             <View className="flex flex-row justify-center">
               <Text className="text-red-600 text-base  font-pregular">
                 Wystąpił nieoczekiwany błąd, sprawdź swoje połączenie z
@@ -149,8 +149,7 @@ export default function ArticleScreen() {
                 później.
               </Text>
             </View>
-          )}
-          {isLoading ? (
+          ) : isLoading ? (
             <View className="mt-4 gap-2">
               <View className="w-11/12 h-8 bg-zinc-600 animate-pulse rounded-full" />
               <View className="w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full" />
