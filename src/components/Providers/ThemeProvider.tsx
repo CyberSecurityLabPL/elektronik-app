@@ -6,7 +6,6 @@ import {
   useContext,
   useEffect,
   useLayoutEffect,
-  useState,
 } from "react"
 
 type Theme = "light" | "dark" | "system"
@@ -42,7 +41,6 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 
   const toggleTheme = async () => {
     toggleColorScheme()
-    console.log(colorScheme)
   }
   useEffect(() => {
     const setThemeFromStorage = async () => {

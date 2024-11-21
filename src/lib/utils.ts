@@ -1,13 +1,12 @@
+import { localeMap } from "@/config"
 import { BACKEND_URL } from "@/constants/urls"
-import { NotificationsSchema } from "@/types/schemas"
+import i18n from "@/i18n/i18n.config"
+import { QueryClient } from "@tanstack/react-query"
 import { clsx, type ClassValue } from "clsx"
-import { add, isWeekend, startOfWeek, format } from "date-fns"
+import { add, format, isWeekend, startOfWeek } from "date-fns"
+import { pl } from "date-fns/locale"
 import { twMerge } from "tailwind-merge"
 import { getStorageData, StorageKeys } from "./storage"
-import { localeMap } from "@/config"
-import i18n from "@/i18n/i18n.config"
-import { pl } from "date-fns/locale"
-import { QueryClient, useQueryClient } from "@tanstack/react-query"
 
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
@@ -46,8 +45,6 @@ export const resetInfiniteQueryPagination = ({
   queryClient: QueryClient
 }): void => {
   queryClient.setQueryData(queryKey, (oldData: any) => {
-    console.log(oldData)
-
     if (!oldData) return undefined
 
     return {

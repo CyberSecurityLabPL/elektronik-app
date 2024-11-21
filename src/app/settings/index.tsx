@@ -93,16 +93,6 @@ const Settings = () => {
           strokeWidth={1.5}
           extraText={currentLanguage?.localName}
         />
-        <LargeButton
-          text={"Clear Async Storage"}
-          iconColor={colors.foreground}
-          LucideIcon={Eraser}
-          strokeWidth={1.5}
-          onPress={async () => {
-            const a = await clearStorage()
-            if (a.success) toast("Storage Cleared!")
-          }}
-        />
         <Modal
           id="bells"
           isOpen={themeModalOpen}

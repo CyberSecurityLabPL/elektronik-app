@@ -1,7 +1,6 @@
 import { getStorageData, storageEventEmitter, StorageKeys } from "@/lib/storage"
 import { UserData } from "@/types/app-data"
 import { useEffect, useState } from "react"
-import { EventEmitter } from "eventemitter3"
 
 export const useUserData = () => {
   const [data, setData] = useState<UserData | undefined>()

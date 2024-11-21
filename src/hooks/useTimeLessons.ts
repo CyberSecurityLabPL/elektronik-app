@@ -5,10 +5,12 @@ import {
   differenceInMinutes,
   isAfter,
   isBefore,
+  isEqual,
   isWeekend,
+  isWithinInterval,
   set,
 } from "date-fns"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
@@ -16,10 +18,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
   const [message, setMessage] = useState<string>("")
   const { t } = useTranslation()
 
-  const calculateTimeToNextLesson = useCallback(() => {
-    const now = new Date()
-    now.setSeconds(0, 0)
-
+  const calculateTimeToNextLesson = () => {
     const createTimeDate = (timeStr: string) => {
       const [hours, minutes] = timeStr.split(":").map(Number)
       return set(new Date(), {
@@ -29,6 +28,9 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
         milliseconds: 0,
       })
     }
+
+    const now = new Date()
+    now.setSeconds(0, 0)
 
     if (isWeekend(now)) {
       setMinutes(0)
@@ -51,7 +53,10 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
       const startTime = createTimeDate(lesson.startDate as string)
       const endTime = createTimeDate(lesson.endDate as string)
 
-      if (isAfter(now, startTime) && isBefore(now, endTime)) {
+      if (
+        isWithinInterval(now, { start: startTime, end: endTime }) &&
+        !isEqual(now, endTime)
+      ) {
         isCurrentlyInLesson = true
         const minsToEnd = differenceInMinutes(endTime, now)
         setMinutes(minsToEnd)
@@ -59,7 +64,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
         return
       }
 
-      if (isAfter(startTime, now)) {
+      if (isBefore(now, startTime)) {
         if (
           !nextLesson ||
           isBefore(startTime, createTimeDate(nextLesson.startDate as string))
@@ -80,7 +85,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
       setMinutes(minsToNext)
       setMessage(t("Home.timeMessage.toLesson"))
     }
-  }, [lessons, t])
+  }
 
   useEffect(() => {
     calculateTimeToNextLesson()

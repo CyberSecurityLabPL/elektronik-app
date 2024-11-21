@@ -6,7 +6,6 @@ import {
   Newspaper,
 } from "lucide-react-native"
 import {
-  ImageBackground,
   Text,
   TouchableOpacity,
   TouchableOpacityProps,
@@ -83,7 +82,6 @@ export default function HomeCard({
           "rounded-3xl w-full p-2 overflow-hidden",
           type == "school" ? "bg-[#ff8686]" : "bg-purple-300",
         )}
-        onPress={() => console.log("News")}
         activeOpacity={0.85}
         {...props}
       >
