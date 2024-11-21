@@ -5,20 +5,12 @@ import { SingleNewsResponse } from "@/hooks/articles/types"
 import { useArticle } from "@/hooks/articles/useArticles"
 import useColors from "@/hooks/useColors"
 import { getStrapiImageUrl, localeFormat } from "@/lib/utils"
-import { useRoute } from "@react-navigation/native"
-import {
-  Stack,
-  useGlobalSearchParams,
-  useLocalSearchParams,
-  useNavigation,
-  usePathname,
-  useRouter,
-} from "expo-router"
+import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
 import { BackHandler, Text, View } from "react-native"
-import Markdown, { MarkdownIt } from "react-native-markdown-display"
+import Markdown from "react-native-markdown-display"
 import Animated, {
   interpolate,
   useAnimatedRef,
@@ -34,16 +26,11 @@ export default function ArticleScreen() {
   const [key, setKey] = useState(0)
 
   const router = useRouter()
-
-  const pathname = usePathname()
   const params = useLocalSearchParams()
   const cameFromHome = params?.origin
-  // console.log("fsdfsd", cameFromHome)
-  // console.log(pathname)
 
   useEffect(() => {
     const backAction = () => {
-      router.dismissAll()
       if (cameFromHome) {
         router.navigate("/(tabs)") // Go to tabs if came from home
       } else {
@@ -110,7 +97,6 @@ export default function ArticleScreen() {
                 LucideIcon={ChevronLeft}
                 iconColor={colors.foreground}
                 onPress={() => {
-                  router.dismissAll()
                   cameFromHome
                     ? router.navigate("/(tabs)")
                     : router.navigate("/news")
