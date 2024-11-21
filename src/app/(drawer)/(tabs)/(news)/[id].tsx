@@ -55,13 +55,6 @@ export default function ArticleScreen() {
     : useAnnouncement({ id: Number(id.slice(1)) })
 
   const md = data?.data.attributes.content
-    .split("\n")
-    .map((line) =>
-      line.charAt(0) === "\\"
-        ? line.replace("\\", "\n").replaceAll("\\", "")
-        : line.replaceAll("\\", ""),
-    )
-    .join("\n")
 
   console.log(md)
 
