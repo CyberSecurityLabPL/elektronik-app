@@ -31,18 +31,24 @@ const Settings = () => {
   const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
   const handleThemeChange = async (theme: string) => {
-    const result = await setStorageData(StorageKeys.theme, theme)
+    try {
+      const result = await setStorageData(StorageKeys.theme, theme)
 
-    if (result.success) {
-      if (theme == "light") {
-        setColorScheme("light")
-        toast(t("Settings.theme.infoLight"))
+      if (result.success) {
+        if (theme == "light") {
+          setColorScheme("light")
+          toast(t("Settings.theme.infoLight"))
+        } else {
+          setColorScheme("dark")
+          toast(t("Settings.theme.infoDark"))
+        }
       } else {
-        setColorScheme("dark")
-        toast(t("Settings.theme.infoDark"))
+        console.error("Failed to change theme:", result.error)
+        toast("Failed to change theme")
       }
-    } else {
-      console.error("Failed to change theme:", result.error)
+    } catch (error) {
+      console.error("Error changing theme:", error)
+      toast("Error changing theme")
     }
   }
   return (

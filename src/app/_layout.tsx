@@ -1,17 +1,15 @@
 import QueryProvider from "@/components/Providers/QueryProvider"
 import ThemeProvider from "@/components/Providers/ThemeProvider"
 import { useFonts } from "expo-font"
-import { Stack } from "expo-router"
 import * as SplashScreen from "expo-splash-screen"
 import { useEffect } from "react"
+import { I18nextProvider } from "react-i18next"
+import { GestureHandlerRootView } from "react-native-gesture-handler"
 import "react-native-reanimated"
 import "../global.css"
 import i18n from "../i18n/i18n.config"
-import { I18nextProvider } from "react-i18next"
-import { View } from "react-native"
-import { GestureHandlerRootView } from "react-native-gesture-handler"
-import Drawer from "expo-router/drawer"
 import Sidebar from "@/components/navigation/Sidebar"
+import Drawer from "expo-router/drawer"
 import { StatusBar } from "expo-status-bar"
 import { Toaster } from "sonner-native"
 
@@ -73,9 +71,9 @@ export default function RootLayout() {
               />
               <Drawer.Screen name="welcome" options={{ swipeEnabled: false }} />
             </Drawer>
+            <StatusBar style="auto" />
+            <Toaster />
           </GestureHandlerRootView>
-          <StatusBar style="auto" />
-          <Toaster />
         </ThemeProvider>
       </I18nextProvider>
     </QueryProvider>
