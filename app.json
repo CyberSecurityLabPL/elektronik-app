@@ -20,7 +20,8 @@
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "pl.krystian_wybranowski.elektronPlus"
+      "package": "pl.krystian_wybranowski.elektronPlus",
+      "versionCode": 62
     },
     "web": {
       "bundler": "metro",
