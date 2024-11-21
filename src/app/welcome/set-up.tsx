@@ -5,11 +5,9 @@ import ProgressIndicator from "@/components/ui/ProgressIndicator"
 import { Select, SelectItem } from "@/components/ui/Select"
 import useColors from "@/hooks/useColors"
 import { setStorageData, StorageKeys } from "@/lib/storage"
-import { checkFirstTimeUser } from "@/lib/utils"
 import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
 
-import { useEffect } from "react"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
@@ -39,7 +37,7 @@ const SetUp = () => {
   })
 
   const goToHomeAsGuest = async () => {
-    router.push("/home")
+    router.navigate("/(tabs)")
     await setStorageData(StorageKeys.firstTimeUser, false)
   }
 
@@ -56,7 +54,7 @@ const SetUp = () => {
       console.error("Error saving data:", result.error)
     }
     await setStorageData(StorageKeys.firstTimeUser, false)
-    router.push("/home")
+    router.navigate("/(tabs)")
   }
 
   return (

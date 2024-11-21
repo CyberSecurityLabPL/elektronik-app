@@ -13,7 +13,7 @@ import {
   setStorageData,
   StorageKeys,
 } from "@/lib/storage"
-import { Bell, Languages, Sun, User2, X } from "lucide-react-native"
+import { Bell, Eraser, Languages, Sun, User2, X } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
 import { useLayoutEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
@@ -92,6 +92,16 @@ const Settings = () => {
           href={"/settings/language"}
           strokeWidth={1.5}
           extraText={currentLanguage?.localName}
+        />
+        <LargeButton
+          text={"Clear Async Storage"}
+          iconColor={colors.foreground}
+          LucideIcon={Eraser}
+          strokeWidth={1.5}
+          onPress={async () => {
+            const a = await clearStorage()
+            if (a.success) toast("Storage Cleared!")
+          }}
         />
         <Modal
           id="bells"
