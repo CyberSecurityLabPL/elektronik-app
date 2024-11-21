@@ -1,17 +1,19 @@
+import Sidebar from "@/components/navigation/Sidebar"
 import QueryProvider from "@/components/Providers/QueryProvider"
 import ThemeProvider from "@/components/Providers/ThemeProvider"
+import useColors from "@/hooks/useColors"
 import { useFonts } from "expo-font"
+import * as NavigationBar from "expo-navigation-bar"
+import Drawer from "expo-router/drawer"
 import * as SplashScreen from "expo-splash-screen"
+import { StatusBar } from "expo-status-bar"
 import { useEffect } from "react"
 import { I18nextProvider } from "react-i18next"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import "react-native-reanimated"
+import { Toaster } from "sonner-native"
 import "../global.css"
 import i18n from "../i18n/i18n.config"
-import Sidebar from "@/components/navigation/Sidebar"
-import Drawer from "expo-router/drawer"
-import { StatusBar } from "expo-status-bar"
-import { Toaster } from "sonner-native"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -22,7 +24,9 @@ export {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  // Font loading
+  const colors = useColors()
+  NavigationBar.setBackgroundColorAsync(colors.background)
+
   const [loaded, error] = useFonts({
     "Poppins-Bold": require("@/assets/fonts/poppins/Poppins-Bold.ttf"),
     "Poppins-Medium": require("@/assets/fonts/poppins/Poppins-Medium.ttf"),
