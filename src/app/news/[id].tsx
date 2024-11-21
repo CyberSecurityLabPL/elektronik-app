@@ -91,8 +91,6 @@ export default function ArticleScreen() {
 
   const md = data?.data.attributes.content
 
-  console.log(md)
-
   return (
     <View className="px-0 pt-0 relative bg-background">
       <StatusBar
