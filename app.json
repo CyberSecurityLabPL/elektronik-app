@@ -28,7 +28,18 @@
       "output": "static",
       "favicon": "./src/assets/images/favicon.png"
     },
-    "plugins": ["expo-router", "expo-localization"],
+    "plugins": [
+      "expo-router",
+      "expo-localization",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
     "experiments": {
       "typedRoutes": true
     },
