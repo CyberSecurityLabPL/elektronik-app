@@ -9,7 +9,7 @@ import { TimetableInfoResponse, TimetableResponse } from "./types"
 
 export const useTimetableInfo = ({ filter }: { filter: string }) =>
   useQuery<TimetableInfoResponse>({
-    queryKey: [`timetable-info-filtered-${filter}`],
+    queryKey: [`timetable-info-filtered`, filter],
     queryFn: async () => {
       const { data } = await timetableApi.get(TIMETABLE_INFO_URL(filter))
 
@@ -28,7 +28,7 @@ export const useTimetableAllInfo = () =>
 
 export const useTimetable = ({ id }: { id: string }) =>
   useQuery<TimetableResponse>({
-    queryKey: ["timetable"],
+    queryKey: ["timetable", id],
     queryFn: async () => {
       const { data } = await timetableApi.get(TIMETABLE_URL(id))
 

@@ -31,7 +31,7 @@ export const useArticles = ({
 
 export const useArticle = ({ id }: { id: number }) =>
   useQuery<SingleNewsResponse>({
-    queryKey: ["article"],
+    queryKey: ["article", id],
     queryFn: async () => {
       const { data } = await api.get(ARTICLE_URL(id))
       return data

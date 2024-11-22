@@ -29,7 +29,7 @@ export const useEvents = ({
 
 export const useEvent = ({ id }: { id: number }) =>
   useQuery<SingleEventResponse>({
-    queryKey: ["event"],
+    queryKey: ["event", id],
     queryFn: async () => {
       const { data } = await api.get(EVENT_URL(id))
       return data

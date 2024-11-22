@@ -99,13 +99,6 @@ const Timetable = () => {
     ),
     [],
   )
-  if (isError || isInfoError) {
-    console.warn(
-      "Zapewne masz zły URL planu lekcji, zmień go z localhost na ten komputera bo to tel fetchuje dane co potrzebujesz",
-    )
-    const err = isError ? error : infoError
-    console.error(err)
-  }
   const colors = useColors()
 
   return (

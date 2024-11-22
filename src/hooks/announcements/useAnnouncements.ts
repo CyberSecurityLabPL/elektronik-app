@@ -31,7 +31,7 @@ export const useAnnouncements = ({
 
 export const useAnnouncement = ({ id }: { id: number }) =>
   useQuery<SingleAnnouncementResponse>({
-    queryKey: ["announcement"],
+    queryKey: ["announcement", id],
     queryFn: async () => {
       const { data } = await api.get(ANNOUNCEMENT_URL(id))
       return data

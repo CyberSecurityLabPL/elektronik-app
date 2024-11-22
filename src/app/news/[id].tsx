@@ -151,11 +151,26 @@ export default function ArticleScreen() {
             </View>
           ) : isLoading ? (
             <View className="mt-4 gap-2">
-              <View className="w-11/12 h-8 bg-zinc-600 animate-pulse rounded-full" />
-              <View className="w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full" />
-              <View className="mt-4 w-3/5 h-4 bg-zinc-600 animate-pulse rounded-full" />
-              <View className=" w-3/4 h-4 bg-zinc-600 animate-pulse rounded-full" />
-              <View className=" w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full" />
+              <View
+                key={"loading-skeleton-1"}
+                className="w-11/12 h-8 bg-zinc-600 animate-pulse rounded-full"
+              />
+              <View
+                key={"loading-skeleton-2"}
+                className="w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full"
+              />
+              <View
+                key={"loading-skeleton-3"}
+                className="mt-4 w-3/5 h-4 bg-zinc-600 animate-pulse rounded-full"
+              />
+              <View
+                key={"loading-skeleton-4"}
+                className=" w-3/4 h-4 bg-zinc-600 animate-pulse rounded-full"
+              />
+              <View
+                key={"loading-skeleton-5"}
+                className=" w-1/3 h-4 bg-zinc-600 animate-pulse rounded-full"
+              />
             </View>
           ) : (
             <View className="flex gap-1 flex-col mt-4">
