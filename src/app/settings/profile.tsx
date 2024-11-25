@@ -3,6 +3,7 @@ import Button from "@/components/ui/Button"
 import Heading from "@/components/ui/Heading"
 import Input from "@/components/ui/Input"
 import { Select, SelectItem } from "@/components/ui/Select"
+import { useTimetableInfo } from "@/hooks/timetable/useTimetable"
 import { useUserData } from "@/hooks/useUserData"
 import { setStorageData, StorageKeys } from "@/lib/storage"
 import { UserData } from "@/types/app-data"
@@ -42,6 +43,8 @@ const Profile = () => {
     }
     router.back()
   }
+
+  const { data, isLoading, isError } = useTimetableInfo({ filter: "class" })
 
   return (
     <ScreenWrapper>
@@ -126,8 +129,13 @@ const Profile = () => {
                   onValueChange={(itemValue: any) => onChange(itemValue)}
                   placeholder={t("Welcome.setUp.class")}
                 >
-                  <SelectItem label="1ta Technik Programista" value="1ta" />
-                  <SelectItem label="1tb Technik Programista" value="1tb" />
+                  {data?.map((item) => (
+                    <SelectItem
+                      key={item.id}
+                      label={item.name}
+                      value={item.id}
+                    />
+                  ))}
                 </Select>
               )}
               name="grade"
