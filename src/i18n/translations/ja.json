@@ -91,7 +91,9 @@
   "Events": {
     "heading": "イベント",
     "section": "次のイベント",
-    "today": "今日"
+    "today": "今日",
+    "oops": "おっと!",
+    "noEvents": "まだイベントはありません..."
   },
   "News": {
     "heading": "お知らせ",

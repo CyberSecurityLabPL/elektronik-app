@@ -91,7 +91,9 @@
   "Events": {
     "heading": "活动",
     "section": "即将举行的活动",
-    "today": "今天"
+    "today": "今天",
+    "oops": "哎呀!",
+    "noEvents": "没有即将举行的活动..."
   },
   "News": {
     "heading": "公告",

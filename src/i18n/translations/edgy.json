@@ -91,7 +91,9 @@
   "Events": {
     "heading": "Rizz Party Harmonogram",
     "section": "Nadciąga giga event 🎉",
-    "today": "Dzisiaj? Rizz ON 🔥"
+    "today": "Dzisiaj? Rizz ON 🔥",
+    "oops": "Ooops!",
+    "noEvents": "Brak skibidi wydarzeń..."
   },
   "News": {
     "heading": "Ploty z sigma HQ",

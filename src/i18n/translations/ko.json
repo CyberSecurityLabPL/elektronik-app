@@ -91,7 +91,9 @@
   "Events": {
     "heading": "이벤트",
     "section": "다가오는 이벤트",
-    "today": "오늘"
+    "today": "오늘",
+    "oops": "오!",
+    "noEvents": "다가오는 이벤트가 없습니다..."
   },
   "News": {
     "heading": "공지사항",

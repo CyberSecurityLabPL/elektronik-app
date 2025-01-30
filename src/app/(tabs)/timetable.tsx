@@ -42,14 +42,20 @@ import { FlatList, Pressable, RefreshControl, Text, View } from "react-native"
 import { TouchableOpacity } from "react-native-gesture-handler"
 import { useTranslation } from "react-i18next"
 import { TFunction } from "i18next"
+import { useUserData } from "@/hooks/useUserData"
 
 type classDays = "poniedzialek" | "wtorek" | "sroda" | "czwartek" | "piatek"
 type allDays = classDays | "sobota" | "niedziela"
 
+const defaultTimeTable = "o25"
+
 const Timetable = () => {
+  const userData = useUserData()
   const [group, setGroup] = useState(1)
   const [showReligion, setShowReligion] = useState(false)
-  const [selectedTimetable, setSelectedTimetable] = useState("o25")
+  const [selectedTimetable, setSelectedTimetable] = useState(
+    userData?.grade ?? defaultTimeTable,
+  )
   const [settingsModalOpen, setSettingsModalOpen] = useState(false)
 
   const bottomSheetRef = useRef<BottomSheet>(null)
@@ -73,6 +79,10 @@ const Timetable = () => {
   useEffect(() => {
     refetchTimetable()
   }, [data, selectedTimetable])
+
+  useEffect(() => {
+    setSelectedTimetable(userData?.grade ?? defaultTimeTable)
+  }, [userData])
 
   const getDayName = (date: Date) =>
     format(date, "EEEE", { locale: pl })

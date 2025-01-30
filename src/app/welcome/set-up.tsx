@@ -19,6 +19,7 @@ import {
   Multiplication,
   SmallCircles,
 } from "@/components/icons"
+import { useTimetableInfo } from "@/hooks/timetable/useTimetable"
 
 const SetUp = () => {
   const colors = useColors()
@@ -56,6 +57,8 @@ const SetUp = () => {
     await setStorageData(StorageKeys.firstTimeUser, false)
     router.navigate("/(tabs)")
   }
+
+  const { data, isLoading, isError } = useTimetableInfo({ filter: "class" })
 
   return (
     <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
@@ -116,8 +119,13 @@ const SetUp = () => {
                     onValueChange={(itemValue: any) => onChange(itemValue)}
                     placeholder={t("Welcome.setUp.class")}
                   >
-                    <SelectItem label="1ta Technik Programista" value="1ta" />
-                    <SelectItem label="1tb Technik Programista" value="1tb" />
+                    {data?.map((item) => (
+                      <SelectItem
+                        key={item.id}
+                        label={item.name}
+                        value={item.id}
+                      />
+                    ))}
                   </Select>
                 )}
                 name="grade"

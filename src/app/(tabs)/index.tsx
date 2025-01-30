@@ -184,39 +184,42 @@ const Home = () => {
             )}
         </View>
 
-        <Modal id="event" isOpen={isEventModalOpen} onClose={() => {}}>
-          <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
-            <Pressable
-              onPress={(e) => e.stopPropagation()}
-              className=" justify-between items-center h-full px-8 w-full"
-            >
-              <View className="w-full  py-1">
-                <Text className="text-2xl text-foreground font-pmedium text-left ">
-                  {event?.data[0].attributes.title}
-                </Text>
-              </View>
-              <ScrollView
-                className="w-full "
-                nestedScrollEnabled={true}
-                showsVerticalScrollIndicator={true}
+        {event?.data[0] && (
+          <Modal id="event" isOpen={isEventModalOpen} onClose={() => {}}>
+            <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
+              <Pressable
+                onPress={(e) => e.stopPropagation()}
+                className=" justify-between items-center h-full px-8 w-full"
               >
-                <TouchableOpacity>
-                  <TouchableWithoutFeedback>
-                    <Text className="text-base text-foreground-secondary text-wrap mt-2">
-                      {event?.data[0].attributes.description}
-                    </Text>
-                  </TouchableWithoutFeedback>
-                </TouchableOpacity>
-              </ScrollView>
-              <IconButton
-                LucideIcon={X}
-                iconColor={colors.foreground}
-                onPress={() => setIsEventModalOpen(false)}
-                className="mt-4"
-              />
-            </Pressable>
-          </View>
-        </Modal>
+                <View className="w-full  py-1">
+                  <Text className="text-2xl text-foreground font-pmedium text-left ">
+                    {event?.data[0].attributes.title}
+                  </Text>
+                </View>
+                <ScrollView
+                  className="w-full "
+                  nestedScrollEnabled={true}
+                  showsVerticalScrollIndicator={true}
+                >
+                  <TouchableOpacity>
+                    <TouchableWithoutFeedback>
+                      <Text className="text-base text-foreground-secondary text-wrap mt-2">
+                        {event?.data[0].attributes.description}
+                      </Text>
+                    </TouchableWithoutFeedback>
+                  </TouchableOpacity>
+                </ScrollView>
+                <IconButton
+                  LucideIcon={X}
+                  iconColor={colors.foreground}
+                  onPress={() => setIsEventModalOpen(false)}
+                  className="mt-4"
+                />
+              </Pressable>
+            </View>
+          </Modal>
+        )}
+
         <Text className="text-foreground text-xl font-psemibold ">
           {t("Home.announcements")}
         </Text>

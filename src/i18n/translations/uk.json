@@ -91,7 +91,9 @@
   "Events": {
     "heading": "Veranstaltungen",
     "section": "Kommende Veranstaltungen",
-    "today": "Сьогодні"
+    "today": "Сьогодні",
+    "oops": "Ooops!",
+    "noEvents": "Немає майбутніх подій..."
   },
   "News": {
     "heading": "Ankündigungen",

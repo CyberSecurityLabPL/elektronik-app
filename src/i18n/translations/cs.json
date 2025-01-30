@@ -91,7 +91,9 @@
   "Events": {
     "heading": "Události",
     "section": "Nadcházející události",
-    "today": "Dnes"
+    "today": "Dnes",
+    "oops": "Ooops!",
+    "noEvents": "Žádné nadcházející události..."
   },
   "News": {
     "heading": "Oznámení",
