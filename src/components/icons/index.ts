@@ -23,16 +23,17 @@ import Squares from "./Squares"
 import Star from "./Star"
 import UpperLine from "./UpperLine"
 import WelcomeSvg from "./WelcomeSvg"
+import NoEventsSvg from "./NoEvents"
 
 export {
   AboutSvg,
-  Arc,  
+  Arc,
   BottomLine,
   Circles,
   DefaultBanner,
   DiscordLogo,
   Flower,
-  GeometricFigures, 
+  GeometricFigures,
   HalfCircle,
   HomeCardBottomLine,
   HomeCardMiddleLine,
@@ -50,4 +51,5 @@ export {
   Star,
   UpperLine,
   WelcomeSvg,
+  NoEventsSvg,
 }

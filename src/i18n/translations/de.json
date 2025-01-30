@@ -91,7 +91,9 @@
   "Events": {
     "heading": "Veranstaltungen",
     "section": "Kommende Veranstaltungen",
-    "today": "Heute"
+    "today": "Heute",
+    "oops": "Ooops!",
+    "noEvents": "Keine kommenden Veranstaltungen..."
   },
   "News": {
     "heading": "Ankündigungen",
