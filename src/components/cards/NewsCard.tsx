@@ -131,9 +131,6 @@ export default function NewsCard({
                 </Text>
               </View>
             </View>
-            {/* <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={colors.background} />
-            </View> */}
           </View>
         </View>
       </TouchableOpacity>

@@ -274,6 +274,7 @@ const LoadingSkeleton = () => (
     </View>
   </View>
 )
+
 const NewsItem = memo(
   ({
     item,

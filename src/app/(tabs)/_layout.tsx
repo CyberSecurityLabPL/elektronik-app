@@ -1,6 +1,6 @@
 import TabBar from "@/components/navigation/TabBar"
 import { Tabs, usePathname } from "expo-router"
-import { Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
+import { Bone, Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
 import React from "react"
 
 export default function TabLayout() {
@@ -43,6 +43,12 @@ export default function TabLayout() {
         name="events"
         options={({ navigation, route }) => ({
           tabBarIcon: Calendar,
+        })}
+      />
+      <Tabs.Screen
+        name="test"
+        options={({ navigation, route }) => ({
+          tabBarIcon: Bone,
         })}
       />
       <Tabs.Screen
