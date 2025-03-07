@@ -45,20 +45,14 @@ export default function TabLayout() {
           tabBarIcon: Calendar,
         })}
       />
-      <Tabs.Screen
-        name="test"
-        options={({ navigation, route }) => ({
-          tabBarIcon: Bone,
-        })}
-      />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="radio"
         options={{
           href: null,
           tabBarIcon: Calendar,
           tabBarStyle: { display: "none" },
         }}
-      />
+      /> */}
     </Tabs>
   )
 }
