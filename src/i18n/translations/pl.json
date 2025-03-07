@@ -6,7 +6,9 @@
       "name": "Podaj Imię",
       "nameError": "Podaj imię",
       "class": "Podaj Klasę",
-      "classError": "Wybierz klase",
+      "classError": "Wybierz klasę",
+      "timetableError": "Wystąpił błąd. Nie można pobrać spisu klas. Uruchom aplikację ponownie.",
+      "timetableErrorItem": "Brak danych",
       "diaryNumber": "Wybierz numer z dziennika",
       "diaryNumberError": "Podaj prawidłowy numerek z dziennika"
     }

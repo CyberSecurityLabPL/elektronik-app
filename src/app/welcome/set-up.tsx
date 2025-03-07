@@ -58,7 +58,7 @@ const SetUp = () => {
     router.navigate("/(tabs)")
   }
 
-  const { data, isLoading, isError } = useTimetableInfo({ filter: "class" })
+  const { data } = useTimetableInfo({ filter: "class" })
 
   return (
     <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
@@ -118,14 +118,20 @@ const SetUp = () => {
                     selectedValue={value}
                     onValueChange={(itemValue: any) => onChange(itemValue)}
                     placeholder={t("Welcome.setUp.class")}
+                    enabled={data ? true : false}
                   >
-                    {data?.map((item) => (
+                    {(data) ? data.map((item) => (
                       <SelectItem
                         key={item.id}
                         label={item.name}
                         value={item.id}
                       />
-                    ))}
+                    )) : (
+                      <SelectItem
+                        label={t('Welcome.setUp.timetableErrorItem')}
+                        enabled={false}
+                        />
+                    )}
                   </Select>
                 )}
                 name="grade"

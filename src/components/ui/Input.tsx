@@ -10,10 +10,10 @@ const Input = ({
 }: TextInputProps & { type: "number" | "text" }) => {
   if (type == "text") {
     return (
-      <View className="bg-background-secondary p-5 rounded-3xl text-foreground w-full ">
+      <View className="bg-background-secondary p-5 rounded-3xl text-foreground w-full shadow-md">
         <TextInput
           className={cn(
-            " placeholder:text-zinc-500 text-foreground ",
+            " placeholder:text-zinc-500 text-foreground",
             className,
           )}
           {...rest}
@@ -22,10 +22,10 @@ const Input = ({
     )
   } else {
     return (
-      <View className="bg-background-secondary p-5 rounded-3xl text-foreground w-fit ">
+      <View className="bg-background-secondary p-5 rounded-3xl text-foreground w-fit shadow-md">
         <TextInput
           className={cn(
-            " placeholder:text-zinc-500 text-foreground text-xl text-center pr-1 ",
+            " placeholder:text-zinc-500 text-foreground text-xl text-center pr-1",
             className,
           )}
           keyboardType="numeric"
