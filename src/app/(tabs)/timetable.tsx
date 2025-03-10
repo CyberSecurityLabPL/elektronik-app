@@ -63,15 +63,11 @@ const Timetable = () => {
   const {
     data,
     isLoading,
-    isError,
-    error,
     refetch: refetchTimetable,
     isRefetching: isRefetchingTimetable,
   } = useTimetable({ id: selectedTimetable })
   const {
     data: info,
-    isError: isInfoError,
-    error: infoError,
     isRefetching: isRefetchingInfo,
     refetch: refetchInfo,
   } = useTimetableAllInfo()

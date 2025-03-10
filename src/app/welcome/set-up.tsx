@@ -7,7 +7,6 @@ import useColors from "@/hooks/useColors"
 import { setStorageData, StorageKeys } from "@/lib/storage"
 import { UserData } from "@/types/app-data"
 import { router } from "expo-router"
-
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
