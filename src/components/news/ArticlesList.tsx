@@ -8,10 +8,6 @@ import { NewsItem } from "./Item";
 import { LoadingSkeleton, PageLoadingSkeleton } from "./Skeletons";
 import { ScrollToTop } from "./ScrollToTop";
 
-const AnimatedFlatList = Animated.createAnimatedComponent(
-    FlatList
-) as unknown as React.ComponentType<Animated.AnimatedProps<FlatList['props']> & {data: StrapiArticle[], ref?: React.RefObject<FlatList<StrapiArticle>>}>;
-
 export const ArticleList = () => {
     const [refreshing, setRefreshing] = useState<boolean>(false)
     const colors = useColors()
@@ -58,7 +54,7 @@ export const ArticleList = () => {
             <PageLoadingSkeleton />
         ) : (
             <View className="flex-1 relative">
-                <AnimatedFlatList
+                <Animated.FlatList
                     ref={flatListRef}
                     data={articleData?.pages.flatMap(page => page.data) || []}
                     showsVerticalScrollIndicator={false}
