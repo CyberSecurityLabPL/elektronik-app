@@ -1,6 +1,6 @@
 import TabBar from "@/components/navigation/TabBar"
 import { Tabs, usePathname } from "expo-router"
-import { Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
+import { Bone, Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
 import React from "react"
 
 export default function TabLayout() {
@@ -45,14 +45,14 @@ export default function TabLayout() {
           tabBarIcon: Calendar,
         })}
       />
-      <Tabs.Screen
+      {/* <Tabs.Screen
         name="radio"
         options={{
           href: null,
           tabBarIcon: Calendar,
           tabBarStyle: { display: "none" },
         }}
-      />
+      /> */}
     </Tabs>
   )
 }

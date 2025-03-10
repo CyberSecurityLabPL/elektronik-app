@@ -177,17 +177,25 @@ export default function ArticleScreen() {
               <Text className="text-foreground text-4xl font-psemibold ">
                 {data?.data.attributes.title}
               </Text>
-              <Text className="text-primary text-sm font-psemibold">
-                {localeFormat(
-                  new Date(
-                    (data as SingleNewsResponse).data.attributes.customDate
-                      ? ((data as SingleNewsResponse).data.attributes
-                          .customDate as string)
-                      : (data?.data.attributes.createdAt as string),
-                  ),
-                  "d LLLL yyyy",
-                )}
-              </Text>
+              <View className="flex flex-row gap-x-2 items-center">
+                <Text className="text-primary text-sm font-psemibold w-min mt-[2px]">
+                  {localeFormat(
+                    new Date(
+                      (data as SingleNewsResponse).data.attributes.customDate
+                        ? ((data as SingleNewsResponse).data.attributes
+                            .customDate as string)
+                        : (data?.data.attributes.createdAt as string),
+                    ),
+                    "d LLLL yyyy",
+                  )}
+                </Text>
+                <View className="w-fit bg-primary px-2 rounded-lg">
+                  <Text
+                    className="w-min text-sm text-background font-psemibold">
+                    {id.includes('n') ? "Ogłoszenia SU" : "Ogłoszenia Szkoły"}
+                  </Text>
+                </View>
+              </View>
 
               <View className="bg-background flex-1 mt-4 h-full w-full">
                 <Markdown

@@ -1,4 +1,5 @@
 import useColors from "@/hooks/useColors"
+import { cn } from "@/lib/utils"
 import { ArrowUpRight, Clock } from "lucide-react-native"
 import {
   Image,
@@ -8,6 +9,8 @@ import {
   TouchableOpacityProps,
   View,
 } from "react-native"
+
+const placeholderImage = require("../../assets/images/default-banner.png")
 
 interface BaseCardProps {
   image?: string
@@ -42,15 +45,13 @@ export default function NewsCard({
   if (isFeatured)
     return (
       <TouchableOpacity
-        className="rounded-2xl overflow-hidden "
+        className="rounded-2xl overflow-hidden"
         activeOpacity={0.85}
         {...props}
       >
         <View className="relative">
           <Image
-            source={{
-              uri: image,
-            }}
+             source={image ? { uri: image } : placeholderImage}
             className="w-full h-52 relative top-0 left-0 object-cover"
           />
           {isNew ? (
@@ -102,17 +103,10 @@ export default function NewsCard({
             <NewIndicator />
           </View>
         ) : null}
-        {image ? (
-          <ImageBackground
-            source={{ uri: image }}
-            className="object-cover w-5/12 "
-          />
-        ) : (
-          <ImageBackground
-            source={require("../../assets/images/default-banner.png")}
-            className=" w-5/12 object-cover "
-          />
-        )}
+        <ImageBackground
+          source={image ? { uri: image } : placeholderImage}
+          className="object-cover w-5/12"
+        />
 
         <View className="p-4 flex flex-col justify-center items-start gap-8 w-7/12 bg-background">
           <View>
@@ -131,9 +125,6 @@ export default function NewsCard({
                 </Text>
               </View>
             </View>
-            {/* <View className="p-2 rounded-full bg-foreground">
-              <ArrowUpRight size={24} color={colors.background} />
-            </View> */}
           </View>
         </View>
       </TouchableOpacity>
@@ -143,14 +134,16 @@ export default function NewsCard({
 function NewIndicator({ small }: { small?: boolean }) {
   return (
     <View
-      className={`flex z-10 bg-primary justify-center items-center flex-row ${
-        small ? "py-0" : "py-1"
-      } ${small ? "px-2" : "px-4"} rounded-full`}
+      className={cn(`flex z-10 bg-primary justify-center items-center flex-row rounded-full`, {
+        'py-0 px-2': small,
+        'py-1 px-4': !small
+      })}
     >
       <Text
-        className={`text-background ${
-          small ? "text-base" : "text-lg"
-        } font-pregular`}
+        className={cn(`text-background font-pregular`, {
+          'text-base': small,
+          'text-lg': !small
+        })}
       >
         Nowe
       </Text>

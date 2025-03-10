@@ -11,7 +11,11 @@ export const useArticles = ({
   pageSize: number
 }) =>
   useInfiniteQuery<NewsResponse>({
-    queryKey: ["articles"],
+    // pageSize fixes the issue with the cache:
+    // on index page open, it fetches the first page of articles and thought it was the the WHOLE first page,
+    // when that was only 1 article
+    queryKey: ["articles", pageSize, 'list'],
+    refetchOnMount: true,
     queryFn: async ({ pageParam }) => {
       const { data } = await api.get(
         ARTICLES_URL(pageParam as number, pageSize),
