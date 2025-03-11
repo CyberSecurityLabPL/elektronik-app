@@ -15,5 +15,5 @@ export const useLuckyNumber = () =>
             const { data } = await api.get<LuckyNumberData>(LUCKY_NUMBER_URL());
             return data;
         },
-        staleTime: 1000 * 60 * 60,
+        staleTime: 1000 * 60 * 60 * 5,
     });
