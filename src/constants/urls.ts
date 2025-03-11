@@ -2,7 +2,7 @@ import { format } from "date-fns"
 
 export const API_URL = "http://api.elektronik.zgora.pl/api"
 export const BACKEND_URL = "http://api.elektronik.zgora.pl"
-export const TIMETABLE_API_URL = "http://elektronik.zgora.pl:5678/api" //todo change to a proper url in prod
+export const TIMETABLE_API_URL = "http://elektronik.zgora.pl:5678/api"
 
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
 export const TIMETABLE_ALL_INFO_URL = () => `/info`
@@ -38,3 +38,5 @@ export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
 export const ANNOUNCEMENT_URL = (id: number) => `/announcements/${id}`
 
 export const BELLS_URL = () => `/bells?populate=*`
+
+export const LUCKY_NUMBER_URL = () => `/lucky-number?limit=1`
