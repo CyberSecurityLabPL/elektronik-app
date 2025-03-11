@@ -116,5 +116,13 @@
   "Toast": {
     "success": "Dane zostały zapisane",
     "error": "Wystąpił błąd"
+  },
+  "LuckyNumber": {
+    "title": "Szczęśliwy numerek:",
+    "match": "Masz dzisiaj szczęśliwy numerek!",
+    "accesibility": {
+      "loading": "Ładowanie",
+      "error": "Wystąpił błąd"
+    }
   }
 }

@@ -7,6 +7,8 @@
       "nameError": "Enter name",
       "class": "Enter Class",
       "classError": "Select a class",
+      "timetableError": "An error occurred. Unable to download the class roster. Try again later.",
+      "timetableErrorItem": "No data available",
       "diaryNumber": "Select diary number",
       "diaryNumberError": "Enter a valid diary number"
     }
@@ -114,5 +116,13 @@
   "Toast": {
     "success": "Data has been saved",
     "error": "An error occurred"
+  },
+  "LuckyNumber": {
+    "title": "Lucky number:",
+    "match": "You have a lucky number today!",
+    "accesibility": {
+      "loading": "Loading",
+      "error": "An error occurred"
+    }
   }
 }
