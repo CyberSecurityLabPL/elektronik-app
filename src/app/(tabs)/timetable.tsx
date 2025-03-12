@@ -109,10 +109,13 @@ const Timetable = () => {
 
   return (
     <ScreenWrapper className="flex justify-top items-center w-full h-full px-0">
+      {/* Header */}
       <View className="flex flex-row justify-between items-center w-full py-4 px-8">
+        {/* Title */}
         <Text className="text-foreground font-psemibold text-3xl">
           {t("Timetable.heading")}
         </Text>
+        {/* Settings Icon */}
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setSettingsModalOpen(true)}
@@ -122,6 +125,8 @@ const Timetable = () => {
           </View>
         </TouchableOpacity>
       </View>
+
+
       <View className="flex-row justify-between items-center pb-6 px-5 w-full">
         {Array(5)
           .fill("")
@@ -140,7 +145,7 @@ const Timetable = () => {
 
       <View
         className="flex justify-center items-center px-4 w-full"
-        style={{ marginBottom: 170 }}
+        style={{marginBottom: 170 }}
       >
         <FlatList
           contentContainerClassName="pb-32"
@@ -186,7 +191,7 @@ const Timetable = () => {
           keyExtractor={(_, index) => `LessonMapped${index}`}
           ItemSeparatorComponent={() => <View className="h-2" />}
         />
-      </View>
+      </View> 
       <View className="w-full absolute bottom-6 bg-background flex justify-center items-center p-4 pb-8 border-y border-y-background-secondary">
         <Pressable
           className="flex w-full justify-center items-center bg-background-secondary mb-2 p-2 px-16 rounded-2xl"

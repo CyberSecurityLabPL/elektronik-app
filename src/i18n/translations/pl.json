@@ -88,6 +88,11 @@
       "class": "Klasa",
       "teacher": "Nauczyciel",
       "classRoom": "Sala"
+    },
+    "error": {
+      "setDefaultGroup": "Wystąpił błąd i nie udało się ustawić grupy automatycznie. Kliknij w przycisk poniżej, aby ustawić ją ręcznie, albo zrestartuj aplikację",
+      "changeGroup": "Wystąpił błąd i nie udało się zmienić grupy. Uruchom ponownie aplikacje i spróbuj ponownie.",
+      "changeReligion": "Wystąpił błąd i nie udało się zmienić wyświetlania religii. Uruchom ponownie aplikacje i spróbuj ponownie."
     }
   },
   "Events": {

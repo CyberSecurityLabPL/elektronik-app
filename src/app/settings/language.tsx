@@ -7,7 +7,7 @@ import { getStorageData, setStorageData, StorageKeys } from "@/lib/storage"
 import { router } from "expo-router"
 import React, { useLayoutEffect } from "react"
 import { useTranslation } from "react-i18next"
-import { FlatList, ScrollView, Text, View } from "react-native"
+import { FlatList, View } from "react-native"
 
 type LanguageCode = "pl" | "en" | "uk" | "de" | "cz" | "zhCH" | "es" | "fr"
 

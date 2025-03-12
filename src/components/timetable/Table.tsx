@@ -1,0 +1,112 @@
+import { useTimetable, useTimetableInfo } from "@/hooks/timetable/useTimetable"
+import { useUserData } from "@/hooks/useUserData"
+import { useState } from "react"
+import { View, Text, FlatList } from "react-native"
+import Lesson from "./Lesson"
+import { useTimetableSettings } from "@/hooks/useTimetableSettings"
+import { DayLesson } from "@/hooks/timetable/types"
+
+const defaultTimetable = 'o1'
+
+export const Table = ({ selectedDay }: { selectedDay: number }) => {
+    const userData = useUserData()
+    const { data: teachers } = useTimetableInfo({ filter: "teacher" })
+    const { data: timetableSettings } = useTimetableSettings()
+
+    const [selectedTimetable] = useState(
+        userData?.grade ?? defaultTimetable,
+        // 'n5'
+    )
+
+    const {
+        data,
+        isLoading,
+        refetch: refetchTimetable,
+        isRefetching: isRefetchingTimetable,
+    } = useTimetable({ id: selectedTimetable })
+
+    if (isLoading || isRefetchingTimetable) {
+        return <Text>Loading...</Text>
+    }
+
+    return (
+        <View className="flex justify-center items-center px-4 w-full mb-24">
+            <FlatList
+                contentContainerClassName="pb-32"
+                showsVerticalScrollIndicator={false}
+                initialNumToRender={8}
+                getItemLayout={(_, index) => (
+                    // Pre-calculate item heights for faster rendering
+                    { length: 80, offset: 80 * index, index }
+                )}
+                data={Object.values(data?.lessons || {})[selectedDay]}
+                renderItem={({ item, index }) => {
+                    // index is the period number (pl. numer lekcji)
+                    const groupIndex = item.isDouble && timetableSettings?.group === 2 ? 1 : 0
+                    const lessons = Object.values(data?.lessons || {})[selectedDay]
+                    const prevLesson = index > 0 ? lessons[index - 1] : null
+
+                    // Check if the lesson is an empty slot
+                    // 1. If it's the first period and it's empty
+                    // 2. If it's the 8th period or later and it's empty
+                    // 3. If the previous lesson is also empty
+                    // 4. If there are no more lessons after this one
+                    if (
+                        (item.isEmpty && (index === 0 || index >= 8)) ||
+                        (item.isEmpty && prevLesson?.isEmpty) ||
+                        (item.isEmpty && !hasMoreLessonsAfter(lessons, index))
+                    ) return null
+                    
+                    // When to show empty slot banner
+                    if (
+                        (item.isEmpty) || // Regular empty period
+                        (item.classes.length === 1 && // Other group's lesson
+                        item.classes[0].class?.group != null && // Check if it's a group lesson
+                        item.classes[0].class.group?.charAt(0) != timetableSettings?.group.toString() && // Check if it's the correct group
+                        !prevLesson?.isEmpty) // Check if the previous lesson is not empty
+                    ) return <EmptySlot period={index} />
+                    
+                    // Check if the lesson is a religion lesson and religion lessons are disabled
+                    // By default it don't check if previous lesson is empty because it's always at 0 or 8/9 lesson
+                    if (!timetableSettings?.religion && 
+                        item.classes[groupIndex].subject.name.includes("religia")) {
+                        return null
+                    }
+
+                    return (
+                        <Lesson
+                            teacherId={item.classes[groupIndex].teacher.id}
+                            period={index}
+                            time={data?.hours[index] ?? ""}
+                            subject={item.classes[groupIndex].subject.name}
+                            room={item.classes[groupIndex].classroom.shortname}
+                            initials={item.classes[groupIndex].teacher.shortname}
+                            teachersData={teachers}
+                        />
+                    )
+                }}
+                keyExtractor={(_, index) => `LessonMapped${index}`}
+            />
+        </View>
+    )
+}
+
+const EmptySlot = ({ period }: { period: number }) => {
+    return (
+        <View className="rounded-2xl overflow-hidden mb-2 opacity-50 w-full bg-background px-5 py-4 flex flex-row justify-start items-center border border-[#CFD4DD50] dark:border-[#47474750 gap-5">
+            <View className="flex justify-center items-center bg-primary/10 px-4 py-1 rounded-xl">
+                <Text className="text-2xl font-psemibold text-primary">
+                    {period}
+                </Text>
+            </View>
+            <Text className="text-center">Okienko</Text>
+        </View>
+    )
+}
+
+const hasMoreLessonsAfter = (lessons: DayLesson[], index: number) => {
+    for (let i = index + 1; i < lessons.length; i++) {
+        if (!lessons[i].isEmpty) return true;
+    }
+    return false;
+}

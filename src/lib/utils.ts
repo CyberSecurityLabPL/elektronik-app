@@ -7,6 +7,7 @@ import { add, format, isWeekend, startOfWeek } from "date-fns"
 import { pl } from "date-fns/locale"
 import { twMerge } from "tailwind-merge"
 import { getStorageData, StorageKeys } from "./storage"
+import { allDays } from "@/types/days"
 
 // For merging classNames
 export function cn(...inputs: ClassValue[]) {
@@ -53,4 +54,13 @@ export const resetInfiniteQueryPagination = ({
       pageParams: oldData.pageParams.slice(0, 1),
     }
   })
+}
+
+/**
+ * Transform getDay() to make Monday=0, Tuesday=1, etc.
+ * @returns {number} Current day of week in number format (0-6) 0=Monday, 1=Tuesday, ...
+ */
+export const getCurrentDay = () => {
+  const jsDay = new Date().getDay(); // 0=Sunday, 1=Monday, ...
+  return (jsDay + 6) % 7; // Converts to 0=Monday, 1=Tuesday, ...
 }
