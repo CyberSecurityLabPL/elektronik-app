@@ -1,5 +1,5 @@
 import { Settings, X } from "lucide-react-native"
-import { useEffect, useState } from "react"
+import { memo, useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 import { Pressable, Text, View } from "react-native"
 import Modal from "../ui/Modal"
@@ -10,6 +10,7 @@ import { useTimetableSettings } from "@/hooks/useTimetableSettings"
 import { setStorageData, StorageKeys } from "@/lib/storage"
 import { TimetableSettings } from "@/types/app-data"
 import Switch from "../ui/Switch"
+import { useTimetableValidDate } from "@/hooks/timetable/valid-date/useTimetableValidDate"
 
 const setTimetableSettings = async (data: TimetableSettings) => {
     const result = await setStorageData(StorageKeys.timetable, data)
@@ -75,9 +76,10 @@ export const TimetableHeader = () => {
             >
                 <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
                     <View className="p-6 w-full flex gap-4">
-                        <Text className="text-3xl text-foreground font-pmedium text-center p-6">
+                        <Text className="text-3xl text-foreground font-pmedium text-center pt-6">
                             {t("Timetable.modal.heading")}
                         </Text>
+                        <ValidDate />
                         { defaultSettingsError && (
                             <Text className="text-red-500">{t('Timetable.error.setDefaultGroup')}</Text>
                         ) }
@@ -179,3 +181,23 @@ const ReligionChangeInput = () => {
         </>    
     )
 }
+
+const ValidDate = memo(() => {
+    const {
+        data: timetableValidDate,
+        isLoading: timetableValidDateLoading
+    } = useTimetableValidDate()
+
+    if (timetableValidDateLoading) {
+        return <Text>Loading...</Text>
+    }
+
+    console.log(timetableValidDate)
+
+    return (
+        <View className="flex flex-row gap-x-2 justify-center items-center pb-4">
+            <Text className="text-foreground">Plan obowiązuje od:</Text>
+            <Text className="bg-primary text-background px-2 py-1 rounded-lg">{timetableValidDate?.date}</Text>
+        </View>
+    )
+})

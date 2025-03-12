@@ -7,6 +7,7 @@ export const TIMETABLE_API_URL = "http://elektronik.zgora.pl:5678/api" //todo ch
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
 export const TIMETABLE_ALL_INFO_URL = () => `/info`
 export const TIMETABLE_URL = (id: string) => `/timetables/${id}`
+export const TIMETABLE_VALID_DATE = () => `/validDate`
 
 export const SUBSTITUTIONS_URL = (date: Date) =>
   `/substitutions?pagination[page]=1&pagination[pageSize]=1&sort[1]=createdAt:desc&filters[date][$eq]=${format(
