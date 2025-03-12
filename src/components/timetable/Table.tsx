@@ -1,10 +1,13 @@
 import { useTimetable, useTimetableInfo } from "@/hooks/timetable/useTimetable"
 import { useUserData } from "@/hooks/useUserData"
 import { useState } from "react"
-import { View, Text, FlatList } from "react-native"
+import { View, Text, FlatList, RefreshControl } from "react-native"
 import Lesson from "./Lesson"
 import { useTimetableSettings } from "@/hooks/useTimetableSettings"
 import { DayLesson } from "@/hooks/timetable/types"
+import useColors from "@/hooks/useColors"
+import NoDataSvg from "../icons/NoDataSvg"
+import { useTranslation } from "react-i18next"
 
 const defaultTimetable = 'o1'
 
@@ -12,6 +15,7 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
     const userData = useUserData()
     const { data: teachers } = useTimetableInfo({ filter: "teacher" })
     const { data: timetableSettings } = useTimetableSettings()
+    const colors = useColors()
 
     const [selectedTimetable] = useState(
         userData?.grade ?? defaultTimetable,
@@ -25,10 +29,15 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
         isLoading,
         refetch: refetchTimetable,
         isRefetching: isRefetchingTimetable,
+        isError
     } = useTimetable({ id: selectedTimetable })
 
     if (isLoading || isRefetchingTimetable) {
-        return <Text>Loading...</Text>
+        return <LoadingSkeleton />
+    }
+
+    if (isError) {
+        return <NoData />
     }
 
     return (
@@ -91,6 +100,15 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
                     )
                 }}
                 keyExtractor={(_, index) => `LessonMapped${index}`}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={isRefetchingTimetable}
+                        onRefresh={() => refetchTimetable()}
+                        tintColor={colors.primary}
+                        colors={[colors.primary]}
+                        progressBackgroundColor={colors.backgroundSecondary}
+                    />
+                }
             />
         </View>
     )
@@ -115,3 +133,31 @@ const hasMoreLessonsAfter = (lessons: DayLesson[], index: number) => {
     }
     return false;
 }
+
+const LoadingSkeleton = () => {
+  return (
+    <View className="flex flex-col justify-center items-center p-4 gap-y-2 w-full">
+      {Array(5)
+        .fill("")
+        .map((_, i) => (
+          <View
+            key={`Loading-Skeleton-${i}`}
+            className="w-full h-24 bg-background-secondary animate-pulse rounded-2xl"
+          ></View>
+        ))}
+    </View>
+  )
+}
+
+const NoData = () => {
+    const { t } = useTranslation()
+
+    return (
+      <View className="flex flex-col justify-center items-center p-4 gap-y-2 w-full">
+        <View className="size-2/3">
+          <NoDataSvg />
+        </View>
+        <Text className="text-foreground text-center">{t('Timetable.error.noData')}</Text>
+      </View>
+    )
+  }
