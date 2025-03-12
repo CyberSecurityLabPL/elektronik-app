@@ -6,7 +6,7 @@ import Modal from "../ui/Modal"
 import { useState } from "react"
 import IconButton from "../ui/IconButton"
 import useColors from "@/hooks/useColors"
-import { TimetableInfoResponse } from "@/hooks/timetable/types"
+import { SingleTimetableInfo, TimetableInfoResponse } from "@/hooks/timetable/types"
 
 interface LessonProps {
     teacherId: string
@@ -17,9 +17,27 @@ interface LessonProps {
     room: string
     teachersData: TimetableInfoResponse | undefined
     props?: PressableProps
+    showGroup?: boolean
+    groupNumber?: string
 }
 
-const LessonContent = memo(({ teacher, subject, room, time, onClose }: any) => {
+const LessonContent = memo(({
+    teacher,
+    subject,
+    room,
+    time,
+    onClose,
+    showGroup,
+    groupNumber
+}: {
+    teacher: SingleTimetableInfo | null | undefined
+    subject: string
+    room: string
+    time: string
+    onClose: () => void
+    showGroup?: boolean
+    groupNumber?: string
+}) => {
     const colors = useColors()
 
     return (
@@ -30,7 +48,7 @@ const LessonContent = memo(({ teacher, subject, room, time, onClose }: any) => {
                         Przedmiot
                     </Text>
                     <Text className="font-psemibold text-gray-700 dark:text-gray-400 text-2xl">
-                        {subject}
+                        {subject} {showGroup && groupNumber}
                     </Text>
                 </View>
                 <View>
@@ -78,6 +96,8 @@ const Lesson = memo(({
     room,
     teachersData: teachers,
     props,
+    showGroup = false,
+    groupNumber,
 }: LessonProps) => {
     const [modalOpen, setModalOpen] = useState(false)
 
@@ -122,7 +142,7 @@ const Lesson = memo(({
                         <Text
                             className={`text-xl font-psemibold text-[#111827] dark:text-[#DEDEDE]`}
                         >
-                            {subject}
+                            {subject} {showGroup && groupNumber}
                         </Text>
                         <View className="flex flex-row justify-center items-center gap-[0.15rem]">
                             <Clock size={12} color={"#6D6D6D"} />
@@ -147,6 +167,8 @@ const Lesson = memo(({
                         room={room}
                         time={time}
                         onClose={handleCloseModal}
+                        showGroup={showGroup}
+                        groupNumber={groupNumber}
                     />
                 </Modal>
             )}

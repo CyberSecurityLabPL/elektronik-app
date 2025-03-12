@@ -15,8 +15,10 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
 
     const [selectedTimetable] = useState(
         userData?.grade ?? defaultTimetable,
-        // 'n5'
     )
+
+    // Check if this is a special timetable that should skip group/religion checks
+    const skipFilters = selectedTimetable.startsWith('n') || selectedTimetable.startsWith('s')
 
     const {
         data,
@@ -57,18 +59,19 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
                         (item.isEmpty && !hasMoreLessonsAfter(lessons, index))
                     ) return null
                     
-                    // When to show empty slot banner
                     if (
                         (item.isEmpty) || // Regular empty period
-                        (item.classes.length === 1 && // Other group's lesson
-                        item.classes[0].class?.group != null && // Check if it's a group lesson
-                        item.classes[0].class.group?.charAt(0) != timetableSettings?.group.toString() && // Check if it's the correct group
-                        !prevLesson?.isEmpty) // Check if the previous lesson is not empty
+                        (!skipFilters && // Skip group check for special timetables
+                         item.classes.length === 1 && // Other group's lesson
+                         item.classes[0].class?.group != null && // Check if it's a group lesson
+                         item.classes[0].class.group?.charAt(0) != timetableSettings?.group.toString() && // Check if it's the correct group
+                         !prevLesson?.isEmpty) // Check if the previous lesson is not empty
                     ) return <EmptySlot period={index} />
                     
                     // Check if the lesson is a religion lesson and religion lessons are disabled
                     // By default it don't check if previous lesson is empty because it's always at 0 or 8/9 lesson
-                    if (!timetableSettings?.religion && 
+                    if (!skipFilters && // Skip religion check for special timetables 
+                        !timetableSettings?.religion && 
                         item.classes[groupIndex].subject.name.includes("religia")) {
                         return null
                     }
@@ -82,6 +85,8 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
                             room={item.classes[groupIndex].classroom.shortname}
                             initials={item.classes[groupIndex].teacher.shortname}
                             teachersData={teachers}
+                            showGroup={skipFilters}
+                            groupNumber={item.classes[groupIndex].class?.group ?? ""}
                         />
                     )
                 }}
