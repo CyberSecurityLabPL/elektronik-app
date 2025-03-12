@@ -8,6 +8,7 @@ import { DayLesson } from "@/hooks/timetable/types"
 import useColors from "@/hooks/useColors"
 import NoDataSvg from "../icons/NoDataSvg"
 import { useTranslation } from "react-i18next"
+import { RelaxSvg } from "../icons/Relax"
 
 const defaultTimetable = 'o1'
 
@@ -40,6 +41,17 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
         return <NoData />
     }
 
+    const lessonsForDay = Object.values(data?.lessons || {})[selectedDay]
+    if (lessonsForDay.length === 0 || (lessonsForDay.length > 0 && lessonsForDay.every(lesson => lesson.isEmpty))) return (
+        <View className="flex flex-col items-center w-full h-full mt-10 gap-y-4">
+            <Text className="text-foreground font-bold text-3xl text-center">Brak lekcji tego dnia!</Text>
+            <RelaxSvg
+            height='40%'
+            width='80%' />
+        </View>
+    )
+
+
     return (
         <View className="flex justify-center items-center px-4 w-full mb-24">
             <FlatList
@@ -50,7 +62,7 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
                     // Pre-calculate item heights for faster rendering
                     { length: 80, offset: 80 * index, index }
                 )}
-                data={Object.values(data?.lessons || {})[selectedDay]}
+                data={lessonsForDay}
                 renderItem={({ item, index }) => {
                     // index is the period number (pl. numer lekcji)
                     const groupIndex = item.isDouble && timetableSettings?.group === 2 ? 1 : 0
