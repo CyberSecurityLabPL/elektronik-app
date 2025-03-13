@@ -1,6 +1,6 @@
 import TabBar from "@/components/navigation/TabBar"
 import { Tabs, } from "expo-router"
-import { Bone, Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
+import { Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
 import React from "react"
 
 export default function TabLayout() {
@@ -25,12 +25,6 @@ export default function TabLayout() {
         name="timetable"
         options={() => ({
           tabBarIcon: Table,
-        })}
-      />
-      <Tabs.Screen
-        name="new-timetable"
-        options={() => ({
-          tabBarIcon: Bone,
         })}
       />
       <Tabs.Screen
