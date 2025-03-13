@@ -1,6 +1,4 @@
 import { useTimetable, useTimetableInfo } from "@/hooks/timetable/useTimetable"
-import { useUserData } from "@/hooks/useUserData"
-import { useState } from "react"
 import { View, Text, FlatList, RefreshControl } from "react-native"
 import Lesson from "./Lesson"
 import { useTimetableSettings } from "@/hooks/useTimetableSettings"
@@ -10,17 +8,17 @@ import NoDataSvg from "../icons/NoDataSvg"
 import { useTranslation } from "react-i18next"
 import { RelaxSvg } from "../icons/Relax"
 
-const defaultTimetable = 'o1'
 
-export const Table = ({ selectedDay }: { selectedDay: number }) => {
-    const userData = useUserData()
+export const Table = ({
+    selectedDay,
+    selectedTimetable
+}: {
+    selectedDay: number,
+    selectedTimetable: string
+}) => {
     const { data: teachers } = useTimetableInfo({ filter: "teacher" })
     const { data: timetableSettings } = useTimetableSettings()
     const colors = useColors()
-
-    const [selectedTimetable] = useState(
-        userData?.grade ?? defaultTimetable,
-    )
 
     // Check if this is a special timetable that should skip group/religion checks
     const skipFilters = selectedTimetable.startsWith('n') || selectedTimetable.startsWith('s')
@@ -53,7 +51,7 @@ export const Table = ({ selectedDay }: { selectedDay: number }) => {
 
 
     return (
-        <View className="flex justify-center items-center px-4 w-full mb-24">
+        <View className="flex justify-center items-center px-4 w-full mb-48">
             <FlatList
                 contentContainerClassName="pb-32"
                 showsVerticalScrollIndicator={false}

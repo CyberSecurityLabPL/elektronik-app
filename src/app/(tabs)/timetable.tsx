@@ -319,6 +319,7 @@ function BottomSheetSelectors({
         LucideIcon={GraduationCap}
         items={info.filter((item) => item.id.toLocaleLowerCase().includes("o"))}
         onItemSelect={() => bottomSheetRef.current?.close()}
+        // Add here also keyboard
       />
       <TimetableSelect
         selectedTimetable={selectedTimetable}
