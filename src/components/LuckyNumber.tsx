@@ -6,6 +6,7 @@ import { Clover, LoaderCircle } from "lucide-react-native"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
+import { Loader } from "./Loader"
 
 const Badge = memo(({ 
     isLoading, 
@@ -20,7 +21,6 @@ const Badge = memo(({
     variant?: 'classic' | 'inverted';
     withIcon?: boolean;
   }) => {
-    const colors = useColors()
     const { t } = useTranslation()
 
     return (
@@ -39,9 +39,7 @@ const Badge = memo(({
             }
         >
             { isLoading || isError ? (
-                <View className="animate-spin">
-                    <LoaderCircle size={16} color={colors.background} />
-                </View>
+                <Loader />
             ) : (
                 <Text className="text-background text-xl font-bold">{children}</Text>
             )}
@@ -56,7 +54,12 @@ const Badge = memo(({
 
 export const WideLuckyNumber = memo(() => {
     const colors = useColors()
-    const { data, isLoading, isError } = useLuckyNumber()
+    const {
+        data,
+        isLoading,
+        isError,
+        isRefetching
+    } = useLuckyNumber()
     const { t } = useTranslation()
 
     return (
@@ -70,14 +73,19 @@ export const WideLuckyNumber = memo(() => {
             </View>
             <Badge
                 isError={isError}
-                isLoading={isLoading}    
+                isLoading={isLoading || isRefetching}    
             >{data?.data?.attributes?.value ?? ''}</Badge>
         </View>
     )
 })
 
 export const LabelLuckyNumber = () => {
-    const { data, isLoading, isError } = useLuckyNumber()
+    const {
+        data,
+        isLoading,
+        isError,
+        isRefetching
+    } = useLuckyNumber()
     const userData = useUserData()
     const { t } = useTranslation()
 
@@ -88,7 +96,7 @@ export const LabelLuckyNumber = () => {
             >
                 <Badge
                     isError={isError}
-                    isLoading={isLoading}
+                    isLoading={isLoading || isRefetching}
                     variant="inverted"
                     withIcon
                 >{data?.data?.attributes?.value}</Badge>

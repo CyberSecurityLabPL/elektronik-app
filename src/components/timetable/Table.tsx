@@ -171,7 +171,7 @@ const NoData = ({ refetch }: { refetch: () => void }) => {
         <View className="size-1/2">
           <NoDataSvg />
         </View>
-        <Text className="text-foreground text-center">{t('Timetable.error.noData')}</Text>
+        <Text className="text-foreground text-center">{t('Error.noData')}</Text>
         <Button
             text="Spróbuj ponownie"
             onPress={refetch}

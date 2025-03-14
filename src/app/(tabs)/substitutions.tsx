@@ -1,3 +1,4 @@
+import { NoDataSvg } from "@/components/icons"
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
@@ -65,9 +66,13 @@ const Substitutions = () => {
             <ScrollView nestedScrollEnabled>
               <View>
                 {isError && (
-                  <Text className="text-red-600 text-base  font-pregular ">
-                    {t("Substitutions.error")}
-                  </Text>
+                  <View className="flex flex-col items-center justify-center gap-y-8 h-full w-full">
+                    <NoDataSvg
+                      height={150}
+                      width={'100%'}
+                    />
+                    <Text className="text-center px-4 text-foreground text-sm">{t('Error.noData')}</Text>
+                  </View>
                 )}
                 {isLoading || isRefetching || isFetching ? (
                   <View className="flex flex-col gap-2">
