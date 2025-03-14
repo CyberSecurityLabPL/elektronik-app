@@ -68,7 +68,7 @@ export default function RootLayout() {
               drawerContent={Sidebar}
               initialRouteName="index"
             >
-              <Drawer.Screen name="(tabs)" />
+              <Drawer.Screen name="(tabs)" options={{ swipeEnabled: false }} />
               <Drawer.Screen
                 name="settings"
                 options={{ swipeEnabled: false }}
