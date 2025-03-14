@@ -292,7 +292,7 @@ const Home = () => {
                                     announcement?.pages[0].data[0].attributes.createdAt
                                         ? localeFormat(
                                             new Date(
-                                                article?.pages[0].data[0].attributes.createdAt ?? "",
+                                                announcement?.pages[0].data[0].attributes.createdAt ?? "",
                                             ),
                                             "dd MMMM "
                                         )
