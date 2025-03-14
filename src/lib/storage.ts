@@ -3,6 +3,7 @@ import {
   LanguageSchema,
   NotificationsSchema,
   themeSchema,
+  TimetableSettingsSchema,
   UserDataSchema,
 } from "@/types/schemas"
 import AsyncStorage from "@react-native-async-storage/async-storage"
@@ -27,7 +28,8 @@ type SchemaType = {
   language: typeof LanguageSchema
   notifications: typeof NotificationsSchema
   "first-time-user": typeof FirstTimeUserSchema
-  "user-data": typeof UserDataSchema
+  "user-data": typeof UserDataSchema,
+  timetable: typeof TimetableSettingsSchema
 }
 
 // Storage keys mapped to their string values
@@ -37,7 +39,7 @@ export const StorageKeys = {
   language: "language",
   firstTimeUser: "first-time-user",
   userData: "user-data",
-  // ... other keys
+  timetable: 'timetable',
 } as const
 
 // Type from the keys
@@ -50,6 +52,7 @@ export const StorageSchemas: SchemaType = {
   [StorageKeys.notifications]: NotificationsSchema,
   [StorageKeys.firstTimeUser]: FirstTimeUserSchema,
   [StorageKeys.userData]: UserDataSchema,
+  [StorageKeys.timetable]: TimetableSettingsSchema
   // Add your settings schema here
 } as const
 

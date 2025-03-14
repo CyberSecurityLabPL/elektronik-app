@@ -17,3 +17,8 @@ export const UserDataSchema = z.object({
 })
 
 export const FirstTimeUserSchema = z.boolean().nullable()
+
+export const TimetableSettingsSchema = z.object({
+  group: z.number(),
+  religion: z.boolean()
+})

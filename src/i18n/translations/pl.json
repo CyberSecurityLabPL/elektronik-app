@@ -83,13 +83,31 @@
       "group": "Grupa",
       "showRel": "Religia"
     },
+    "categories": {
+      "course": "Przedmiot",
+      "teacher": "Nauczyciel",
+      "classroom": "Sala",
+      "hours": "Godziny"
+    },
     "button": "Rozkład zajęć",
     "none": "Brak danych",
     "bottomSheet": {
       "search": "Wyszukaj plan...",
       "class": "Klasa",
       "teacher": "Nauczyciel",
-      "classRoom": "Sala"
+      "classRoom": "Sala",
+      "loadMore": "Załaduj więcej"
+    },
+    "emptyDay": "Brak lekcji tego dnia!",
+    "emptySlot": "Okienko",
+    "error": {
+      "setDefaultGroup": "Wystąpił błąd i nie udało się ustawić grupy automatycznie. Kliknij w przycisk poniżej, aby ustawić ją ręcznie, albo zrestartuj aplikację",
+      "changeGroup": "Wystąpił błąd i nie udało się zmienić grupy. Uruchom ponownie aplikacje i spróbuj ponownie.",
+      "changeReligion": "Wystąpił błąd i nie udało się zmienić wyświetlania religii. Uruchom ponownie aplikacje i spróbuj ponownie.",
+      "noData": "Nie udało się załadować danych. Sprawdź, czy masz włączony internet",
+      "bottomSheet": {
+        "data": "Wystąpił błąd podczas pobierania danych. Sprawdź dostęp do internetu i spróbuj ponownie"
+      }
     }
   },
   "Events": {
