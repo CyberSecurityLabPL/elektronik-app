@@ -7,6 +7,7 @@ import { useState } from "react"
 import IconButton from "../ui/IconButton"
 import useColors from "@/hooks/useColors"
 import { SingleTimetableInfo, TimetableInfoResponse } from "@/hooks/timetable/types"
+import { useTranslation } from "react-i18next"
 
 interface LessonProps {
     teacherId: string
@@ -39,13 +40,14 @@ const LessonContent = memo(({
     groupNumber?: string
 }) => {
     const colors = useColors()
+    const { t } = useTranslation()
 
     return (
         <View className="bg-background w-10/12 h-1/2 rounded-3xl px-9 py-7 flex items-center justify-between">
             <View className="gap-3 w-full h-fit">
                 <View>
                     <Text className="text-foreground font-pregular text-lg">
-                        Przedmiot
+                        {t('Timetable.categories.course')}
                     </Text>
                     <Text className="font-psemibold text-gray-700 dark:text-gray-400 text-2xl">
                         {subject} {showGroup && groupNumber}
@@ -53,7 +55,7 @@ const LessonContent = memo(({
                 </View>
                 <View>
                     <Text className="text-foreground font-pregular text-lg">
-                        Nauczyciel
+                        {t('Timetable.categories.teacher')}
                     </Text>
                     <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
                         {teacher?.name}
@@ -61,7 +63,7 @@ const LessonContent = memo(({
                 </View>
                 <View>
                     <Text className="text-foreground font font-pregular text-lg">
-                        Sala
+                        {t('Timetable.categories.classroom')}
                     </Text>
                     <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
                         {room}
@@ -69,7 +71,7 @@ const LessonContent = memo(({
                 </View>
                 <View>
                     <Text className="text-foreground font-pregular text-lg">
-                        Godziny
+                        {t('Timetable.categories.hours')}
                     </Text>
                     <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
                         {time}

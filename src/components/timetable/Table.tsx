@@ -20,6 +20,7 @@ export const Table = ({
     const { data: teachers } = useTimetableInfo({ filter: "teacher" })
     const { data: timetableSettings } = useTimetableSettings()
     const colors = useColors()
+    const { t } = useTranslation()
 
     // Check if this is a special timetable that should skip group/religion checks
     const skipFilters = selectedTimetable.startsWith('n') || selectedTimetable.startsWith('s')
@@ -43,7 +44,7 @@ export const Table = ({
     const lessonsForDay = Object.values(data?.lessons || {})[selectedDay]
     if (lessonsForDay.length === 0 || (lessonsForDay.length > 0 && lessonsForDay.every(lesson => lesson.isEmpty))) return (
         <View className="flex flex-col items-center w-full h-full mt-10 gap-y-4">
-            <Text className="text-foreground font-bold text-3xl text-center">Brak lekcji tego dnia!</Text>
+            <Text className="text-foreground font-bold text-3xl text-center">{t('Timetable.emptyDay')}</Text>
             <RelaxSvg
             height='40%'
             width='80%' />
@@ -126,6 +127,8 @@ export const Table = ({
 }
 
 const EmptySlot = ({ period }: { period: number }) => {
+    const { t } = useTranslation()
+
     return (
         <View className="rounded-2xl overflow-hidden mb-2 opacity-50 w-full bg-background px-5 py-4 flex flex-row justify-start items-center border border-[#CFD4DD50] dark:border-[#47474750 gap-5">
             <View className="flex justify-center items-center bg-primary/10 px-4 py-1 rounded-xl">
@@ -133,7 +136,7 @@ const EmptySlot = ({ period }: { period: number }) => {
                     {period}
                 </Text>
             </View>
-            <Text className="text-center text-foreground">Okienko</Text>
+            <Text className="text-center text-foreground">{t('Timetable.emptySlot')}</Text>
         </View>
     )
 }

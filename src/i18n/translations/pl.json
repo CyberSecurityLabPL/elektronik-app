@@ -81,6 +81,12 @@
       "group": "Grupa",
       "showRel": "Religia"
     },
+    "categories": {
+      "course": "Przedmiot",
+      "teacher": "Nauczyciel",
+      "classroom": "Sala",
+      "hours": "Godziny"
+    },
     "button": "Rozkład zajęć",
     "none": "Brak danych",
     "bottomSheet": {
@@ -90,6 +96,8 @@
       "classRoom": "Sala",
       "loadMore": "Załaduj więcej"
     },
+    "emptyDay": "Brak lekcji tego dnia!",
+    "emptySlot": "Okienko",
     "error": {
       "setDefaultGroup": "Wystąpił błąd i nie udało się ustawić grupy automatycznie. Kliknij w przycisk poniżej, aby ustawić ją ręcznie, albo zrestartuj aplikację",
       "changeGroup": "Wystąpił błąd i nie udało się zmienić grupy. Uruchom ponownie aplikacje i spróbuj ponownie.",
