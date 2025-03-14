@@ -7,7 +7,7 @@ import {
 } from "@react-native-picker/picker"
 import { TouchableOpacity } from "react-native"
 
-export function Select({ children, enabled, ...props }: PickerProps) {
+export function Select({ children, enabled, className, ...props }: PickerProps) {
   const colors = useColors()
 
   return (
@@ -15,7 +15,7 @@ export function Select({ children, enabled, ...props }: PickerProps) {
       activeOpacity={1}
       className={cn("bg-background-secondary rounded-3xl p-1 shadow-md", {
         "bg-background-secondary ": !enabled,
-      })}
+      }, className)}
       disabled={!enabled}
     >
       <Picker

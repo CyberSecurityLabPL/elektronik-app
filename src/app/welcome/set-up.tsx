@@ -68,13 +68,14 @@ const SetUp = () => {
         <View className="absolute top-4 -right-40 -z-10">
           <Multiplication color={colors.svg.multiplication} />
         </View>
-        <View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-8">
+        <View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-2">
           <View className="flex flex-row justify-center items-center w-full gap-3 relative">
             <LogoSvg />
             <Text className="font-psemibold text-4xl text-foreground text-center py-2 flex justify-center items-center relative top-1">
               Elektronik
             </Text>
           </View>
+          <Text className="text-center text-foreground text-sm">{t('Welcome.setUp.informationWhy')}</Text>
           <View className="flex justify-center items-center w-full flex-col gap-6">
             <View className="flex justify-center items-start flex-col w-full">
               <Text className={`text-foreground font-pmedium text-xl p-2`}>
@@ -93,6 +94,7 @@ const SetUp = () => {
                     onBlur={onBlur}
                     type="text"
                     placeholder={t("Welcome.setUp.name")}
+                    containerClassName="border border-foreground/20"
                   />
                 )}
                 name="name"
@@ -118,11 +120,12 @@ const SetUp = () => {
                     onValueChange={(itemValue: any) => onChange(itemValue)}
                     placeholder={t("Welcome.setUp.class")}
                     enabled={data ? true : false}
+                    className="border border-foreground/20"
                   >
                     {(data) ? data.map((item) => (
                       <SelectItem
                         key={item.id}
-                        label={item.name}
+                        label={item.name.slice(0,4) + item.name.slice(5)}
                         value={item.id}
                       />
                     )) : (
@@ -164,6 +167,7 @@ const SetUp = () => {
                     onBlur={onBlur}
                     type="number"
                     placeholder="0"
+                    containerClassName="border border-foreground/20"
                   />
                 )}
                 name="diaryNumber"
@@ -178,6 +182,7 @@ const SetUp = () => {
         </View>
       </View>
       <View className="flex justify-center w-full items-center flex-col gap-1">
+        <Text className="text-sm text-foreground">{t('Welcome.setUp.privacyDisclaimer')}</Text>
         <Button
           variant="ghost"
           text={t("Button.guest")}

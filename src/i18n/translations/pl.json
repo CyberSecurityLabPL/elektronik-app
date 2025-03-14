@@ -10,7 +10,9 @@
       "timetableError": "Wystąpił błąd. Nie można pobrać spisu klas. Uruchom aplikację ponownie.",
       "timetableErrorItem": "Brak danych",
       "diaryNumber": "Wybierz numer z dziennika",
-      "diaryNumberError": "Podaj prawidłowy numerek z dziennika"
+      "diaryNumberError": "Podaj prawidłowy numerek z dziennika",
+      "informationWhy": "Uzupełnij ten formularz, aby korzystać z powiadomień, planu lekcji i zastępstw dla twojej klasy",
+      "privacyDisclaimer": "Twoje ustawienia nie są nigdzie wysyłane"
     }
   },
   "Home": {

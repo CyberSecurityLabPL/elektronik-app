@@ -49,7 +49,7 @@ const Profile = () => {
   return (
     <ScreenWrapper>
       <Heading title={t("Settings.profile.heading")} screen="settings" />
-      <View className="flex justify-between items-center w-full flex-col gap-7  flex-1">
+      <View className="flex justify-between items-center w-full flex-col flex-1">
         <View className="flex justify-center items-center flex-col w-full">
           <Controller
             control={control}
@@ -83,9 +83,9 @@ const Profile = () => {
               {t("Welcome.setUp.diaryNumberError")}
             </Text>
           )}
+        <Text className="text-sm text-foreground text-center px-5">{t('Welcome.setUp.informationWhy')}</Text>
         </View>
-        {/* dolne */}
-        <View className="w-full gap-8">
+        <View className="w-full gap-6 -mt-5">
           <View className="flex justify-center items-start flex-col w-full">
             <Text className={`text-foreground font-pmedium text-xl p-2`}>
               {t("Welcome.setUp.name")}
@@ -132,7 +132,7 @@ const Profile = () => {
                   {data?.map((item) => (
                     <SelectItem
                       key={item.id}
-                      label={item.name}
+                      label={item.name.slice(0,4) + item.name.slice(5)}
                       value={item.id}
                     />
                   ))}
@@ -147,7 +147,10 @@ const Profile = () => {
             )}
           </View>
         </View>
-        <Button text={t("Button.continue")} onPress={handleSubmit(onSubmit)} />
+        <View className="w-full flex flex-col gap-y-2">
+          <Text className="text-sm text-foreground text-center">{t('Welcome.setUp.privacyDisclaimer')}</Text>
+          <Button text={t("Button.continue")} onPress={handleSubmit(onSubmit)} />
+        </View>
       </View>
     </ScreenWrapper>
   )
