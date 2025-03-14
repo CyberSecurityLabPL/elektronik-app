@@ -189,7 +189,11 @@ const ValidDate = memo(() => {
     } = useTimetableValidDate()
 
     if (timetableValidDateLoading) {
-        return <Text>Loading...</Text>
+        return (
+            <View className="w-full flex flex-row justify-center items-center pb-4">
+                <View className="h-6 w-4/5 bg-background-secondary animate-pulse rounded-2xl" />
+            </View>
+        )
     }
 
     console.log(timetableValidDate)
@@ -197,7 +201,7 @@ const ValidDate = memo(() => {
     return (
         <View className="flex flex-row gap-x-2 justify-center items-center pb-4">
             <Text className="text-foreground">Plan obowiązuje od:</Text>
-            <Text className="bg-primary text-background px-2 py-1 rounded-lg">{timetableValidDate?.date}</Text>
+            <Text className="bg-primary text-background px-2 py-1 rounded-lg">{timetableValidDate?.date || 'Brak danych'}</Text>
         </View>
     )
 })

@@ -8,12 +8,14 @@ import Drawer from "expo-router/drawer"
 import * as SplashScreen from "expo-splash-screen"
 import { StatusBar } from "expo-status-bar"
 import { useEffect } from "react"
-import { I18nextProvider } from "react-i18next"
+import { I18nextProvider, useTranslation } from "react-i18next"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import "react-native-reanimated"
 import { Toaster } from "sonner-native"
 import "../global.css"
 import i18n from "../i18n/i18n.config"
+import { useNetInfo } from "@react-native-community/netinfo"
+import { View, Text } from "react-native"
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -24,6 +26,7 @@ export {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
+  const { isConnected } = useNetInfo()
   const colors = useColors()
   NavigationBar.setBackgroundColorAsync(colors.background)
 
@@ -54,6 +57,9 @@ export default function RootLayout() {
       <I18nextProvider i18n={i18n} defaultNS={"translation"}>
         <ThemeProvider>
           <GestureHandlerRootView className="flex-1">
+            { !isConnected && (
+              <NoInternet />
+            )}
             <Drawer
               screenOptions={{
                 drawerStyle: {
@@ -81,5 +87,15 @@ export default function RootLayout() {
         </ThemeProvider>
       </I18nextProvider>
     </QueryProvider>
+  )
+}
+
+const NoInternet = () => {
+  const { t } = useTranslation()
+
+  return (
+    <View className="bg-primary absolute top-0 w-full z-[999] pb-2 pt-10">
+      <Text className="text-background text-center">{t('Error.noInternet')}</Text>
+    </View>
   )
 }

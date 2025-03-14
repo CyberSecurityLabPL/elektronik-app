@@ -1,24 +1,26 @@
 import HomeCard from "@/components/cards/HomeCard"
+import { Loader } from "@/components/Loader"
 import { LabelLuckyNumber } from "@/components/LuckyNumber"
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import Modal from "@/components/ui/Modal"
-import { DAYS_BEFORE_EVENT, localeMap } from "@/config"
+import { DAYS_BEFORE_EVENT } from "@/config"
 import { useAnnouncements } from "@/hooks/announcements/useAnnouncements"
 import { useArticles } from "@/hooks/articles/useArticles"
 import { useBells } from "@/hooks/bells/useBells"
 import { useUpcomingEvent } from "@/hooks/events/useEvents"
+import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
 import useColors from "@/hooks/useColors"
 import useTimeLessons from "@/hooks/useTimeLessons"
 import { useUserData } from "@/hooks/useUserData"
 import { cn, localeFormat } from "@/lib/utils"
 import { StrapiLesson } from "@/types/strapi"
+import { useNetInfo } from "@react-native-community/netinfo"
 import { differenceInDays, format, isWithinInterval, set } from "date-fns"
-import { pl } from "date-fns/locale"
 import { useRouter } from "expo-router"
 import { X } from "lucide-react-native"
-import React, { useCallback, useMemo, useState } from "react"
+import React, { memo, useCallback, useMemo, useState } from "react"
 import { useTranslation } from "react-i18next"
 import {
     Pressable,
@@ -35,17 +37,32 @@ const Home = () => {
     const [isBellModalOpen, setIsBellModalOpen] = useState(false)
     const [isEventModalOpen, setIsEventModalOpen] = useState(false)
 
+    const { isConnected } = useNetInfo()
+
     const colors = useColors()
     const userData = useUserData()
     const curDate = new Date()
-    const { t, i18n } = useTranslation()
+    const { t } = useTranslation()
 
-    const { data: article, refetch: refetchArticles } = useArticles({
+    const {
+        data: article,
+        refetch: refetchArticles,
+        isLoading: isArticlesLoading,
+        isRefetching: isArticlesRefetching,
+    } = useArticles({
         page: 1,
         pageSize: 1,
     })
-    const { data: announcement, refetch: refetchAnnouncements } =
-        useAnnouncements({ page: 1, pageSize: 1 })
+    const {
+        data: announcement,
+        refetch: refetchAnnouncements,
+        isLoading: isAnnouncementsLoading,
+        isRefetching: isAnnouncementsRefetching,
+    } = useAnnouncements({
+        page: 1,
+        pageSize: 1
+    })
+
     const { data: event, refetch: refetchEvents } = useUpcomingEvent({
         date: curDate,
     })
@@ -54,6 +71,8 @@ const Home = () => {
 
     const router = useRouter()
 
+    const { refetch: refetchLuckyNumber } = useLuckyNumber()
+
     const onRefresh = useCallback(() => {
         setRefreshing(true)
         Promise.all([
@@ -61,6 +80,7 @@ const Home = () => {
             refetchAnnouncements(),
             refetchEvents(),
             refetchBells(),
+            refetchLuckyNumber(),
         ]).finally(() => {
             setRefreshing(false)
         })
@@ -72,8 +92,9 @@ const Home = () => {
         ) as StrapiLesson[]
     }, [bells])
 
-    const { minutes, message } = useTimeLessons({ lessons })
 
+    const { minutes, message } = useTimeLessons({ lessons })
+    
     return (
         <ScreenWrapper>
             <ScrollView
@@ -94,16 +115,16 @@ const Home = () => {
                 />
                 <Pressable
                     onPress={() => setIsBellModalOpen(true)}
-                    className="flex flex-row mt-6 "
+                    className="flex flex-row mt-6"
                 >
-                    <View className="bg-background-secondary rounded-3xl   p-6 gap-4 w-1/2">
-                        <Text className="font-pregular text-foreground text-left text-lg  ">
-                            {message}
+                    <View className="bg-background-secondary rounded-3xl p-6 gap-4 w-1/2">
+                        <Text className="font-pregular text-foreground text-left text-lg">
+                            {(lessons.length > 0) ? message : t('General.loading')}
                         </Text>
                     </View>
                     <View className="w-1/2 flex justify-center items-center flex-col">
                         <Text className="text-primary font-psemibold text-2xl flex-wrap text-center">
-                            {minutes == 0 ? "😴" : minutes}
+                            {minutes == 0 ? <Loader color={colors.primary} /> : minutes}
                         </Text>
                         <Text
                             className={cn(
@@ -163,7 +184,7 @@ const Home = () => {
                     </View>
                 </Modal>
 
-                <LabelLuckyNumber />
+                {isConnected && <LabelLuckyNumber />}
 
                 <View className="my-6">
                     {event?.data[0] &&
@@ -227,55 +248,61 @@ const Home = () => {
                     {t("Home.announcements")}
                 </Text>
                 <View className="mt-4 flex flex-col gap-6 mb-8">
-                    <HomeCard
-                        type="school"
-                        onPress={() =>
-                            router.push({
-                                // @ts-ignore
-                                pathname: `/news/n${article?.pages[0].data[0].id}`,
-                                params: { origin: "home", other: "other" },
-                            })
-                        }
-                        description={article?.pages[0].data[0].attributes.description!}
-                        date={
-                            article?.pages[0].data[0].attributes.createdAt
-                                ? localeFormat(
-                                    new Date(
-                                        article?.pages[0].data[0].attributes.createdAt ?? "",
-                                    ),
-                                    "dd MMMM ",
-                                )
-                                : "Brak daty"
-                        }
-                        title={article?.pages[0].data[0].attributes.title!}
-                    />
-                    <HomeCard
-                        type="council"
-                        onPress={() =>
-                            router.push({
-                                // @ts-ignore
-                                pathname: `/news/a${announcement!.pages[0].data[0].id}`,
-                                params: { origin: "home", other: "other" },
-                            })
-                        }
-                        description={announcement?.pages[0].data[0].attributes.description!}
-                        date={
-                            announcement?.pages[0].data[0].attributes.createdAt
-                                ? format(
-                                    new Date(
-                                        announcement?.pages[0].data[0].attributes.createdAt ?? "",
-                                    ),
-                                    "dd MMMM",
-                                    {
-                                        locale:
-                                            localeMap[i18n.language as keyof typeof localeMap] ||
-                                            pl,
-                                    },
-                                )
-                                : "Brak daty"
-                        }
-                        title={announcement?.pages[0].data[0].attributes.title!}
-                    />
+                    { (!(isArticlesLoading || isArticlesRefetching) && article)
+                        ? (
+                            <HomeCard
+                                type="council"
+                                onPress={() =>
+                                    router.push({
+                                        // @ts-ignore
+                                        pathname: `/news/n${article?.pages[0].data[0].id}`,
+                                        params: { origin: "home", other: "other" },
+                                    })
+                                }
+                                description={article?.pages[0].data[0].attributes.description!}
+                                date={
+                                    article?.pages[0].data[0].attributes.createdAt
+                                        ? localeFormat(
+                                            new Date(
+                                                article?.pages[0].data[0].attributes.createdAt ?? "",
+                                            ),
+                                            "dd MMMM "
+                                        )
+                                        : "Brak daty"
+                                }
+                                title={article?.pages[0].data[0].attributes.title!}
+                            />
+                        )
+                        : <NewsSkeleton />
+                    }
+                    
+                    { (!(isAnnouncementsLoading || isAnnouncementsRefetching) && announcement)
+                        ? (
+                            <HomeCard
+                                type="school"
+                                onPress={() =>
+                                    router.push({
+                                        // @ts-ignore
+                                        pathname: `/news/a${announcement!.pages[0].data[0].id}`,
+                                        params: { origin: "home", other: "other" },
+                                    })
+                                }
+                                description={announcement?.pages[0].data[0].attributes.description!}
+                                date={
+                                    announcement?.pages[0].data[0].attributes.createdAt
+                                        ? localeFormat(
+                                            new Date(
+                                                announcement?.pages[0].data[0].attributes.createdAt ?? "",
+                                            ),
+                                            "dd MMMM "
+                                        )
+                                        : "Brak daty"
+                                }
+                                title={announcement?.pages[0].data[0].attributes.title!}
+                            />
+                        )
+                        : <NewsSkeleton />}
+
                 </View>
             </ScrollView>
         </ScreenWrapper>
@@ -283,3 +310,7 @@ const Home = () => {
 }
 
 export default Home
+
+const NewsSkeleton = memo(() => (
+    <View className="h-[225px] w-full rounded-2xl bg-background-secondary animate-pulse" />
+))
