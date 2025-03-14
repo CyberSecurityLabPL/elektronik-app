@@ -7,6 +7,7 @@ import useColors from "@/hooks/useColors"
 import NoDataSvg from "../icons/NoDataSvg"
 import { useTranslation } from "react-i18next"
 import { RelaxSvg } from "../icons/Relax"
+import Button from "../ui/Button"
 
 
 export const Table = ({
@@ -36,7 +37,7 @@ export const Table = ({
     }
 
     if (isError) {
-        return <NoData />
+        return <NoData refetch={refetchTimetable} />
     }
 
     const lessonsForDay = Object.values(data?.lessons || {})[selectedDay]
@@ -132,7 +133,7 @@ const EmptySlot = ({ period }: { period: number }) => {
                     {period}
                 </Text>
             </View>
-            <Text className="text-center">Okienko</Text>
+            <Text className="text-center text-foreground">Okienko</Text>
         </View>
     )
 }
@@ -159,15 +160,19 @@ const LoadingSkeleton = () => {
   )
 }
 
-const NoData = () => {
+const NoData = ({ refetch }: { refetch: () => void }) => {
     const { t } = useTranslation()
 
     return (
-      <View className="flex flex-col justify-center items-center p-4 gap-y-2 w-full">
-        <View className="size-2/3">
+      <View className="flex flex-col items-center p-4 gap-y-8 w-full">
+        <View className="size-1/2">
           <NoDataSvg />
         </View>
         <Text className="text-foreground text-center">{t('Timetable.error.noData')}</Text>
+        <Button
+            text="Spróbuj ponownie"
+            onPress={refetch}
+        />
       </View>
     )
   }
