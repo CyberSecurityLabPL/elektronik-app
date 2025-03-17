@@ -17,7 +17,7 @@ const Input = ({
         }, containerClassName)}>
             <TextInput
                 className={cn(
-                    "placeholder:text-zinc-500 dark:text-background-secondary text-foreground",
+                    "placeholder:text-zinc-500 text-foreground",
                     {
                         'text-xl text-center pr-1': type === 'number',
                     },

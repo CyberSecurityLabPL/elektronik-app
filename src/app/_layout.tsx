@@ -81,7 +81,7 @@ export default function RootLayout() {
               />
               <Drawer.Screen name="welcome" options={{ swipeEnabled: false }} />
             </Drawer>
-            <StatusBar style="auto" />
+            <StatusBar style="auto" animated translucent />
             <Toaster />
           </GestureHandlerRootView>
         </ThemeProvider>

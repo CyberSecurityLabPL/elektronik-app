@@ -41,7 +41,7 @@ const Substitutions = () => {
   return (
     <ScreenWrapper>
       <ScrollView
-        className="  flex flex-col"
+        className="flex flex-col"
         contentContainerClassName="justify-center"
         nestedScrollEnabled={true}
         refreshControl={
@@ -55,7 +55,7 @@ const Substitutions = () => {
         }
       >
         <Heading title={t("Substitutions.heading")} />
-        <View className="bg-background-secondary w-full p-4 rounded-2xl mt-8 flex justify-center items-center">
+        <View className="bg-background-secondary w-full p-4 rounded-2xl flex justify-center items-center">
           <Text className="text-3xl font-pmedium text-foreground">
             {/* "d MMMM yyyy" */}
             {localeFormat(date, "d MMMM yyyy")}

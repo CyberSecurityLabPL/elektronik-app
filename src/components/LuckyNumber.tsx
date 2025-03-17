@@ -64,17 +64,15 @@ export const WideLuckyNumber = memo(() => {
 
     return (
         <View
-            className="flex gap-x-8 flex-row text-center justify-center"
+            className="flex gap-x-8 flex-row text-center justify-center px-10"
             accessibilityRole="text"
         >
-            <View className="flex flex-row gap-x-4 text-center justify-center items-center">
-                <Clover stroke={colors.foreground} size={32} />
                 <Text className="text-center text-lg align-middle text-foreground">{t('LuckyNumber.title')}</Text>
-            </View>
             <Badge
                 isError={isError}
-                isLoading={isLoading || isRefetching}    
-            >{data?.data?.attributes?.value ?? ''}</Badge>
+                isLoading={isLoading || isRefetching}
+                withIcon 
+            >{data?.data?.attributes?.value}</Badge>
         </View>
     )
 })

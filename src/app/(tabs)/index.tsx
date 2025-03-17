@@ -117,12 +117,12 @@ const Home = () => {
                     onPress={() => setIsBellModalOpen(true)}
                     className="flex flex-row mt-6"
                 >
-                    <View className="bg-background-secondary rounded-3xl p-6 gap-4 w-1/2">
+                    <View className="bg-background-secondary rounded-3xl p-6 gap-4 w-2/3">
                         <Text className="font-pregular text-foreground text-left text-lg">
                             {(lessons.length > 0) ? message : t('General.loading')}
                         </Text>
                     </View>
-                    <View className="w-1/2 flex justify-center items-center flex-col">
+                    <View className="w-1/3 flex justify-center items-center flex-col">
                         <Text className="text-primary font-psemibold text-2xl flex-wrap text-center">
                             {minutes == 0 ? <Loader color={colors.primary} /> : minutes}
                         </Text>
@@ -247,7 +247,7 @@ const Home = () => {
                 <Text className="text-foreground text-xl font-psemibold ">
                     {t("Home.announcements")}
                 </Text>
-                <View className="mt-4 flex flex-col gap-6 mb-8">
+                <View className="mt-4 flex flex-col gap-6 mb-14">
                     { (!(isArticlesLoading || isArticlesRefetching) && article)
                         ? (
                             <HomeCard
