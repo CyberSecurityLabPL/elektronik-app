@@ -38,6 +38,18 @@
             "usesCleartextTraffic": true
           }
         }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "ffffff",
+          "image": "./src/assets/images/splash-icon-light.png",
+          "dark": {
+            "image": "./src/assets/images/splash-icon-dark.png",
+            "backgroundColor": "#1a1a1f"
+          },
+          "imageWidth": 200
+        }
       ]
     ],
     "experiments": {
