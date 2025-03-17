@@ -17,12 +17,13 @@ const Input = ({
         }, containerClassName)}>
             <TextInput
                 className={cn(
-                    "placeholder:text-zinc-500",
+                    "placeholder:text-zinc-500 dark:text-background-secondary text-foreground",
                     {
                         'text-xl text-center pr-1': type === 'number',
                     },
                     className,
                 )}
+
                 keyboardType={type === 'number' ? 'numeric' : 'default'}
                 maxLength={type === 'number' ? 2 : undefined}
                 {...props}

@@ -2,7 +2,7 @@ import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
 import useColors from "@/hooks/useColors"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
-import { Clover, LoaderCircle } from "lucide-react-native"
+import { Clover } from "lucide-react-native"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
@@ -27,7 +27,7 @@ const Badge = memo(({
         <View   
             className={cn("flex items-center justify-center text-center rounded-2xl w-14 h-14", {
                 "bg-primary": variant === 'classic',
-                "bg-foreground": variant === 'inverted'
+                "bg-background": variant === 'inverted'
             })}
             accessibilityRole="text"
             accessibilityLabel={
@@ -69,7 +69,7 @@ export const WideLuckyNumber = memo(() => {
         >
             <View className="flex flex-row gap-x-4 text-center justify-center items-center">
                 <Clover stroke={colors.foreground} size={32} />
-                <Text className="text-center text-lg align-middle">{t('LuckyNumber.title')}</Text>
+                <Text className="text-center text-lg align-middle text-foreground">{t('LuckyNumber.title')}</Text>
             </View>
             <Badge
                 isError={isError}
