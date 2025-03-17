@@ -8,7 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./src/assets/images/splash.png",
+      "image": "./src/assets/images/adaptive-splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -37,6 +37,18 @@
           "android": {
             "usesCleartextTraffic": true
           }
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "ffffff",
+          "image": "./src/assets/images/splash-icon-light.png",
+          "dark": {
+            "image": "./src/assets/images/splash-icon-dark.png",
+            "backgroundColor": "#1a1a1f"
+          },
+          "imageWidth": 200
         }
       ]
     ],
