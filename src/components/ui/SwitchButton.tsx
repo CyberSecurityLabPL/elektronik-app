@@ -23,7 +23,7 @@ export default function SwitchButton({
       <View className="">
         <Text className="text-foreground font-pmedium text-xl">{title}</Text>
         {subtitle ? (
-          <Text className="text-foreground-secondary font-pregular text-[10px] max-w-72">
+          <Text className="text-foreground-secondary font-pregular text-[10px] max-w-64">
             {subtitle}
           </Text>
         ) : null}

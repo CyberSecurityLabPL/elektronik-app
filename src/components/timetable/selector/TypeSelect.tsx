@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { Group } from "./group/Group";
 import { Bone, DoorOpen, GraduationCap, Users } from "lucide-react-native";
+import { useTranslation } from "react-i18next";
 
 export const TypeSelect = ({
     selectedTimetable,
@@ -13,10 +14,11 @@ export const TypeSelect = ({
     setBottomSheetIndex: Dispatch<SetStateAction<number>>
     searchParam: string
 }) => {
+    const { t } = useTranslation()
     return (
         <>
             <Group
-                name="Klasy"
+                name={t('Timetable.bottomSheet.class')}
                 LucideIcon={GraduationCap}
                 filter="class"
                 selectedTimetable={selectedTimetable}
@@ -25,7 +27,7 @@ export const TypeSelect = ({
                 searchParam={searchParam}
             />
             <Group
-                name="Nauczyciele"
+                name={t('Timetable.bottomSheet.teacher')}
                 LucideIcon={Users}
                 filter="teacher"
                 selectedTimetable={selectedTimetable}
@@ -34,7 +36,7 @@ export const TypeSelect = ({
                 searchParam={searchParam}
             />
             <Group
-                name="Sale"
+                name={t('Timetable.bottomSheet.classRoom')}
                 LucideIcon={DoorOpen}
                 filter="classroom"
                 selectedTimetable={selectedTimetable}
