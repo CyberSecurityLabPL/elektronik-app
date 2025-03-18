@@ -25,13 +25,13 @@ export const TimetableContainer = () => {
 
     return (
         <>
-        <View className="h-24">
+        <View className="h-24 w-full px-4">
             <WeekTab
                 weekDay={day}
                 setWeekDay={setDay}
             />
         </View>
-        <View className="flex mt-4">
+        <View className="flex mt-2">
             <Table
                 selectedDay={day}
                 selectedTimetable={selectedTimetable}

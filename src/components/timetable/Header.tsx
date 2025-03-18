@@ -57,7 +57,7 @@ export const TimetableHeader = () => {
 
     return (
         <>
-            <View className="flex flex-row justify-between items-center w-full py-4 px-8">
+            <View className="flex flex-row justify-between items-center w-full pt-4 pb-2 px-8">
                 <Text className="text-foreground font-psemibold text-3xl">
                     {t("Timetable.heading")}
                 </Text>
