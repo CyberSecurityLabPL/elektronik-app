@@ -16,6 +16,23 @@ import "../global.css"
 import i18n from "../i18n/i18n.config"
 import { useNetInfo } from "@react-native-community/netinfo"
 import { View, Text } from "react-native"
+import { registerDevMenuItems } from "expo-dev-menu"
+import { Linking } from "react-native"
+
+const devMenuItems = [
+  {
+    name: 'Open Android App Settings',
+    callback: async () => {
+      try {
+        await Linking.openSettings();
+      } catch (error) {
+        console.error("Failed to open settings:", error);
+      }
+    }
+  }
+]
+
+registerDevMenuItems(devMenuItems)
 
 export {
   // Catch any errors thrown by the Layout component.

@@ -2,6 +2,8 @@ import {
   AboutSvg,
   BottomLine,
   Circles,
+  WelcomeSvg,
+  Flower,
   Lines,
   RotatedSquares,
   Square,
@@ -23,26 +25,24 @@ const AboutApp = () => {
 
   return (
     <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
-      <View className="flex flex-col justify-center items-center w-full gap-20">
-        <View className="flex justify-start items-center">
-          <ProgressIndicator progress={2} />
+      <View className="absolute top-2 -right-44 -z-10">
+        <Flower color={colors.svg.topFlower} />
+      </View>
+      <View className="gap-y-10">
+        <ProgressIndicator progress={2} />
+        <View className="flex justify-center items-center mt-20 w-fit h-fit">
+          <AboutSvg viewBox="0 0 314 342" width={200} height={200}/>
         </View>
-        <View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-8">
-          <View>
-            <AboutSvg />
-          </View>
-          <View className="flex justify-center items-center w-full flex-col p-2 gap-1">
-            <Text className="font-psemibold text-5xl text-foreground text-center py-2">
-              Elektronik
-            </Text>
-            <Text className="font-pregular text-base text-foreground text-center px-5">
-              {t("Welcome.secondPage")}
-            </Text>
-          </View>
+        <View>
+          <Text className="font-psemibold text-5xl text-foreground text-center w-full pt-4">Elektronik</Text>
+          <Text className="font-pregular text-base text-foreground text-center">{t("Welcome.secondPage")}</Text>
         </View>
       </View>
+
+
       <View className="flex justify-center w-full items-center flex-col">
         <Button
+          className="mb-4"
           text={t("Button.continue")}
           onPress={() => router.navigate("/welcome/set-up")}
         />

@@ -13,29 +13,23 @@ const Page = () => {
   const { t } = useTranslation()
 
   return (
-    <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
-      <View className="flex flex-col justify-center items-center w-full gap-64">
-        <View className="flex justify-start items-center">
-          <ProgressIndicator progress={1} />
+    <ScreenWrapper className="flex justify-between flex-col h-full w-full">
+      <View className="absolute top-2 -right-44 -z-10">
+        <Flower color={colors.svg.topFlower} />
+      </View>
+      <View className="gap-y-10">
+        <ProgressIndicator progress={1} />
+        <View className="flex justify-center items-center mt-20">
+          <WelcomeSvg viewBox="0 0 246 199" width={200} height={200} />
         </View>
-        <View className="absolute top-2 -right-44 -z-10">
-          <Flower color={colors.svg.topFlower} />
-        </View>
-        <View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-8">
-          <View>
-            <WelcomeSvg />
-          </View>
-          <View className="flex justify-center items-center w-full flex-col p-2 gap-1">
-            <Text className="font-psemibold text-5xl text-foreground text-center p-2">
-              Elektronik
-            </Text>
-            <Text className="font-pregular text-base text-foreground text-center px-5">
-              {t("Welcome.firstPage")}
-            </Text>
-          </View>
+        <View>
+          <Text className="font-psemibold text-5xl text-foreground text-center w-full pt-4">Elektronik</Text>
+          <Text className="font-pregular text-base text-foreground text-center">{t("Welcome.firstPage")}</Text>
         </View>
       </View>
+
       <Button
+        className="mb-4"
         text={t("Button.continue")}
         onPress={() => router.navigate("/welcome/about-app")}
       />

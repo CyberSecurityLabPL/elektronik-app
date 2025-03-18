@@ -19,16 +19,10 @@ import {
   SmallCircles,
 } from "@/components/icons"
 import { useTimetableInfo } from "@/hooks/timetable/useTimetable"
-import Animated, { useAnimatedKeyboard, useAnimatedStyle } from "react-native-reanimated"
 
 const SetUp = () => {
   const colors = useColors()
   const { t } = useTranslation()
-  const keyboard = useAnimatedKeyboard()
-
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateY: -(keyboard.height.value) }],
-  }))
 
   const {
     control,
@@ -66,12 +60,7 @@ const SetUp = () => {
   const { data } = useTimetableInfo({ filter: "class" })
 
   return (
-    <ScreenWrapper>
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}><>
-      <Animated.View
-        className="flex justify-between items-center flex-col h-full w-full"
-        style={[animatedStyles]}
-      >
+    <ScreenWrapper className="flex justify-between items-center flex-col h-full w-full">
       <View
         className="flex flex-col justify-center items-center w-full gap-12"
       >
@@ -88,7 +77,6 @@ const SetUp = () => {
               Elektronik
             </Text>
           </View>
-          <Text className="text-center text-foreground text-sm">{t('Welcome.setUp.informationWhy')}</Text>
             <View className="flex justify-center items-center w-full flex-col gap-6">
               <View className="flex justify-center items-start flex-col w-full">
                 <Text className={`text-foreground font-pmedium text-xl p-2`}>
@@ -108,6 +96,7 @@ const SetUp = () => {
                       type="text"
                       placeholder={t("Welcome.setUp.name")}
                       containerClassName="border border-foreground/20"
+                      
                     />
                   )}
                   name="name"
@@ -129,7 +118,7 @@ const SetUp = () => {
                   }}
                   render={({ field: { onChange, value } }) => (
                     <Select
-                      selectedValue={value}
+                      selectedValue={value || undefined}
                       onValueChange={(itemValue: any) => onChange(itemValue)}
                       placeholder={t("Welcome.setUp.class")}
                       enabled={data ? true : false}
@@ -194,7 +183,7 @@ const SetUp = () => {
             </View>
         </View>
       </View>
-      <View className="flex justify-center w-full items-center flex-col gap-1">
+      <View className="flex justify-center w-full items-center flex-col gap-1 mb-4">
         <Text className="text-sm text-foreground">{t('Welcome.setUp.privacyDisclaimer')}</Text>
         <Button
           variant="ghost"
@@ -214,8 +203,6 @@ const SetUp = () => {
         <SmallCircles color={colors.svg.smallCircles} />
       </View>
       <View className="absolute top-0 right-0 -z-10"></View>
-      </Animated.View>
-      </></TouchableWithoutFeedback>
     </ScreenWrapper>
   )
 }

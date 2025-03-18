@@ -47,16 +47,7 @@ const Profile = () => {
 
   const { data, isLoading, isError } = useTimetableInfo({ filter: "class" })
 
-  const keyboard = useAnimatedKeyboard()
-
-  const animatedStyles = useAnimatedStyle(() => ({
-    transform: [{ translateY: -(keyboard.height.value) }],
-  }))
-
   return (
-    <Animated.View
-      style={[animatedStyles]}
-    >
       <ScreenWrapper>
         <Heading title={t("Settings.profile.heading")} screen="settings" />
         <View className="flex justify-between items-center w-full flex-col flex-1">
@@ -163,7 +154,6 @@ const Profile = () => {
           </View>
         </View>
       </ScreenWrapper>
-    </Animated.View>
   )
 }
 

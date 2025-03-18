@@ -98,6 +98,7 @@ const Home = () => {
     return (
         <ScreenWrapper>
             <ScrollView
+                contentContainerClassName="mb-12"
                 showsVerticalScrollIndicator={false}
                 refreshControl={
                     <RefreshControl
