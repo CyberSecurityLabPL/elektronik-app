@@ -30,11 +30,10 @@ const AboutApp = () => {
       </View>
       <View className="gap-y-10">
         <ProgressIndicator progress={2} />
-        <View className="flex justify-center items-center mt-20 w-fit h-fit">
+        <View className="flex justify-center items-center mt-32 w-fit h-fit">
           <AboutSvg viewBox="0 0 314 342" width={200} height={200}/>
         </View>
         <View>
-          <Text className="font-psemibold text-5xl text-foreground text-center w-full pt-4">Elektronik</Text>
           <Text className="font-pregular text-base text-foreground text-center">{t("Welcome.secondPage")}</Text>
         </View>
       </View>

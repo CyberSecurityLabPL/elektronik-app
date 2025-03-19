@@ -19,7 +19,7 @@ const Page = () => {
       </View>
       <View className="gap-y-10">
         <ProgressIndicator progress={1} />
-        <View className="flex justify-center items-center mt-20">
+        <View className="flex justify-center items-center mt-32">
           <WelcomeSvg viewBox="0 0 246 199" width={200} height={200} />
         </View>
         <View>
