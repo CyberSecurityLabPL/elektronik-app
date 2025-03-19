@@ -1,5 +1,6 @@
 import useColors from "@/hooks/useColors"
 import {
+    DrawerContent,
     DrawerContentComponentProps,
     DrawerContentScrollView,
 } from "@react-navigation/drawer"
@@ -46,26 +47,17 @@ const Sidebar = (props: DrawerContentComponentProps) => {
                     />
                 </View>
             </View>
-
-            <DrawerContentScrollView
-                contentContainerClassName="flex flex-col gap-4"
-                {...props}
-            >
-                <WideLuckyNumber />
-                <LargeButton
-                    LucideIcon={Disc3}
-                    iconColor={colors.foreground}
-                    text={t("Sidebar.radio")}
-                    onPress={() => router.push("/(tabs)/radio")}
-                />
-                {/* <LargeButton
-                    LucideIcon={Clover}
-                    iconColor={colors.foreground}
-                    text={t("Sidebar.luckyNumber")}
-                    onPress={() => toast("Dostępne wkrótce!")}
-                /> */}
+            <DrawerContentScrollView contentContainerClassName="flex flex-col gap-4">
+                <View className="flex flex-col gap-y-4">
+                    <WideLuckyNumber />
+                    <LargeButton
+                        LucideIcon={Disc3}
+                        iconColor={colors.foreground}
+                        text={t("Sidebar.radio")}
+                        onPress={() => router.push("/(tabs)/radio")}
+                    />
+                </View>
             </DrawerContentScrollView>
-
             <View className="flex flex-col gap-4">
                 <View className="flex w-full justify-center gap-4 flex-row">
                     <IconButton

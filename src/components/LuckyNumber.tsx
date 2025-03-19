@@ -1,8 +1,6 @@
 import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
-import useColors from "@/hooks/useColors"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
-import { Clover } from "lucide-react-native"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
@@ -53,7 +51,6 @@ const Badge = memo(({
 })
 
 export const WideLuckyNumber = memo(() => {
-    const colors = useColors()
     const {
         data,
         isLoading,
