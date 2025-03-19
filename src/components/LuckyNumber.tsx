@@ -2,7 +2,6 @@ import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
 import useColors from "@/hooks/useColors"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
-import { Clover } from "lucide-react-native"
 import { memo } from "react"
 import { useTranslation } from "react-i18next"
 import { Text, View } from "react-native"
@@ -56,7 +55,6 @@ const Badge = memo(({
 })
 
 export const WideLuckyNumber = memo(() => {
-    const colors = useColors()
     const {
         data,
         isLoading,
@@ -91,9 +89,9 @@ export const LabelLuckyNumber = () => {
     const { t } = useTranslation()
 
     if (userData?.diaryNumber === data?.data?.attributes?.value) return (
-        <View className="flex flex-row gap-x-4 items-center mt-4 relative overflow-visible">
+        <View className="flex mt-4 relative">
             <View   
-                className="bg-primary p-4 rounded-2xl flex flex-row gap-x-4 items-center"
+                className="bg-primary p-4 rounded-2xl flex flex-row items-center flex-wrap"
             >
                 <Badge
                     isError={isError}
@@ -101,7 +99,7 @@ export const LabelLuckyNumber = () => {
                     variant="inverted"
                     withIcon
                 >{data?.data?.attributes?.value}</Badge>
-                <View className="w-4/5">
+                <View className="flex-1 ml-4">
                     <Text className="font-pregular font-semibold text-background text-lg">{t('LuckyNumber.match')}</Text>
                 </View>
             </View>
