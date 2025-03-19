@@ -25,7 +25,7 @@ interface IconLargeButtonProps extends BaseLargeButtonProps {
   LucideIcon: LucideIcon
   iconColor: string
   strokeWidth?: number
-  selected?: false
+  selected?: boolean
 }
 
 interface NoIconLargeButtonProps extends BaseLargeButtonProps {
@@ -66,13 +66,15 @@ const LargeButton = ({
   onPress,
   href,
   strokeWidth = 2,
-}: LargeButtonProps & { className?: string }) => {
+  disabled,
+}: LargeButtonProps & { className?: string, disabled?: boolean }) => {
   const colors = useColors()
 
   const Button = (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={onPress}
+      disabled={disabled}
       className={cn(
         `flex flex-row ${
           extendable || selected ? "justify-between" : "justify-start"

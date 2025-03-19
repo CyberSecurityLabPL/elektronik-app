@@ -1,130 +1,66 @@
-import { useTheme } from "@/components/Providers/ThemeProvider"
 import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
-import IconButton from "@/components/ui/IconButton"
 import LargeButton from "@/components/ui/LargeButton"
-import Modal from "@/components/ui/Modal"
-
 import useColors from "@/hooks/useColors"
-import useLanguage from "@/hooks/useLanguage"
-import {
-  clearStorage,
-  getStorageData,
-  setStorageData,
-  StorageKeys,
-} from "@/lib/storage"
-import { Bell, Eraser, Languages, Sun, User2, X } from "lucide-react-native"
+import { Bell, Languages, Sun, User2 } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
-import { useLayoutEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
-import { Text, View } from "react-native"
-import { toast } from "sonner-native"
+import { View } from "react-native"
+import useLanguage from "@/hooks/useLanguage"
 
-const Settings = () => {
-  const colors = useColors()
-  const [themeModalOpen, setThemeModalOpen] = useState(false)
+export const Settings = () => {
+    const { i18n, t } = useTranslation()
+    const colors = useColors()
+    const { colorScheme } = useColorScheme()
+    const languages = useLanguage()
 
-  const { colorScheme, setColorScheme } = useColorScheme()
-  const { i18n, t } = useTranslation()
-  const languages = useLanguage()
+    const currentLanguage = languages.find((lang) => lang.code === i18n.language)
 
-  const currentLanguage = languages.find((lang) => lang.code === i18n.language)
-
-  const handleThemeChange = async (theme: string) => {
-    try {
-      const result = await setStorageData(StorageKeys.theme, theme)
-
-      if (result.success) {
-        if (theme == "light") {
-          setColorScheme("light")
-          toast(t("Settings.theme.infoLight"))
-        } else {
-          setColorScheme("dark")
-          toast(t("Settings.theme.infoDark"))
-        }
-      } else {
-        console.error("Failed to change theme:", result.error)
-        toast("Failed to change theme")
-      }
-    } catch (error) {
-      console.error("Error changing theme:", error)
-      toast("Error changing theme")
-    }
-  }
-  return (
-    <ScreenWrapper>
-      <Heading title={t("Settings.heading")} screen="settings" />
-      <View className="gap-2">
-        <LargeButton
-          text={t("Settings.listItem.profile")}
-          extendable
-          iconColor={colors.foreground}
-          LucideIcon={User2}
-          href={"/settings/profile"}
-          strokeWidth={1.5}
-        />
-        <LargeButton
-          text={t("Settings.listItem.notifications")}
-          extendable
-          iconColor={colors.foreground}
-          LucideIcon={Bell}
-          href={"/settings/notifications"}
-          strokeWidth={1.5}
-        />
-        <LargeButton
-          text={t("Settings.listItem.theme")}
-          extendable
-          iconColor={colors.foreground}
-          LucideIcon={Sun}
-          onPress={() => setThemeModalOpen(true)}
-          strokeWidth={1.5}
-          extraText={
-            colorScheme === "dark"
-              ? t("Settings.theme.dark")
-              : t("Settings.theme.light")
-          }
-        />
-        <LargeButton
-          text={t("Settings.listItem.languages")}
-          extendable
-          iconColor={colors.foreground}
-          LucideIcon={Languages}
-          href={"/settings/language"}
-          strokeWidth={1.5}
-          extraText={currentLanguage?.localName}
-        />
-        <Modal
-          id="bells"
-          isOpen={themeModalOpen}
-          onClose={() => setThemeModalOpen(false)}
-        >
-          <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background">
-            <View className="p-4 w-full flex gap-2">
-              <Text className="text-3xl text-foreground font-pmedium text-center p-6">
-                {t("Settings.theme.heading")}
-              </Text>
-              <LargeButton
-                text={t("Settings.theme.light")}
-                onPress={() => handleThemeChange("light")}
-                selected={colorScheme === "light"}
-              />
-              <LargeButton
-                text={t("Settings.theme.dark")}
-                onPress={() => handleThemeChange("dark")}
-                selected={colorScheme === "dark"}
-              />
+    return (
+        <ScreenWrapper>
+            <Heading title={t("Settings.heading")} screen="settings" />
+            <View className="gap-2">
+                <LargeButton
+                    text={t("Settings.listItem.profile")}
+                    extendable
+                    iconColor={colors.foreground}
+                    LucideIcon={User2}
+                    href={"/settings/profile"}
+                    strokeWidth={1.5}
+                />
+                <LargeButton
+                    text={t("Settings.listItem.notifications")}
+                    extendable
+                    iconColor={colors.foreground}
+                    LucideIcon={Bell}
+                    href={"/settings/notifications"}
+                    strokeWidth={1.5}
+                />
+                <LargeButton
+                    text={t("Settings.listItem.theme")}
+                    extendable
+                    iconColor={colors.foreground}
+                    LucideIcon={Sun}
+                    href={'/settings/theme'}
+                    strokeWidth={1.5}
+                    extraText={
+                        colorScheme === "dark"
+                        ? t("Settings.theme.dark")
+                        : t("Settings.theme.light")
+                    }
+                />
+                <LargeButton
+                    text={t("Settings.listItem.languages")}
+                    extendable
+                    iconColor={colors.foreground}
+                    LucideIcon={Languages}
+                    href={"/settings/language"}
+                    strokeWidth={1.5}
+                    extraText={currentLanguage?.localName}
+                />
             </View>
-            <IconButton
-              LucideIcon={X}
-              iconColor={colors.foreground}
-              onPress={() => setThemeModalOpen(false)}
-              className="my-4"
-            />
-          </View>
-        </Modal>
-      </View>
-    </ScreenWrapper>
-  )
+        </ScreenWrapper>
+    )
 }
 
 export default Settings

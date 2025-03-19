@@ -67,8 +67,10 @@
       "heading": "Motywy",
       "light": "Jasny",
       "dark": "Ciemny",
+      "system": "Systemowy",
       "infoLight": "Zmiana motywu na jasny...",
-      "infoDark": "Zmiana motywu na ciemny..."
+      "infoDark": "Zmiana motywu na ciemny...",
+      "lightDisclaimer": "Jeśli jasny tryb nie działa, przejdź do <redirect>ustawień telefonu</redirect> i wyłącz <italic>Automatyczne Dostosowywanie</italic>"
     }
   },
   "Substitutions": {
