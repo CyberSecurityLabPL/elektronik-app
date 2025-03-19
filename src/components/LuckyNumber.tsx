@@ -41,7 +41,10 @@ const Badge = memo(({
             { isLoading || isError ? (
                 <Loader />
             ) : (
-                <Text className="text-background text-xl font-bold">{children}</Text>
+                <Text className={cn("text-background text-xl font-bold", {
+                    "text-background": variant === 'classic',
+                    "text-primary": variant === 'inverted',
+                })}>{children}</Text>
             )}
             { withIcon && (
                 <View className="absolute -right-2 -top-2">
