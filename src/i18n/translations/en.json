@@ -10,7 +10,9 @@
       "timetableError": "An error occurred. Unable to download the class roster. Try again later.",
       "timetableErrorItem": "No data available",
       "diaryNumber": "Select diary number",
-      "diaryNumberError": "Enter a valid diary number"
+      "diaryNumberError": "Enter a valid diary number",
+      "informationWhy": "Fill out this form to receive notifications, lesson schedule, and substitutes for your class",
+      "privacyDisclaimer": "Your settings are not sent anywhere"
     }
   },
   "Home": {
@@ -39,6 +41,7 @@
       "heading": "Profile"
     },
     "notifications": {
+      "notReadyYet": "Notifications are <highlight>not ready yet</highlight>, but we are working on it!",
       "heading": "Notifications",
       "nSchoolTitle": "School Announcements",
       "nSchoolSub": "Notifications about new school management announcements",
@@ -65,8 +68,10 @@
       "heading": "Themes",
       "light": "Light",
       "dark": "Dark",
+      "system": "System",
       "infoLight": "Changing theme to light...",
-      "infoDark": "Changing theme to dark..."
+      "infoDark": "Changing theme to dark...",
+      "lightDisclaimer": "If the light theme doesn't work, go to <redirect>phone settings</redirect> and turn off <italic>Automatic Adjustment</italic>"
     }
   },
   "Substitutions": {
@@ -81,13 +86,30 @@
       "group": "Group",
       "showRel": "Religion"
     },
+    "categories": {
+      "course": "Subject",
+      "teacher": "Teacher",
+      "classRoom": "Classroom",
+      "hours": "Hours" 
+    },
     "button": "Class Schedule",
     "none": "No data",
     "bottomSheet": {
       "search": "Search timetable...",
       "class": "Class",
       "teacher": "Teacher",
-      "classRoom": "Classroom"
+      "classRoom": "Classroom",
+      "loadMore": "Load more"
+    },
+    "emptyDay": "No lessons today!",
+    "emptySlot": "No lesson",
+    "error": {
+      "setDefaultGroup": "An error occurred and the group could not be set automatically. Click the button below to set it manually, or restart the application",
+      "changeGroup": "An error occurred and the group could not be changed. Restart the applications and try again.",
+      "changeReligion": "An error occurred and the religion display could not be changed. Restart the applications and try again.",
+      "bottomSheet": {
+        "data": "An error occurred while fetching data. Check your internet access and try again"
+      }
     }
   },
   "Events": {
@@ -109,7 +131,7 @@
     "guest": "Continue as Guest"
   },
   "Sidebar": {
-    "radio": "Electron Radio",
+    "radio": "School Radio Station",
     "luckyNumber": "Lucky Number",
     "settings": "Settings"
   },
@@ -124,5 +146,12 @@
       "loading": "Loading",
       "error": "An error occurred"
     }
+  },
+  "Error": {
+    "noInternet": "No internet connection",
+    "noData": "Failed to load data. Check if you have the internet on"
+  },
+  "General": {
+    "loading": "Loading..."
   }
 }

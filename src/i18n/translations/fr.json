@@ -8,7 +8,11 @@
       "class": "Entrez votre classe",
       "classError": "Veuillez choisir une classe",
       "diaryNumber": "Choisissez un numéro du journal",
-      "diaryNumberError": "Veuillez entrer un numéro de journal valide"
+      "diaryNumberError": "Veuillez entrer un numéro de journal valide",
+      "informationWhy": "Remplissez ce formulaire pour utiliser les notifications, les horaires et les remplacements pour votre classe.",
+      "timetableError": "Une erreur s'est produite. Impossible de télécharger l'index de la classe. Redémarrez l'application.",
+      "privacyDisclaimer": "Vos paramètres ne sont envoyés nulle part",
+      "timetableErrorItem": "Pas de données disponibles"
     }
   },
   "Home": {
@@ -43,7 +47,8 @@
       "nCouncilTitle": "Annonces du Conseil",
       "nCouncilSub": "Notifications des nouvelles annonces du conseil des élèves",
       "nSubtitutionsTitle": "Remplacements",
-      "nSubtitutionsSub": "Notifications des nouveaux remplacements d'enseignants"
+      "nSubtitutionsSub": "Notifications des nouveaux remplacements d'enseignants",
+      "notReadyYet": "Les notifications ne sont pas encore <highlight>ready</highlight>, mais nous y travaillons déjà !"
     },
     "languages": {
       "heading": "Langue",
@@ -64,7 +69,9 @@
       "light": "Clair",
       "dark": "Sombre",
       "infoLight": "Passage au thème clair...",
-      "infoDark": "Passage au thème sombre..."
+      "infoDark": "Passage au thème sombre...",
+      "system": "Systématique",
+      "lightDisclaimer": "Si le mode lumineux ne fonctionne pas, allez dans <redirect>paramètres du téléphone</redirect> et désactivez <italic>Personnalisation automatique</italic>."
     }
   },
   "Substitutions": {
@@ -85,7 +92,24 @@
       "search": "Rechercher un plan de cours...",
       "class": "Classe",
       "teacher": "Enseignant",
-      "classRoom": "Salle de classe"
+      "classRoom": "Salle de classe",
+      "loadMore": "En savoir plus"
+    },
+    "error": {
+      "bottomSheet": {
+        "data": "Une erreur s'est produite lors du téléchargement des données. Vérifiez votre connexion internet et réessayez"
+      },
+      "changeGroup": "Une erreur s'est produite et le groupe n'a pas pu être modifié. Redémarrez les applications et réessayez.",
+      "changeReligion": "Une erreur s'est produite et l'affichage de la religion n'a pas pu être modifié. Redémarrez les applications et réessayez.",
+      "setDefaultGroup": "Une erreur s'est produite et le groupe n'a pas pu être défini automatiquement. Cliquez sur le bouton ci-dessous pour le définir manuellement ou redémarrez l'application."
+    },
+    "emptyDay": "Pas de cours ce jour-là !",
+    "emptySlot": "Okienko",
+    "categories": {
+      "hours": "Heures",
+      "course": "Sujet",
+      "teacher": "Enseignant",
+      "classroom": "Sala"
     }
   },
   "Events": {
@@ -114,5 +138,20 @@
   "Toast": {
     "success": "Les données ont été enregistrées",
     "error": "Une erreur est survenue"
+  },
+  "Error": {
+    "noData": "Échec du chargement des données. Vérifiez que vous avez accès à Internet",
+    "noInternet": "Pas de connexion internet"
+  },
+  "General": {
+    "loading": "Chargement ..."
+  },
+  "LuckyNumber": {
+    "match": "Vous avez un numéro chanceux aujourd'hui !",
+    "title": "Un chiffre porte-bonheur :",
+    "accesibility": {
+      "error": "Une erreur s'est produite",
+      "loading": "Chargement"
+    }
   }
 }
