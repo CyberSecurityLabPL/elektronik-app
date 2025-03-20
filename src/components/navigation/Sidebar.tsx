@@ -6,6 +6,7 @@ import {
 import { DrawerActions } from "@react-navigation/native"
 import { useRouter } from "expo-router"
 import {
+    AudioLines,
     Disc3,
     Facebook,
     Globe,
@@ -53,17 +54,12 @@ const Sidebar = (props: DrawerContentComponentProps) => {
             >
                 <WideLuckyNumber />
                 <LargeButton
-                    LucideIcon={Disc3}
+                    LucideIcon={AudioLines}
                     iconColor={colors.foreground}
                     text={t("Sidebar.radio")}
                     onPress={() => router.push("/(tabs)/radio")}
                 />
-                {/* <LargeButton
-                    LucideIcon={Clover}
-                    iconColor={colors.foreground}
-                    text={t("Sidebar.luckyNumber")}
-                    onPress={() => toast("Dostępne wkrótce!")}
-                /> */}
+
             </DrawerContentScrollView>
 
             <View className="flex flex-col gap-4">

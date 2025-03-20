@@ -45,14 +45,14 @@ export default function TabLayout() {
           tabBarIcon: Calendar,
         })}
       />
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="radio"
         options={{
           href: null,
           tabBarIcon: Calendar,
           tabBarStyle: { display: "none" },
         }}
-      /> */}
+      />
     </Tabs>
   )
 }
