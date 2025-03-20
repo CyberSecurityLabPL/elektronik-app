@@ -9,6 +9,7 @@ import {
   TouchableOpacityProps,
   View,
 } from "react-native"
+import { DefaultBanner } from "../icons"
 
 const placeholderImage = require("../../assets/images/default-banner.png")
 
@@ -50,10 +51,17 @@ export default function NewsCard({
         {...props}
       >
         <View className="relative">
-          <Image
-             source={image ? { uri: image } : placeholderImage}
-            className="w-full h-52 relative top-0 left-0 object-cover"
-          />
+          { image
+            ? (
+              <Image
+                source={{ uri: image }}
+                className="w-full h-52 relative top-0 left-0 object-cover"
+              />
+            )
+            : (
+              <DefaultBanner />    
+            )
+          }
           {isNew ? (
             <View className="absolute right-4 bottom-4">
               <NewIndicator />
