@@ -5,7 +5,8 @@ interface SwitchButtonProps {
   title: string
   subtitle?: string
   onPress: () => void
-  isEnabled?: boolean
+  isEnabled?: boolean,
+  componentDisabled?: boolean
 }
 
 export default function SwitchButton({
@@ -13,12 +14,14 @@ export default function SwitchButton({
   title,
   subtitle,
   isEnabled = true,
+  componentDisabled = false
 }: SwitchButtonProps) {
   return (
     <Pressable
       android_ripple={{ color: "rgba(0, 0, 0, 0.1)" }}
       className="flex flex-row justify-between items-center p-4 bg-background-secondary rounded-2xl h-fit"
       onPress={onPress}
+      disabled={componentDisabled}
     >
       <View className="">
         <Text className="text-foreground font-pmedium text-xl">{title}</Text>

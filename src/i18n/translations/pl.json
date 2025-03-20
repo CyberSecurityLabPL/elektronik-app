@@ -41,6 +41,7 @@
       "heading": "Profil"
     },
     "notifications": {
+      "notReadyYet": "Powiadomienia jeszcze <highlight>nie są gotowe</highlight>, ale już nad tym pracujemy!",
       "heading": "Powiadomienia",
       "nSchoolTitle": "Ogłoszenia Szkolne",
       "nSchoolSub": "Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej",

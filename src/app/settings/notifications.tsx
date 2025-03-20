@@ -3,10 +3,9 @@ import Heading from "@/components/ui/Heading"
 import SwitchButton from "@/components/ui/SwitchButton"
 import { getStorageData, StorageKeys, setStorageData } from "@/lib/storage"
 import { NotificationsState } from "@/types/app-data"
-import { NotificationsSchema } from "@/types/schemas"
 import React, { useLayoutEffect, useState } from "react"
-import { useTranslation } from "react-i18next"
-import { View } from "react-native"
+import { Trans, useTranslation } from "react-i18next"
+import { View, Text } from "react-native"
 
 const Notifications = () => {
   const [switches, setSwitches] = useState<NotificationsState | null>(null)
@@ -80,24 +79,36 @@ const Notifications = () => {
   return (
     <ScreenWrapper>
       <Heading title={t("Settings.notifications.heading")} screen="settings" />
-      <View className="gap-4">
+      <Text className="text-foreground text-sm text-center mb-8">
+        {/* {t('Settings.notifications.notReadyYet')} */}
+        <Trans
+          i18nKey={"Settings.notifications.notReadyYet"}
+          components={{
+            highlight: <Text className="text-primary" />,
+          }}
+        />
+      </Text>
+      <View className="gap-4 opacity-30">
         <SwitchButton
           title={t("Settings.notifications.nSchoolTitle")}
           onPress={() => handlePress("articles")}
           isEnabled={switches.articles}
           subtitle={t("Settings.notifications.nSchoolSub")}
+          componentDisabled
         />
         <SwitchButton
           title={t("Settings.notifications.nCouncilTitle")}
           onPress={() => handlePress("announcements")}
           isEnabled={switches.announcements}
           subtitle={t("Settings.notifications.nCouncilSub")}
+          componentDisabled
         />
         <SwitchButton
           title={t("Settings.notifications.nSubtitutionsTitle")}
           onPress={() => handlePress("substitutions")}
           isEnabled={switches.substitutions}
           subtitle={t("Settings.notifications.nSubtitutionsSub")}
+          componentDisabled
         />
       </View>
     </ScreenWrapper>
