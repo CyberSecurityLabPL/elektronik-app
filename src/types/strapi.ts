@@ -31,7 +31,8 @@ export interface StrapiArticle {
     customDate: string | Date | null
     createdAt: string | Date
     publishedAt: string | Date
-    image: StrapiImage
+    image: StrapiImage,
+    redirectButton: StrapiNewsRedirectButton
   }
 }
 
@@ -57,7 +58,8 @@ export interface StrapiAnnouncement {
     image: StrapiImage
     createdAt: string | Date
     updatedAt: string | Date
-    publishedAt: string | Date
+    publishedAt: string | Date,
+    redirectButton: StrapiNewsRedirectButton
   }
 }
 
@@ -76,4 +78,10 @@ export interface StrapiBell {
     publishedAt: string | Date
     lessons: StrapiLesson[]
   }
+}
+
+export interface StrapiNewsRedirectButton {
+  id: number,
+  Nazwa: string,
+  URL: string
 }

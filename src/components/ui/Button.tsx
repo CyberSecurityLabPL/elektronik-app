@@ -1,33 +1,41 @@
+import useColors from "@/hooks/useColors";
 import { cn } from "@/lib/utils";
+import { SquareArrowOutUpRight } from "lucide-react-native";
 import React from "react"
-import { Pressable, PressableProps, Text } from "react-native"
+import { Pressable, PressableProps, Text, View } from "react-native"
 
 const Button = ({
-  variant,
+  variant = "primary",
   text,
   className,
+  redirect,
   ...props
-}: PressableProps & { variant?: "primary" | "ghost"; text: string }) => {
-  if (variant == "ghost") {
-    return (
-      <Pressable
-        className={cn("w-full p-4 text-center rounded-3xl active:bg-foreground/10 transition-colors", className)}
-        {...props}
-      >
-        <Text className="text-primary text-center font-pregular text-base">
-          {text}
-        </Text>
-      </Pressable>
-    )
-  }
+}: PressableProps & { variant?: "primary" | "ghost"; text: string, redirect?: boolean }) => {
+  const colors = useColors()
   return (
     <Pressable
-      className={cn("w-full bg-primary p-4 text-center rounded-3xl active:bg-primary/90 transition-colors", className)}
+      className={cn('w-full p-4 text-center rounded-3xl transition-colors relative', {
+        'bg-primary active:bg-primary/90': variant === 'primary',
+        'active:bg-foreground/10': variant === 'ghost',
+      }, className)}
       {...props}
     >
-      <Text className="text-white text-center font-pregular text-lg">
+      <Text className={cn('text-center font-pregular', {
+        'text-white text-lg': variant === 'primary',
+        'text-primary text-base': variant === 'ghost'
+      })}>
         {text}
       </Text>
+      {redirect && (
+        <View
+          className="absolute right-5 top-1/2"
+        >
+          <SquareArrowOutUpRight
+            color={variant === 'primary' ? 'white' : colors.primary}
+            size={24}
+          />
+        </View>
+      )}
     </Pressable>
   )
 }

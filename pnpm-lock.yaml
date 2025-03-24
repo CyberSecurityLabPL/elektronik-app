@@ -83,6 +83,9 @@ importers:
       expo-system-ui:
         specifier: ~3.0.7
         version: 3.0.7(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0)))
+      expo-web-browser:
+        specifier: ~13.0.3
+        version: 13.0.3(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0)))
       i18next:
         specifier: ^23.16.5
         version: 23.16.5
@@ -2746,6 +2749,11 @@ packages:
 
   expo-updates-interface@0.16.2:
     resolution: {integrity: sha512-929XBU70q5ELxkKADj1xL0UIm3HvhYhNAOZv5DSk7rrKvLo7QDdPyl+JVnwZm9LrkNbH4wuE2rLoKu1KMgZ+9A==}
+    peerDependencies:
+      expo: '*'
+
+  expo-web-browser@13.0.3:
+    resolution: {integrity: sha512-HXb7y82ApVJtqk8tManyudtTrCtx8xcUnVzmJECeHCB0SsWSQ+penVLZxJkcyATWoJOsFMnfVSVdrTcpKKGszQ==}
     peerDependencies:
       expo: '*'
 
@@ -9216,6 +9224,10 @@ snapshots:
       - supports-color
 
   expo-updates-interface@0.16.2(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))):
+    dependencies:
+      expo: 51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))
+
+  expo-web-browser@13.0.3(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))):
     dependencies:
       expo: 51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))
 

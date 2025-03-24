@@ -1,4 +1,5 @@
 import { DefaultBanner } from "@/components/icons/"
+import Button from "@/components/ui/Button"
 import IconButton from "@/components/ui/IconButton"
 import { useAnnouncement } from "@/hooks/announcements/useAnnouncements"
 import { SingleNewsResponse } from "@/hooks/articles/types"
@@ -17,6 +18,8 @@ import Animated, {
   useAnimatedStyle,
   useScrollViewOffset,
 } from "react-native-reanimated"
+import * as WebBrowser from 'expo-web-browser'
+import { toast } from "sonner-native"
 
 export default function ArticleScreen() {
   const { id } = useLocalSearchParams()
@@ -77,6 +80,18 @@ export default function ArticleScreen() {
     : useAnnouncement({ id: Number(id.slice(1)) })
 
   const md = data?.data.attributes.content
+
+  const openBrowser = async (url: string | undefined) => {
+    if (url) {
+      try {
+        await WebBrowser.openBrowserAsync(url)
+      } catch {
+        return toast.error("Nie można otworzyć przeglądarki. Spróbuj ponownie.")
+      } 
+    } else {
+      return toast.error("Nie można otworzyć strony, poczekaj chwilę...")
+    }
+  }
 
   return (
     <View className="px-0 pt-0 relative bg-background">
@@ -173,7 +188,7 @@ export default function ArticleScreen() {
               />
             </View>
           ) : (
-            <View className="flex gap-1 flex-col mt-4">
+            <View className="flex gap-1 flex-col mt-4 relative">
               <Text className="text-foreground text-4xl font-psemibold ">
                 {data?.data.attributes.title}
               </Text>
@@ -225,6 +240,19 @@ export default function ArticleScreen() {
           )}
         </View>
       </Animated.ScrollView>
+      {data?.data?.attributes?.redirectButton && 
+        (data?.data.attributes.redirectButton.URL || data?.data.attributes.redirectButton.Nazwa) && (
+        <View
+          className="absolute bottom-5 w-full left-0 right-0 flex justify-center items-center"
+        >
+          <Button
+            className=" w-11/12"
+            text={data?.data.attributes.redirectButton.Nazwa}
+            onPress={() => openBrowser(data?.data.attributes.redirectButton.URL)}
+            redirect
+          />
+        </View>
+      )}
     </View>
   )
 }
