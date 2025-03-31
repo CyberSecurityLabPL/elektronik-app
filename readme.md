@@ -24,3 +24,4 @@
 - [@Krzysztof Godyń](https://github.com/Verti1234)
 - [@Stanisław Mamrenko](https://github.com/tkhtqe)
 - [@Kacper Kozłowski](https://github.com/Carpye)
+- [@Bartosz Sułkowski (Mopsior)](https://github.com/Mopsior)
