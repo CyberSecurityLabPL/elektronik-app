@@ -3,14 +3,16 @@ import { cn } from "@/lib/utils";
 import { SquareArrowOutUpRight } from "lucide-react-native";
 import React from "react"
 import { Pressable, PressableProps, Text, View } from "react-native"
+import { ClassNameValue } from "tailwind-merge";
 
 const Button = ({
   variant = "primary",
   text,
   className,
+  textClassName,
   redirect,
   ...props
-}: PressableProps & { variant?: "primary" | "ghost"; text: string, redirect?: boolean }) => {
+}: PressableProps & { variant?: "primary" | "ghost"; text: string, redirect?: boolean; textClassName?: ClassNameValue }) => {
   const colors = useColors()
   return (
     <Pressable
@@ -23,7 +25,7 @@ const Button = ({
       <Text className={cn('text-center font-pregular', {
         'text-white text-lg': variant === 'primary',
         'text-primary text-base': variant === 'ghost'
-      })}>
+      }, textClassName)}>
         {text}
       </Text>
       {redirect && (

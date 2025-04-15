@@ -37,8 +37,7 @@ const SetUp = () => {
   })
 
   const goToHomeAsGuest = async () => {
-    router.navigate("/(tabs)")
-    await setStorageData(StorageKeys.firstTimeUser, false)
+    router.navigate('/welcome/notifications')
   }
 
   const onSubmit: SubmitHandler<UserData> = async (data) => {
@@ -53,8 +52,7 @@ const SetUp = () => {
     } else {
       console.error("Error saving data:", result.error)
     }
-    await setStorageData(StorageKeys.firstTimeUser, false)
-    router.navigate("/(tabs)")
+    router.navigate('/welcome/notifications')
   }
 
   const { data } = useTimetableInfo({ filter: "class" })
@@ -79,7 +77,7 @@ const SetUp = () => {
           </View>
             <View className="flex justify-center items-center w-full flex-col gap-6">
               <View className="flex justify-center items-start flex-col w-full">
-                <Text className={`text-foreground font-pmedium text-xl p-2`}>
+                <Text className={`text-foreground font-pmedium text-base p-2`}>
                   {t("Welcome.setUp.name")}
                 </Text>
 
@@ -94,7 +92,7 @@ const SetUp = () => {
                       value={value}
                       onBlur={onBlur}
                       type="text"
-                      placeholder={t("Welcome.setUp.name")}
+                      placeholder={t('Welcome.setUp.name')}
                       containerClassName="border border-foreground/20"
                       
                     />
@@ -108,7 +106,7 @@ const SetUp = () => {
                 )}
               </View>
               <View className="w-full h-fit">
-                <Text className={`text-foreground font-pmedium text-xl p-2`}>
+                <Text className={`text-foreground font-pmedium text-base p-2`}>
                   {t("Welcome.setUp.class")}
                 </Text>
                 <Controller

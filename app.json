@@ -7,10 +7,19 @@
     "icon": "./src/assets/images/icon.png",
     "scheme": "elektronik",
     "userInterfaceStyle": "automatic",
+    "notification": {
+      "icon": "./src/assets/images/splash-icon-dark.png",
+      "color": "#032666",
+      "iosDisplayInForeground": true
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIBackgroundModes": ["remote-notification"]
+      }
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "softwareKeyboardLayoutMode": "resize",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
@@ -25,6 +34,8 @@
       "favicon": "./src/assets/images/favicon.png"
     },
     "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/messaging",
       "expo-router",
       "expo-localization",
       [

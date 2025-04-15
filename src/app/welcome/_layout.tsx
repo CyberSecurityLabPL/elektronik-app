@@ -13,6 +13,7 @@ const WelcomeLayout = () => {
         <Stack.Screen name="index" />
         <Stack.Screen name="about-app" />
         <Stack.Screen name="set-up" />
+        <Stack.Screen name="notifications" />
       </Stack>
     </View>
   )
