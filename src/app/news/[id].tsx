@@ -240,15 +240,15 @@ export default function ArticleScreen() {
           )}
         </View>
       </Animated.ScrollView>
-      {data?.data?.attributes?.redirectButton && 
-        (data?.data.attributes.redirectButton.URL || data?.data.attributes.redirectButton.Nazwa) && (
+      {data?.data?.attributes?.redirect && 
+        (data?.data.attributes.redirect.URL || data?.data.attributes.redirect.Nazwa) && (
         <View
-          className="absolute bottom-5 w-full left-0 right-0 flex justify-center items-center"
+          className="absolute bottom-7 w-full left-0 right-0 flex justify-center items-center px-2"
         >
           <Button
             className=" w-11/12"
-            text={data?.data.attributes.redirectButton.Nazwa}
-            onPress={() => openBrowser(data?.data.attributes.redirectButton.URL)}
+            text={data?.data.attributes.redirect.Nazwa}
+            onPress={() => openBrowser(data?.data.attributes.redirect.URL)}
             redirect
           />
         </View>

@@ -32,7 +32,7 @@ export interface StrapiArticle {
     createdAt: string | Date
     publishedAt: string | Date
     image: StrapiImage,
-    redirectButton: StrapiNewsRedirectButton
+    redirect: StrapiNewsRedirectButton
   }
 }
 
@@ -59,7 +59,7 @@ export interface StrapiAnnouncement {
     createdAt: string | Date
     updatedAt: string | Date
     publishedAt: string | Date,
-    redirectButton: StrapiNewsRedirectButton
+    redirect: StrapiNewsRedirectButton
   }
 }
 
