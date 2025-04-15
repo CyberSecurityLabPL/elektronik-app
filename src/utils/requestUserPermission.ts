@@ -26,7 +26,7 @@ export const requestUserPermission = async () => {
 
     const [permissionError, permissionGranted] = await catchError(checkNotificationPermission())
     if (permissionError) return false
-    if (permissionGranted) return false
+    if (permissionGranted) return true
 
     const messagingInstance = getMessaging(getApp())
     const [authStatusError, authStatus] = await catchError(requestPermission(messagingInstance))
