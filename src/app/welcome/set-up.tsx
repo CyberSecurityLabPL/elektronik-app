@@ -37,7 +37,6 @@ const SetUp = () => {
   })
 
   const goToHomeAsGuest = async () => {
-    // router.navigate("/(tabs)")
     router.navigate('/welcome/notifications')
   }
 
@@ -53,7 +52,6 @@ const SetUp = () => {
     } else {
       console.error("Error saving data:", result.error)
     }
-    // router.navigate("/(tabs)")
     router.navigate('/welcome/notifications')
   }
 
@@ -94,7 +92,7 @@ const SetUp = () => {
                       value={value}
                       onBlur={onBlur}
                       type="text"
-                      placeholder={'np. Krzysztof'}
+                      placeholder={t('Welcome.setUp.name')}
                       containerClassName="border border-foreground/20"
                       
                     />
