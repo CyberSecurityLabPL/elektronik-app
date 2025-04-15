@@ -1,21 +1,21 @@
 import { View, Text } from "react-native"
 import React from "react"
 import IconButton from "./IconButton"
-import { AlignRight, ChevronLeft } from "lucide-react-native"
+import { AlignRight, ChevronLeft, Ellipsis } from "lucide-react-native"
 import { router, useNavigation } from "expo-router"
 import { cn } from "@/lib/utils"
 import { DrawerActions } from "@react-navigation/native"
 import useColors from "@/hooks/useColors"
-import { useDrawerStatus } from "@react-navigation/drawer"
 import { useTranslation } from "react-i18next"
 
 interface headingProps {
   title: string
   // homeScreen?: boolean
   // settingsScreen?: boolean
-  screen?: "default" | "settings" | "home"
+  screen?: "default" | "settings" | "home",
+  blockReturn?: boolean
 }
-const Heading = ({ title, screen = "default" }: headingProps) => {
+const Heading = ({ title, screen = "default", blockReturn = false }: headingProps) => {
   const colors = useColors()
   const navigation = useNavigation()
   const { t } = useTranslation()
@@ -38,11 +38,19 @@ const Heading = ({ title, screen = "default" }: headingProps) => {
           "flex flex-row ",
         )}
       >
-        <IconButton
-          LucideIcon={settingsScreen ? ChevronLeft : AlignRight}
-          iconColor={colors.foreground}
-          onPress={settingsScreen ? () => router.back() : openDrawer}
-        />
+        { blockReturn ? (
+          <IconButton
+            LucideIcon={Ellipsis}
+            iconColor={colors.foreground}
+            className="animate-pulse"
+          />
+        ) : (
+          <IconButton
+            LucideIcon={settingsScreen ? ChevronLeft : AlignRight}
+            iconColor={colors.foreground}
+            onPress={settingsScreen ? () => router.back() : openDrawer}
+          />
+        )}
       </View>
 
       <View className="flex flex-col gap-1 ">
