@@ -68,7 +68,8 @@
       },
       "eas": {
         "projectId": "bd6c3fcd-4517-4f6e-a10d-5172653e8437"
-      }
+      },
+      "APP_VARIANT": "development"
     },
     "owner": "cybersecuritylab"
   }
