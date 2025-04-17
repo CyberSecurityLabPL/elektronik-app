@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next"
 const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
   const [minutes, setMinutes] = useState<number>(0)
   const [message, setMessage] = useState<string>("")
+  const [isLessonsEnded, setIsLessonsEnded] = useState<boolean>(false)
   const { t } = useTranslation()
 
   const calculateTimeToNextLesson = () => {
@@ -34,6 +35,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
 
     if (isWeekend(now)) {
       setMinutes(0)
+      setIsLessonsEnded(true)
       setMessage(t("Home.timeMessage.weekend"))
       return
     }
@@ -42,12 +44,14 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     const morningTimeStart = createTimeDate("06:00")
     if (isAfter(now, nightTimeStart) || isBefore(now, morningTimeStart)) {
       setMinutes(0)
+      setIsLessonsEnded(true)
       setMessage(t("Home.timeMessage.goodnight"))
       return
     }
 
     let nextLesson = null
     let isCurrentlyInLesson = false
+    setIsLessonsEnded(false)
 
     for (const lesson of lessons) {
       const startTime = createTimeDate(lesson.startDate as string)
@@ -75,6 +79,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     }
     if (!nextLesson && isBefore(now, nightTimeStart)) {
       setMinutes(0)
+      setIsLessonsEnded(true)
       setMessage(t("Home.timeMessage.endLesson"))
       return
     }
@@ -112,7 +117,7 @@ const useTimeLessons = ({ lessons }: { lessons: StrapiLesson[] }) => {
     }
   }, [calculateTimeToNextLesson])
 
-  return { minutes, message }
+  return { minutes, message, isLessonsEnded }
 }
 
 export default useTimeLessons
