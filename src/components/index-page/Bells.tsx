@@ -26,7 +26,6 @@ export const BellsBlock = () => {
     }, [bells])
 
     const { minutes, message, isLessonsEnded } = useTimeLessons({ lessons })
-    console.log(minutes, isLessonsEnded)
 
     return (<>
         <Pressable

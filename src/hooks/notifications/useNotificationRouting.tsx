@@ -18,7 +18,7 @@ export const useNotificationRouting = () => {
             
             const navigateToRoute = () => {
                 try {
-                    router.push(url as Href)
+                    router.replace(url as Href)
                 } catch (error) {
                     console.error("Navigation error:", error)
                     toast.error(t('Notifications.redirectError'))

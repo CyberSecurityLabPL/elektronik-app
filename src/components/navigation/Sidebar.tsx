@@ -57,7 +57,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
                     LucideIcon={AudioLines}
                     iconColor={colors.foreground}
                     text={t("Sidebar.radio")}
-                    onPress={() => router.push("/(tabs)/radio")}
+                    onPress={() => router.navigate("/(tabs)/radio")}
                 />
 
             </DrawerContentScrollView>
@@ -87,7 +87,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
                     LucideIcon={SettingsIcon}
                     iconColor={colors.foreground}
                     text={t("Sidebar.settings")}
-                    onPress={() => router.push("/settings")}
+                    onPress={() => router.navigate("/settings")}
                 />
             </View>
         </View>

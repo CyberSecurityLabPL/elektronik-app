@@ -6,6 +6,7 @@ import { TimetableSelector } from "./selector/Selector"
 import { View } from "react-native"
 import { SelectorButton } from "./selector/Button"
 import { useUserData } from "@/hooks/useUserData"
+import { useEffect } from "react" 
 
 const defaultTimetable = 'o1'
 
@@ -19,9 +20,14 @@ export const TimetableContainer = () => {
      */
     const [bottomSheetIndex, setBottomSheetIndex] = useState<number>(-1)
 
+
     const [selectedTimetable, setSelectedTimetable] = useState(
         userData?.grade ?? defaultTimetable,
     )
+
+    useEffect(() => {
+        setSelectedTimetable(userData?.grade ?? defaultTimetable)
+    }, [userData?.grade])
 
     return (
         <>

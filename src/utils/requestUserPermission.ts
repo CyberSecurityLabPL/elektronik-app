@@ -14,7 +14,6 @@ export const requestUserPermission = async () => {
         const [permissionError, permissionGranted] = await catchError(
             PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS)
         )
-        console.log(permissionError, permissionGranted)
         if (permissionGranted === PermissionsAndroid.RESULTS.NEVER_ASK_AGAIN) return permissionGranted
         if (permissionError || !permissionGranted) return false
         else return true

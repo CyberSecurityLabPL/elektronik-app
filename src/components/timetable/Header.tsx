@@ -196,8 +196,6 @@ const ValidDate = memo(() => {
         )
     }
 
-    console.log(timetableValidDate)
-
     return (
         <View className="flex flex-row gap-x-2 justify-center items-center pb-4">
             <Text className="text-foreground">Plan obowiązuje od:</Text>

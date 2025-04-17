@@ -172,7 +172,7 @@ const Home = () => {
                             <HomeCard
                                 type="council"
                                 onPress={() =>
-                                    router.push({
+                                    router.navigate({
                                         // @ts-ignore
                                         pathname: `/news/n${article?.pages[0].data[0].id}`,
                                         params: { origin: "home", other: "other" },
@@ -200,7 +200,7 @@ const Home = () => {
                             <HomeCard
                                 type="school"
                                 onPress={() =>
-                                    router.push({
+                                    router.navigate({
                                         // @ts-ignore
                                         pathname: `/news/a${announcement!.pages[0].data[0].id}`,
                                         params: { origin: "home", other: "other" },
