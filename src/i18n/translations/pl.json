@@ -72,6 +72,16 @@
       "infoLight": "Zmiana motywu na jasny...",
       "infoDark": "Zmiana motywu na ciemny...",
       "lightDisclaimer": "Jeśli jasny tryb nie działa, przejdź do <redirect>ustawień telefonu</redirect> i wyłącz <italic>Automatyczne Dostosowywanie</italic>"
+    },
+    "debug": {
+      "heading": "Ustawienia Deweloperskie",
+      "version": "Wersja",
+      "buildVariant": {
+        "beta": "Beta",
+        "production": "Stabilna",
+        "dev": "Deweloperska",
+        "betaDisclaimer": "To jest wersja beta. Możesz napotkać błędy - <redirect>pamiętaj, aby je zgłaszać</redirect>."
+      }
     }
   },
   "Substitutions": {

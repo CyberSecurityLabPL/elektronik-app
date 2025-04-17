@@ -7,6 +7,7 @@ import { useColorScheme } from "nativewind"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
 import useLanguage from "@/hooks/useLanguage"
+import { VersionIndicator } from "@/components/VersionIndicator"
 
 export const Settings = () => {
     const { i18n, t } = useTranslation()
@@ -59,6 +60,7 @@ export const Settings = () => {
                     extraText={currentLanguage?.localName}
                 />
             </View>
+            <VersionIndicator />
         </ScreenWrapper>
     )
 }
