@@ -37,8 +37,8 @@ export const useNotificationRouting = () => {
 
         getInitialNotification(messaging)
             .then((remoteMessage) => {
-                console.log("Notification caused app to open from quit state:", remoteMessage)
                 if (remoteMessage?.data?.URL) {
+                    console.log("Notification caused app to open from quit state:", remoteMessage)
                     // remoteMessage is null, when it's in development mode (because every launch build app from base). Test navigation when app is in background
                     handleNavigation(remoteMessage.data.URL as Href)
                 }
