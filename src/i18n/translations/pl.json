@@ -167,5 +167,8 @@
   },
   "Notifications": {
     "redirectError": "Nie udało się przekierować"
+  },
+  "Update": {
+    "infoToast": "Nowa aktualizacja jest dostępna!"
   }
 }
