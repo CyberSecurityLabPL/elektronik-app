@@ -13,7 +13,6 @@ export const VersionIndicator = ({ position = 'bottom' }: { position?: 'bottom' 
     return (
         <View className={cn("px-6", {
             'absolute bottom-5 left-0 right-0': position === 'bottom',
-            'flex-1 items-center': position === 'content',
         })}>
             <Link href="/settings/debug" asChild>
                 <Pressable>
