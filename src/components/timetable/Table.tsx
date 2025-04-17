@@ -105,9 +105,11 @@ export const Table = ({
                             subject={item.classes[groupIndex].subject.name}
                             room={item.classes[groupIndex].classroom.shortname}
                             initials={item.classes[groupIndex].teacher.shortname}
+                            lessonClass={item.classes[groupIndex].class.shortname}
                             teachersData={teachers}
                             showGroup={skipFilters}
                             groupNumber={item.classes[groupIndex].class?.group ?? ""}
+                            teacherView={selectedTimetable.startsWith('n')}
                         />
                     )
                 }}

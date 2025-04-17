@@ -20,6 +20,8 @@ interface LessonProps {
     props?: PressableProps
     showGroup?: boolean
     groupNumber?: string
+    teacherView?: boolean
+    lessonClass: string
 }
 
 const LessonContent = memo(({
@@ -29,7 +31,9 @@ const LessonContent = memo(({
     time,
     onClose,
     showGroup,
-    groupNumber
+    groupNumber,
+    lessonClass,
+    teacherView = false
 }: {
     teacher: SingleTimetableInfo | null | undefined
     subject: string
@@ -37,13 +41,15 @@ const LessonContent = memo(({
     time: string
     onClose: () => void
     showGroup?: boolean
-    groupNumber?: string
+    groupNumber?: string,
+    lessonClass: string,
+    teacherView?: boolean
 }) => {
     const colors = useColors()
     const { t } = useTranslation()
 
     return (
-        <View className="bg-background w-10/12 h-1/2 rounded-3xl px-9 py-7 flex items-center justify-between">
+        <View className="bg-background w-10/12 h-fit rounded-3xl px-9 py-7 flex items-center justify-between">
             <View className="gap-3 w-full h-fit">
                 <View>
                     <Text className="text-foreground font-pregular text-lg">
@@ -69,6 +75,16 @@ const LessonContent = memo(({
                         {room}
                     </Text>
                 </View>
+                { teacherView && (
+                    <View>
+                        <Text className="text-foreground font font-pregular text-lg">
+                            {t('Timetable.categories.lessonClass')}
+                        </Text>
+                        <Text className="font-pregular text-gray-700 dark:text-gray-400 text-2xl">
+                            {lessonClass}
+                        </Text>
+                    </View>
+                )}
                 <View>
                     <Text className="text-foreground font-pregular text-lg">
                         {t('Timetable.categories.hours')}
@@ -78,7 +94,7 @@ const LessonContent = memo(({
                     </Text>
                 </View>
             </View>
-            <View className="flex items-center h-fit">
+            <View className="flex items-center h-fit mt-4">
                 <IconButton
                     LucideIcon={X}
                     iconColor={colors.closeButton}
@@ -100,6 +116,8 @@ const Lesson = memo(({
     props,
     showGroup = false,
     groupNumber,
+    teacherView = false,
+    lessonClass
 }: LessonProps) => {
     const [modalOpen, setModalOpen] = useState(false)
 
@@ -156,7 +174,10 @@ const Lesson = memo(({
                 </View>
                 <View className="flex flex-row justify-center items-center dark:bg-zinc-600/20 bg-zinc-200/20 px-3 py-1 rounded-md">
                     <Text className="text-[#6D6D6D] text-1xl">
-                        {displayInitials} {room}
+                        {!teacherView
+                            ? `${displayInitials} ${room}`
+                            : `${lessonClass} ${room}`
+                        }
                     </Text>
                 </View>
             </Pressable>
@@ -168,9 +189,11 @@ const Lesson = memo(({
                         subject={subject}
                         room={room}
                         time={time}
+                        lessonClass={lessonClass}
                         onClose={handleCloseModal}
                         showGroup={showGroup}
                         groupNumber={groupNumber}
+                        teacherView={teacherView}
                     />
                 </Modal>
             )}

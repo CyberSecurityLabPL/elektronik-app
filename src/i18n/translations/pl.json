@@ -100,7 +100,8 @@
       "course": "Przedmiot",
       "teacher": "Nauczyciel",
       "classroom": "Sala",
-      "hours": "Godziny"
+      "hours": "Godziny",
+      "lessonClass": "Klasa"
     },
     "button": "Rozkład zajęć",
     "none": "Brak danych",
