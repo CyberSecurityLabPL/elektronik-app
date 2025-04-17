@@ -25,6 +25,7 @@ export default function Layout() {
         <Stack.Screen name="notifications" />
         <Stack.Screen name="profile" />
         <Stack.Screen name="theme" />
+        <Stack.Screen name="debug" />
       </Stack>
     </View>
   )
