@@ -19,6 +19,7 @@ import { View, Text } from "react-native"
 import { registerDevMenuItems } from "expo-dev-menu"
 import { Linking } from "react-native"
 import { useNotificationRouting } from "@/hooks/notifications/useNotificationRouting"
+import { useInAppUpdates } from "@/hooks/useInAppUpdates"
 
 const devMenuItems = [
   {
@@ -45,6 +46,7 @@ SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   useNotificationRouting()
+  useInAppUpdates()
   const { isConnected } = useNetInfo()
   const colors = useColors()
   NavigationBar.setBackgroundColorAsync(colors.background)

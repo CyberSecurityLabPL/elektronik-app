@@ -71,6 +71,9 @@ importers:
       expo-font:
         specifier: ~12.0.9
         version: 12.0.10(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0)))
+      expo-in-app-updates:
+        specifier: ^0.9.0
+        version: 0.9.0
       expo-intent-launcher:
         specifier: ~11.0.1
         version: 11.0.1(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0)))
@@ -2963,6 +2966,9 @@ packages:
     resolution: {integrity: sha512-Q1i2NuYri3jy32zdnBaHHCya1wH1yMAsI+3CCmj9zlQzlhsS9Bdwcj2W3c5eU5FvH2hsNQy4O+O1NnM6o/pDaQ==}
     peerDependencies:
       expo: '*'
+
+  expo-in-app-updates@0.9.0:
+    resolution: {integrity: sha512-6iYZYtItKQFPoZFOexG3n8S7v0Z7xBjWOBb9Q/D0rJHPivxoDskKLBGB9hmWmZKe8uiNDkI84J7MUWyfc+sLxQ==}
 
   expo-intent-launcher@11.0.1:
     resolution: {integrity: sha512-nUmTTa/HG4jUyRc5YHngdpP5bMyGSRZPi2RX9kpILd3vbMWQeVnwzqAfC+uI34W8uKhEk+9b9Dytzmm7bBND1Q==}
@@ -9824,6 +9830,8 @@ snapshots:
     dependencies:
       expo: 51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))
       fontfaceobserver: 2.3.0
+
+  expo-in-app-updates@0.9.0: {}
 
   expo-intent-launcher@11.0.1(expo@51.0.38(@babel/core@7.26.0)(@babel/preset-env@7.26.0(@babel/core@7.26.0))):
     dependencies:
