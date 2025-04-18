@@ -2,7 +2,7 @@
   "expo": {
     "name": "Elektronik",
     "slug": "elektron",
-    "version": "6.0.0",
+    "version": "6.1.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/icon.png",
     "scheme": "elektronik",
