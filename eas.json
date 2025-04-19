@@ -31,8 +31,7 @@
       },
       "env": {
         "APP_VARIANT": "beta"
-      },
-      "autoIncrement": true
+      }
     },
     "beta-aab": {
       "distribution": "store",

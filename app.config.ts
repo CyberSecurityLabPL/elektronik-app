@@ -33,7 +33,7 @@ const getAppName = () => {
 export default {
     name: getAppName(),
     slug: "elektron",
-    version: "6.1.0",
+    version: "6.1.2",
     orientation: "portrait",
     icon: "./src/assets/images/icon.png",
     scheme: "elektronik",
@@ -59,7 +59,7 @@ export default {
             backgroundColor: "#ffffff"
         },
         package: getUniqueIdentifier(),
-        versionCode: 62
+        versionCode: 64
     },
     web: {
         bundler: "metro",

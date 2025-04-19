@@ -9,7 +9,7 @@
     "web": "expo start --web",
     "dev": "expo start --localhost",
     "clear": "expo start -c",
-    "build": "export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && export ANDROID_HOME=$HOME/android && export ANDROID_SDK_ROOT=${ANDROID_HOME} && export PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${PATH} && rm -rf android .expo && eas build --platform android --local --profile"
+    "build": "export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && export ANDROID_NDK_HOME=$HOME/android/ndk/29.0.13113456 && export ANDROID_HOME=$HOME/android && export ANDROID_SDK_ROOT=${ANDROID_HOME} && export PATH=${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${PATH} && rm -rf android .expo && eas build --platform android --local --profile"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
