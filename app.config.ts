@@ -39,7 +39,7 @@ export default {
     scheme: "elektronik",
     userInterfaceStyle: "automatic",
     notification: {
-        icon: "./src/assets/images/logo/android/splash-icon-light.png",
+        icon: "./src/assets/images/logo/full.png",
         color: "#354dfc",
         iosDisplayInForeground: true
     },
