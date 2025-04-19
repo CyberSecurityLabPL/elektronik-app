@@ -1,4 +1,10 @@
-const IS_DEV = process.env.APP_VARIANT === 'development' || process.env.NODE_ENV === 'development';
+const IS_DEV = process.env.APP_VARIANT === 'development' || (
+    process.env.NODE_ENV === 'development' && (
+        process.env.APP_VARIANT !== 'preview'
+        && process.env.APP_VARIANT !== 'beta'
+        && process.env.APP_VARIANT !== 'production'
+    ) 
+);
 const IS_PREVIEW = process.env.APP_VARIANT === 'preview';
 const IS_BETA = process.env.APP_VARIANT === 'beta';
 
