@@ -24,6 +24,7 @@ web-build/
 
 # Builds
 android/
+!src/assets/images/logo/android
 
 # Metro
 .metro-health-check*
