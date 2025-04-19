@@ -7,24 +7,25 @@ import { DrawerActions } from "@react-navigation/native"
 import { useRouter } from "expo-router"
 import {
     AudioLines,
-    Disc3,
     Facebook,
     Globe,
     SettingsIcon,
     X,
 } from "lucide-react-native"
 import React from "react"
-import { Linking, Text, View } from "react-native"
+import { Linking, View } from "react-native"
 import { DiscordLogo, LogoSvg } from "../icons"
 import IconButton from "../ui/IconButton"
 import LargeButton from "../ui/LargeButton"
 import { useTranslation } from "react-i18next"
 import { WideLuckyNumber } from "../LuckyNumber"
+import { useTheme } from "../Providers/ThemeProvider"
 
 const Sidebar = (props: DrawerContentComponentProps) => {
     const colors = useColors()
     const router = useRouter()
     const { t } = useTranslation()
+    const { theme } = useTheme()
 
     const closeDrawer = () => {
         props.navigation.dispatch(DrawerActions.closeDrawer())
@@ -33,13 +34,13 @@ const Sidebar = (props: DrawerContentComponentProps) => {
     return (
         <View className=" pt-16 px-4 pb-6 flex-1 flex-col flex justify-between border-0 bg-background">
             <View className="flex flex-row justify-between items-center w-full py-8">
-                <View className="flex flex-row gap-4 justify-between items-center w-full">
-                    <View className="flex flex-row items-center gap-1">
-                        <LogoSvg width="70px" height="70px" />
-                        <Text className="text-3xl text-foreground font-pmedium mt-3">
-                            Elektronik
-                        </Text>
+                <View className="flex flex-row gap-4 justify-between items-center w-full pl-5">
+                    <View className="mt-2">
+                        <LogoSvg width="64px" height="64px" variant={theme === 'light' ? 'light' : 'dark'} />
                     </View>
+                    {/* <Text className="text-3xl text-foreground font-pmedium mt-2">
+                        Elektronik
+                    </Text> */}
                     <IconButton
                         LucideIcon={X}
                         iconColor={colors.foreground}

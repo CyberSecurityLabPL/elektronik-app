@@ -39,8 +39,8 @@ export default {
     scheme: "elektronik",
     userInterfaceStyle: "automatic",
     notification: {
-        icon: "./src/assets/images/splash-icon-dark.png",
-        color: "#032666",
+        icon: "./src/assets/images/logo/android/splash-icon-light.png",
+        color: "#354dfc",
         iosDisplayInForeground: true
     },
     ios: {
@@ -54,7 +54,8 @@ export default {
         googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? "./google-services.json",
         softwareKeyboardLayoutMode: "resize",
         adaptiveIcon: {
-            foregroundImage: "./src/assets/images/adaptive-icon.png",
+            foregroundImage: "./src/assets/images/logo/android/adaptive-icon.png",
+            monochromeImage: './src/assets/images/logo/android/splash-icon-light.png',
             backgroundColor: "#ffffff"
         },
         package: getUniqueIdentifier(),
@@ -82,9 +83,9 @@ export default {
             "expo-splash-screen",
             {
                 backgroundColor: "ffffff",
-                image: "./src/assets/images/splash-icon-light.png",
+                image: "./src/assets/images/logo/android/splash-icon-light.png",
                 dark: {
-                    image: "./src/assets/images/splash-icon-dark.png",
+                    image: "./src/assets/images/logo/android/splash-icon-dark.png",
                     backgroundColor: "#1a1a1f"
                 },
                 imageWidth: 200

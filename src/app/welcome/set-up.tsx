@@ -19,10 +19,13 @@ import {
   SmallCircles,
 } from "@/components/icons"
 import { useTimetableInfo } from "@/hooks/timetable/useTimetable"
+import { useTheme } from "@/components/Providers/ThemeProvider"
+import { cn } from "@/lib/utils"
 
 const SetUp = () => {
   const colors = useColors()
   const { t } = useTranslation()
+  const { theme } = useTheme()
 
   const {
     control,
@@ -70,8 +73,11 @@ const SetUp = () => {
         </View>
         <View className="flex justify-center items-center w-full flex-col h-fit p-2 gap-2">
           <View className="flex flex-row justify-center items-center w-full gap-3 relative">
-            <LogoSvg />
-            <Text className="font-psemibold text-4xl text-foreground text-center py-2 flex justify-center items-center relative top-1">
+            <LogoSvg width={48} height={48} variant="dark" />
+            <Text className={cn("font-psemibold text-4xl text-[#354DFC] text-center py-2 flex justify-center items-center relative mt-3", {
+              "text-white": theme === "dark",
+              "text-[#354DFC]": theme === "light",
+            })}>
               Elektronik
             </Text>
           </View>
