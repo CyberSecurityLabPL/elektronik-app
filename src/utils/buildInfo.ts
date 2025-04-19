@@ -1,12 +1,12 @@
 import Constants from 'expo-constants';
 import { Platform } from 'react-native';
 
-type BuildVariant = 'development' | 'beta' | 'production' | 'unknown';
+type BuildVariant = 'development' | 'beta' | 'production' | 'unknown' | 'preview';
 
 export function getBuildVariant(): BuildVariant {
   // Sprawdź zmienną środowiskową APP_VARIANT
   const variant = Constants.expoConfig?.extra?.APP_VARIANT;
-  if (variant === 'beta' || variant === 'production') {
+  if (variant === 'beta' || variant === 'production' || variant === 'preview') {
     return variant;
   }
   

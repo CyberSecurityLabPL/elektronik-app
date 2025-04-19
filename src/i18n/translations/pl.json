@@ -77,8 +77,9 @@
       "heading": "Ustawienia Deweloperskie",
       "version": "Wersja",
       "buildVariant": {
-        "beta": "Beta",
         "production": "Stabilna",
+        "beta": "Beta",
+        "preview": "Preview",
         "dev": "Deweloperska",
         "betaDisclaimer": "To jest wersja beta. Możesz napotkać błędy - <redirect>pamiętaj, aby je zgłaszać</redirect>."
       }

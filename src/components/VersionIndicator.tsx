@@ -16,11 +16,13 @@ export const VersionIndicator = ({ position = 'bottom' }: { position?: 'bottom' 
         })}>
             <Link href="/settings/debug" asChild>
                 <Pressable>
-                    <Text className="text-foreground-secondary text-sm text-center">{t('Settings.debug.version')}: {version}  ({buildNumber}) - {buildVariant === 'beta'
-                        ? t('Settings.debug.buildVariant.beta')
-                        : buildVariant === 'production'
-                            ? t('Settings.debug.buildVariant.production')
-                            : t('Settings.debug.buildVariant.dev')}</Text>
+                    <Text className="text-foreground-secondary text-sm text-center">{t('Settings.debug.version')}: {version}  ({buildNumber}) - {buildVariant === 'production'
+                        ? t('Settings.debug.buildVariant.production')
+                        : buildVariant === 'beta'
+                            ? t('Settings.debug.buildVariant.beta')
+                            : buildVariant === 'preview'
+                                ? t('Settings.debug.buildVariant.preview')
+                                : t('Settings.debug.buildVariant.dev')}</Text>
                 </Pressable>
             </Link>
             {(buildVariant !== 'production') && (
