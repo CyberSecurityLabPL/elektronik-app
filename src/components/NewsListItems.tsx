@@ -13,13 +13,13 @@ export const Article = ({
   index: number
 }) => {
   const newsCardProps = {
-    key: article.id,
+    key: article.documentId,
     isNew:
       format(
         new Date(
-          article.attributes.customDate
-            ? article.attributes.customDate
-            : article.attributes.createdAt,
+          article.customDate
+            ? article.customDate
+            : article.createdAt,
         ),
         "d LLLL",
         {
@@ -31,26 +31,26 @@ export const Article = ({
       }),
     date: format(
       new Date(
-        article.attributes.customDate
-          ? article.attributes.customDate
-          : article.attributes.createdAt,
+        article.customDate
+          ? article.customDate
+          : article.createdAt,
       ),
       "d LLLL",
       {
         locale: pl,
       },
     ),
-    title: article.attributes.title,
-    image: article.attributes.image.data
-      ? getStrapiImageUrl(article.attributes.image.data.attributes.url)
+    title: article.title,
+    image: article.image?.url
+      ? getStrapiImageUrl(article.image?.url)
       : "https://images.unsplash.com/photo-1598557360303-bc7efa2ffa81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    onPress: () => router.navigate(`/news/n${article.id}`),
+    onPress: () => router.navigate(`/news/n${article.documentId}`),
   }
 
   return index === 0 ? (
     <NewsCard
       isFeatured
-      description={article.attributes.description}
+      description={article.description}
       {...newsCardProps}
     />
   ) : (
@@ -66,28 +66,28 @@ export const Announcement = ({
   index: number
 }) => {
   const newsCardProps = {
-    key: article.id,
+    key: article.documentId,
     isNew:
-      format(new Date(article.attributes.createdAt), "d LLLL", {
+      format(new Date(article.createdAt), "d LLLL", {
         locale: pl,
       }) ===
       format(new Date(), "d LLLL", {
         locale: pl,
       }),
-    date: format(new Date(article.attributes.createdAt), "d LLLL", {
+    date: format(new Date(article.createdAt), "d LLLL", {
       locale: pl,
     }),
-    title: article.attributes.title,
-    image: article.attributes.image.data
-      ? getStrapiImageUrl(article.attributes.image.data.attributes.url)
+    title: article.title,
+    image: article.image?.url
+      ? getStrapiImageUrl(article.image?.url)
       : "https://images.unsplash.com/photo-1584824486539-53bb4646bdbc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    onPress: () => router.navigate(`/news/a${article.id}`),
+    onPress: () => router.navigate(`/news/a${article.documentId}`),
   }
 
   return index === 0 ? (
     <NewsCard
       isFeatured
-      description={article.attributes.description}
+      description={article.description}
       {...newsCardProps}
     />
   ) : (

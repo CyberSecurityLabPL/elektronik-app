@@ -33,7 +33,7 @@ export const useArticles = ({
     },
   })
 
-export const useArticle = ({ id }: { id: number }) =>
+export const useArticle = ({ id }: { id: string }) =>
   useQuery<SingleNewsResponse>({
     queryKey: ["article", id],
     queryFn: async () => {

@@ -1,25 +1,22 @@
 export interface StrapiImage {
-  data: {
-    id: number
-    attributes: {
-      name: string
-      alternativeText: string | null
-      caption: string | null
-      width: number
-      height: number
-      formats: any
-      hash: string
-      ext: string
-      mime: string
-      size: number
-      url: string
-      previewUrl: string | null
-      provider: string
-      provider_metadata: any
-      createdAt: string | Date
-      updatedAt: string | Date
-    }
-  }
+  documentId: string
+  name: string
+  alternativeText: string | null
+  caption: string | null
+  width: number
+  height: number
+  formats: any
+  hash: string
+  ext: string
+  mime: string
+  size: number
+  url: string
+  previewUrl: string | null
+  provider: string
+  provider_metadata: any
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
 }
 
 export interface StrapiArticle {
@@ -35,7 +32,7 @@ export interface StrapiArticle {
 }
 
 export interface StrapiEvent {
-  documentId: number
+  documentId: string
   title: string
   date: string
   type: "Zawody Szkolne" | "Święto" | "Uroczystości"

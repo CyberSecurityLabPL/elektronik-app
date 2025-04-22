@@ -33,7 +33,7 @@ export const useAnnouncements = ({
         },
     })
 
-export const useAnnouncement = ({ id }: { id: number }) =>
+export const useAnnouncement = ({ id }: { id: string }) =>
     useQuery<SingleAnnouncementResponse>({
         queryKey: ["announcement", id],
         queryFn: async () => {

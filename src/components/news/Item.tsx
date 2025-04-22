@@ -14,7 +14,7 @@ export const NewsItem = memo(({
     activateTab: 'articles' | 'announcments'
 }) => {
     const isNew = () => {
-        const createdDate = new Date(item.attributes.createdAt)
+        const createdDate = new Date(item.createdAt)
         const currentDate = new Date()
         const diffTime = currentDate.getTime() - createdDate.getTime()
         const diffDays = diffTime / (1000 * 60 * 60 * 24)
@@ -23,18 +23,18 @@ export const NewsItem = memo(({
 
     return (
         <NewsCard
-            date={localeFormat(item.attributes.createdAt, "dd MMMM")}
+            date={localeFormat(item.createdAt, "dd MMMM")}
             image={
-                item.attributes.image?.data?.attributes?.url
-                    ? getStrapiImageUrl(item.attributes.image.data.attributes.url)
+                item.image?.url
+                    ? getStrapiImageUrl(item.image?.url)
                     : undefined
             }
-            title={item.attributes.title}
+            title={item.title}
             isFeatured={index === 0}
             isNew={isNew()}
-            description={item.attributes.description}
+            description={item.description}
             onPress={() =>
-                router.navigate(`/news/${activateTab === 'articles' ? 'n' : 'a'}${item.id}`)
+                router.navigate(`/news/${activateTab === 'articles' ? 'n' : 'a'}${item.documentId}`)
             }
         />
     )
