@@ -43,7 +43,7 @@ export interface StrapiEvent {
 }
 
 export interface StrapiAnnouncement {
-  documentId: number
+  documentId: string
   title: string
   description: string
   content: string
