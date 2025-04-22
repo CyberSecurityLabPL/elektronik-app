@@ -18,7 +18,7 @@ import { useNetInfo } from "@react-native-community/netinfo"
 import { differenceInDays } from "date-fns"
 import { useRouter } from "expo-router"
 import { X } from "lucide-react-native"
-import React, { memo, useCallback, useMemo, useState } from "react"
+import React, { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import {
     Pressable,
@@ -83,6 +83,7 @@ const Home = () => {
         })
     }, [refetchArticles, refetchAnnouncements, refetchEvents, refetchBells])
 
+
     return (
         <ScreenWrapper>
             <ScrollView
@@ -107,20 +108,20 @@ const Home = () => {
 
                 <View className="my-6">
                     {event?.data[0] &&
-                        differenceInDays(new Date(event.data[0].attributes.date), curDate) <
+                        differenceInDays(new Date(event.data[0].date), curDate) <
                         DAYS_BEFORE_EVENT && (
                             <>
                                 <HomeCard
                                     type="event"
                                     date={
-                                        event?.data[0].attributes.date
+                                        event?.data[0].date
                                             ? localeFormat(
-                                                new Date(event.data[0].attributes.date),
+                                                new Date(event.data[0].date),
                                                 "dd MMMM ",
                                             )
                                             : "Invalid date"
                                     }
-                                    title={event?.data[0].attributes.title!}
+                                    title={event?.data[0].title!}
                                     onPress={() => setIsEventModalOpen(true)}
                                 />
                             </>
@@ -136,7 +137,7 @@ const Home = () => {
                             >
                                 <View className="w-full  py-1">
                                     <Text className="text-2xl text-foreground font-pmedium text-left ">
-                                        {event?.data[0].attributes.title}
+                                        {event?.data[0].title}
                                     </Text>
                                 </View>
                                 <ScrollView
@@ -147,7 +148,7 @@ const Home = () => {
                                     <TouchableOpacity>
                                         <TouchableWithoutFeedback>
                                             <Text className="text-base text-foreground-secondary text-wrap mt-2">
-                                                {event?.data[0].attributes.description}
+                                                {event?.data[0].description}
                                             </Text>
                                         </TouchableWithoutFeedback>
                                     </TouchableOpacity>
@@ -173,23 +174,22 @@ const Home = () => {
                                 type="council"
                                 onPress={() =>
                                     router.navigate({
-                                        // @ts-ignore
-                                        pathname: `/news/n${article?.pages[0].data[0].id}`,
-                                        params: { origin: "home", other: "other" },
+                                        pathname: `/news/[id]`,
+                                        params: { id: `n${article.pages[0].data[0].documentId}`, origin: "home", other: "other" },
                                     })
                                 }
-                                description={article?.pages[0].data[0].attributes.description!}
+                                description={article.pages[0].data[0].description}
                                 date={
-                                    article?.pages[0].data[0].attributes.createdAt
+                                    article?.pages[0].data[0].createdAt
                                         ? localeFormat(
                                             new Date(
-                                                article?.pages[0].data[0].attributes.createdAt ?? "",
+                                                article.pages[0].data[0].createdAt,
                                             ),
                                             "dd MMMM "
                                         )
                                         : "Brak daty"
                                 }
-                                title={article?.pages[0].data[0].attributes.title!}
+                                title={article.pages[0].data[0].title}
                             />
                         )
                         : <NewsSkeleton />
@@ -201,23 +201,22 @@ const Home = () => {
                                 type="school"
                                 onPress={() =>
                                     router.navigate({
-                                        // @ts-ignore
-                                        pathname: `/news/a${announcement!.pages[0].data[0].id}`,
-                                        params: { origin: "home", other: "other" },
+                                        pathname: `/news/[id]`,
+                                        params: { id: `a${announcement.pages[0].data[0].documentId}`, origin: "home", other: "other" },
                                     })
                                 }
-                                description={announcement?.pages[0].data[0].attributes.description!}
+                                description={announcement.pages[0].data[0].description}
                                 date={
-                                    announcement?.pages[0].data[0].attributes.createdAt
+                                    announcement.pages[0].data[0].createdAt
                                         ? localeFormat(
                                             new Date(
-                                                announcement?.pages[0].data[0].attributes.createdAt ?? "",
+                                                announcement.pages[0].data[0].createdAt,
                                             ),
                                             "dd MMMM "
                                         )
                                         : "Brak daty"
                                 }
-                                title={announcement?.pages[0].data[0].attributes.title!}
+                                title={announcement.pages[0].data[0].title}
                             />
                         )
                         : <NewsSkeleton />}

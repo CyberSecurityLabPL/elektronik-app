@@ -28,17 +28,17 @@ export default function EventItem({
 }) {
   const [modalOpen, setModalOpen] = useState(false)
   const colors = useColors()
-  const { days, hours, minutes, seconds, timeNumber, nameString } = useTimeTo({
-    date: item.attributes.date,
+  const { days, hours, timeNumber, nameString } = useTimeTo({
+    date: item.date,
   })
 
   return (
-    <View className="">
+    <View>
       <EventCard
-        title={item.attributes.title}
-        date={localeFormat(new Date(item.attributes.date), "d MMMM")}
-        description={item.attributes.description}
-        type={item.attributes.type}
+        title={item.title}
+        date={localeFormat(new Date(item.date), "d MMMM")}
+        description={item.description}
+        type={item.type}
         onPress={() => setModalOpen(true)}
         timeLeft={
           timeNumber === 0
@@ -60,9 +60,9 @@ export default function EventItem({
       <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
         <ModalContent
           iconColor={colors.foreground}
-          title={item.attributes.title}
-          date={localeFormat(new Date(item.attributes.date), "d MMMM")}
-          description={item.attributes.description}
+          title={item.title}
+          date={localeFormat(new Date(item.date), "d MMMM")}
+          description={item.description}
           onPress={() => setModalOpen(false)}
         />
       </Modal>

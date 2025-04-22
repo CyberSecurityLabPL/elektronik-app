@@ -88,7 +88,7 @@ export const ArticleList = () => {
                             showsVerticalScrollIndicator={false}
                             onEndReached={() => onReachEnd()}
                             onEndReachedThreshold={0.5}
-                            keyExtractor={(item: unknown) => (item as StrapiArticle).id.toString()}
+                            keyExtractor={(item: unknown) => (item as StrapiArticle).documentId.toString()}
                             initialNumToRender={3}
                             maxToRenderPerBatch={5}
                             windowSize={10}

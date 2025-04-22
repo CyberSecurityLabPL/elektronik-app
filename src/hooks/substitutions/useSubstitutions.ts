@@ -15,11 +15,11 @@ export const useSubstitutions = ({ date }: { date: Date }) => {
       return data
     },
     getNextPageParam: (lastPage) => {
-      const lastDate = lastPage.data[lastPage.data.length - 1]?.attributes.date
+      const lastDate = lastPage.data[lastPage.data.length - 1]?.date
       return lastDate ? new Date(lastDate) : undefined
     },
     getPreviousPageParam: (firstPage) => {
-      const firstDate = firstPage.data[0]?.attributes.date
+      const firstDate = firstPage.data[0]?.date
       return firstDate ? new Date(firstDate) : undefined
     },
     refetchOnWindowFocus: false,

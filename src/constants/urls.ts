@@ -18,7 +18,11 @@ export const SUBSTITUTIONS_URL = (date: Date) =>
 export const ARTICLES_URL = (page: number = 1, pageSize: number) =>
   `/articles?pagination[pageSize]=${pageSize}&pagination[page]=${page}&populate=*`
 
-export const ARTICLE_URL = (id: number) => `/articles/${id}?populate=*`
+export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
+  `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}&populate=*`
+
+export const ARTICLE_URL = (id: string) => `/articles/${id}?populate=*`
+export const ANNOUNCEMENT_URL = (id: string) => `/announcements/${id}?populate=*`
 
 export const EVENTS_URL = (page: number, pageSize: number) =>
   `/events?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[date][$gte]=${
@@ -32,11 +36,6 @@ export const UPCOMING_EVENT_URL = (date: Date) =>
     date,
     "yyyy-MM-dd",
   )}`
-
-export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
-  `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}&populate=*`
-
-export const ANNOUNCEMENT_URL = (id: number) => `/announcements/${id}`
 
 export const BELLS_URL = () => `/bells?populate=*`
 

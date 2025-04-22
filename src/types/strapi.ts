@@ -1,66 +1,57 @@
 export interface StrapiImage {
-  data: {
-    id: number
-    attributes: {
-      name: string
-      alternativeText: string | null
-      caption: string | null
-      width: number
-      height: number
-      formats: any
-      hash: string
-      ext: string
-      mime: string
-      size: number
-      url: string
-      previewUrl: string | null
-      provider: string
-      provider_metadata: any
-      createdAt: string | Date
-      updatedAt: string | Date
-    }
-  }
+  documentId: string
+  name: string
+  alternativeText: string | null
+  caption: string | null
+  width: number
+  height: number
+  formats: any
+  hash: string
+  ext: string
+  mime: string
+  size: number
+  url: string
+  previewUrl: string | null
+  provider: string
+  provider_metadata: any
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
 }
 
 export interface StrapiArticle {
-  id: number
-  attributes: {
-    title: string
-    description: string
-    content: string
-    customDate: string | Date | null
-    createdAt: string | Date
-    publishedAt: string | Date
-    image: StrapiImage,
-    redirect: StrapiNewsRedirectButton
-  }
+  documentId: string
+  title: string
+  description: string
+  content: string
+  customDate: string | Date | null
+  createdAt: string | Date
+  publishedAt: string | Date
+  image: StrapiImage,
+  redirect: StrapiNewsRedirectButton
 }
 
 export interface StrapiEvent {
-  id: number
-  attributes: {
-    title: string
-    date: string
-    type: "Zawody Szkolne" | "Święto" | "Uroczystości"
-    description: string
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date
-  }
+  documentId: string
+  title: string
+  date: string
+  type: "Zawody Szkolne" | "Święto" | "Uroczystości"
+  description: string
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
 }
 
 export interface StrapiAnnouncement {
-  id: number
-  attributes: {
-    title: string
-    description: string
-    content: string
-    image: StrapiImage
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date,
-    redirect: StrapiNewsRedirectButton
-  }
+  documentId: string
+  title: string
+  description: string
+  content: string
+  image: StrapiImage
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date,
+  redirect: StrapiNewsRedirectButton
 }
 
 export interface StrapiLesson {
@@ -70,14 +61,12 @@ export interface StrapiLesson {
 }
 
 export interface StrapiBell {
-  id: number
-  attributes: {
-    title: string
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date
-    lessons: StrapiLesson[]
-  }
+  documentId: number
+  title: string
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
+  lessons: StrapiLesson[]
 }
 
 export interface StrapiNewsRedirectButton {

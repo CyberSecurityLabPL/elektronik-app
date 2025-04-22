@@ -87,7 +87,7 @@ const Substitutions = () => {
                         {t("Substitutions.none")}
                       </Text>
                     ) : (
-                      data?.pages[0].data[0].attributes.substitutions
+                      data?.pages[0].data[0].substitutions
                     )}
                   </Text>
                 )}

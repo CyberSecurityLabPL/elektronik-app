@@ -1,5 +1,4 @@
 import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
-import useColors from "@/hooks/useColors"
 import { useUserData } from "@/hooks/useUserData"
 import { cn } from "@/lib/utils"
 import { memo } from "react"
@@ -73,7 +72,7 @@ export const WideLuckyNumber = memo(() => {
                 isError={isError}
                 isLoading={isLoading || isRefetching}
                 withIcon 
-            >{data?.data?.attributes?.value}</Badge>
+            >{data?.data.value}</Badge>
         </View>
     )
 })
@@ -88,7 +87,7 @@ export const LabelLuckyNumber = () => {
     const userData = useUserData()
     const { t } = useTranslation()
 
-    if (userData?.diaryNumber === data?.data?.attributes?.value) return (
+    if (userData?.diaryNumber === data?.data.value) return (
         <View className="flex mt-4 relative">
             <View   
                 className="bg-primary p-4 rounded-2xl flex flex-row items-center flex-wrap"
@@ -98,7 +97,7 @@ export const LabelLuckyNumber = () => {
                     isLoading={isLoading || isRefetching}
                     variant="inverted"
                     withIcon
-                >{data?.data?.attributes?.value}</Badge>
+                >{data?.data.value}</Badge>
                 <View className="flex-1 ml-4">
                     <Text className="font-pregular font-semibold text-background text-lg">{t('LuckyNumber.match')}</Text>
                 </View>

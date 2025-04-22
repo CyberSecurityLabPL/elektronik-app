@@ -75,11 +75,13 @@ export default function ArticleScreen() {
     }
   })
 
-  const { data, isLoading, isError } = id.includes("n")
-    ? useArticle({ id: Number(id.slice(1)) })
-    : useAnnouncement({ id: Number(id.slice(1)) })
+  console.log(id)
 
-  const md = data?.data.attributes.content
+  const { data, isLoading, isError } = id.at(0) === "n"
+    ? useArticle({ id: id.slice(1).toString() })
+    : useAnnouncement({ id: id.slice(1).toString() })
+
+  const md = data?.data.content
 
   const openBrowser = async (url: string | undefined) => {
     if (url) {
@@ -127,11 +129,11 @@ export default function ArticleScreen() {
         scrollEventThrottle={16}
         key={`${id}-${key}`}
       >
-        {data?.data.attributes.image.data ? (
+        {data?.data.image ? (
           <Animated.Image
             source={{
               uri: getStrapiImageUrl(
-                data?.data.attributes.image.data.attributes.url,
+                data?.data.image?.url,
               ),
             }}
             style={[
@@ -190,16 +192,16 @@ export default function ArticleScreen() {
           ) : (
             <View className="flex gap-1 flex-col mt-4 relative">
               <Text className="text-foreground text-4xl font-psemibold ">
-                {data?.data.attributes.title}
+                {data?.data.title}
               </Text>
               <View className="flex flex-row gap-x-2 items-center">
                 <Text className="text-primary text-sm font-psemibold w-min mt-[2px]">
                   {localeFormat(
                     new Date(
-                      (data as SingleNewsResponse).data.attributes.customDate
-                        ? ((data as SingleNewsResponse).data.attributes
+                      (data as SingleNewsResponse).data.customDate
+                        ? ((data as SingleNewsResponse).data
                             .customDate as string)
-                        : (data?.data.attributes.createdAt as string),
+                        : (data?.data.createdAt as string),
                     ),
                     "d LLLL yyyy",
                   )}
@@ -240,15 +242,15 @@ export default function ArticleScreen() {
           )}
         </View>
       </Animated.ScrollView>
-      {data?.data?.attributes?.redirect && 
-        (data?.data.attributes.redirect.URL || data?.data.attributes.redirect.Nazwa) && (
+      {data?.data.redirect && 
+        (data?.data.redirect.URL || data?.data.redirect.Nazwa) && (
         <View
           className="absolute bottom-7 w-full left-0 right-0 flex justify-center items-center px-2"
         >
           <Button
             className=" w-11/12"
-            text={data?.data.attributes.redirect.Nazwa}
-            onPress={() => openBrowser(data?.data.attributes.redirect.URL)}
+            text={data?.data.redirect.Nazwa}
+            onPress={() => openBrowser(data?.data.redirect.URL)}
             redirect
           />
         </View>

@@ -1,13 +1,10 @@
-export interface LuckyNumberAttributes {
-    value: string | number;
-    date?: string;
-}
-
 export interface LuckyNumberData {
     data: {
-        id?: string;
-        attributes: LuckyNumberAttributes;
-        type?: string;
+        documentId: string;
+        value: string | number;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        publishedAt: string | Date;
     };
-    meta?: Record<string, unknown>;
+    meta: Record<string, unknown>;
 }
