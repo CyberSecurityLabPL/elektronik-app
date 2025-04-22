@@ -104,7 +104,7 @@ const Home = () => {
                     screen="home"
                 />
                 <BellsBlock />
-                {/* {isConnected && <LabelLuckyNumber />} */}
+                {isConnected && <LabelLuckyNumber />}
 {/* 
                 <View className="my-6">
                     {event?.data[0] &&

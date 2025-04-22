@@ -66,14 +66,12 @@ export interface StrapiLesson {
 }
 
 export interface StrapiBell {
-  id: number
-  attributes: {
-    title: string
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date
-    lessons: StrapiLesson[]
-  }
+  documentId: number
+  title: string
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
+  lessons: StrapiLesson[]
 }
 
 export interface StrapiNewsRedirectButton {
