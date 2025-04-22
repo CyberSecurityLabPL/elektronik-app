@@ -23,17 +23,15 @@ export interface StrapiImage {
 }
 
 export interface StrapiArticle {
-  id: number
-  attributes: {
-    title: string
-    description: string
-    content: string
-    customDate: string | Date | null
-    createdAt: string | Date
-    publishedAt: string | Date
-    image: StrapiImage,
-    redirect: StrapiNewsRedirectButton
-  }
+  documentId: string
+  title: string
+  description: string
+  content: string
+  customDate: string | Date | null
+  createdAt: string | Date
+  publishedAt: string | Date
+  image: StrapiImage,
+  redirect: StrapiNewsRedirectButton
 }
 
 export interface StrapiEvent {
@@ -50,17 +48,15 @@ export interface StrapiEvent {
 }
 
 export interface StrapiAnnouncement {
-  id: number
-  attributes: {
-    title: string
-    description: string
-    content: string
-    image: StrapiImage
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date,
-    redirect: StrapiNewsRedirectButton
-  }
+  documentId: number
+  title: string
+  description: string
+  content: string
+  image: StrapiImage
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date,
+  redirect: StrapiNewsRedirectButton
 }
 
 export interface StrapiLesson {

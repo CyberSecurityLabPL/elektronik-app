@@ -18,7 +18,7 @@ import { useNetInfo } from "@react-native-community/netinfo"
 import { differenceInDays } from "date-fns"
 import { useRouter } from "expo-router"
 import { X } from "lucide-react-native"
-import React, { memo, useCallback, useMemo, useState } from "react"
+import React, { memo, useCallback, useState } from "react"
 import { useTranslation } from "react-i18next"
 import {
     Pressable,
@@ -83,6 +83,7 @@ const Home = () => {
         })
     }, [refetchArticles, refetchAnnouncements, refetchEvents, refetchBells])
 
+
     return (
         <ScreenWrapper>
             <ScrollView
@@ -103,8 +104,8 @@ const Home = () => {
                     screen="home"
                 />
                 <BellsBlock />
-                {isConnected && <LabelLuckyNumber />}
-
+                {/* {isConnected && <LabelLuckyNumber />} */}
+{/* 
                 <View className="my-6">
                     {event?.data[0] &&
                         differenceInDays(new Date(event.data[0].attributes.date), curDate) <
@@ -125,9 +126,9 @@ const Home = () => {
                                 />
                             </>
                         )}
-                </View>
+                </View> */}
 
-                {event?.data[0] && (
+                {/* {event?.data[0] && (
                     <Modal id="event" isOpen={isEventModalOpen} onClose={() => {}}>
                         <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
                             <Pressable
@@ -161,7 +162,7 @@ const Home = () => {
                             </Pressable>
                         </View>
                     </Modal>
-                )}
+                )} */}
 
                 <Text className="text-foreground text-xl font-psemibold ">
                     {t("Home.announcements")}
@@ -173,23 +174,22 @@ const Home = () => {
                                 type="council"
                                 onPress={() =>
                                     router.navigate({
-                                        // @ts-ignore
-                                        pathname: `/news/n${article?.pages[0].data[0].id}`,
-                                        params: { origin: "home", other: "other" },
+                                        pathname: `/news/[id]`,
+                                        params: { id: `n${article.pages[0].data[0].documentId}`, origin: "home", other: "other" },
                                     })
                                 }
-                                description={article?.pages[0].data[0].attributes.description!}
+                                description={article.pages[0].data[0].description}
                                 date={
-                                    article?.pages[0].data[0].attributes.createdAt
+                                    article?.pages[0].data[0].createdAt
                                         ? localeFormat(
                                             new Date(
-                                                article?.pages[0].data[0].attributes.createdAt ?? "",
+                                                article.pages[0].data[0].createdAt,
                                             ),
                                             "dd MMMM "
                                         )
                                         : "Brak daty"
                                 }
-                                title={article?.pages[0].data[0].attributes.title!}
+                                title={article.pages[0].data[0].title}
                             />
                         )
                         : <NewsSkeleton />
@@ -201,23 +201,22 @@ const Home = () => {
                                 type="school"
                                 onPress={() =>
                                     router.navigate({
-                                        // @ts-ignore
-                                        pathname: `/news/a${announcement!.pages[0].data[0].id}`,
-                                        params: { origin: "home", other: "other" },
+                                        pathname: `/news/[id]`,
+                                        params: { id: `a${announcement.pages[0].data[0].documentId}`, origin: "home", other: "other" },
                                     })
                                 }
-                                description={announcement?.pages[0].data[0].attributes.description!}
+                                description={announcement.pages[0].data[0].description}
                                 date={
-                                    announcement?.pages[0].data[0].attributes.createdAt
+                                    announcement.pages[0].data[0].createdAt
                                         ? localeFormat(
                                             new Date(
-                                                announcement?.pages[0].data[0].attributes.createdAt ?? "",
+                                                announcement.pages[0].data[0].createdAt,
                                             ),
                                             "dd MMMM "
                                         )
                                         : "Brak daty"
                                 }
-                                title={announcement?.pages[0].data[0].attributes.title!}
+                                title={announcement.pages[0].data[0].title}
                             />
                         )
                         : <NewsSkeleton />}

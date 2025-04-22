@@ -20,7 +20,7 @@ export const BellsBlock = () => {
     const { data: bells } = useBells()
 
     const lessons = useMemo(() => {
-        return Object.values(bells?.data[0]?.attributes.lessons ?? {}).filter(
+        return Object.values(bells?.data[0]?.lessons ?? {}).filter(
             (item) => typeof item === "object" && item !== null && "id" in item,
         ) as StrapiLesson[]
     }, [bells])
