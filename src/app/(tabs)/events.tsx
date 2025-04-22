@@ -67,7 +67,7 @@ const Events = () => {
                   contentContainerClassName="gap-4 pb-16 w-full"
                   showsVerticalScrollIndicator={false}
                   nestedScrollEnabled
-                  keyExtractor={(item) => item.id.toString()}
+                  keyExtractor={(item) => item.documentId}
                   data={allArticles}
                   ListHeaderComponent={
                     <View className="min-w-full">
