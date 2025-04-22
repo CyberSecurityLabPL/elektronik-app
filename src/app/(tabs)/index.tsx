@@ -105,30 +105,30 @@ const Home = () => {
                 />
                 <BellsBlock />
                 {isConnected && <LabelLuckyNumber />}
-{/* 
+
                 <View className="my-6">
                     {event?.data[0] &&
-                        differenceInDays(new Date(event.data[0].attributes.date), curDate) <
+                        differenceInDays(new Date(event.data[0].date), curDate) <
                         DAYS_BEFORE_EVENT && (
                             <>
                                 <HomeCard
                                     type="event"
                                     date={
-                                        event?.data[0].attributes.date
+                                        event?.data[0].date
                                             ? localeFormat(
-                                                new Date(event.data[0].attributes.date),
+                                                new Date(event.data[0].date),
                                                 "dd MMMM ",
                                             )
                                             : "Invalid date"
                                     }
-                                    title={event?.data[0].attributes.title!}
+                                    title={event?.data[0].title!}
                                     onPress={() => setIsEventModalOpen(true)}
                                 />
                             </>
                         )}
-                </View> */}
+                </View>
 
-                {/* {event?.data[0] && (
+                {event?.data[0] && (
                     <Modal id="event" isOpen={isEventModalOpen} onClose={() => {}}>
                         <View className="w-96 rounded-2xl flex flex-col justify-between items-center bg-background py-6 h-1/2">
                             <Pressable
@@ -137,7 +137,7 @@ const Home = () => {
                             >
                                 <View className="w-full  py-1">
                                     <Text className="text-2xl text-foreground font-pmedium text-left ">
-                                        {event?.data[0].attributes.title}
+                                        {event?.data[0].title}
                                     </Text>
                                 </View>
                                 <ScrollView
@@ -148,7 +148,7 @@ const Home = () => {
                                     <TouchableOpacity>
                                         <TouchableWithoutFeedback>
                                             <Text className="text-base text-foreground-secondary text-wrap mt-2">
-                                                {event?.data[0].attributes.description}
+                                                {event?.data[0].description}
                                             </Text>
                                         </TouchableWithoutFeedback>
                                     </TouchableOpacity>
@@ -162,7 +162,7 @@ const Home = () => {
                             </Pressable>
                         </View>
                     </Modal>
-                )} */}
+                )}
 
                 <Text className="text-foreground text-xl font-psemibold ">
                     {t("Home.announcements")}

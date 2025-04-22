@@ -35,16 +35,14 @@ export interface StrapiArticle {
 }
 
 export interface StrapiEvent {
-  id: number
-  attributes: {
-    title: string
-    date: string
-    type: "Zawody Szkolne" | "Święto" | "Uroczystości"
-    description: string
-    createdAt: string | Date
-    updatedAt: string | Date
-    publishedAt: string | Date
-  }
+  documentId: number
+  title: string
+  date: string
+  type: "Zawody Szkolne" | "Święto" | "Uroczystości"
+  description: string
+  createdAt: string | Date
+  updatedAt: string | Date
+  publishedAt: string | Date
 }
 
 export interface StrapiAnnouncement {
