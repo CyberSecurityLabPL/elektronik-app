@@ -11,7 +11,7 @@
       "timetableErrorItem": "Brak danych",
       "diaryNumber": "Wybierz numer z dziennika",
       "diaryNumberError": "Podaj prawidłowy numerek z dziennika",
-      "informationWhy": "Uzupełnij ten formularz, aby korzystać z powiadomień, planu lekcji i zastępstw dla twojej klasy",
+      "informationWhy": "Uzupełnij ten formularz, aby korzystać z planu lekcji i zastępstw dla twojej klasy",
       "privacyDisclaimer": "Twoje ustawienia nie są nigdzie wysyłane"
     }
   },
@@ -33,22 +33,11 @@
     "heading": "Ustawienia",
     "listItem": {
       "profile": "Profil",
-      "notifications": "Powiadomienia",
       "theme": "Motyw",
       "languages": "Język"
     },
     "profile": {
       "heading": "Profil"
-    },
-    "notifications": {
-      "notReadyYet": "Powiadomienia jeszcze <highlight>nie są gotowe</highlight>, ale już nad tym pracujemy!",
-      "heading": "Powiadomienia",
-      "nSchoolTitle": "Ogłoszenia Szkolne",
-      "nSchoolSub": "Notyfikacje o nowych ogłoszeniach dyrekcji szkolnej",
-      "nCouncilTitle": "Ogłoszenia Samorządu",
-      "nCouncilSub": "Notyfikacje o nowych ogłoszeniach samorządu uczniowskiego",
-      "nSubtitutionsTitle": "Zastępstwa",
-      "nSubtitutionsSub": "Notyfikacje o nowych zastępstwach nauczycieli"
     },
     "languages": {
       "heading": "Język",
@@ -165,9 +154,6 @@
   },
   "General": {
     "loading": "Ładowanie..."
-  },
-  "Notifications": {
-    "redirectError": "Nie udało się przekierować"
   },
   "Update": {
     "infoToast": "Nowa aktualizacja jest dostępna!"

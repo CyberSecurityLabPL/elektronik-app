@@ -22,7 +22,6 @@ export default function Layout() {
       <Stack screenOptions={{ headerShown: false }} initialRouteName="index">
         <Stack.Screen name="index" />
         <Stack.Screen name="language" />
-        <Stack.Screen name="notifications" />
         <Stack.Screen name="profile" />
         <Stack.Screen name="theme" />
         <Stack.Screen name="debug" />

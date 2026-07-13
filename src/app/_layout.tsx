@@ -16,25 +16,23 @@ import "../global.css"
 import i18n from "../i18n/i18n.config"
 import { useNetInfo } from "@react-native-community/netinfo"
 import { View, Text } from "react-native"
-import { registerDevMenuItems } from "expo-dev-menu"
+// import { registerDevMenuItems } from "expo-dev-menu"
 import { Linking } from "react-native"
-import { useNotificationRouting } from "@/hooks/notifications/useNotificationRouting"
-import { useInAppUpdates } from "@/hooks/useInAppUpdates"
 
-const devMenuItems = [
-  {
-    name: 'Open Android App Settings',
-    callback: async () => {
-      try {
-        await Linking.openSettings();
-      } catch (error) {
-        console.error("Failed to open settings:", error);
-      }
-    }
-  }
-]
+// const devMenuItems = [
+//   {
+//     name: 'Open Android App Settings',
+//     callback: async () => {
+//       try {
+//         await Linking.openSettings();
+//       } catch (error) {
+//         console.error("Failed to open settings:", error);
+//       }
+//     }
+//   }
+// ]
 
-registerDevMenuItems(devMenuItems)
+// registerDevMenuItems(devMenuItems)
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,11 +43,9 @@ export {
 SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
-  useNotificationRouting()
-  useInAppUpdates()
   const { isConnected } = useNetInfo()
   const colors = useColors()
-  NavigationBar.setBackgroundColorAsync(colors.background)
+  // NavigationBar.setBackgroundColorAsync(colors.background)
 
   const [loaded, error] = useFonts({
     "Poppins-Bold": require("@/assets/fonts/poppins/Poppins-Bold.ttf"),
@@ -102,7 +98,7 @@ export default function RootLayout() {
               />
               <Drawer.Screen name="welcome" options={{ swipeEnabled: false }} />
             </Drawer>
-            <StatusBar style="auto" animated translucent />
+            <StatusBar style="auto" animated />
             <Toaster />
           </GestureHandlerRootView>
         </ThemeProvider>

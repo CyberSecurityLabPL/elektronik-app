@@ -29,21 +29,11 @@
     "heading": "设置",
     "listItem": {
       "profile": "个人资料",
-      "notifications": "通知",
       "theme": "主题",
       "languages": "语言"
     },
     "profile": {
       "heading": "个人资料"
-    },
-    "notifications": {
-      "heading": "通知",
-      "nSchoolTitle": "学校公告",
-      "nSchoolSub": "关于新的学校管理公告的通知",
-      "nCouncilTitle": "学生会公告",
-      "nCouncilSub": "关于新的学生会公告的通知",
-      "nSubtitutionsTitle": "代课",
-      "nSubtitutionsSub": "关于新的教师代课的通知"
     },
     "languages": {
       "heading": "语言",

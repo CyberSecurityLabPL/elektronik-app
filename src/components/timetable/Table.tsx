@@ -33,6 +33,8 @@ export const Table = ({
         isError
     } = useTimetable({ id: selectedTimetable })
 
+    console.log(`[Timetable Table] selectedTimetable: "${selectedTimetable}", selectedDay: ${selectedDay}, isLoading: ${isLoading}, isError: ${isError}, data:`, data ? Object.keys(data) : null)
+
     if (isLoading || isRefetchingTimetable) {
         return <LoadingSkeleton />
     }
@@ -41,7 +43,8 @@ export const Table = ({
         return <NoData refetch={refetchTimetable} />
     }
 
-    const lessonsForDay = Object.values(data?.lessons || {})[selectedDay]
+    const lessonsForDay = Object.values(data?.lessons || {})[selectedDay] ?? []
+    console.log(`[Timetable Table] lessonsForDay:`, lessonsForDay?.length, `lessons`)
     if (lessonsForDay.length === 0 || (lessonsForDay.length > 0 && lessonsForDay.every(lesson => lesson.isEmpty))) return (
         <View className="flex flex-col items-center w-full h-full mt-10 gap-y-4">
             <Text className="text-foreground font-bold text-3xl text-center">{t('Timetable.emptyDay')}</Text>

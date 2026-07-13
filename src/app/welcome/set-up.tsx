@@ -40,7 +40,7 @@ const SetUp = () => {
   })
 
   const goToHomeAsGuest = async () => {
-    router.navigate('/welcome/notifications')
+    router.navigate('/(tabs)')
   }
 
   const onSubmit: SubmitHandler<UserData> = async (data) => {
@@ -55,7 +55,7 @@ const SetUp = () => {
     } else {
       console.error("Error saving data:", result.error)
     }
-    router.navigate('/welcome/notifications')
+    router.navigate('/(tabs)')
   }
 
   const { data } = useTimetableInfo({ filter: "class" })

@@ -38,20 +38,21 @@ export default {
     icon: "./src/assets/images/logo/full.png",
     scheme: "elektronik",
     userInterfaceStyle: "automatic",
-    notification: {
-        icon: "./src/assets/images/logo/full.png",
-        color: "#354dfc",
-        iosDisplayInForeground: true
-    },
     ios: {
         supportsTablet: true,
         infoPlist: {
-            UIBackgroundModes: ["remote-notification"]
+            NSAppTransportSecurity: {
+                NSExceptionDomains: {
+                    "elektronik.zgora.pl": {
+                        NSExceptionAllowsInsecureHTTPLoads: true,
+                        NSIncludesSubdomains: true
+                    }
+                }
+            }
         },
         bundleIdentifier: getUniqueIdentifier()
     },
     android: {
-        googleServicesFile: process.env.GOOGLE_SERVICES_JSON ?? "./google-services.json",
         softwareKeyboardLayoutMode: "resize",
         adaptiveIcon: {
             foregroundImage: "./src/assets/images/logo/android/adaptive-icon.png",
@@ -66,9 +67,10 @@ export default {
         favicon: "./src/assets/images/favicon.png"
     },
     plugins: [
-        "@react-native-firebase/app",
-        "@react-native-firebase/messaging",
         "expo-router",
+        "expo-font",
+        "expo-status-bar",
+        "expo-web-browser",
         "expo-localization",
         [
             "expo-build-properties",

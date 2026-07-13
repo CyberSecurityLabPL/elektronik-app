@@ -30,8 +30,9 @@ export const useTimetable = ({ id }: { id: string }) =>
   useQuery<TimetableResponse>({
     queryKey: ["timetable", id],
     queryFn: async () => {
+      console.log(`[Timetable] Fetching timetable for id: "${id}"`)
       const { data } = await timetableApi.get(TIMETABLE_URL(id))
-
+      console.log(`[Timetable] Received data, keys:`, Object.keys(data), `lessons keys:`, Object.keys(data.lessons ?? {}))
       return data
     },
   })

@@ -11,7 +11,7 @@
       "timetableErrorItem": "No data available",
       "diaryNumber": "Select diary number",
       "diaryNumberError": "Enter a valid diary number",
-      "informationWhy": "Fill out this form to receive notifications, lesson schedule, and substitutes for your class",
+      "informationWhy": "Fill out this form to receive lesson schedule and substitutes for your class",
       "privacyDisclaimer": "Your settings are not sent anywhere"
     }
   },
@@ -33,22 +33,11 @@
     "heading": "Settings",
     "listItem": {
       "profile": "Profile",
-      "notifications": "Notifications",
       "theme": "Theme",
       "languages": "Language"
     },
     "profile": {
       "heading": "Profile"
-    },
-    "notifications": {
-      "notReadyYet": "Notifications are <highlight>not ready yet</highlight>, but we are working on it!",
-      "heading": "Notifications",
-      "nSchoolTitle": "School Announcements",
-      "nSchoolSub": "Notifications about new school management announcements",
-      "nCouncilTitle": "Student Council Announcements",
-      "nCouncilSub": "Notifications about new student council announcements",
-      "nSubtitutionsTitle": "Substitutions",
-      "nSubtitutionsSub": "Notifications about new teacher substitutions"
     },
     "languages": {
       "heading": "Language",

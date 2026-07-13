@@ -9,7 +9,7 @@
       "classError": "Veuillez choisir une classe",
       "diaryNumber": "Choisissez un numéro du journal",
       "diaryNumberError": "Veuillez entrer un numéro de journal valide",
-      "informationWhy": "Remplissez ce formulaire pour utiliser les notifications, les horaires et les remplacements pour votre classe.",
+      "informationWhy": "Remplissez ce formulaire pour utiliser les horaires et les remplacements pour votre classe.",
       "timetableError": "Une erreur s'est produite. Impossible de télécharger l'index de la classe. Redémarrez l'application.",
       "privacyDisclaimer": "Vos paramètres ne sont envoyés nulle part",
       "timetableErrorItem": "Pas de données disponibles"
@@ -33,22 +33,11 @@
     "heading": "Paramètres",
     "listItem": {
       "profile": "Profil",
-      "notifications": "Notifications",
       "theme": "Thème",
       "languages": "Langue"
     },
     "profile": {
       "heading": "Profil"
-    },
-    "notifications": {
-      "heading": "Notifications",
-      "nSchoolTitle": "Annonces de l'école",
-      "nSchoolSub": "Notifications des nouvelles annonces de la direction de l'école",
-      "nCouncilTitle": "Annonces du Conseil",
-      "nCouncilSub": "Notifications des nouvelles annonces du conseil des élèves",
-      "nSubtitutionsTitle": "Remplacements",
-      "nSubtitutionsSub": "Notifications des nouveaux remplacements d'enseignants",
-      "notReadyYet": "Les notifications ne sont pas encore <highlight>ready</highlight>, mais nous y travaillons déjà !"
     },
     "languages": {
       "heading": "Langue",

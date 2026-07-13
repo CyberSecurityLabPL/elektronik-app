@@ -29,21 +29,11 @@
     "heading": "Nastavení",
     "listItem": {
       "profile": "Profil",
-      "notifications": "Oznámení",
       "theme": "Motiv",
       "languages": "Jazyk"
     },
     "profile": {
       "heading": "Profil"
-    },
-    "notifications": {
-      "heading": "Oznámení",
-      "nSchoolTitle": "Školní oznámení",
-      "nSchoolSub": "Oznámení o nových zprávách od vedení školy",
-      "nCouncilTitle": "Oznámení studentské rady",
-      "nCouncilSub": "Oznámení o nových zprávách studentské rady",
-      "nSubtitutionsTitle": "Suplování",
-      "nSubtitutionsSub": "Oznámení o novém suplování učitelů"
     },
     "languages": {
       "heading": "Jazyk",

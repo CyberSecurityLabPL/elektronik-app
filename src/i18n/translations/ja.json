@@ -29,21 +29,11 @@
     "heading": "設定",
     "listItem": {
       "profile": "プロフィール",
-      "notifications": "通知",
       "theme": "テーマ",
       "languages": "言語"
     },
     "profile": {
       "heading": "プロフィール"
-    },
-    "notifications": {
-      "heading": "通知",
-      "nSchoolTitle": "学校のお知らせ",
-      "nSchoolSub": "学校の管理者からの新しい通知",
-      "nCouncilTitle": "生徒会のお知らせ",
-      "nCouncilSub": "生徒会からの新しい通知",
-      "nSubtitutionsTitle": "代講",
-      "nSubtitutionsSub": "新しい代講情報の通知"
     },
     "languages": {
       "heading": "言語",

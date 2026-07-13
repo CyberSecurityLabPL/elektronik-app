@@ -1,7 +1,6 @@
 import {
   FirstTimeUserSchema,
   LanguageSchema,
-  NotificationsSchema,
   themeSchema,
   TimetableSettingsSchema,
   UserDataSchema,
@@ -26,7 +25,6 @@ export type StorageError =
 type SchemaType = {
   theme: typeof themeSchema
   language: typeof LanguageSchema
-  notifications: typeof NotificationsSchema
   "first-time-user": typeof FirstTimeUserSchema
   "user-data": typeof UserDataSchema,
   timetable: typeof TimetableSettingsSchema
@@ -35,7 +33,6 @@ type SchemaType = {
 // Storage keys mapped to their string values
 export const StorageKeys = {
   theme: "theme",
-  notifications: "notifications",
   language: "language",
   firstTimeUser: "first-time-user",
   userData: "user-data",
@@ -49,16 +46,13 @@ export type StorageKey = (typeof StorageKeys)[keyof typeof StorageKeys]
 export const StorageSchemas: SchemaType = {
   [StorageKeys.theme]: themeSchema,
   [StorageKeys.language]: LanguageSchema,
-  [StorageKeys.notifications]: NotificationsSchema,
   [StorageKeys.firstTimeUser]: FirstTimeUserSchema,
   [StorageKeys.userData]: UserDataSchema,
   [StorageKeys.timetable]: TimetableSettingsSchema
   // Add your settings schema here
 } as const
 
-type StorageValueType<K extends StorageKey> = K extends "notifications"
-  ? z.infer<typeof NotificationsSchema>
-  : K extends "first-time-user"
+type StorageValueType<K extends StorageKey> = K extends "first-time-user"
   ? z.infer<typeof FirstTimeUserSchema>
   : never
 
@@ -119,7 +113,7 @@ export async function getStorageData<K extends StorageKey>(
  *
  * @example
  *  ```ts
- * const result = await setStorageData("notifications", { articles: true, announcements: true, substitutions: false }, NotificationsSchema)
+ * const result = await setStorageData("first-time-user", true)
  *
  * if (result.success) {
  *   console.log("Data stored successfully:", result.data)

@@ -2,7 +2,7 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import LargeButton from "@/components/ui/LargeButton"
 import useColors from "@/hooks/useColors"
-import { Bell, Languages, Sun, User2 } from "lucide-react-native"
+import { Languages, Sun, User2 } from "lucide-react-native"
 import { useColorScheme } from "nativewind"
 import { useTranslation } from "react-i18next"
 import { View } from "react-native"
@@ -27,14 +27,6 @@ export const Settings = () => {
                     iconColor={colors.foreground}
                     LucideIcon={User2}
                     href={"/settings/profile"}
-                    strokeWidth={1.5}
-                />
-                <LargeButton
-                    text={t("Settings.listItem.notifications")}
-                    extendable
-                    iconColor={colors.foreground}
-                    LucideIcon={Bell}
-                    href={"/settings/notifications"}
                     strokeWidth={1.5}
                 />
                 <LargeButton

@@ -29,21 +29,11 @@
     "heading": "설정",
     "listItem": {
       "profile": "프로필",
-      "notifications": "알림",
       "theme": "테마",
       "languages": "언어"
     },
     "profile": {
       "heading": "프로필"
-    },
-    "notifications": {
-      "heading": "알림",
-      "nSchoolTitle": "학교 공지사항",
-      "nSchoolSub": "학교 관리 공지에 대한 알림",
-      "nCouncilTitle": "학생회 공지사항",
-      "nCouncilSub": "학생회 공지에 대한 알림",
-      "nSubtitutionsTitle": "대체 수업",
-      "nSubtitutionsSub": "교사 대체 수업에 대한 알림"
     },
     "languages": {
       "heading": "언어",

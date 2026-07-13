@@ -29,21 +29,11 @@
     "heading": "Налаштування",
     "listItem": {
       "profile": "Профіль",
-      "notifications": "Сповіщення",
       "theme": "Тема",
       "languages": "Мова"
     },
     "profile": {
       "heading": "Профіль"
-    },
-    "notifications": {
-      "heading": "Сповіщення",
-      "nSchoolTitle": "Шкільні оголошення",
-      "nSchoolSub": "Сповіщення про нові оголошення адміністрації",
-      "nCouncilTitle": "Оголошення Учнівської ради",
-      "nCouncilSub": "Сповіщення про нові оголошення учнівської ради",
-      "nSubtitutionsTitle": "Заміни",
-      "nSubtitutionsSub": "Сповіщення про нові заміни вчителів"
     },
     "languages": {
       "heading": "Мова",

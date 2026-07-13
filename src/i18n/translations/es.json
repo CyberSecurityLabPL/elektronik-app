@@ -29,21 +29,11 @@
     "heading": "Ajustes",
     "listItem": {
       "profile": "Perfil",
-      "notifications": "Notificaciones",
       "theme": "Tema",
       "languages": "Idioma"
     },
     "profile": {
       "heading": "Perfil"
-    },
-    "notifications": {
-      "heading": "Notificaciones",
-      "nSchoolTitle": "Anuncios escolares",
-      "nSchoolSub": "Notificación de nuevos anuncios por parte de la dirección del centro",
-      "nCouncilTitle": "Anuncios del Consejo Escolar",
-      "nCouncilSub": "Notificación de nuevos anuncios del consejo de estudiantes",
-      "nSubtitutionsTitle": "Sustituciones",
-      "nSubtitutionsSub": "Notificación de nuevos profesores sustitutos"
     },
     "languages": {
       "heading": "Idioma",

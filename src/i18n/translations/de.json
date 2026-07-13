@@ -29,21 +29,11 @@
     "heading": "Einstellungen",
     "listItem": {
       "profile": "Profil",
-      "notifications": "Benachrichtigungen",
       "theme": "Thema",
       "languages": "Sprache"
     },
     "profile": {
       "heading": "Profil"
-    },
-    "notifications": {
-      "heading": "Benachrichtigungen",
-      "nSchoolTitle": "Schulankündigungen",
-      "nSchoolSub": "Benachrichtigungen über neue Schulleitung-Ankündigungen",
-      "nCouncilTitle": "Schülerrat-Ankündigungen",
-      "nCouncilSub": "Benachrichtigungen über neue Schülerrat-Ankündigungen",
-      "nSubtitutionsTitle": "Vertretungen",
-      "nSubtitutionsSub": "Benachrichtigungen über neue Lehrervertretungen"
     },
     "languages": {
       "heading": "Sprache",

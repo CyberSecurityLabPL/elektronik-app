@@ -2,8 +2,9 @@ import useColors from "@/hooks/useColors"
 import {
     DrawerContentComponentProps,
     DrawerContentScrollView,
-} from "@react-navigation/drawer"
-import { DrawerActions } from "@react-navigation/native"
+    Drawer
+} from "expo-router/drawer"
+// import { DrawerActions } from "@react-navigation/native"
 import { useRouter } from "expo-router"
 import {
     AudioLines,
@@ -20,6 +21,7 @@ import LargeButton from "../ui/LargeButton"
 import { useTranslation } from "react-i18next"
 import { WideLuckyNumber } from "../LuckyNumber"
 import { useTheme } from "../Providers/ThemeProvider"
+import { DrawerActions } from "expo-router/build/react-navigation"
 
 const Sidebar = (props: DrawerContentComponentProps) => {
     const colors = useColors()
