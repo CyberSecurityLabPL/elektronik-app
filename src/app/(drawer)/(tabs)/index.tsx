@@ -12,6 +12,7 @@ import { useBells } from "@/hooks/bells/useBells"
 import { useUpcomingEvent } from "@/hooks/events/useEvents"
 import { useLuckyNumber } from "@/hooks/lucky-number/useLuckyNumber"
 import useColors from "@/hooks/useColors"
+import useTabBarOverlap from "@/hooks/useTabBarOverlap"
 import { useUserData } from "@/hooks/useUserData"
 import { localeFormat } from "@/lib/utils"
 import { useNetInfo } from "@react-native-community/netinfo"
@@ -37,6 +38,7 @@ const Home = () => {
     const { isConnected } = useNetInfo()
 
     const colors = useColors()
+    const tabBarOverlap = useTabBarOverlap()
     const userData = useUserData()
     const curDate = new Date()
     const { t } = useTranslation()
@@ -85,9 +87,9 @@ const Home = () => {
 
 
     return (
-        <ScreenWrapper>
+        <ScreenWrapper edges={["top", "left", "right"]} className="pb-0">
             <ScrollView
-                contentContainerClassName="mb-12"
+                contentContainerStyle={{ paddingBottom: tabBarOverlap }}
                 showsVerticalScrollIndicator={false}
                 refreshControl={
                     <RefreshControl
@@ -173,9 +175,9 @@ const Home = () => {
                             <HomeCard
                                 type="council"
                                 onPress={() =>
-                                    router.navigate({
-                                        pathname: `/news/[id]`,
-                                        params: { id: `n${article.pages[0].data[0].documentId}`, origin: "home", other: "other" },
+                                    router.push({
+                                        pathname: "/news/[id]",
+                                        params: { id: `n${article.pages[0].data[0].documentId}` },
                                     })
                                 }
                                 description={article.pages[0].data[0].description}
@@ -200,9 +202,9 @@ const Home = () => {
                             <HomeCard
                                 type="school"
                                 onPress={() =>
-                                    router.navigate({
-                                        pathname: `/news/[id]`,
-                                        params: { id: `a${announcement.pages[0].data[0].documentId}`, origin: "home", other: "other" },
+                                    router.push({
+                                        pathname: "/news/[id]",
+                                        params: { id: `a${announcement.pages[0].data[0].documentId}` },
                                     })
                                 }
                                 description={announcement.pages[0].data[0].description}

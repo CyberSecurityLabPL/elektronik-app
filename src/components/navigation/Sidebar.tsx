@@ -33,6 +33,11 @@ const Sidebar = (props: DrawerContentComponentProps) => {
         props.navigation.dispatch(DrawerActions.closeDrawer())
     }
 
+    const navigateTo = (href: Parameters<typeof router.navigate>[0]) => {
+        closeDrawer()
+        router.navigate(href)
+    }
+
     return (
         <View className=" pt-16 px-4 pb-6 flex-1 flex-col flex justify-between border-0 bg-background">
             <View className="flex flex-row justify-between items-center w-full py-8">
@@ -60,7 +65,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
                     LucideIcon={AudioLines}
                     iconColor={colors.foreground}
                     text={t("Sidebar.radio")}
-                    onPress={() => router.navigate("/(tabs)/radio")}
+                    onPress={() => navigateTo("/radio")}
                 />
 
             </DrawerContentScrollView>
@@ -90,7 +95,7 @@ const Sidebar = (props: DrawerContentComponentProps) => {
                     LucideIcon={SettingsIcon}
                     iconColor={colors.foreground}
                     text={t("Sidebar.settings")}
-                    onPress={() => router.navigate("/settings")}
+                    onPress={() => navigateTo("/settings")}
                 />
             </View>
         </View>

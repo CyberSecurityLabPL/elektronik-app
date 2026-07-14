@@ -5,12 +5,14 @@ import ScreenWrapper from "@/components/ScreenWrapper"
 import Heading from "@/components/ui/Heading"
 import { useEvents } from "@/hooks/events/useEvents"
 import useColors from "@/hooks/useColors"
+import useTabBarOverlap from "@/hooks/useTabBarOverlap"
 import { useMemo } from "react"
 import { useTranslation } from "react-i18next"
 import { FlatList, RefreshControl, ScrollView, Text, View } from "react-native"
 
 const Events = () => {
   const colors = useColors()
+  const tabBarOverlap = useTabBarOverlap()
   const {
     data,
     isRefetching,
@@ -35,7 +37,7 @@ const Events = () => {
     }
   }
   return (
-    <ScreenWrapper>
+    <ScreenWrapper edges={["top", "left", "right"]} className="pb-0">
       <View className="flex flex-col items-center w-full">
         { isError
           ? (
@@ -64,7 +66,8 @@ const Events = () => {
                       progressBackgroundColor={colors.backgroundSecondary}
                     />
                   }
-                  contentContainerClassName="gap-4 pb-16 w-full"
+                  contentContainerClassName="gap-4 w-full"
+                  contentContainerStyle={{ paddingBottom: tabBarOverlap }}
                   showsVerticalScrollIndicator={false}
                   nestedScrollEnabled
                   keyExtractor={(item) => item.documentId}

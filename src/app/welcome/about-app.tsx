@@ -43,7 +43,7 @@ const AboutApp = () => {
         <Button
           className="mb-4"
           text={t("Button.continue")}
-          onPress={() => router.navigate("/welcome/set-up")}
+          onPress={() => router.push("/welcome/set-up")}
         />
       </View>
 

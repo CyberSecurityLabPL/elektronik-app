@@ -10,7 +10,7 @@ import { Stack, useLocalSearchParams, useRouter } from "expo-router"
 import { StatusBar } from "expo-status-bar"
 import { ChevronLeft } from "lucide-react-native"
 import { useEffect, useState } from "react"
-import { BackHandler, Text, View } from "react-native"
+import { Text, View } from "react-native"
 import Markdown from "react-native-markdown-display"
 import Animated, {
   interpolate,
@@ -22,33 +22,17 @@ import * as WebBrowser from 'expo-web-browser'
 import { toast } from "sonner-native"
 
 export default function ArticleScreen() {
-  const { id } = useLocalSearchParams()
+  const { id } = useLocalSearchParams<{ id: string }>()
   const colors = useColors()
   const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const scrollOfset = useScrollViewOffset(scrollRef)
   const [key, setKey] = useState(0)
 
   const router = useRouter()
-  const params = useLocalSearchParams()
-  const cameFromHome = params?.origin
 
-  useEffect(() => {
-    const backAction = () => {
-      if (cameFromHome) {
-        router.navigate("/(tabs)") // Go to tabs if came from home
-      } else {
-        router.navigate("/news") // Go back to news list otherwise
-      }
-      return true
-    }
-
-    const backHandler = BackHandler.addEventListener(
-      "hardwareBackPress",
-      backAction,
-    )
-
-    return () => backHandler.remove()
-  }, [cameFromHome])
+  // The id is prefixed: "n" for articles (SU), "a" for school announcements
+  const isArticle = id?.at(0) === "n"
+  const documentId = id?.slice(1) ?? ""
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ y: 0, animated: false })
@@ -75,11 +59,14 @@ export default function ArticleScreen() {
     }
   })
 
-  console.log(id)
-
-  const { data, isLoading, isError } = id.at(0) === "n"
-    ? useArticle({ id: id.slice(1).toString() })
-    : useAnnouncement({ id: id.slice(1).toString() })
+  const articleQuery = useArticle({ id: documentId, enabled: isArticle })
+  const announcementQuery = useAnnouncement({
+    id: documentId,
+    enabled: !isArticle,
+  })
+  const { data, isLoading, isError } = isArticle
+    ? articleQuery
+    : announcementQuery
 
   const md = data?.data.content
 
@@ -89,7 +76,7 @@ export default function ArticleScreen() {
         await WebBrowser.openBrowserAsync(url)
       } catch {
         return toast.error("Nie można otworzyć przeglądarki. Spróbuj ponownie.")
-      } 
+      }
     } else {
       return toast.error("Nie można otworzyć strony, poczekaj chwilę...")
     }
@@ -97,27 +84,19 @@ export default function ArticleScreen() {
 
   return (
     <View className="px-0 pt-0 relative bg-background">
-      <StatusBar
-        translucent
-        backgroundColor="#00000066"
-        style="light"
-        animated
-      />
+      <StatusBar style="light" animated />
 
       <Stack.Screen
         options={{
+          headerShown: true,
+          headerTitle: "",
           headerTransparent: true,
-          presentation: "formSheet",
           headerLeft: () => (
             <Animated.View style={headerAnimatedStyle} className="mt-4">
               <IconButton
                 LucideIcon={ChevronLeft}
                 iconColor={colors.foreground}
-                onPress={() => {
-                  cameFromHome
-                    ? router.navigate("/(tabs)")
-                    : router.navigate("/news")
-                }}
+                onPress={() => router.back()}
               />
             </Animated.View>
           ),
@@ -209,7 +188,7 @@ export default function ArticleScreen() {
                 <View className="w-fit bg-primary px-2 rounded-lg">
                   <Text
                     className="w-min text-sm text-background font-psemibold">
-                    {id.includes('n') ? "Ogłoszenia SU" : "Ogłoszenia Szkoły"}
+                    {isArticle ? "Ogłoszenia SU" : "Ogłoszenia Szkoły"}
                   </Text>
                 </View>
               </View>
@@ -242,7 +221,7 @@ export default function ArticleScreen() {
           )}
         </View>
       </Animated.ScrollView>
-      {data?.data.redirect && 
+      {data?.data.redirect &&
         (data?.data.redirect.URL || data?.data.redirect.Nazwa) && (
         <View
           className="absolute bottom-7 w-full left-0 right-0 flex justify-center items-center px-2"

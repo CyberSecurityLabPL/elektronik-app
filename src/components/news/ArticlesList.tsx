@@ -1,6 +1,7 @@
 import { ARTICLES_PAGE_SIZE } from "@/config";
 import { useArticles } from "@/hooks/articles/useArticles";
 import useColors from "@/hooks/useColors";
+import useTabBarOverlap from "@/hooks/useTabBarOverlap";
 import { StrapiArticle } from "@/types/strapi";
 import { useCallback, useRef, useState } from "react";
 import { Text, Animated, FlatList, RefreshControl, ScrollView, View } from "react-native";
@@ -13,6 +14,7 @@ import { useTranslation } from "react-i18next";
 export const ArticleList = () => {
     const [refreshing, setRefreshing] = useState<boolean>(false)
     const colors = useColors()
+    const tabBarOverlap = useTabBarOverlap()
     const { t } = useTranslation()
     const scrollY = useRef(new Animated.Value(0)).current
     const flatListRef = useRef<FlatList<StrapiArticle>>(null)
@@ -96,7 +98,7 @@ export const ArticleList = () => {
                             updateCellsBatchingPeriod={50}
                             renderItem={renderItem}
                             style={{ flex: 1 }}
-                            contentContainerStyle={{ paddingBottom: 20, gap: 16 }}
+                            contentContainerStyle={{ paddingBottom: tabBarOverlap, gap: 16 }}
                             refreshControl={
                                 <RefreshControl
                                     refreshing={refreshing}

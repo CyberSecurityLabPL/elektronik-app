@@ -31,18 +31,15 @@ const TabBarIcon = ({
       testID={testID}
       onPress={onPress}
       onLongPress={onLongPress}
-      className={cn(
-        " pt-2 justify-center items-center border-t-2",
-        focused ? " border-primary" : "border-transparent",
-      )}
+      className="py-2.5 justify-center items-center"
     >
       <View
         className={cn(
-          "rounded-full p-4",
-          focused ? "text-primary bg-primary/20" : "text-[#686687]",
+          "rounded-full p-3",
+          focused ? "bg-primary/20" : "bg-transparent",
         )}
       >
-        <Icon size={24} color={focused ? colors.primary : colors.foreground} />
+        <Icon size={22} color={focused ? colors.primary : colors.foreground} />
       </View>
     </TouchableOpacity>
   )

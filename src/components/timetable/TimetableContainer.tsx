@@ -6,12 +6,14 @@ import { TimetableSelector } from "./selector/Selector"
 import { View } from "react-native"
 import { SelectorButton } from "./selector/Button"
 import { useUserData } from "@/hooks/useUserData"
-import { useEffect } from "react" 
+import useTabBarOverlap from "@/hooks/useTabBarOverlap"
+import { useEffect } from "react"
 
 const defaultTimetable = 'o1'
 
 export const TimetableContainer = () => {
     const userData = useUserData()
+    const tabBarOverlap = useTabBarOverlap()
     const [day, setDay] = useState<number>(getCurrentDay() > 4 ? 0 : getCurrentDay())
     /**
      * Set bottom sheet index (is open and how much)
@@ -43,7 +45,10 @@ export const TimetableContainer = () => {
                 selectedTimetable={selectedTimetable}
             />
         </View>
-        <View className="w-full absolute bottom-6 bg-background flex justify-center items-center p-4 pb-8 border-y border-y-background-secondary">
+        <View
+            className="w-full absolute bg-background flex justify-center items-center p-4 pb-8 border-y border-y-background-secondary"
+            style={{ bottom: tabBarOverlap }}
+        >
             <SelectorButton
                 selectedTimetable={selectedTimetable}
                 setBottomSheetIndex={setBottomSheetIndex}

@@ -33,9 +33,16 @@ export const useArticles = ({
     },
   })
 
-export const useArticle = ({ id }: { id: string }) =>
+export const useArticle = ({
+  id,
+  enabled = true,
+}: {
+  id: string
+  enabled?: boolean
+}) =>
   useQuery<SingleNewsResponse>({
     queryKey: ["article", id],
+    enabled,
     queryFn: async () => {
       const { data } = await api.get(ARTICLE_URL(id))
       return data

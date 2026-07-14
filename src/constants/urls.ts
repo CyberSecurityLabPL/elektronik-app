@@ -1,8 +1,8 @@
 import { format } from "date-fns"
 
-export const API_URL = "http://api.elektronik.zgora.pl/api"
-export const BACKEND_URL = "http://api.elektronik.zgora.pl"
-export const TIMETABLE_API_URL = "http://elektronik.zgora.pl:5678/api"
+export const API_URL = "https://api.elektronik.zgora.pl/api"
+export const BACKEND_URL = "https://api.elektronik.zgora.pl"
+export const TIMETABLE_API_URL = "https://plan-api.elektronik.zgora.pl/api"
 
 export const TIMETABLE_INFO_URL = (filter: string) => `/info/${filter}`
 export const TIMETABLE_ALL_INFO_URL = () => `/info`
@@ -22,7 +22,8 @@ export const ANNOUNCEMENTS_URL = (page: number, pageSize: number) =>
   `/announcements?pagination[pageSize]=${pageSize}&pagination[page]=${page}&populate=*`
 
 export const ARTICLE_URL = (id: string) => `/articles/${id}?populate=*`
-export const ANNOUNCEMENT_URL = (id: string) => `/announcements/${id}?populate=*`
+export const ANNOUNCEMENT_URL = (id: string) =>
+  `/announcements/${id}?populate=*`
 
 export const EVENTS_URL = (page: number, pageSize: number) =>
   `/events?pagination[pageSize]=${pageSize}&pagination[page]=${page}&filters[date][$gte]=${

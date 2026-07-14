@@ -34,7 +34,7 @@ export const NewsItem = memo(({
             isNew={isNew()}
             description={item.description}
             onPress={() =>
-                router.navigate(`/news/${activateTab === 'articles' ? 'n' : 'a'}${item.documentId}`)
+                router.push(`/news/${activateTab === 'articles' ? 'n' : 'a'}${item.documentId}`)
             }
         />
     )

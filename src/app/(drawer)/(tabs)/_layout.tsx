@@ -1,56 +1,52 @@
 import TabBar from "@/components/navigation/TabBar"
-import { Tabs, } from "expo-router"
+import useColors from "@/hooks/useColors"
+import { Tabs } from "expo-router"
 import { Calendar, Home, Newspaper, Repeat, Table } from "lucide-react-native"
 import React from "react"
 
 export default function TabLayout() {
+  const colors = useColors()
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
         tabBarHideOnKeyboard: true,
-        headerTransparent: true,
+        sceneStyle: { backgroundColor: colors.background },
       }}
       initialRouteName="index"
+      backBehavior="initialRoute"
       tabBar={(props) => <TabBar {...props} />}
     >
       <Tabs.Screen
         name="substitutions"
-        options={() => ({
+        options={{
           tabBarIcon: Repeat,
-        })}
+        }}
       />
       <Tabs.Screen
         name="timetable"
-        options={() => ({
+        options={{
           tabBarIcon: Table,
-        })}
+        }}
       />
       <Tabs.Screen
         name="index"
-        options={() => ({
+        options={{
           tabBarIcon: Home,
-        })}
+        }}
       />
       <Tabs.Screen
         name="news"
-        options={() => ({
+        options={{
           tabBarIcon: Newspaper,
-        })}
+        }}
       />
       <Tabs.Screen
         name="events"
-        options={() => ({
-          tabBarIcon: Calendar,
-        })}
-      />
-      <Tabs.Screen
-        name="radio"
         options={{
-          href: null,
           tabBarIcon: Calendar,
-          tabBarStyle: { display: "none" },
         }}
       />
     </Tabs>

@@ -12,12 +12,12 @@ const News = () => {
     const [tabs, setTabs] = useState<'article' | 'announcment'>('article')
 
     return (
-        <ScreenWrapper>
+        <ScreenWrapper edges={["top", "left", "right"]} className="pb-0">
             <Heading title={t("News.heading")} />
             <Tabs
                 tabs={tabs}
                 setTabs={setTabs} />
-            <View className="mb-[40px] mt-4 bg-background-secondary w-full h-fit flex-1 rounded-2xl p-4">
+            <View className="mt-4 bg-background-secondary w-full h-fit flex-1 rounded-2xl p-4">
                 {tabs === 'article' && (
                     <ArticleList />
                 )}

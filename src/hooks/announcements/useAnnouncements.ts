@@ -33,9 +33,16 @@ export const useAnnouncements = ({
         },
     })
 
-export const useAnnouncement = ({ id }: { id: string }) =>
+export const useAnnouncement = ({
+    id,
+    enabled = true,
+}: {
+    id: string
+    enabled?: boolean
+}) =>
     useQuery<SingleAnnouncementResponse>({
         queryKey: ["announcement", id],
+        enabled,
         queryFn: async () => {
             const { data } = await api.get(ANNOUNCEMENT_URL(id))
             return data

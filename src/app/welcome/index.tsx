@@ -31,7 +31,7 @@ const Page = () => {
       <Button
         className="mb-4"
         text={t("Button.continue")}
-        onPress={() => router.navigate("/welcome/about-app")}
+        onPress={() => router.push("/welcome/about-app")}
       />
 
       <View className="absolute top-32 -left-14 -z-10">

@@ -4,7 +4,10 @@ import { TimetableContainer } from "@/components/timetable/TimetableContainer"
 
 const Timetable = () => {
     return (
-        <ScreenWrapper className="flex justify-top items-center w-full h-full px-0">
+        <ScreenWrapper
+            edges={["top", "left", "right"]}
+            className="flex justify-top items-center w-full h-full px-0 pb-0"
+        >
             <TimetableHeader />
             <TimetableContainer />
         </ScreenWrapper>

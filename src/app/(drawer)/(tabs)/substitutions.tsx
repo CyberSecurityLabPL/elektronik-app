@@ -4,6 +4,7 @@ import Heading from "@/components/ui/Heading"
 import IconButton from "@/components/ui/IconButton"
 import { useSubstitutions } from "@/hooks/substitutions/useSubstitutions"
 import useColors from "@/hooks/useColors"
+import useTabBarOverlap from "@/hooks/useTabBarOverlap"
 import { localeFormat } from "@/lib/utils"
 import { addDays, subDays } from "date-fns"
 import { ChevronLeft, ChevronRight } from "lucide-react-native"
@@ -14,6 +15,7 @@ import { RefreshControl, ScrollView, Text, View } from "react-native"
 const Substitutions = () => {
   const [date, setDate] = useState(new Date())
   const colors = useColors()
+  const tabBarOverlap = useTabBarOverlap()
   const { t } = useTranslation()
 
   const {
@@ -39,10 +41,11 @@ const Substitutions = () => {
   }, [])
 
   return (
-    <ScreenWrapper>
+    <ScreenWrapper edges={["top", "left", "right"]} className="pb-0">
       <ScrollView
         className="flex flex-col"
         contentContainerClassName="justify-center"
+        contentContainerStyle={{ paddingBottom: tabBarOverlap }}
         nestedScrollEnabled={true}
         refreshControl={
           <RefreshControl

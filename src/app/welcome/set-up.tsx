@@ -6,7 +6,6 @@ import { Select, SelectItem } from "@/components/ui/Select"
 import useColors from "@/hooks/useColors"
 import { setStorageData, StorageKeys } from "@/lib/storage"
 import { UserData } from "@/types/app-data"
-import { router } from "expo-router"
 import { Controller, SubmitHandler, useForm } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { Keyboard, Text, TouchableWithoutFeedback, View } from "react-native"
@@ -39,8 +38,14 @@ const SetUp = () => {
     },
   })
 
+  // Flipping the flag unlocks the main app in the root layout's
+  // Stack.Protected guard, which redirects to the tabs automatically
+  const finishOnboarding = async () => {
+    await setStorageData(StorageKeys.firstTimeUser, false)
+  }
+
   const goToHomeAsGuest = async () => {
-    router.navigate('/(tabs)')
+    await finishOnboarding()
   }
 
   const onSubmit: SubmitHandler<UserData> = async (data) => {
@@ -55,7 +60,7 @@ const SetUp = () => {
     } else {
       console.error("Error saving data:", result.error)
     }
-    router.navigate('/(tabs)')
+    await finishOnboarding()
   }
 
   const { data } = useTimetableInfo({ filter: "class" })

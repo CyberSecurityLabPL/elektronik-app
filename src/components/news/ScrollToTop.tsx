@@ -8,7 +8,7 @@ export const ScrollToTop = <T extends Animated.FlatList<any>>({
     listRef
 }: {
     scrollY: Animated.Value,
-    listRef: RefObject<T>
+    listRef: RefObject<T | null>
 }) => {
     // Create animated visibility values derived from scrollY
     const buttonOpacity = scrollY.interpolate({
